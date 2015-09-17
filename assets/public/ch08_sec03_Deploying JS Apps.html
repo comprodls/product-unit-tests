@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Deploying JavaScript Applications - Alex Sexton</title>
+        <link rel="stylesheet" type="text/css" href="css/core.css"/>
+    </head>
+    <body>
+        <div class="chaptertitle">
+            <h2 class="title">Deploying JavaScript Applications</h2>
+        </div>
+
+       
+            <p>
+                <strong>Preface:</strong> Nothing in this post is necessarily new, or even anything I thought of first (save for a name or two). However,
+                I’m writing it because I’d like to start building some consistency and naming conventions around a few of the techniques
+                that I am using (and are becoming more common), as well as document some processes that I find helpful.
+            </p>
+
+            <p>
+                Much of this comes from my experience deploying applications at Bazaarvoice as a large third party vendor, and should
+                probably be tailored to your specific environment. I’m sure someone does the <em>opposite</em> of me in each step
+                of this with good results.
+            </p>
+
+            <p>
+                Also, I fully understand the irony of loading a few MBs of GIFs in a post largely about performance,
+                but I like them. Any specific tools I mention are because I’m familiar with them, not necessarily because there
+                are no good alternatives. Feel free to comment on other good techniques and tools below. Facts appreciated.
+            </p>
+
+        <div class="sub_section">
+            <h2>You</h2>
+
+            <p>
+                You work on a large app. You might be a third party, or you might not be. You might be on a team, or you might not be.
+                You want maximum performance, with a high cache rate and extremely high availability.
+            </p>
+
+            <h3>Dev with builds in mind</h3>
+            <div class="figure">
+                <span id="reference-diagram" />
+                    <div class="figure-contents">
+                    
+                        <p>
+                            <img src="images/ch08_sec03_gruntbuild.gif" alt=" ">
+                        </p>
+                 </div>
+            </div>
+           
+
+            <p>
+                Locally, you might run a static server with some <a class="ulink" href="http://requirejs.org/">AMD modules</a>, or a <a class="ulink"  href="http://incident57.com/codekit/">“precompile server”</a>in front of some <a class="ulink"  href="http://sass-lang.com/">sass</a> and <a class="ulink"  href="http://coffeescript.org/">coffeescript</a>, or <a class="ulink"  href="http://browserify.org/">browserify</a> with<a class="ulink"  href="http://wiki.commonjs.org/wiki/Modules/1.1">commonjs modules</a>. Whatever you’re doing in development is your choice and not the topic du jour.
+            </p>
+
+            <p>
+                The hope is that you have a way of taking your dev environment files and wrapping them up into concisely built and minified JavaScript
+                and CSS files. Ideally this is an <a class="ulink"  href="http://requirejs.org/docs/optimization.html#basics">easy step</a> for you, otherwise, you’ll tend to skip it.
+                <em>Optimize for ease of mind here.</em> I tend to disagree with the sentiment that <em>‘script tags are enough.’</em> Try to manage your dependencies
+                in a single place, and that place probably isn’t in the order of your script tags in your HTML. Avoiding this step is easy until it isn’t.
+            </p>
+
+            <h3>Loading what you need is better than byte shaving</h3>
+
+            <p>
+                One technique at the build-stage that is ideal for performance, is building minimal packages based on likely use. At page load, you’ll want
+                to load, parse, and execute as little JavaScript as possible. Require.js allows you to “exclude” modules from your builds and
+                <a class="ulink"  href="https://github.com/requirejs/example-multipage/blob/master/tools/build.js#L8-L45">create separate secondary modules</a>. Rather than shaving bytes
+                in your app files, you can avoid loading entire sections of code. Most sections of an app have predictable entry points that you can listen for
+                before injecting more functionality.
+            </p>
+
+            <p>
+                In our current app, only a fraction of the users click on the button that causes a specific flow to popup. Because of this we can
+                save ~20kb of code at page load time, and instead load it as a mouse gets close to the button, or after a few seconds of inactivity (to prime the cache).
+                This technique will go a much longer way than any of your normal byte saving tricks, but is not always the easiest and for that reason is often avoided.
+            </p>
+            <div class="figure">
+                    <span id="reference-diagram" />
+                        <div class="figure-contents">
+                    
+                            <p>
+                                 <img src="images/ch08_sec03_delaypackage.gif" alt=" ">
+                            </p>
+                        </div>
+            </div>
+            
+
+            <p>
+                Check your network panel the next time you have Gmail open to see how
+                <a class="ulink"  href="http://googlecode.blogspot.com/2009/09/gmail-for-mobile-html5-series-reducing.html">Google feels about this technique</a>. They take an extra
+                step and bring the code in as text, and don’t bother parsing or executing it until they need to. This is good for low-powered/mobile devices.
+            </p>
+
+            <p>
+                In fact, some Googlers released a library, <a class="ulink"  href="https://github.com/google/module-server">Module Server</a>, that allows you to do some of this dynamically.
+                It works with lots of module formats. And technically you could just use it to see how it decides to break up your files, and then switch
+                over to fully static files after you get that insight. They presented on it at JSConf.eu 2012:
+            </p>
+
+            <div><iframe width="789" height="537" src="https://www.youtube.com/embed/mGENRKrdoGY" frameborder="0" allowfullscreen></iframe></div>
+
+            <p>
+                So instead of using a microjs cross-domain communication library that your coworker hacked together, just delay loading <a class="ulink"  href="https://github.com/oyvindkinsey/easyXDM">EasyXDM</a>
+                until you need to do cross domain form POSTs.
+            </p>
+
+            <h3>Don’t penalize modern users</h3>
+
+            <p>
+                I’m all for progressive enhancement, and have to support IE6 in our primary application. However, it pains me when modern browser users have to pay
+                a performance price for the sins of others. It’s a good idea to try to support some level of “conditional builds” or “profile builds.” In the
+                AMD world, you can use the <a class="ulink"  href="http://requirejs.org/docs/optimization.html#hasjs">has.js integration</a>, or if you’re feeling especially dirty, a build pragma.
+                However, third-parties have written some pretty nifty tools for doing this as a plugin.
+            </p>
+
+            <p>
+            One of the best tools for this that I’ve seen is <a class="ulink"  href="https://github.com/jensarps/AMD-feature">AMD-feature</a>. It allows you
+            to use a set of known supported features to load the best fitting build for the current user. This can be great on mobile. You can silently switch
+            out jQuery with Zepto (assuming you stick to the shared subset). You can add and remove polyfills for the correct users. If 20% of your JavaScript
+            is loading for %3 of your users, something is backwards.
+            </p>
+
+<pre><code class="JavaScript"><span class="line"><span class="nx">define</span><span class="p">({</span>
+</span><span class="line">    <span class="s1">'dropdown'</span><span class="o">:</span> <span class="p">[</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="nx">isAvailable</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">                <span class="c1">// test if we are on iOS</span>
+</span><span class="line">                <span class="k">return</span> <span class="nx">iOS</span> <span class="o">?</span> <span class="kc">true</span><span class="o">:</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class="line">            <span class="p">},</span>
+</span><span class="line">
+</span><span class="line">            <span class="nx">implementation</span><span class="o">:</span> <span class="s1">'src/dropdown-ios'</span>
+</span><span class="line">        <span class="p">},</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="nx">isAvailable</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">                <span class="c1">// if we end up here, we're not on iOS,</span>
+</span><span class="line">                <span class="c1">// so we can just return true.</span>
+</span><span class="line">                <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class="line">            <span class="p">},</span>
+</span><span class="line">            <span class="c1">// Naturally this is simiplified and doesn't actually</span>
+</span><span class="line">            <span class="c1">// imply Android</span>
+</span><span class="line">            <span class="nx">implementation</span><span class="o">:</span> <span class="s1">'src/dropdown-android'</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">]</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// In your code, you would load your feature like this:</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">define</span><span class="p">([</span><span class="s1">'feature!dropdown'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dropdown</span><span class="p">){</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">// The variable 'dropdown' now contains</span>
+</span><span class="line">    <span class="c1">// the right implementation - no matter</span>
+</span><span class="line">    <span class="c1">// what platform the code is executed on,</span>
+</span><span class="line">    <span class="c1">// and you can just do this:</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">myDropdown</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dropdown</span><span class="p">();</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre>
+
+            
+            <h3>One less jpeg</h3>
+
+            <p>
+                Lots of people like repeating this one. <del>I think <a class="ulink" href="http://paulirish.com/">Paul Irish</a> coined it</del> <a class="ulink" href="http://twitter.com/ajpiano">Adam J Sontag</a> naturally coined it, but the idea is if that if you loaded one less jpeg on your
+                site, you could fit in quite a bit of unshaved JavaScript in its place. Consider this the next time you are sacrificing readability or compatibility for file size.
+            </p>
+            <div class="figure">
+                <span id="reference-diagram" />
+                    <div class="figure-contents">
+                    
+                        <p>
+                            <img src="images/ch08_sec03_onelessjpg.gif" alt=" ">
+                        </p>
+                    </div>
+            </div>
+
+           
+        </div>
+
+        <div class="sub_section">
+            <h2>Requests matter</h2>
+
+            <p>
+                File size aside, the balance of a fast JS deployment lies somewhere between the number of requests, and the cachability of those requests.
+                It’s often alright to sacrifice the cachability of a small script if you can inline it without causing an additional request. The exact balance
+                is not one that I could possibly nail down, but you can probably think of a file that is dynamic enough and small enough in your application
+                that might make sense to just print it inline in your page.
+            </p>
+
+            <h3>Package all the pieces together</h3>
+
+            <h4>Fonts and Icons</h4>
+
+            <p>
+                These days, these two are synonymous. I really like using fonts as icons and have done so with great success. We try to find appropriate unicode
+                characters to map to the icons, but it can sometimes be a stretch. Drew Wilson’s <a class="ulink" href="http://pictos.cc/server/">Pictos Server</a> is an incredible way
+                to get going with this technique, though I might suggest buying a font pack in the end for maximum performance (so you can package it with your
+                application).
+            </p>
+            <div class="figure">
+                <span id="reference-diagram" />
+                    <div class="figure-contents">
+                    
+                        <p>
+                            <img src="images/ch08_sec03_pictos.png" alt=" ">
+                        </p>
+                 </div>
+            </div>
+            
+
+            <p>
+                First, we inline fonts as data URIs for supporting browsers. Then we fallback to referencing separate files (at the cost of a request), and then we fallback
+                to images (as separate requests). This means we end up with different builds of our CSS files. Each CSS build only includes one of the techniques,
+                so no one user is penalized by the way another browser might need fonts. The <a class="ulink" href="http://filamentgroup.com/">Filament Group</a> has a tool for this called
+                <a class="ulink" href="https://github.com/filamentgroup/grunticon">Grunticon</a>. I’d highly recommend this technique. For every modern browser, you have a single
+                request for all styles and icons, with no additional weight from old IEs that don’t support data-URIs.
+            </p>
+
+            <h4>CSS Files</h4>
+
+            <p>
+                It’s typically the case that updates to JavaScript files necessitate changes to CSS as well. So these files usually have the same update times. For that
+                reason it’s pretty safe to package them together.
+            </p>
+
+            <p>
+                So, as part of our build step, we first build our necessary CSS for our package into a file (for Bazaarvoice: styles are dependencies of templates,
+                which are dependencies of views, which are dependencies of the separate module packages we’re loading, so this is an automatic step). Then we
+                read this file in, minify it, and inject it as a string in our main JavaScript file. Because we have control over when the templates are
+                rendered, we can just inject the CSS into a style tag before rendering the template. We have to render on the serverside occasionally, as well,
+                and in these cases I would recommend against this technique to avoid a flash of unstyled content.
+            </p>
+
+<pre><code class="JavaScript"><span class="line"><span class="kd">var</span> <span class="nx">css</span>   <span class="o">=</span> <span class="s1">'#generated{css:goes-here;}'</span><span class="p">;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">head</span>  <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'head'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">style</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'style'</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">style</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/css'</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="p">(</span><span class="nx">style</span><span class="p">.</span><span class="nx">styleSheet</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">style</span><span class="p">.</span><span class="nx">styleSheet</span><span class="p">.</span><span class="nx">cssText</span> <span class="o">=</span> <span class="nx">css</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">else</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">style</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="nx">css</span><span class="p">));</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Only assume you have a &lt;head&gt; if you control</span>
+</span><span class="line"><span class="c1">// the outer page.</span>
+</span><span class="line"><span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">style</span><span class="p">);</span>
+</span></code></pre>
+
+            <p>
+                Since we inline the fonts and icons into our CSS files, and then inline the CSS into our JS file (of which only 1 is injected on load), we end up with
+                a single packaged app that contains fonts, icons, styles, and application logic. The only other request will be necessary media and the data (we’ll
+                get to those).
+            </p>
+
+            <p>
+                You may notice that we now have a couple of combinations of packages. <strong>Yep.</strong> If we have 3 ways to load fonts/icons multiplied by the number of
+                build profiles that we chose to create (mobile, oldIE, touch, etc), we can get 10-20 combinations fast. I consider this a really good thing. When you
+                generate them, have some consistent way of naming them, and we’ll be able to choose our <em>exact</em> needed app for a user, rather than a lot of extra
+                weight for other users.
+            </p>
+
+            <p>
+                Quick Note: Old IEs can be fickle with inlining a lot of CSS. Just test your stuff and if it breaks, just fall back to link tag injection for oldIEs.
+            </p>
+        </div>
+
+        <div class="sub_section">
+            <h2>The Scout File</h2>
+
+            <p>
+                This post actually started out as a means to solidify this term. Turns out I am a bit more long-winded than I anticipated.
+            </p>
+
+            <p>
+            The <strong>Scout File</strong> or <strong>Scout Script</strong> is the portion of JavaScript that decides which package needs to be loaded. It kicks off every process that can happen in parallel, has a low cache time, and is as small as possible.
+            </p>
+
+            <p>
+            It gets its name from being a small entity that looks out of the cache from time to time to warn everybody else that things have
+            changed. It’s ‘scouting’ for an app update and gathering data.
+            </p>
+
+<pre><code class="JavaScript"><span class="line"><span class="c1">// Simplified example of a scout file</span>
+</span><span class="line"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// Feature test some stuff</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">features</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">svg</span><span class="o">:</span> <span class="nx">Modernizr</span><span class="p">.</span><span class="nx">svg</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">touch</span><span class="o">:</span> <span class="nx">Modernizr</span><span class="p">.</span><span class="nx">touch</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// The async script injection fanfare</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">fScript</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">var</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="s1">'//cool-cdn.com/bucket/'</span> <span class="o">+</span> <span class="nx">__BUILDNUM__</span> <span class="o">+</span> <span class="s1">'/'</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">  <span class="c1">// Build up a file url based on the features of this user</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">featureString</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+</span><span class="line">  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">features</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">features</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">features</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">featuresString</span> <span class="o">+=</span> <span class="s1">'-'</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">  <span class="kd">var</span> <span class="kr">package</span> <span class="o">=</span> <span class="s1">'build'</span> <span class="o">+</span> <span class="nx">featureString</span> <span class="o">+</span> <span class="s1">'.js'</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// Set the URL on the script</span>
+</span><span class="line">  <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">baseUrl</span> <span class="o">+</span> <span class="kr">package</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// Inject the script</span>
+</span><span class="line">  <span class="nx">fScript</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">script</span><span class="p">,</span> <span class="nx">fScript</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// Start loading the data that you know you can grab right away</span>
+</span><span class="line">  <span class="c1">// JSONP is small and easy to kick off for this.</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">dataScript</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// Create a JSONP Url based on some info we have.</span>
+</span><span class="line">  <span class="c1">// We'll assume localstorage for this example</span>
+</span><span class="line">  <span class="c1">// though a cookie or url param might be safer.</span>
+</span><span class="line">
+</span><span class="line">  <span class="nb">window</span><span class="p">.</span><span class="nx">appInitData</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">initialData</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// Get it to the core application when it eventually</span>
+</span><span class="line">    <span class="c1">// loads or if it's already there.</span>
+</span><span class="line">    <span class="c1">// A global is used here for ease of example</span>
+</span><span class="line">    <span class="nb">window</span><span class="p">.</span><span class="nx">comeGetMe</span> <span class="o">=</span> <span class="nx">initialData</span><span class="p">;</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// If we're on a static site, the url might tell us</span>
+</span><span class="line">  <span class="c1">// the data we need, and the user cookie might customize</span>
+</span><span class="line">  <span class="c1">// it. Simplified.</span>
+</span><span class="line">  <span class="nx">dataScript</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'//api.mysite.com'</span> <span class="o">+</span>
+</span><span class="line">                   <span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">+</span>
+</span><span class="line">                   <span class="s1">'?userid='</span> <span class="o">+</span>
+</span><span class="line">                   <span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'userid'</span><span class="p">)</span> <span class="o">+</span>
+</span><span class="line">                   <span class="s1">'&amp;callback=appInitData;'</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// Inject it</span>
+</span><span class="line">  <span class="nx">fScript</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">dataScript</span><span class="p">,</span> <span class="nx">fScript</span><span class="p">);</span>
+</span><span class="line"><span class="p">})();</span>
+</span></code></pre>
+
+            <p>
+                If you’re a third party or have little control over the pages you’re injected on, you’ll probably use a file. Otherwise, the code
+                should be small enough and dynamic enough to warrant inlining on a page.
+            </p>
+
+            <h3>Build apps into self-contained folders</h3>
+
+            <p>
+                When you build your application, you end up with a set of static files in a folder. Take this folder of files and assign a build number to it.
+                Then upload this to a distributed content delivery network. <a class="ulink" href="http://aws.amazon.com/s3/">S3</a> with <a class="ulink" href="http://aws.amazon.com/cloudfront/">CloudFront</a>
+                on top of it is an easy choice. The <a class="ulink" href="https://github.com/pifantastic/grunt-s3">Grunt S3 Plugin</a> is a good way to do this with the Grunt toolchain.
+                Bazaarvoice has an Akamai contract, so we tend to use them, but the idea is that you are getting your built files onto servers that are geographically
+                close to your users. It’s easy and cheap. Don’t skimp! Latency is king.
+            </p>
+
+            <p>
+                Now that you have an app on a static CDN, make sure it gets served gzipped (where appropriate, grunt-s3 can help with this), and then set the cache
+                headers on your built files to <strong>forever</strong>. Any changes will get pushed as a different set of built files in a totally different folder, these
+                files should be guaranteed to never change. The only exception to this rule is the <strong>Scout File</strong>, which lives <em>outside</em> of the build folders in the root
+                directory.
+            </p>
+
+            <p>
+                The scout file for our third-party app is a very small JS file that contains a build number and a bit of JavaScript to determine the  build profile
+                that needs to be loaded. It also contains the minimum amount of code to determine the initial data that we’re going to need for a page. It doesn’t
+                have jQuery, or really any dependencies, it just does exactly what it needs to do. This file is cached for about 5 minutes (should be relatively short, but
+                close to the average session length).
+            </p>
+
+            <h3>Parallelizing the initial data request</h3>
+
+            <p>
+                Many people use each of their models to make separate requests for data once the app is loaded. Unfortunately, this is terrible for performance. Not only
+                are there multiple requests, but they can’t be fired off until the BIG app files are loaded and executed. We want to parallelize the loading of our app
+                and our data. This is going to be tough for some folks, but it’s a huuuge performance win.
+            </p>
+
+            <p>
+                We use node.js to run our models at build time. We feed in each of the “page types” that we know how to handle. For each of these page types, each model registers
+                its intent to load data, and we build up a hash of data that is needed for each page type and stick that into the scout file.
+            </p>
+
+            <p>
+                Then we had our API folk create a batch API so we can make multiple data requests at once. We use this hash of needed data for each page type (we have less than
+                10 page types, and you probably do too) in order to fire off a single request for the data that <strong>all</strong> the models will need, before they are loaded. Unfortunately
+                the way to do this changes drastically based on your framework, but it’s worth your time!
+            </p>
+
+            <h3>Statically generate your container pages and CDN them too</h3>
+
+            <p>
+                If you aren’t rendering templates on the server, then there’s likely no reason you shouldn’t be statically compiling all of your page shells at their
+                appropriate urls, and uploading them to a static CDN along with your scripts. This is a <em>huge</em> performance improvement.
+            </p>
+
+            <p>
+                Distributing the HTML to geographically close servers can have big wins towards getting to your actual content more quickly. In the case that you are uploading your static HTML
+                pages up to the static cdn along with your JS Application, your HTML files can become your Scout File. Put a small cache on each static HTML
+                page and inline the contents that you would have put in a scout file. This serves the same purpose as before, except we’ve saved a request. The only thing
+                that isn’t highly cached on a close-by server is the data, and we’re already loading that in parallel with our app if we’ve followed the previous instructions.
+            </p>
+
+            <p>
+                This means the main URL for your site is just a CNAME to a Cloudfront url. Doesn’t that just <strong>sound</strong> nice? Talk about good uptime! Of course that
+                means the dynamic parts of your site would come from a subdomain like <code>api.mysite.com</code> or similar. The reduced latency of your initial HTML can be
+                a very nice win for performance since you’ve inlined a scout file to immediately load the rest of the app in parallel.
+                </p>
+
+            <p>
+                The smart peeps at <a class="ulink" href="http://nodejitsu.com/">Nodejitsu</a> put out <a class="ulink" href="http://blacksmith.jit.su/">Blacksmith</a> to help with static site generation a while
+                back, but there are <a class="ulink" href="http://blog.bmannconsulting.com/node-static-site-generators/">plenty of options</a>. Many apps are single page apps with
+                only an <code>index.html</code> file anyways, so you can skip the static generation all together.
+            </p>
+
+            <h3>All this together</h3>
+
+            <p>
+                The goal in all of this is to:
+            </p>
+
+            <ul>
+                <li>geographically cache <em>anything</em> that’s static, not just images and jQuery.</li>
+                <li>cache your app until it changes, but not much longer.</li>
+            </ul>
+
+
+            <p>
+                The folder structure I normally see is something like:
+            </p>
+
+<pre><code class="sh"><span class="line"><span class="c"># Simplified for Ease of Eyes</span>
+</span><span class="line">| S3-Bucket-1
+</span><span class="line">  |- app
+</span><span class="line">     |- b1234
+</span><span class="line">        |- build.js
+</span><span class="line">        |- build-svg.js
+</span><span class="line">        |- build-optional.css
+</span><span class="line">     |- b1235
+</span><span class="line">        |- build.js
+</span><span class="line">        |- build-svg.js
+</span><span class="line">        |- build-optional.css
+</span><span class="line">     |- b1236
+</span><span class="line">        |- build.js
+</span><span class="line">        |- build-svg.js
+</span><span class="line">        |- build-optional.css
+</span><span class="line">  |- index.html <span class="c"># or scout.js</span>
+</span></code></pre>
+
+            <p>
+                The <code>index.html</code> file is the only thing that changes, everything else is just <em>added</em>. If we’re a third party, it’d be the <code>scout.js</code> file since we’d be included in someone
+                else’s markup. Everything else has a 30yr cache header. We can upload our build into a folder, verify it, and then switch the build number in the scout file.
+            </p>
+
+<pre><code class="JavaScript"><span class="line"><span class="c1">// Simplification of the above process</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">build</span> <span class="o">=</span> <span class="s1">'__BUILD__'</span><span class="p">;</span> <span class="c1">// Replaced at build time</span>
+</span><span class="line"><span class="nx">injectApp</span><span class="p">(</span><span class="s1">'/app/'</span> <span class="o">+</span> <span class="nx">build</span> <span class="o">+</span> <span class="s1">'/build.js'</span><span class="p">);</span>
+</span></code></pre>
+
+            <p>
+                Deploying a new version of the app becomes “updating one variable.” This means that every user on the site will have a fully updated app in the amount
+                of time you cached your scout file for. In our case it’s 5 minutes. It’s a pretty good trade off for us. We get lifetime caching for our big files and media,
+                but have a very quick turn around time for critical fixes and consistent roll-outs. It also means that if we ever need to roll back, it’s a single variable
+                change to get people fully back on the old code. Clean up old builds as you feel is necessary.
+            </p>
+
+            <h3>Other media requests</h3>
+
+            <p>
+                Naturally, you’ll have some logo images, or some promo images to load as part of the app. These should probably just be <a class="ulink" href="http://imageoptim.com/">imageOptim</a>’d,
+                and sprited as best as possible. However, there is usually a second class of media on a site. Usually these are thumbnails and previews and avatars and such.
+                For these files, I’d suggest using a mechanism to lazy load these media files. Make sure you’re doing smart things with scroll event handlers (hint: throttling
+                the hell out of them), but you don’t want to load 50 avatars if the user is 1000px away from that part of your app. Just be smart about this stuff. It’s not
+                really my intent to cover this portion of app performance since it’s not entirely related to deployment.
+            </p>
+
+        </div>
+
+        <div class="sub_section">
+
+        <h2>Wrap Up</h2>
+
+        <p>
+            There’s nothing that surprising about these techniques. Everything that could possibly be statically generated is statically generated,
+            and thrown out on edge-cached servers. Every piece of functionality that isn’t needed on page load, isn’t loaded on page load. Everything that <em>is</em> needed
+            is loaded in parallel right away. Everything is cached forever, save for the scout file and the data request (you can save recent requests in local storage though!).
+        </p>
+
+        <p>
+            You aren’t left with much else to optimize. You are always only loading and executing the minimum amount of JavaScript, and saving it for the maximum amount
+            of time. Naturally the more common tips of not going overboard with external libraries, and paying attention to render performance, and serving HTML with the
+            page response are all ways to change the performance (usually for the better), but this architecture fits well with many of today’s more app-like deployments.
+        </p>
+
+        <p>
+            There’s something really comforting about exposing a minimal dynamic API that needs to be fast and having everything else served out of memory from nearby
+            static servers. You should totally try it.
+        </p>
+
+        </div>
+
+    </body>
+</html>

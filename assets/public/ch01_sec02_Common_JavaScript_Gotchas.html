@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Common JavaScript "Gotchas"</title>
+      <link rel="stylesheet" type="text/css" href="css/core.css"/>
+   </head>
+   <body>
+      <div class="chaptertitle">
+         <h2 class="title">Common JavaScript "Gotchas" <small>post</small></h2>
+      </div>
+      <p>
+         PHP was my first programming language, and my initial exposure to JavaScript was through libraries like <a class="ulink" href="http://jquery.com/">jQuery</a>. There were things about JavaScript that always seemed to trip me up in the beginning due to how they worked differently than PHP. Heck there are still some things today that are confusing. I want to share some of the things that I struggled when I started working with JavaScript. I am&nbsp;going&nbsp;to cover the global namespace, <code>this</code>, knowing the difference between <strong>ECMAScript 3</strong> and <strong>ECMAScript 5</strong>,&nbsp;asynchronous&nbsp;operations, prototypes, and simple&nbsp;JavaScript&nbsp;inheritance.
+      </p>
+      <div class="sub_section">
+         <h2>The Global Namespace</h2>
+         <p>
+            In PHP specifically, when you declare a variable function outside of a class (<a class="ulink" href="http://php.net/manual/en/language.namespaces.definitionmultiple.php">or namespace block</a>) you are essentially adding a function to the global namespace. In JavaScript, there is no such thing as a namespace per se, rather everything is attached to the global object. In the case of the web browser, that is the <code>window</code> object. The other key difference is that in&nbsp;JavaScript, functions and variables are attributes of the global object, which we typically refer to as properties.
+         </p>
+
+         <p>
+            This can be troublesome because you won't get a warning in JavaScript if you overwrite a global function or property and it can actually be quite dangerous.
+         </p>
+
+<pre><code class="delphi"><code class="kd">function</code> <code class="nx">globalFunction</code><code class="p">()</code> {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="s1">'I am the original global function'</code>);
+}
+
+<code class="kd">function</code> <code class="nx">overWriteTheGlobal</code><code class="p">()</code> {
+  <code class="nx">globalFunction</code> = <code class="kd">function</code> () {
+    <code class="nx">console</code>.<code class="nx">log</code>(<code class="s1">'I am the new global function'</code>);
+  }
+}
+<code class="nx">globalFunction</code><code class="p">()</code>;</code> <code class="c1">//outputs "I am the original global function"</code>
+<code class="nx">overWriteTheGlobal</code>(); <code class="c1">//this will overwrite the original global function</code>
+<code class="nx">globalFunction</code>(); <code class="c1">//outputs "I am the new global function"</code>
+</code></pre>
+
+         <p>
+            One technique that is useful in JavaScript to ensure that your variables and functions are self contained is to use a <strong>immediately-invoked function expression</strong>, commonly known as a <strong>self-executing anonymous function</strong>. I typically expose things to the outside world by passing in a carrier object to the function. This is a variation of the <strong>module pattern</strong>.
+         </p>
+
+<pre><code class="delphi"><code class="kd">var</code><code class="nx"> module</code> = {};
+
+(<code class="kd">function</code>(<code class="nx">exports</code>){
+
+  <code class="nx">exports</code>.<code class="nx">notGlobalFunction</code> = <code class="kd">function</code> () {
+    <code class="nx">console</code>.<code class="nx">log</code>(<code class="s1">'I am not global'</code>);
+  };
+}(<code class="nx"> module</code>));
+
+
+<code class="kd">function</code> <code class="nx">notGlobalFunction</code><code class="p">()</code>{
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="s1">'I am global'</code>);
+}
+
+<code class="nx">notGlobalFunction</code><code class="p">()</code>;<code class="c1">//outputs "I am global"</code>
+<code class="nx">module</code>.<code class="nx">notGlobalFunction</code>(); <code class="c1">//outputs "I am not global"</code>
+</code></pre>
+   
+         <p>
+            Inside the <strong>self-executing anonymous function</strong>, all of the global scope is enclosed and we finish by attaching it the the <code>module</code> variable. Technically you could just append properties directly to the <code>module</code> variable, but the reason we are passing it in to the function is to make it explicitly clear what we are attaching our function to. It also allows us to alias the passed in object inside the function. The critical thing here is that we are declaring our dependencies upfront and not relying on global variables, other than the module variable.
+         </p>
+
+         <p>
+            You also might have noticed the <code>var</code> keyword. If you aren't sure of how it is used, a basic explanation is that by preceding a variable declaration with <code>var</code> creates a property on the nearest containing function. If you omit the <code>var</code> keyword than you are saying that you want to assign a new value to an existing variable higher up the scope chain, which may or may not be the global scope.
+         </p>
+
+<pre><code class="delphi"><code class="kd">var</code> <code class="nx">imAGlobal</code> = <code class="kd">true</code>;
+
+<code><code class="kd">function</code> <code class="nx">globalGrabber</code><code class="p">()</code> {
+  <code class="nx">imAGlobal</code> = <code class="kd">false</code>;
+  <code class="kd">return</code> <code class="nx">imAGlobal</code>;
+}
+
+<code class="nx">console</code>.<code class="nx">log</code><code class="p">(<code class="nx">imAGlobal</code>)</code>;</code> <code class="c1">//outputs "true"</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">globalGrabber</code>()); <code class="c1">//outputs "false"</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">imAGlobal</code>); <code class="c1">//outputs "false"</code>
+</code></pre>
+
+         <p>
+            As you can see, it is quite dangerous to rely on globals in your functions, due to possible side effects and collisions that are bound to occur. Now what happens when we use the <code>var</code> keyword?
+         </p>
+
+<pre><code class="actionscript"><code class="kd">var</code> <code class="nx">imAGlobal</code> = <code class="kd">true</code>;
+
+<code class="kd">function</code> <code class="nx">globalGrabber</code><code class="p">()</code> {
+  <code class="kd">var</code> <code class="nx">imAGlobal</code> = <code class="kd">false</code>;
+  <code class="kd">return</code> <code class="nx">imAGlobal</code>;
+}
+
+
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">imAGlobal</code>); <code class="c1">//outputs "true"</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">globalGrabber</code>()); <code class="c1">//outputs "false"</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">imAGlobal</code>); <code class="c1">//outputs "true"</code>
+</code></pre>
+
+         <p>
+            JavaScript hoists the <code>var</code> declaration to the top of the function block, then initializes the variable. This is called <strong>variable hoisting</strong>.
+         </p>
+
+         <p>
+            <strong>To summarize:</strong>&nbsp;all variables are scoped to a function (which is itself an object), and where you declare those variables with <code>var</code> determines the function they are scoped to. Excluding var will imply global scope for a variable.
+         </p>
+
+         <p>Let's look at how variable hoisting happens:</p>         
+
+<pre><code class="coffeescript"><code class="kd">function</code> <code class="nx">variableHoist</code>() {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">hoisty</code>);
+  <code class="nx">hoisty</code> = <code class="s1">1</code>;
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">hoisty</code>);
+  <code class="kd">var</code> <code class="nx">hoisty</code> = <code class="s1">2</code>;
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">hoisty</code>);
+}
+
+<code class="nx">variableHoist</code>();
+<code class="c1">//outputs undefined (would get a ReferenceError if no var declaration existed in scope)</code>
+<code class="c1">//outputs "1"</code>
+<code class="c1">//outputs "2"</code>
+
+<code class="kd">try</code> {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">hoisty</code>); <code class="c1">//outputs ReferenceError (no global var "hoisty")</code>
+} <code class="kd">catch</code> (<code class="nx">e</code>) {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">e</code>);
+}
+</code></pre>
+
+         <p>
+            So as you can see, it doesn't actually matter where you put the <code>var</code> declaration in the function, because the property gets created before the function executes any code. Now in practice, generally you want to put your <code>var</code> declarations at the top of the function, since that is where they end up anyway. It is also totally acceptable to initialize you variables at the top of the function, just be aware of the order of events here.
+         </p>
+
+         <p>
+            Functions declared with the <code>function</code> keyword in JavaScript (not variable assignment) also get hoisted. Behind the scenes, the entire function gets hoisted up and is made available for execution.
+         </p>
+
+<pre><code class="delphi"><code class="nx">myFunction</code>(); <code class="c1">//outputs "i exist"</code>
+
+<code class=""><code class="kd">function</code> <code class="nx">myFunction</code><code class="p">()</code> {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="s1">'i exist'</code>);
+}
+</code></code></pre>
+
+         <p>
+            <strong>This wholesale function hoisting does not occur when you use the var form of function declaration:</strong>
+         </p>     
+
+<pre><code class="actionscript"><code class="kd">try</code> {
+  <code class="nx">myFunction</code>();
+} <code class="kd">catch</code> (<code class="nx">e</code>) {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">e</code>); <code class="c1">//throws "Uncaught TypeError: undefined is not a function"</code>
+}
+<code class="kd">var</code> <code class="nx">myFunction</code> = <code class="kd">function</code>() {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="s1">'i exist'</code>);
+}
+
+<code class="nx">myFunction</code>();  <code class="c1">//outputs "i exist"</code>
+</code></pre>
+      </div>
+
+      <div class="sub_section">
+         <h2>Understanding "this";</h2>
+         <p>
+            Since JavaScript uses function scope, the meaning of&nbsp;<code>this</code> is quite different than what you get in <strong>PHP</strong>, and causes a lot of confusion. Consider the following:
+         </p>
+
+<pre><code class="objectivec"><code class="nx">console</code>.<code class="nx">log</code>(<code class="kd">this</code>); <code class="c1">// outputs window object</code>
+
+<code class="kd">var</code> <code class="nx">myFunction</code> = <code class="kd">function</code>() {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="kd">this</code>);
+}
+
+<code class="nx">myFunction</code>(); <code class="c1">//outputs window object</code>
+
+<code class="kd">var</code> <code class="nx">newObject</code> = {
+  <code class="nx">myFunction</code>: <code class="nx">myFunction</code>
+}
+
+<code class="nx">newObject</code>.<code class="nx">myFunction</code>(); <code class="c1">//outputs newObject</code>
+</code></pre>
+
+         <p>
+            <code>this</code> by default refers to the object a function is contained in. Since <code>myFunction()</code> is a&nbsp;property&nbsp;of the global object, <code>this</code> is a reference to the global object, which is <code>window</code>. Now when we mix <code>myFunction()</code> into a <code>newObject</code>, <code>this</code> now refers to <code>newObject</code>. In <strong>PHP</strong> and other similar languages, <code>this</code> always refers to the the instance of a class containing the method. You could argue that JavaScript is doing something stupid here, but truthfully much of the power of the JavaScript&nbsp;language&nbsp;comes 
+            from this feature. In fact, we can even replace the value of <code>this</code> when&nbsp;invoking&nbsp;our JavaScript functions by using the <code>call()</code> or <code>apply()</code> methods.
+         </p>
+<pre><code class="actionscript"><code class="kd">var</code> <code class="nx">myFunction</code> = <code class="kd">function</code>(<code class="s1">arg1</code>, <code class="s1">arg2</code>) {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="kd">this</code>, <code class="s1">arg1</code>, <code class="s1">arg2</code>);
+};
+
+<code class="kd">var</code> <code class="nx">newObject</code> = {};
+
+<code class="nx">myFunction</code>.<code class="kd">call</code>(<code class="nx">newObject</code>, <code class="s1">'foo'</code>, <code class="s1">'bar'</code>); <code class="c1">//outputs newObject "foo" "bar"</code>
+<code class="nx">myFunction</code>.<code class="kd">apply</code>(<code class="nx">newObject</code>, [<code class="s1">'foo'</code>, <code class="s1">'bar'</code>]); <code class="c1">//outputs newObject "foo" "bar"</code>
+</code></pre>
+
+         <p>
+            But let's not get ahead of ourselves. All we are doing here is invoking the function <code>myFunction</code> by substituting an alternative value for <code>this</code> inside the function by placing the value of the object we want to use a substitute as the first argument. The fundamental difference between <code>call()</code> and <code>apply()</code> is the way you pass arguments to the function. <code>call()</code> will take an unlimited amount of arguments after the first argument and <code>apply()</code> expects and array of arguments as it's second argument.
+         </p>
+
+         <p>
+            Libraries like jQuery perform a lot of magic by invoking things this way. <strong>Let's look at the $.each() method in jQuery:</strong>
+         </p>
+
+<pre><code class="coffeescript"><code class="kd">var</code> <code class="nx">$els</code> = [<code class="nx">$</code>(<code class="s1">'div'</code>), <code class="nx">$</code>(<code class="s1">'code'</code>)];
+<code class="kd">var</code> <code class="nx">handler</code> = <code class="kd">function</code>() {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="kd">this</code>);
+};
+
+<code class="nx">$</code>.<code class="kd">each</code>(<code class="nx">$els</code>, <code class="nx">handler</code>);
+
+<code class="c1">//iteration 1 outputs wrapped jquery dom element for "div" tag</code>
+<code class="c1">//iteration 2 outputs wrapped jquery dom element for "code" tag</code>
+
+<code class="nx">handler</code>.<code class="kd">apply</code>({}); <code class="c1">//outputs object
+</code></code></pre>
+
+         <p>
+            jQuery will often rewrite the value of <code>this</code>, so you should always try to be aware of what <code>this</code> means in the context of a jQuery event handler, or other such constructs.
+         </p>
+      </div>
+
+      <div class="sub_section">
+         <h2>Know the difference between ECMAScript 3 and ECMAScript 5</h2>
+         <p>
+            For many years, <strong>ECMAScript 3</strong> has been the standard in most browsers, but more recently <strong>ECMAScript 5</strong> has made it's way into most modern browsers (IE is still lagging behind). ECMAScript 5 introduced a lot of common sense features to JavaScript and some native methods that you previously relied upon a library for, such as <code>String.trim()</code> and <code>Array.forEach()</code>. The problem is you still can't rely on these methods being available in browser environments if you have users that are using Internet Explorer.
+         </p>
+
+         <p>
+            <strong>Take a look at what happens when we try to use <code>String.trim</code> in IE 8: </strong>
+         </p>
+
+<pre><code class="kd">var</code> <code class="nx">fatString</code> = <code class="s1">"   my string   "</code>;
+
+<code class="c1">//in modern browsers</code>
+<code class="nx">console</code>.<code class="nx">log</code><code class="nx">(fatString)</code>;<code class="c1"> //outputs "   my string   "</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">fatString</code>.<code class="nx">trim</code>());<code class="c1"> //outputs "my string"</code>
+
+<code class="c1">//in IE 8</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">fatString</code>.<code class="nx">trim</code>());<code class="c1"> //error: Object doesn't support property or method 'trim'</code>
+</pre>
+
+         <p>
+            So in the interim, we can use methods like <code>jQuery.trim</code> to do this for us, which I&nbsp;believe&nbsp;will fallback to <code>String.trim</code> if it is available in your browser for increased performance (native browser implementations are faster).
+         </p>
+
+         <p>
+            You might not care or even need to know about all of the differences between <strong>ECMAScript 3</strong> and <strong>ECMAScript 5</strong>, but it is generally a good idea to check out the <a class="ulink" href="https://developer.mozilla.org/en-US/docs/JavaScript">Mozilla Developer Network (MDN)</a>
+            for function reference to see what versions of the language a function is available in first. Generally speaking, you should be fine if you are using a library like <strong>jQuery</strong> or <strong>underscore</strong> to handle this for you.
+         </p>
+
+         <p>
+            If you are interested in using a polyfill of <strong>ECMAScript 5</strong> for older browser, please check out&nbsp;<a class="ulink" href="https://github.com/kriskowal/es5-shim">https://github.com/kriskowal/es5-shim</a>
+         </p>
+      </div>
+      <div class="sub_section">
+         <h2>Understanding Async</h2>
+         <p>
+            One of the things that tripped me up the most when beginning to work with JavaScript code, jQuery in particular is the fact that some operations are&nbsp;asynchronous. There were many times that I wrote code in a procedural manner expecting a result to be returned&nbsp;immediately&nbsp;without realizing it.
+         </p>
+
+         <p><strong>Take a look at this broken code:</strong></p>
+
+<pre><code class="kd">var</code> <code class="nx">remoteValue</code> = <code class="kd">false</code>;
+<code class="nx">$</code>.<code class="kd">ajax</code>({
+  <code class="kd">url</code>: <code class="s1">'http://google.com'</code>,
+  <code class="kd">success</code>: <code class="kd">function</code>() {
+    <code class="nx">remoteValue</code> = <code class="kd">true</code>;
+  }
+});
+
+
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">remoteValue</code>); <code class="c1">//outputs "false"</code>
+</pre>
+
+         <p>
+            It took me a while to realize that you need to program around&nbsp;asynchronous&nbsp;calls&nbsp;using&nbsp;callbacks to deal with the outcome of my ajax calls.
+         </p>
+
+<pre><code class="kd">var</code> <code class="nx">remoteValue</code> = <code class="kd">false</code>;
+
+<code class="kd">var</code> <code class="nx">doSomethingWithRemoteValue</code> = <code class="kd">function</code>() {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">remoteValue</code>); <code class="c1">//outputs true on success</code>
+}
+<code class="nx">$</code>.<code class="kd">ajax</code>({
+  <code class="kd">url</code>: <code class="s1">'http://google.com'</code>,
+  <code class="kd">complete</code>: <code class="kd">function</code>() {
+    <code class="nx">remoteValue</code> = <code class="kd">true</code>;
+    <code class="nx">doSomethingWithRemoteValue</code>();
+  }
+});
+</pre>
+
+         <p>
+            Another cool thing is deferred objects (sometimes called promises), which you can use to program in a more procedural style:
+         </p>
+
+<pre><code class="kd">var</code> <code class="nx">remoteValue</code> = <code class="kd">false</code>;
+
+<code class="kd">var</code> <code class="nx">doSomethingWithRemoteValue</code> = <code class="kd">function</code>() {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">remoteValue</code>);
+}
+
+<code class="kd">var</code> <code class="nx">promise</code> = <code class="nx">$</code>.<code class="kd">ajax</code>({
+  <code class="kd">url</code>: <code class="s1">'https://google.com'</code>
+});
+
+
+<code class="c1">//outputs "true"</code>
+<code class="nx">promise</code>.<code class="kd">always</code>(<code class="kd">function</code>() {
+  <code class="nx">remoteValue</code> = <code class="kd">true</code>;
+  <code class="nx">doSomethingWithRemoteValue</code>();
+});
+
+<code class="c1">//outputs "foobar"</code>
+<code class="nx">promise</code>.<code class="kd">always</code>(<code class="kd">function</code>() {
+  <code class="nx">remoteValue</code> = <code class="s1">'foobar'</code>;
+  <code class="nx">doSomethingWithRemoteValue()</code>;
+});
+</pre>
+
+         <p>
+            You can use promises to chain callbacks in a style that is in my opinion a bit easier to work with than nested&nbsp;callbacks&nbsp;in addition to a host of other benefits these objects offer.
+         </p>
+
+         <p>
+            <strong>Animations in the browser are also asyncronous</strong>, so this is also a common source of confusion. I'm not going to go into detail here, but you need to treat animations much like ajax requests in the way you handle them via callbacks. I'm not really an expert on the subject though so please take a look at the <a class="ulink" href="http://api.jquery.com/animate/">jQuery .animate() method</a>.
+         </p>
+      </div>
+      <div class="sub_section">
+         <h2>Simple Inheritance in JavaScript</h2>
+         <p>
+            Grossly simplified, JavaScript clones objects to extend them, while PHP, Ruby, Python and Java use and extend classes. In JavaScript you have something called a <code>prototype</code>, and every object has one. In fact, all functions, strings, numbers and objects have a common ancestor, <code>Object</code>. There are two things about prototype to remember: &nbsp;blueprints and chains.
+         </p>
+
+         <p>
+            Each <code>prototype</code> is basically an object in itself that describes properties available when creating an instance of an object. The prototype chain is what allows prototypes to extend other prototypes. In fact, prototypes themselves can have prototypes. When a method or attribute does not exist on an object instance, then it is looked for in that object's <code>prototype</code>, and the prototypes's <code>prototype</code>, and so on until it finally reaches <code>undefined</code> if no such property exists.
+         </p>
+
+         <p>
+            Thankfully, beginners generally don't need to mess with this stuff at all, since it is easy enough to create an object literal and append properties to it at runtime.
+         </p>
+
+<pre><code class="kd">var</code> <code class="nx">obj</code> = {};
+
+<code class="nx">obj.</code><code class="nx">newFunction</code> = <code class="kd">function</code>() {
+  <code class="nx">console</code>.<code class="nx">log</code>(<code class="s1">'I am a dynamic function'</code>);
+};
+
+<code class="nx">obj.</code><code class="nx">newFunction</code>();
+</pre>
+
+         <p>An easy way to extend objects that I use all the time is <code>jQuery.extend()</code></p>
+
+<pre><code class="kd">var</code> <code class="nx">obj</code> = {
+  <code class="nx">a</code>: <code class="s1">'i am a lonely property'</code>
+};
+
+<code class="kd">var</code> <code class="nx">newObj</code> = {
+  <code class="nx">b</code>: <code class="kd">function</code>() {
+    <code class="kd">return</code> <code class="s1">'i am a lonely function'</code>;
+  }
+};
+
+
+<code class="kd">var</code> <code class="nx">finalObj</code> = <code class="nx">$</code>.<code class="kd">extend</code>({}, <code class="nx">obj</code>, <code class="nx">newObj</code>);
+
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">finalObj</code>.<code class="nx">a</code>); <code class="c1">//outputs "i am a lonely property"</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">finalObj</code>.<code class="nx">b</code>()); <code class="c1">//outputs "i am a lonely function"</code>
+</pre>
+
+         <p>
+            <strong>ECMAScript 5</strong> offers us <code>Object.create()</code>, which you can use to extend from an existing object but you probably need to avoid using this if you need to support older browsers. It does offer distinct advantages to property creation and setting attributes of
+            properties (yes, <a class="ulink" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty">properties also have properties</a>).
+         </p>
+
+<pre><code class="kd">var</code> <code class="nx">obj</code> = {
+  <code class="nx">a</code>: <code class="s1">'i am a lonely property'</code>
+};
+
+<code class="kd">var</code> <code class="nx">finalObj</code> = <code class="nx">Object</code>.<code class="kd">create</code>(<code class="nx">obj</code>, {
+  <code class="nx">b</code>: {
+    <code class="kd">get</code>: <code class="kd">function</code>() {
+      <code class="kd">return</code> <code class="s1">"i am a lonely function"</code>;
+    }
+  }
+});
+
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">finalObj</code>.<code class="nx">a</code>); <code class="c1">//outputs "i am a lonely property"</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">finalObj</code>.<code class="nx">b</code>); <code class="c1">//outputs "i am a lonely function"</code>
+</pre>
+
+         <p>
+            You can get pretty deep into the subject of <a class="ulink" href="http://www.crockford.com/javascript/inheritance.html">inheritance in JavaScript</a> but the beautiful thing here again is that you really don't have to due to the immense power and&nbsp;flexibility&nbsp;of the language.
+         </p>
+      </div>
+      <div class="sub_section">
+         <h2>Bonus Gotcha: Forgetting to use var in for loops</h2>
+
+<pre><code class="kd">var</code> <code class="nx">i</code> = <code class="s1">0</code>;
+
+
+<code class="function"><code class="kd">function</code> <code class="nx">iteratorHandler</code><code class="p">()</code> {</code>
+  <code class="nx">i</code> = <code class="s1">10</code>;
+}
+
+
+<code class="function"><code class="kd">function</code> <code class="nx">iterate</code><code class="p">()</code> {</code>
+ <code class="c1">//this iteration will only run once</code>
+  <code class="kd">for</code> (<code class="nx">i</code> = <code class="s1">0</code>; <code class="nx">i &lt;</code> <code class="s1">10</code>; <code class="nx">i++</code>) {
+    <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">i</code>); <code class="c1">//outputs 0</code>
+    <code class="nx">iteratorHandler</code>();
+    <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">i</code>); <code class="c1">//outputs 10</code>
+  }
+}
+
+
+
+<code class="nx">iterate</code>();
+</pre>
+         
+         <p>
+            The example is contrived, but you can see the danger here. The solution is to&nbsp;declare&nbsp;you iterator variables with <code>var</code>.
+         </p>
+
+<pre><code class="actionscript"><code class="kd">var</code> <code class="nx">i</code> = <code class="s1">0</code>;
+
+<code class="function"><code class="kd">function</code> <code class="nx">iteratorHandler</code><code class="p">()</code> {</code>
+  i = <code class="s1">10</code>;
+}
+
+<code class="function"><code class="kd">function</code> <code class="nx">iterate</code><code class="p">()</code> {</code>
+  <code class="c1">//this iteration will run 10 times</code>
+  <code class="kd">for</code> (<code class="kd">var</code> <code class="nx">i</code> = <code class="number">0</code>; <code class="nx">i &lt;</code> <code class="s1">10</code>; <code class="nx">i++</code>) {
+    <code class="nx">iteratorHandler</code>();
+    <code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">i</code>);
+  }
+}
+
+
+<code class="nx">iterate</code>();
+</code></pre>
+
+         <p>This all goes back to our scope rules. Remember to use <code>var</code> properly.</p>
+      </div>
+      <div class="sub_section">
+         <h2>Summary</h2>
+         <p>
+            JavaScript may be the only language people don't need to learn before using it, but eventually you are going to run in to some unexplained trouble. Other than avoiding your own bugs, learning JavaScript makes a lot of sense these days considering it's rebirth and widespread 
+            availability. This blog by no means attempts to be a complete panacea, but hopefully it will help a few people understand some of the fundamentals before being forced into writing more awful JavaScript code, secretly hoping to get reassigned to a backend project buried in 
+            database queries in happy PHP land.
+         </p>       
+      </div>
+   </body>
+</html>

@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Airbnb JavaScript Style Guide</title>
+        <link rel="stylesheet" type="text/css" href="css/core.css"/>
+    </head>
+    <body>
+    	<div class="chaptertitle">
+            <h2 class="title">Airbnb JavaScript Style Guide</h2>
+        </div>
+        <div class="sub_section">
+        	<h2>Types</h2>
+        	<ul>
+				<li>
+					<p>
+						<strong>Primitives</strong>: When you access a primitive type you work directly on its value.
+					</p>
+
+					<ul>
+						<li><code>string</code></li>
+						<li><code>number</code></li>
+						<li><code>boolean</code></li>
+						<li><code>null</code></li>
+						<li><code>undefined</code></li>
+					</ul>
+
+<pre><code class="kd">const</code> <code class="nx">foo</code> = <code class="s1">1</code>;
+<code class="kd">let</code> <code class="nx">bar</code> = <code class="nx">foo</code>;
+
+<code class="nx">bar</code> = <code class="s1">9</code>;
+
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">foo</code>, <code class="nx">bar</code>); <code class="c1">// =&gt; 1, 9</code></pre>
+
+				</li>
+				<li>
+					<p>
+						<strong>Complex</strong>: When you access a complex type you work on a reference to its value.
+					</p>
+
+					<ul>
+						<li><code>object</code></li>
+						<li><code>array</code></li>
+						<li><code>function</code></li>
+					</ul>
+
+<pre><code class="kd">const</code> <code class="nx">foo</code> = [<code class="s1">1</code>, <code class="s1">2</code>];
+<code class="kd">const</code> <code class="nx">bar</code> = <code class="nx">foo</code>;
+
+<code class="nx">bar</code>[<code class="s1">0</code>] = <code class="s1">9</code>;
+
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">foo</code>[<code class="s1">0</code>], <code class="nx">bar</code>[<code class="s1">0</code>]); <code class="c1">// =&gt; 9, 9</code></pre>
+
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>References</h2>
+        	<ul>
+				<li>
+					<p>
+						Use <code>const</code> for all of your references; avoid using <code>var</code>.
+					</p>
+
+					<blockquote>
+						<p>Why? This ensures that you can't reassign your references (mutation), which can lead to bugs and difficult to comprehend code.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">var</code> <code class="nx">a</code> = <code class="s1">1</code>;
+  <code class="kd">var</code> <code class="nx">b</code> = <code class="s1">2</code>;
+
+  <code class="c1">// good</code>
+  <code class="kd">const</code> <code class="nx">a</code> = <code class="s1">1</code>;
+  <code class="kd">const</code> <code class="nx">b</code> = <code class="s1">2</code>;</pre>
+  				</li>
+
+				<li>
+					<p>
+						If you must mutate references, use <code>let</code> instead of <code>var</code>.
+					</p>
+
+					<blockquote>
+						<p>
+							Why? <code>let</code> is block-scoped rather than function-scoped like <code>var</code>.
+						</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">var</code> <code class="nx">count</code> = <code class="s1">1</code>;
+  <code class="kd">if</code> (<code class="kd">true</code>) {
+    <code class="nx">count</code> = <code class="s1">1</code>;
+  }
+
+  <code class="c1">// good, use the let.</code>
+  <code class="kd">let</code> <code class="nx">count</code> = <code class="s1">1</code>;
+  <code class="kd">if</code> (<code class="kd">true</code>) {
+    <code class="nx">count</code> += <code class="s1">1</code>;
+  }</pre>
+  				</li>
+				<li>
+					<p>
+						Note that both <code>let</code> and <code>const</code> are block-scoped.
+					</p>
+
+<pre><code class="c1">// const and let only exist in the blocks they are defined in.</code>
+{
+  <code class="kd">let</code> <code class="nx">a</code> = <code class="s1">1</code>;
+  <code class="kd">const</code> <code class="nx">b</code> = <code class="s1">1</code>;
+}
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">a</code>); <code class="c1">// ReferenceError</code>
+<code class="nx">console</code>.<code class="nx">log</code>(<code class="nx">b</code>); <code class="c1">// ReferenceError</code></pre>
+				</li>        		
+        	</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Objects</h2>
+			<ul>
+				<li>
+					<p>Use the literal syntax for object creation.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">item</code> = <code class="kd">new</code> <code class="nx">Object</code>();
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">item</code> = {};</pre>
+				</li>
+				<li>
+					<p>
+						If your code will be executed in browsers in script context, don't use <a class="ulink" href="http://es5.github.io/#x7.6.1">reserved words</a> as keys. It won't work in IE8. <a class="ulink" href="https://github.com/airbnb/javascript/issues/61">More info</a>. It’s OK to use them in ES6 modules and server-side code.
+					</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">superman</code> = {
+  <code class="kd">default</code>: { <code class="nx">clark</code>: '<code class="nx">kent</code>' },
+  <code class="kd">private</code>: <code class="kd">true</code>,
+};
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">superman</code> = {
+  <code class="kd">defaults</code>: { <code class="nx">clark</code>: '<code class="nx">kent</code>' },
+  <code class="kd">hidden</code>: <code class="kd">true</code>,
+};</pre>
+			</li>
+			<li>
+				<p>Use readable synonyms in place of reserved words.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">superman</code> = {
+  <code class="kd">class</code>: '<code class="nx">alien</code>',
+};
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">superman</code> = {
+  <code class="kd">klass</code>: '<code class="nx">alien</code>',
+};
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">superman</code> = {
+  <code class="kd">type</code>: '<code class="nx">alien</code>',
+};</pre>
+
+				</li>
+				<li>
+					<p>Use computed property names when creating objects with dynamic property names.</p>
+
+					<blockquote>
+						<p>Why? They allow you to define all the properties of an object in one place.</p>
+					</blockquote>
+
+<pre>  <code class="kd">function</code> <code class="nx">getKey</code>(<code class="nx">k</code>) {
+    <code class="kd">return</code> <code class="s1">`a key named ${k}`</code>;
+  }
+
+  <code class="c1">// bad</code>
+  <code class="kd">const</code> <code class="nx">obj</code> = {
+    <code class="nx">id</code>: <code class="s1">5</code>,
+    <code class="nx">name</code>: <code class="s1">'San Francisco'</code>,
+  };
+  <code class="nx">obj</code>[<code class="nx">getKey</code>(<code class="s1">'enabled</code>')] = <code class="kd">true</code>;
+
+  <code class="c1">// good</code>
+  <code class="kd">const</code> <code class="nx">obj</code> = {
+    <code class="nx">id</code>: <code class="s1">5</code>,
+    <code class="nx">name</code>: <code class="s1">'San Francisco'</code>,
+    [<code class="nx">getKey</code>(<code class="s1">'enabled'</code>)]: <code class="kd">true</code>,
+  };</pre>
+
+				</li>
+				<li>
+					<p>Use object method shorthand.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">atom</code> = {
+  <code class="nx">value</code>: <code class="s1">1</code>,
+
+  <code class="nx">addValue</code>: <code class="kd">function</code> (<code class="s1">value</code>) {
+    <code class="kd">return</code> <code class="nx">atom.value + value</code>;
+  },
+};
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">atom</code> = {
+  <code class="nx">value</code>: <code class="s1">1</code>,
+
+  <code class="nx">addValue</code>(<code class="nx">value</code>) {
+    <code class="kd">return</code> <code class="nx">atom.value + value</code>;
+  },
+};</pre>
+
+				</li>
+				<li>
+					<p>Use property value shorthand.</p>
+
+					<blockquote>
+						<p>Why? It is shorter to write and descriptive.</p>
+					</blockquote>
+
+<pre>  <code class="kd">const</code> <code class="nx">lukeSkywalker</code> = <code class="s1">'Luke Skywalker'</code>;
+
+  <code class="c1">// bad</code>
+  <code class="kd">const</code> <code class="nx">obj</code> = {
+    <code class="nx">lukeSkywalker</code>: <code class="nx">lukeSkywalker</code>,
+  };
+
+  <code class="c1">// good</code>
+  <code class="kd">const</code> <code class="nx">obj</code> = {
+    <code class="nx">lukeSkywalker</code>,
+  };</pre>
+				</li>
+				<li>
+					<p>Group your shorthand properties at the beginning of your object declaration.</p>
+
+					<blockquote>
+						<p>Why? It's easier to tell which properties are using the shorthand.</p>
+					</blockquote>
+
+<pre>  <code class="kd">const</code> <code class="nx">anakinSkywalker</code> = <code class="s1">'Anakin Skywalker'</code>;
+  <code class="kd">const</code> <code class="nx">lukeSkywalker</code> = <code class="s1">'Luke Skywalker'</code>;
+
+  <code class="c1">// bad</code>
+  <code class="kd">const</code> <code class="nx">obj</code> = {
+    <code class="nx">episodeOne</code>: <code class="s1">1</code>,
+    <code class="nx">twoJediWalkIntoACantina</code>: <code class="s1">2</code>,
+    <code class="nx">lukeSkywalker</code>,
+    <code class="nx">episodeThree</code>: <code class="s1">3</code>,
+    <code class="nx">mayTheFourth</code>: <code class="s1">4</code>,
+    <code class="nx">anakinSkywalker</code>,
+  };
+
+  <code class="c1">// good</code>
+  <code class="kd">const</code> <code class="nx">obj</code> = {
+    <code class="nx">lukeSkywalker</code>,
+    <code class="nx">anakinSkywalker</code>,
+    <code class="nx">episodeOne</code>: <code class="s1">1</code>,
+    <code class="nx">twoJediWalkIntoACantina</code>: <code class="s1">2</code>,
+    <code class="nx">episodeThree</code>: <code class="s1">3</code>,
+    <code class="nx">mayTheFourth</code>: <code class="s1">4</code>,
+  };</pre>
+  				</li>
+			</ul>        	
+        </div>
+        <div class="sub_section">
+        	<h2>Arrays</h2>
+			<ul>
+				<li>
+					<p>Use the literal syntax for array creation.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">items</code> = <code class="kd">new</code> <code class="nx">Array</code>();
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">items</code> = [];</pre>
+				</li>
+				<li>
+					<p>Use Array#push instead of direct assignment to add items to an array.</p>
+
+<pre><code class="kd">const</code> <code class="nx">someStack</code> = [];
+
+<code class="c1">// bad</code>
+<code class="nx">someStack</code>[<code class="nx">someStack</code>.<code class="kd">length</code>] = <code class="s1">'abracadabra'</code>;
+
+<code class="c1">// good</code>
+<code class="nx">someStack</code>.<code class="kd">push</code>(<code class="s1">'abracadabra'</code>);</pre>
+
+				<li>
+					<p>Use array spreads <code>...</code> to copy arrays.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">len</code> = <code class="nx">items</code>.<code class="kd">length</code>;
+<code class="kd">const</code> <code class="nx">itemsCopy</code> = [];
+<code class="kd">let</code> i;
+
+<code class="kd">for</code> (<code class="nx">i</code> = <code class="s1">0</code>; <code class="nx">i</code> &lt; <code class="nx">len</code>; <code class="nx">i</code>++) {
+  <code class="nx">itemsCopy</code>[<code class="nx">i</code>] = <code class="nx">items</code>[<code class="nx">i</code>];
+}
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">itemsCopy</code> = [...<code class="nx">items</code>];</pre>
+				</li>
+				<li>
+					<p>To convert an array-like object to an array, use Array#from.</p>
+
+<pre><code class="kd">const</code> <code class="nx">foo</code> = <code class="kd">document</code>.<code class="kd">querySelectorAll</code>(<code class="s1">'.foo'</code>);
+<code class="kd">const</code> <code class="nx">nodes</code> = <code class="kd">Array</code>.<code class="kd">from</code>(<code class="nx">foo</code>);</pre>
+				</li>
+			</ul>        	
+        </div>
+        <div class="sub_section">
+        	<h2>Destructuring</h2>
+			<ul>
+				<li>
+					<p>Use object destructuring when accessing and using multiple properties of an object.</p>
+
+					<blockquote>
+						<p>Why? Destructuring saves you from creating temporary references for those properties.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">function</code> <code class="nx">getFullName</code>(<code class="nx">user</code>) {
+    <code class="kd">const</code> <code class="nx">firstName</code> = <code class="nx">user</code>.<code class="nx">firstName</code>;
+    <code class="kd">const</code> <code class="nx">lastName</code> = <code class="nx">user</code>.<code class="nx">lastName</code>;
+
+    <code class="kd">return</code> <code class="s1">`<code class="s11"><code class="pl-pse">${</code>firstName<code class="pl-pse">}</code></code> <code class="s11"><code class="pl-pse">${</code>lastName<code class="pl-pse">}</code></code>`</code>;
+  }
+
+  <code class="c1">// good</code>
+  <code class="kd">function</code> <code class="nx">getFullName</code>(<code class="nx">obj</code>) {
+    <code class="kd">const</code> { <code class="nx">firstName</code>, <code class="nx">lastName</code> } = <code class="nx">obj</code>;
+    <code class="kd">return</code> <code class="s1">`<code class="s11"><code class="pl-pse">${</code>firstName<code class="pl-pse">}</code></code> <code class="s11"><code class="pl-pse">${</code>lastName<code class="pl-pse">}</code></code>`</code>;
+  }
+
+  <code class="c1">// best</code>
+  <code class="kd">function</code> <code class="nx">getFullName</code>({ <code class="nx">firstName</code>, <code class="nx">lastName</code> }) {
+    <code class="kd">return</code> <code class="s1">`<code class="s11"><code class="pl-pse">${</code>firstName<code class="pl-pse">}</code></code> <code class="s11"><code class="pl-pse">${</code>lastName<code class="pl-pse">}</code></code>`</code>;
+  }</pre>
+  				</li>
+				<li>
+					<p>Use array destructuring.</p>
+
+<pre><code class="kd">const</code> <code class="nx">arr</code> = [<code class="s1">1</code>, <code class="s1">2</code>, <code class="s1">3</code>, <code class="s1">4</code>];
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">first</code> = <code class="nx">arr</code>[<code class="s1">0</code>];
+<code class="kd">const</code> <code class="nx">second</code> = <code class="nx">arr</code>[<code class="s1">1</code>];
+
+<code class="c1">// good</code>
+<code class="kd">const</code> [<code class="nx">first</code>, <code class="nx">second</code>] = <code class="nx">arr</code>;</pre>
+				</li>
+				<li>
+					<p>Use object destructuring for multiple return values, not array destructuring.</p>
+
+					<blockquote>
+						<p>Why? You can add new properties over time or change the order of things without breaking call sites.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">function</code> <code class="nx">processInput</code>(<code class="nx">input</code>) {
+    <code class="c1">// then a miracle occurs</code>
+    <code class="kd">return</code> <code class="nx">[left, right, top, bottom]</code>;
+  }
+
+  <code class="c1">// the caller needs to think about the order of return data</code>
+  <code class="kd">const</code> [<code class="nx">left</code>, <code class="nx">__</code>, <code class="nx">top</code>] = <code class="nx">processInput</code>(<code class="nx">input</code>);
+
+  <code class="c1">// good</code>
+  <code class="kd">function</code> <code class="nx">processInput</code>(<code class="nx">input</code>) {
+    <code class="c1">// then a miracle occurs</code>
+    <code class="kd">return</code> <code class="nx">{ left, right, top, bottom }</code>;
+  }
+
+  <code class="c1">// the caller selects only the data they need</code>
+  <code class="kd">const</code> { <code class="nx">left</code>, <code class="nx">right</code> } = <code class="nx">processInput</code>(<code class="nx">input</code>);</pre>
+  				</li>
+			</ul>        	
+        </div>
+        <div class="sub_section">
+        	<h2>Strings</h2>
+			<ul>
+				<li>
+					<p>Use single quotes <code>''</code> for strings.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">name</code> = <code class="s1"><code class="pl-pds">"</code>Capt. Janeway<code class="pl-pds">"</code></code>;
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">name</code> = <code class="s1">'Capt. Janeway'</code>;</pre>
+				</li>
+				<li>
+					<p>Strings longer than 100 characters should be written across multiple lines using string concatenation.</p>
+				</li>
+				<li>
+					<p>Note: If overused, long strings with concatenation could impact performance. <a class="ulink" href="http://jsperf.com/ya-string-concat">jsPerf</a> &amp; <a class="ulink" href="https://github.com/airbnb/javascript/issues/40">Discussion</a>.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">errorMessage</code> = <code class="s1">'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.'</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">errorMessage</code> = <code class="s1">'This is a super long error that was thrown because \</code>
+<code class="s1">of Batman. When you stop to think about how Batman had anything to do \</code>
+<code class="s1">with this, you would get nowhere \</code>
+<code class="s1">fast.'</code>;
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">errorMessage</code> = <code class="s1">'This is a super long error that was thrown because '+
+  'of Batman. When you stop to think about how Batman had anything to do '+
+  'with this, you would get nowhere fast.'</code>;</pre>
+
+
+				<li>
+					<p>When programmatically building up strings, use template strings instead of concatenation.</p>
+
+					<blockquote>
+						<p>Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">function</code> <code class="nx">sayHi</code>(<code class="nx">name</code>) {
+    <code class="kd">return</code> <code class="s1">'How are you, '+ name + '?'</code>;
+  }
+
+  <code class="c1">// bad</code>
+  <code class="kd">function</code> <code class="nx">sayHi</code>(<code class="nx">name</code>) {
+    <code class="kd">return</code> [<code class="s1">'How are you, '</code>, <code class="nx">name</code>, <code class="s1">'?'</code>].<code class="kd">join</code>();
+  }
+
+  <code class="c1">// good</code>
+  <code class="kd">function</code> <code class="nx">sayHi</code>(<code class="nx">name</code>) {
+    <code class="kd">return</code> <code class="s1">`How are you, <code class="s11"><code class="pl-pse">${</code>name<code class="pl-pse">}</code></code>?`</code>;
+  }</pre>
+				</li>
+				<li>
+					Never use eval() on a string, it opens too many vulnerabilities.
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Functions</h2>
+			<ul>
+				<li>
+					<p>Use function declarations instead of function expressions.</p>
+
+					<blockquote>
+						<p>Why? Function declarations are <code class="nx">named</code>, so they're easier to identify in call stacks. Also, the whole body of a function declaration is hoisted, whereas only the reference of a function expression is hoisted. This rule makes it possible to always use <a class="ulink" href="https://github.com/airbnb/javascript#arrow-functions">Arrow Functions</a> in place of function expressions.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">const</code> <code class="nx">foo</code> = <code class="kd">function</code> () {
+  };
+
+  <code class="c1">// good</code>
+  <code class="kd">function</code> <code class="nx">foo</code>() {
+  }</pre>
+				</li>
+				<li>
+					<p>Function expressions:</p>
+
+<pre><code class="c1">// immediately-invoked function expression (IIFE)</code>
+(()=&gt; {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'Welcome to the Internet. Please follow me.'</code>);
+})();</pre>
+				</li>
+				<li>
+					<p>Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.</p>
+				</li>
+				<li>
+					<p><strong>Note:</strong> ECMA-262 defines a <code>block</code> as a list of statements. A function declaration is not a statement. <a class="ulink" href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97">Read ECMA-262's note on this issue</a>.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">if</code> (<code class="nx">currentUser</code>) {
+  <code class="kd">function</code> <code class="nx">test</code>() {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'Nope.'</code>);
+  }
+}
+
+<code class="c1">// good</code>
+<code class="kd">let</code> <code class="nx">test</code>;
+<code class="kd">if</code> (<code class="nx">currentUser</code>) {
+  <code class="nx">test</code> = ()=&gt; {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'Yup.'</code>);
+  };
+}</pre>
+				</li>
+				<li>
+					<p>Never name a parameter <code>arguments</code>. This will take precedence over the <code>arguments</code> object that is given to every function scope.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">nope</code>(<code class="nx">name</code>, <code class="nx">options</code>, <code class="nx">arguments</code>) {
+  <code class="c1">// ...stuff...</code>
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code> <code class="nx">yup</code>(<code class="nx">name</code>, <code class="nx">options</code>, <code class="nx">args</code>) {
+  <code class="c1">// ...stuff...</code>
+}</pre>
+
+				</li>
+				<li>
+					<p>Never use <code>arguments</code>, opt to use rest syntax <code>...</code> instead.</p>
+
+					<blockquote>
+						<p>Why? <code>...</code> is explicit about which arguments you want pulled. Plus rest arguments are a real Array and not Array-like like <code>arguments</code>.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">function</code> <code class="nx">concatenateAll</code>() {
+    <code class="kd">const</code> <code class="nx">args</code> = <code class="kd">Array</code>.<code class="kd">prototype</code>.<code class="kd">slice</code>.<code class="kd">call</code>(<code class="nx">arguments</code>);
+    <code class="kd">return</code> <code class="nx">args.join('')</code>;
+  }
+
+  <code class="c1">// good</code>
+  <code class="kd">function</code> <code class="nx">concatenateAll</code>(...<code class="nx">args</code>) {
+    <code class="kd">return</code> <code class="nx">args.join('')</code>;
+  }</pre>
+
+				</li>
+				<li>
+					<p>Use default parameter syntax rather than mutating function arguments.</p>
+
+<pre><code class="c1">// really bad</code>
+<code class="kd">function</code> <code class="nx">handleThings</code>(<code class="s1">opts</code>) {
+  <code class="c1">// No! We shouldn't mutate function arguments.</code>
+  <code class="c1">// Double bad: if opts is falsy it'll be set to an object which may</code>
+  <code class="c1">// be what you want but it can introduce subtle bugs.</code>
+  opts = opts <code class="kd">||</code> {};
+  <code class="c1">// ...</code>
+}
+
+<code class="c1">// still bad</code>
+<code class="kd">function</code> <code class="nx">handleThings</code>(<code class="s1">opts</code>) {
+  <code class="kd">if</code> (<code class="nx">opts</code> === <code class="kd">void</code> <code class="nx">0</code>) {
+    <code class="nx">opts</code> = {};
+  }
+  <code class="c1">// ...</code>
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code> <code class="nx">handleThings</code>(<code class="s1">opts</code> = {}) {
+  <code class="c1">// ...</code>
+}</pre>
+				</li>
+				<li>
+					<p>Avoid side effects with default parameters</p>
+
+					<blockquote>
+						<p>Why? They are confusing to reason about.</p>
+					</blockquote>
+
+<pre><code class="kd">var</code> <code class="nx">b</code> = <code class="s1">1</code>;
+<code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">count</code>(<code class="nx">a</code> = <code class="nx">b</code>++) {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">a</code>);
+}
+<code class="nx">count</code>();  <code class="c1">// 1</code>
+<code class="nx">count()</code>;  <code class="c1">// 2</code>
+<code class="nx">count</code>(<code class="s1">3</code>); <code class="c1">// 3</code>
+<code class="nx">count</code>();  <code class="c1">// 3</code></pre>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<p>Never use the Function constructor to create a new function.</p>
+
+				<blockquote>
+					<p>Why? Creating a function in this way evaluates a string similarly to eval(), which opens vulnerabilities.</p>
+				</blockquote>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">var</code> <code class="nx">add</code> = <code class="kd">new</code> <code class="nx">Function</code>(<code class="s1">'a'</code>, <code class="s1">'b'</code>, <code class="s1">'return a + b'</code>);
+
+<code class="c1">// still bad</code>
+<code class="kd">var</code> <code class="nx">subtract</code> = <code class="nx">Function</code>(<code class="s1">'a'</code>, <code class="s1">'b'</code>, <code class="s1">'return a - b'</code>);</pre>
+				</li>
+			</ul>			
+        </div>
+        <div class="sub_section">
+        	<h2>Arrow Functions</h2>
+			<ul>
+				<li>
+					<p>When you must use function expressions (as when passing an anonymous function), use arrow function notation.</p>
+
+					<blockquote>
+						<p>Why? It creates a version of the function that executes in the context of <code>this</code>, which is usually what you want, and is a more concise syntax.</p>
+
+						<p>Why not? If you have a fairly complicated function, you might move that logic out into its own function declaration.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  [<code class="s1">1</code>, <code class="s1">2</code>, <code class="s1">3</code>].<code class="kd">map</code>(<code class="kd">function</code> (<code class="nx">x</code>) {
+    <code class="kd">return</code> <code class="nx">x</code> * <code class="nx">x</code>;
+  });
+
+  <code class="c1">// good</code>
+  [<code class="s1">1</code>, <code class="s1">2</code>, <code class="s1">3</code>].<code class="kd">map</code>((<code class="nx">x</code>)=&gt; {
+    <code class="kd">return</code> <code class="nx">x</code> * <code class="nx">x</code>;
+  });</pre>
+				</li>
+				<li>
+					<p><a class="ulink" href="https://github.com/airbnb/javascript#8.2">8.2</a> If the function body fits on one line and there is only a single argument, feel free to omit the braces and parentheses, and use the implicit return. Otherwise, add the parentheses, braces, and use a <code>return</code> statement.</p>
+
+					<blockquote>
+						<p>Why? Syntactic sugar. It reads well when multiple functions are chained together.</p>
+						<p>Why not? If you plan on returning an object.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// good</code>
+  [<code class="s1">1</code>, <code class="s1">2</code>, <code class="s1">3</code>].<code class="kd">map</code>(<code class="nx">x</code> =&gt; <code class="nx">x</code> * <code class="nx">x</code>);
+
+  <code class="c1">// good</code>
+  [<code class="s1">1</code>, <code class="s1">2</code>, <code class="s1">3</code>].<code class="kd">reduce</code>((<code class="nx">total</code>, <code class="nx">n</code>)=&gt; {
+    <code class="kd">return</code> <code class="nx">total</code> + <code class="nx">n</code>;
+  }, <code class="nx">0</code>);</pre>
+				</li>
+			</ul>        	
+        </div>
+        <div class="sub_section">
+        	<h2>Constructors</h2>
+			<ul>
+				<li>
+					<p>Always use <code>class</code>. Avoid manipulating <code>prototype</code> directly.</p>
+
+					<blockquote>
+						<p>Why? <code>class</code> syntax is more concise and easier to reason about.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">function</code> <code class="nx">Queue</code>(<code class="nx">contents</code> = []) {
+    <code class="kd">this</code>._<code class="kd">queue</code> = [...<code class="nx">contents</code>];
+  }
+  <code class="nx">Queue</code>.<code class="kd">prototype</code>.<code class="nx">pop</code> = <code class="kd">function</code>() {
+    <code class="kd">const</code> <code class="nx">value</code> = <code class="kd">this</code>._<code class="kd">queue</code>[<code class="s1">0</code>];
+    <code class="kd">this</code>._<code class="kd">queue</code>.<code class="nx">splice</code>(<code class="nx">0</code>, <code class="nx">1</code>);
+    <code class="kd">return</code> <code class="nx">value</code>;
+  }
+
+
+  <code class="c1">// good</code>
+  <code class="kd">class</code> <code class="nx">Queue</code> {
+    <code class="nx">constructor</code>(<code class="nx">contents</code> = []) {
+      <code class="kd">this</code>._<code class="kd">queue</code> = [...<code class="nx">contents</code>];
+    }
+    <code class="nx">pop</code>() {
+      <code class="kd">const</code> <code class="nx">value</code> = <code class="kd">this</code>._queue[<code class="nx">0</code>];
+      <code class="kd">this</code>._<code class="nx">queue</code>.<code class="nx">splice</code>(<code class="nx">0</code>, <code class="nx">1</code>);
+      <code class="kd">return</code> <code class="nx">value</code>;
+    }
+  }</pre>
+				</li>
+				<li>
+					<p>Use <code>extends</code> for inheritance.</p>
+
+					<blockquote>
+						<p>Why? It is a built-in way to inherit prototype functionality without breaking <code>instanceof</code>.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">const</code> <code class="nx">inherits</code> = <code class="nx">require</code>(<code class="s1">'inherits'</code>);
+  <code class="kd">function</code> <code class="nx">PeekableQueue</code>(<code class="nx">contents</code>) {
+    <code class="nx">Queue</code>.<code class="nx">apply</code>(<code class="kd">this</code>, <code class="nx">contents</code>);
+  }
+  inherits(PeekableQueue, Queue);
+  <code class="nx">PeekableQueue</code>.<code class="nx">prototype</code>.<code class="nx">peek</code> = <code class="kd">function</code>() {
+    <code class="kd">return</code> <code class="kd">this</code>._queue[<code class="nx">0</code>];
+  }
+
+  <code class="c1">// good</code>
+  <code class="kd">class</code> <code class="nx">PeekableQueue</code> <code class="kd">extends</code> <code class="nx">Queue</code> {
+    <code class="nx">peek</code>() {
+      <code class="kd">return</code> <code class="kd">this</code>._queue[<code class="nx">0</code>];
+    }
+  }</pre>
+				</li>
+				<li>
+					<p>Methods can return <code>this</code> to help with method chaining.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="nx">Jedi</code>.<code class="nx">prototype</code>.<code class="nx">jump</code> = <code class="kd">function</code>() {
+  <code class="kd">this</code>.<code class="nx">jumping</code> = <code class="nx">true</code>;
+  <code class="kd">return</code> <code class="nx">true</code>;
+};
+
+<code class="nx">Jedi</code>.<code class="nx">prototype</code>.<code class="nx">setHeight</code> = <code class="kd">function</code>(<code class="nx">height</code>) {
+  <code class="kd">this</code>.<code class="nx">height</code> = <code class="nx">height</code>;
+};
+
+<code class="kd">const</code> <code class="nx">luke</code> = <code class="kd">new</code> <code class="nx">Jedi</code>();
+<code class="nx">luke</code>.<code class="nx">jump</code>(); <code class="c1">// =&gt; true</code>
+<code class="nx">luke</code>.<code class="nx">setHeight</code>(<code class="s1">20</code>); <code class="c1">// =&gt; undefined</code>
+
+<code class="c1">// good</code>
+<code class="kd">class</code> <code class="nx">Jedi</code> {
+  <code class="nx">jump</code>() {
+    <code class="kd">this</code>.<code class="nx">jumping</code> = <code class="kd">true</code>;
+    <code class="kd">return</code> <code class="kd">this</code>;
+  }
+
+  <code class="nx">setHeight</code>(<code class="s1">height</code>) {
+    <code class="kd">this</code>.<code class="nx">height</code> = <code class="nx">height</code>;
+    <code class="kd">return</code> <code class="kd">this</code>;
+  }
+}
+
+<code class="kd">const</code> <code class="nx">luke</code> = <code class="kd">new</code> <code class="nx">Jedi</code>();
+
+<code class="nx">luke</code>.<code class="nx">jump</code>()
+  .<code class="nx">setHeight</code>(<code class="s1">20</code>);</pre>
+				</li>
+				<li>
+					<p>It's okay to write a custom toString() method, just make sure it works successfully and causes no side effects.</p>
+
+<pre><code class="kd">class</code> <code class="nx">Jedi</code> {
+  <code class="nx">constructor</code>(<code class="nx">options</code> = {}) {
+    <code class="kd">this</code>.<code class="nx">name</code> = <code class="nx">options</code>.<code class="nx">name</code> <code class="kd">||</code> <code class="s1">'no name'</code>;
+  }
+
+  <code class="nx">getName</code>() {
+    <code class="kd">return</code> <code class="kd">this</code>.<code class="nx">name</code>;
+  }
+
+  <code class="nx">toString</code>() {
+    <code class="kd">return</code> <code class="s1">`Jedi - <code class="s11"><code class="pl-pse">${</code><code class="">this</code>.getName()<code class="pl-pse">}</code></code>`</code>;
+  }
+}</pre>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Modules</h2>
+			<ul>
+				<li>
+					<p>Always use modules (<code>import</code>/<code>export</code>) over a non-standard module system. You can always transpile to your preferred module system.</p>
+
+					<blockquote>
+						<p>Why? Modules are the future, let's start using the future now.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">const</code> <code class="nx">AirbnbStyleGuide</code> = <code class="nx">require</code>(<code class="s1">'./AirbnbStyleGuide'</code>);
+  <code class="kd">module</code>.<code class="nx">exports</code> = <code class="nx">AirbnbStyleGuide</code>.<code class="nx">es6</code>;
+
+  <code class="c1">// ok</code>
+  <code class="kd">import</code> <code class="nx">AirbnbStyleGuide</code> <code class="kd">from</code> <code class="s1">'./AirbnbStyleGuide'</code>;
+  <code class="kd">export</code> <code class="kd">default</code> <code class="nx">AirbnbStyleGuide</code>.<code class="nx">es6</code>;
+
+  <code class="c1">// best</code>
+  <code class="kd">import</code> { <code class="nx">es6</code> } <code class="kd">from</code> <code class="s1">'./AirbnbStyleGuide'</code>;
+  <code class="kd">export</code> <code class="kd">default</code> <code class="nx">es6</code>;</pre>
+				</li>
+				<li>
+					<p>Do not use wildcard imports.</p>
+
+					<blockquote>
+						<p>Why? This makes sure you have a single default export.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">import</code> * <code class="kd">as</code> <code class="nx">AirbnbStyleGuide</code> <code class="kd">from</code> <code class="s1">'./AirbnbStyleGuide'</code>;
+
+  <code class="c1">// good</code>
+  <code class="kd">import</code> <code class="nx">AirbnbStyleGuide</code> <code class="kd">from</code> <code class="s1">'./AirbnbStyleGuide'</code>;</pre>
+				</li>
+				<li>
+					<p>And do not export directly from an import.</p>
+
+					<blockquote>
+						<p>Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="c1">// filename es6.js</code>
+  <code class="kd">export</code> { <code class="nx">es6</code> as <code class="kd">default</code> } <code class="kd">from</code> <code class="s1">'./airbnbStyleGuide'</code>;
+
+  <code class="c1">// good</code>
+  <code class="c1">// filename es6.js</code>
+  <code class="kd">import</code> { <code class="nx">es6</code> } <code class="kd">from</code> <code class="s1">'./AirbnbStyleGuide'</code>;
+  <code class="kd">export</code> <code class="kd">default</code> <code class="nx">es6</code>;</pre>
+				</li>
+			</ul>        	
+        </div>
+        <div class="sub_section">
+        	<h2>Iterators and Generators</h2>
+			<ul>
+				<li>
+					<p>Don't use iterators. Prefer JavaScript's higher-order functions like <code>map()</code> and <code>reduce()</code> instead of loops like <code>for-of</code>.</p>
+
+					<blockquote>
+						<p>Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side-effects.</p>
+					</blockquote>
+
+<pre>  <code class="kd">const</code> <code class="nx">numbers</code> = [<code class="s1">1</code>, <code class="s1">2</code>, <code class="s1">3</code>, <code class="s1">4</code>, <code class="s1">5</code>];
+
+  <code class="c1">// bad</code>
+  <code class="kd">let</code> <code class="nx">sum</code> = <code class="s1">0</code>;
+  <code class="kd">for</code> (<code class="kd">let</code> <code class="nx">num</code> <code class="kd">of</code> <code class="nx">numbers</code>) {
+    <code class="nx">sum</code> <code class="kd">+=</code> <code class="nx">num</code>;
+  }
+
+  <code class="nx">sum</code> === <code class="s1">15</code>;
+
+  <code class="c1">// good</code>
+  <code class="kd">let</code> <code class="nx">sum</code> = <code class="nx">0</code>;
+  <code class="nx">numbers</code>.<code class="kd">forEach</code>((<code class="nx">num</code>)=&gt; <code class="nx">sum</code> <code class="kd">+=</code> <code class="nx">num</code>);
+  <code class="nx">sum</code> === <code class="s1">15</code>;
+
+  <code class="c1">// best (use the functional force)</code>
+  <code class="kd">const</code> <code class="nx">sum</code> = <code class="nx">numbers</code>.<code class="kd">reduce</code>((<code class="nx">total</code>, <code class="nx">num</code>)=&gt; <code class="nx">total</code> + <code class="nx">num</code>, <code class="s1">0</code>);
+  <code class="nx">sum</code> === <code class="s1">15</code>;</pre>
+				</li>
+				<li>
+					<p>Don't use generators for now.</p>
+
+					<blockquote>
+						<p>Why? They don't transpile well to ES5.</p>
+					</blockquote>
+				</li>
+			</ul>        	
+        </div>
+        <div class="sub_section">
+        	<h2>Properties</h2>
+			<ul>
+				<li>
+					<p>Use dot notation when accessing properties.</p>
+
+<pre><code class="kd">const</code> <code class="nx">luke</code> = {
+  <code class="nx">jedi</code>: <code class="kd">true</code>,
+  <code class="nx">age</code>: <code class="s1">28</code>,
+};
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">isJedi</code> = <code class="nx">luke</code>[<code class="s1">'jedi'</code>];
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">isJedi</code> = <code class="nx">luke</code>.<code class="nx">jedi</code>;</pre>
+				</li>
+				<li>
+					<p>Use subscript notation <code>[]</code> when accessing properties with a variable.</p>
+
+<pre><code class="kd">const</code> <code class="nx">luke</code> = {
+  <code class="nx">jedi</code>: <code class="kd">true</code>,
+  <code class="nx">age</code>: <code class="s1">28</code>,
+};
+
+<code class="kd">function</code> <code class="nx">getProp</code>(<code class="nx">prop</code>) {
+  <code class="kd">return</code> <code class="nx">luke</code>[<code class="nx">prop</code>];
+}
+
+<code class="kd">const</code> <code class="nx">isJedi</code> = <code class="nx">getProp</code>(<code class="s1">'jedi'</code>);</pre>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Variables</h2>
+			<ul>
+				<li>
+					<p>Always use <code>const</code> to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="nx">superPower</code> = <code class="kd">new</code> <code class="nx">SuperPower</code>();
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">superPower</code> = <code class="kd">new</code> <code class="nx">SuperPower</code>();</pre>
+				</li>
+				<li>
+					<p>Use one <code>const</code> declaration per variable.</p>
+
+					<blockquote>
+						<p>Why? It's easier to add new variable declarations this way, and you never have to worry about swapping out a <code>;</code> for a <code>,</code> or introducing punctuation-only diffs.</p>
+					</blockquote>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">items</code> = <code class="nx">getItems</code>(),
+    <code class="nx">goSportsTeam</code> = <code class="kd">true</code>,
+    <code class="nx">dragonball</code> = <code class="s1">'z'</code>;
+
+<code class="c1">// bad</code>
+<code class="c1">// (compare to above, and try to spot the mistake)</code>
+<code class="kd">const</code> <code class="nx">items</code> = <code class="nx">getItems</code>(),
+    <code class="nx">goSportsTeam</code> = <code class="kd">true</code>;
+    <code class="nx">dragonball</code> = <code class="s1">'z'</code>;
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">items</code> = <code class="nx">getItems</code>();
+<code class="kd">const</code> <code class="nx">goSportsTeam</code> = <code class="nx">true</code>;
+<code class="kd">const</code> <code class="nx">dragonball</code> = <code class="s1">'z'</code>;</pre>
+				</li>
+				<li>
+					<p>Group all your <code>const</code>s and then group all your <code>let</code>s.</p>
+
+					<blockquote>
+						<p>Why? This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad</code>
+  <code class="kd">let</code> <code class="nx">i</code>, <code class="nx">len</code>, <code class="nx">dragonball</code>,
+      <code class="nx">items</code> = <code class="nx">getItems</code>(),
+      <code class="nx">goSportsTeam</code> = <code class="kd">true</code>;
+
+  <code class="c1">// bad</code>
+  <code class="kd">let</code> <code class="nx">i</code>;
+  <code class="kd">const</code> <code class="nx">items</code> = <code class="nx">getItems</code>();
+  <code class="kd">let</code> <code class="nx">dragonball</code>;
+  <code class="kd">const</code> <code class="nx">goSportsTeam</code> = <code class="nx">true</code>;
+  <code class="kd">let</code> <code class="nx">len</code>;
+
+  <code class="c1">// good</code>
+  <code class="kd">const</code> <code class="nx">goSportsTeam</code> = <code class="nx">true</code>;
+  <code class="kd">const</code> <code class="nx">items</code> = <code class="nx">getItems</code>();
+  <code class="kd">let</code> <code class="nx">dragonball</code>;
+  <code class="kd">let</code> <code class="nx">i</code>;
+  <code class="kd">let</code> <code class="nx">length</code>;</pre>
+				</li>
+				<li>
+					<p>Assign variables where you need them, but place them in a reasonable place.</p>
+
+					<blockquote>
+						<p>Why? <code>let</code> and <code>const</code> are block scoped and not function scoped.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// good</code>
+  <code class="kd">function</code>() {
+    <code class="nx">test</code>();
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'doing stuff..'</code>);
+
+    <code class="c1">//..other stuff..</code>
+
+    <code class="kd">const</code> <code class="nx">name</code> = <code class="nx">getName</code>();
+
+    <code class="kd">if</code> (<code class="nx">name</code> === <code class="s1">'test'</code>) {
+      <code class="kd">return</code> <code class="kd">false</code>;
+    }
+
+    <code class="kd">return</code> <code class="nx">name</code>;
+  }
+
+  <code class="c1">// bad - unnecessary function call</code>
+  <code class="kd">function</code>(<code class="nx">hasName</code>) {
+    <code class="kd">const</code> <code class="nx">name</code> = <code class="nx"><code class="nx">getName</code></code>();
+
+    <code class="kd">if</code> (!<code class="nx">hasName</code>) {
+      <code class="kd">return</code> <code class="kd">false</code>;
+    }
+
+    <code class="kd">this</code>.<code class="nx">setFirstName</code>(<code class="nx">name</code>);
+
+    <code class="kd">return</code> <code class="nx">true</code>;
+  }
+
+  <code class="c1">// good</code>
+  <code class="kd">function</code>(<code class="nx">hasName</code>) {
+    <code class="kd">if</code> (!<code class="nx">hasName</code>) {
+      <code class="kd">return</code> <code class="kd">false</code>;
+    }
+
+    <code class="kd">const</code> <code class="nx">name</code> = <code class="nx">getName</code>();
+    <code class="kd">this</code>.<code class="nx">setFirstName</code>(<code class="nx">name</code>);
+
+    <code class="kd">return</code> <code class="kd">true</code>;
+  }</pre>
+				</li>
+			</ul>        	
+        </div>
+        <div>
+        	<h2>Hoisting</h2>
+			<ul>
+				<li>
+					<p><code>var</code> declarations get hoisted to the top of their scope, their assignment does not. <code>const</code> and <code>let</code> declarations are blessed with a new concept called <a class="ulink" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let">Temporal Dead Zones (TDZ)</a>. It's important to know why <a class="ulink" href="http://es-discourse.com/t/why-typeof-is-no-longer-safe/15">typeof is no longer safe</a>.</p>
+
+<pre><code class="c1">// we know this wouldn't work (assuming there</code>
+<code class="c1">// is no notDefined global variable)</code>
+<code class="kd">function</code> <code class="nx">example</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">notDefined</code>); <code class="c1">// =&gt; throws a ReferenceError</code>
+}
+
+<code class="c1">// creating a variable declaration after you</code>
+<code class="c1">// reference the variable will work due to</code>
+<code class="c1">// variable hoisting. Note: the assignment</code>
+<code class="c1">// value of `true` is not hoisted.</code>
+<code class="kd">function</code> <code class="nx">example</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">declaredButNotAssigned</code>); <code class="c1">// =&gt; undefined</code>
+  <code class="kd">var</code> <code class="nx">declaredButNotAssigned</code> = <code class="kd">true</code>;
+}
+
+<code class="c1">// The interpreter is hoisting the variable</code>
+<code class="c1">// declaration to the top of the scope,</code>
+<code class="c1">// which means our example could be rewritten as:</code>
+<code class="kd">function</code> <code class="nx">example</code>() {
+  <code class="kd">let</code> <code class="nx">declaredButNotAssigned</code>;
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">declaredButNotAssigned</code>); <code class="c1">// =&gt; undefined</code>
+  <code class="nx">declaredButNotAssigned</code> = <code class="kd">true</code>;
+}
+
+<code class="c1">// using const and let</code>
+<code class="kd">function</code> <code class="nx">example</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">declaredButNotAssigned</code>); <code class="c1">// =&gt; throws a ReferenceError</code>
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="kd">typeof</code> <code class="nx">declaredButNotAssigned</code>); <code class="c1">// =&gt; throws a ReferenceError</code>
+  <code class="kd">const</code> <code class="nx"><code class="nx">declaredButNotAssigned</code></code> = <code class="kd">true</code>;
+}</pre>
+				</li>
+				<li>
+					<p>
+					Anonymous function expressions hoist their variable name, but not the function assignment.</p>
+
+<pre><code class="kd">function</code> <code class="nx">example</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">anonymous</code>); <code class="c1">// =&gt; undefined</code>
+
+  <code class="nx">anonymous</code>(); <code class="c1">// =&gt; TypeError anonymous is not a function</code>
+
+  <code class="kd">var</code> <code class="nx">anonymous</code> = <code class="kd">function</code>() {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'anonymous function expression'</code>);
+  };
+}</pre>
+				</li>
+				<li>
+					<p><code class="nx">named</code> function expressions hoist the variable name, not the function name or the function body.</p>
+
+<pre><code class="kd">function</code> <code class="nx">example</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">named</code>); <code class="c1">// =&gt; undefined</code>
+
+  <code class="nx">named</code>(); <code class="c1">// =&gt; TypeError named is not a function</code>
+
+  <code class="nx">superPower</code>(); <code class="c1">// =&gt; ReferenceError superPower is not defined</code>
+
+  <code class="kd">var</code> <code class="nx"><code class="nx">named</code></code> = <code class="kd">function</code> <code class="nx">superPower</code>() {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'Flying'</code>);
+  };
+}
+
+<code class="c1">// the same is true when the function name</code>
+<code class="c1">// is the same as the variable name.</code>
+<code class="kd">function</code> <code class="nx">example</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">named</code>); <code class="c1">// =&gt; undefined</code>
+
+  <code class="nx">named</code>(); <code class="c1">// =&gt; TypeError <code class="nx">named</code> is not a function</code>
+
+  <code class="kd">var</code> <code class="nx"><code class="nx">named</code></code> = <code class="kd">function</code> <code class="nx"><code class="nx">named</code></code>() {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'<code class="nx">named</code>'</code>);
+  }
+}</pre>
+				</li>
+				<li>
+					<p>Function declarations hoist their name and the function body.</p>
+
+<pre><code class="kd">function</code> <code class="nx">example</code>() {
+  <code class="nx">superPower</code>(); <code class="c1">// =&gt; Flying</code>
+
+  <code class="kd">function</code> <code class="nx">superPower</code>() {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'Flying'</code>);
+  }
+}</pre>
+				</li>
+				<li>
+					<p>For more information refer to <a class="ulink" href="http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting">JavaScript Scoping &amp; Hoisting</a> by <a class="ulink" href="http://www.adequatelygood.com/">Ben Cherry</a>.</p>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Comparison Operators &amp; Equality</h2>
+			<ul>
+				<li>
+					Use <code>===</code> and <code>!==</code> over <code>==</code> and <code>!=</code>.
+				</li>
+				<li>
+					<p>Conditional statements such as the <code>if</code> statement evaluate their expression using coercion with the <code>ToBoolean</code> abstract method and always follow these simple rules:</p>
+
+					<ul>
+						<li><strong>Objects</strong> evaluate to <strong>true</strong></li>
+						<li><strong>Undefined</strong> evaluates to <strong>false</strong></li>
+						<li><strong>Null</strong> evaluates to <strong>false</strong></li>
+						<li><strong>Booleans</strong> evaluate to <strong>the value of the boolean</strong></li>
+						<li><strong>Numbers</strong> evaluate to <strong>false</strong> if <strong>+0, -0, or NaN</strong>, otherwise <strong>true</strong></li>
+						<li><strong>Strings</strong> evaluate to <strong>false</strong> if an empty string <code>''</code>, otherwise <strong>true</strong></li>
+					</ul>
+
+<pre><code class="kd">if</code> ([<code class="s1">0</code>]) {
+  <code class="c1">// true</code>
+  <code class="c1">// An array is an object, objects evaluate to true</code>
+}</pre>
+				</li>
+				<li>
+					<p>Use shortcuts.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">if</code> (<code class="nx">name</code> !== <code class="s1">''</code>) {
+  <code class="c1">// ...stuff...</code>
+}
+
+<code class="c1">// good</code>
+<code class="kd">if</code> (<code class="nx">name</code>) {
+  <code class="c1">// ...stuff...</code>
+}
+
+<code class="c1">// bad</code>
+<code class="kd">if</code> (<code class="nx">collection</code>.<code class="nx">length</code> &gt; <code class="s1">0</code>) {
+  <code class="c1">// ...stuff...</code>
+}
+
+<code class="c1">// good</code>
+<code class="kd">if</code> (<code class="nx">collection</code>.<code class="nx">length</code>) {
+  <code class="c1">// ...stuff...</code>
+}</pre>
+				</li>
+				<li>
+					<p>
+						For more information see <a class="ulink" href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108">Truth Equality and JavaScript</a> by Angus Croll.
+					</p>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Blocks</h2>
+			<ul>
+				<li>
+					<p>Use braces with all multi-line blocks.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">if</code> (<code class="nx">test</code>)
+  <code class="kd">return</code> <code class="kd">false</code>;
+
+<code class="c1">// good</code>
+<code class="kd">if</code> (<code class="nx">test</code>) <code class="kd">return</code> <code class="kd">false</code>;
+
+<code class="c1">// good</code>
+<code class="kd">if</code> (<code class="nx">test</code>) {
+  <code class="kd">return</code> <code class="kd">false</code>;
+}
+
+<code class="c1">// bad</code>
+<code class="kd">function</code>() { <code class="kd">return</code> <code class="kd">false</code>; }
+
+<code class="c1">// good</code>
+<code class="kd">function</code>() {
+  <code class="kd">return</code> <code class="kd">false</code>;
+}</pre>
+				</li>
+				<li>
+					<p>
+						If you're using multi-line blocks with <code>if</code> and <code>else</code>, put <code>else</code> on the same line as your <code>if</code> block's closing brace.
+					</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">if</code> (<code class="nx">test</code>) {
+  <code class="nx">thing1</code>();
+  <code class="nx">thing2</code>();
+}
+<code class="kd">else</code> {
+  <code class="nx">thing3</code>();
+}
+
+<code class="c1">// good</code>
+<code class="kd">if</code> (<code class="nx">test</code>) {
+  <code class="nx">thing1</code>();
+  <code class="nx">thing2</code>();
+} <code class="kd">else</code> {
+  <code class="nx">thing3</code>();
+}</pre>
+				</li>
+			</ul>        	
+        </div>
+        <div class="sub_section">
+        	<h2>Comments</h2>
+			<ul>
+				<li>
+					<p>Use <code>/** ... */</code> for multi-line comments. Include a description, specify types and values for all parameters and return values.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="c1">// make() returns a new element</code>
+<code class="c1">// based on the passed in tag name</code>
+<code class="c1">//</code>
+<code class="c1">// @param {String} tag</code>
+<code class="c1">// @return {Element} element</code>
+<code class="kd">function</code> <code class="nx">make</code>(<code class="nx">tag</code>) {
+
+  <code class="c1">// ...stuff...</code>
+
+  <code class="kd">return</code> <code class="nx">element</code>;
+}
+
+<code class="c1">// good</code>
+<code class="c1">/**</code>
+<code class="c1"> * make() returns a new element</code>
+<code class="c1"> * based on the passed in tag name</code>
+<code class="c1"> *</code>
+<code class="c1"> * <code class="kd">@param</code> {String} tag</code>
+<code class="c1"> * <code class="kd">@return</code> {Element} element</code>
+<code class="c1"> */</code>
+<code class="kd">function</code> <code class="nx">make</code>(<code class="nx">tag</code>) {
+
+  <code class="c1">// ...stuff...</code>
+
+  <code class="kd">return</code> <code class="nx">element</code>;
+}</pre>
+				</li>
+				<li>
+					<p>Use <code>//</code> for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">active</code> = <code class="kd">true</code>;  <code class="c1">// is current tab</code>
+
+<code class="c1">// good</code>
+<code class="c1">// is current tab</code>
+<code class="kd">const</code> <code class="nx">active</code> = <code class="kd">true</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">getType</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'fetching type...'</code>);
+  <code class="c1">// set the default type to 'no type'</code>
+  <code class="kd">const</code> <code class="nx">type</code> = <code class="kd">this</code>._<code class="nx">type</code> <code class="kd">||</code> <code class="s1">'no type'</code>;
+
+  <code class="kd">return</code> <code class="nx">type</code>;
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code> <code class="nx">getType</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'fetching type...'</code>);
+
+  <code class="c1">// set the default type to 'no type'</code>
+  <code class="kd">const</code> <code class="nx">type</code> = <code class="kd">this</code>._<code class="nx">type</code> <code class="kd">||</code> <code class="s1">'no type'</code>;
+
+  <code class="kd">return</code> <code class="nx">type</code>;
+}</pre>
+				</li>
+				<li>
+					<p>
+						Prefixing your comments with <code>FIXME</code> or <code>TODO</code> helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are <code>FIXME -- need to figure this out</code> or <code>TODO -- need to implement</code>.
+					</p>
+				</li>
+				<li>
+					<p>Use <code>// FIXME:</code> to annotate problems.</p>
+
+<pre><code class="kd">class</code> <code class="nx">Calculator</code> <code class="kd">extends</code> <code class="nx">Abacus</code> {
+  <code class="nx">constructor</code>() {
+    <code class="kd">super</code>();
+
+    <code class="c1">// FIXME: shouldn't use a global here</code>
+    <code class="nx">total</code> = <code class="s1">0</code>;
+  }
+}</pre>
+				</li>
+				<li>
+					<p>Use <code>// TODO:</code> to annotate solutions to problems.</p>
+
+<pre><code class="kd">class</code> <code class="nx">Calculator</code> <code class="kd">extends</code> <code class="nx">Abacus</code> {
+  <code class="nx">constructor</code>() {
+    <code class="kd">super</code>();
+
+    <code class="c1">// TODO: total should be configurable by an options param</code>
+    <code class="kd">this</code>.<code class="nx">total</code> = <code class="s1">0</code>;
+  }
+}</pre>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Whitespace</h2>
+			<ul>
+				<li>
+					<p>Use soft tabs set to 2 spaces.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">function</code>() {
+∙∙∙∙<code class="kd">const</code> <code class="nx">name</code>;
+}
+
+<code class="c1">// bad</code>
+<code class="kd">function</code>() {
+∙<code class="kd">const</code> <code class="nx">name</code>;
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code>() {
+∙∙<code class="kd">const</code> <code class="nx">name</code>;
+}</pre>
+				</li>
+				<li>
+					<p>Place 1 space before the leading brace.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">test</code>(){
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'test'</code>);
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code> <code class="nx">test</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'test'</code>);
+}
+
+<code class="c1">// bad</code>
+<code class="nx">dog</code>.<code class="nx">set</code>(<code class="s1">'attr'</code>,{
+  <code class="nx">age</code>: <code class="s1">'1 year'</code>,
+  <code class="nx">breed</code>: <code class="s1">'Bernese Mountain Dog'</code>,
+});
+
+<code class="c1">// good</code>
+<code class="nx">dog</code>.<code class="nx">set</code>(<code class="s1">'attr'</code>, {
+  <code class="nx">age</code>: <code class="s1">'1 year'</code>,
+  <code class="nx">breed</code>: <code class="s1">'Bernese Mountain Dog'</code>,
+});</pre>
+				</li>
+				<li>
+					<p>Place 1 space before the opening parenthesis in control statements (<code>if</code>, <code>while</code> etc.). Place no space before the argument list in function calls and declarations.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">if</code>(<code class="nx">isJedi</code>) {
+  <code class="nx">fight</code> ();
+}
+
+<code class="c1">// good</code>
+<code class="kd">if</code> (<code class="nx">isJedi</code>) {
+  <code class="nx">fight</code>();
+}
+
+<code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">fight</code> () {
+  <code class="nx">console</code><code class="nx">.log</code> (<code class="s1">'Swooosh!'</code>);
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code> <code class="nx">fight</code>() {
+  <code class="nx">console</code><code class="nx">.log</code>(<code class="s1">'Swooosh!'</code>);
+}</pre>
+				</li>
+				<li>
+					<p>Set off operators with spaces.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">x</code>=<code class="nx">y</code>+<code class="s1">5</code>;
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">x</code> = <code class="nx">y</code> + <code class="s1">5</code>;</pre>
+				</li>
+				<li>
+					<p>End files with a single newline character.</p>
+
+<pre><code class="c1">// bad</code>
+(<code class="kd">function</code>(<code class="nx">global</code>) {
+  <code class="c1">// ...stuff...</code>
+})(<code class="kd">this</code>);</pre>
+
+<pre><code class="c1">// bad</code>
+(<code class="kd">function</code>(<code class="nx">global</code>) {
+  <code class="c1">// ...stuff...</code>
+})(<code class="kd">this</code>);↵
+↵</pre>
+
+<pre><code class="c1">// good</code>
+(<code class="kd">function</code>(<code class="nx">global</code>) {
+  <code class="c1">// ...stuff...</code>
+})(<code class="kd">this</code>);↵</pre>
+				</li>
+				<li>
+					<p>
+						Use indentation when making long method chains. Use a leading dot, which emphasizes that the line is a method call, not a new statement.
+					</p>
+
+<pre><code class="c1">// bad</code>
+$(<code class="s1">'#items'</code>).<code class="kd">find</code>(<code class="s1">'.selected'</code>).<code class="kd">highlight</code>().<code class="kd">end</code>().<code class="kd">find</code>(<code class="s1">'.open'</code>).<code class="kd">updateCount</code>();
+
+<code class="c1">// bad</code>
+$(<code class="s1">'#items'</code>).
+  <code class="kd">find</code>(<code class="s1">'.selected'</code>).
+    <code class="kd">highlight</code>().
+    <code class="kd">end</code>().
+  <code class="kd">find</code>(<code class="s1">'.open'</code>).
+    <code class="kd">updateCount</code>();
+
+<code class="c1">// good</code>
+$(<code class="s1">'#items'</code>)
+  .<code class="kd">find</code>(<code class="s1">'.selected'</code>)
+    .<code class="kd"><code class="kd">highlight()</code></code>
+    .<code class="kd"><code class="kd">end</code>()</code>
+  .<code class="kd">find</code>(<code class="s1">'.open'</code>)
+    .<code class="kd"><code class="kd">updateCount</code>()</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">leds</code> = <code class="nx">stage</code>.<code class="kd">selectAll</code>(<code class="s1">'.led'</code>).<code class="nx">data</code>(<code class="nx">data</code>).<code class="kd">enter</code>().<code class="kd">append</code>(<code class="s1">'svg:svg'</code>).<code class="kd">class</code>(<code class="s1">'led'</code>, <code class="kd">true</code>)
+    .<code class="kd">attr</code>(<code class="s1">'width'</code>, (<code class="nx">radius</code> + <code class="nx">margin</code>) * <code class="s1">2</code>).<code class="kd">append</code>(<code class="s1">'svg:g'</code>)
+    .<code class="kd">attr</code>(<code class="s1">'transform'</code>, <code class="s1">'translate('+ (radius + margin) + ','+ (radius + margin) + ')'</code>)
+    .<code class="kd">call</code>(<code class="nx">tron</code>.<code class="nx">led</code>);
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">leds</code> = <code class="nx">stage</code>.<code class="kd">selectAll</code>(<code class="s1">'.led'</code>)
+    .<code class="nx">data</code>(<code class="nx">data</code>)
+  .<code class="kd">enter</code>().<code class="kd">append</code>(<code class="s1">'svg:svg'</code>)
+    .<code class="kd">classed</code>(<code class="s1">'led'</code>, <code class="kd">true</code>)
+    .<code class="kd">attr</code>(<code class="s1">'width'</code>, (<code class="nx">radius</code> + <code class="nx">margin</code>) * <code class="s1">2</code>)
+  .<code class="kd">append</code>(<code class="s1">'svg:g'</code>)
+    .<code class="kd">attr</code>(<code class="s1">'transform'</code>, <code class="s1">'translate('+ (radius + margin) + ','+ (radius + margin) + ')'</code>)
+    .<code class="kd">call</code>(<code class="nx">tron</code>.<code class="nx">led</code>);</pre>
+				</li>
+				<li>
+					<p>Leave a blank line after blocks and before the next statement.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">if</code> (<code class="nx">foo</code>) {
+  <code class="kd">return</code> <code class="nx">bar</code>;
+}
+<code class="kd">return</code> <code class="nx">baz</code>;
+
+<code class="c1">// good</code>
+<code class="kd">if</code> (<code class="nx">foo</code>) {
+  <code class="kd">return</code> <code class="nx">bar</code>;
+}
+
+<code class="kd">return</code> <code class="nx">baz</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">obj</code> = {
+  <code class="nx">foo</code>() {
+  },
+  <code class="nx">bar</code>() {
+  },
+};
+<code class="kd">return</code> <code class="nx">obj</code>;
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">obj</code> = {
+  <code class="nx">foo</code>() {
+  },
+
+  <code class="nx">bar</code>() {
+  },
+};
+
+<code class="kd">return</code> <code class="nx">obj</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">arr</code> = [
+  <code class="kd">function</code> <code class="nx">foo</code>() {
+  },
+  <code class="kd">function</code> <code class="nx">bar</code>() {
+  },
+];
+<code class="kd">return</code> <code class="nx">arr</code>;
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">arr</code> = [
+  <code class="kd">function</code> <code class="nx">foo</code>() {
+  },
+
+  <code class="kd">function</code> <code class="nx">bar</code>() {
+  },
+];
+
+<code class="kd">return</code> <code class="nx">arr</code>;</pre>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Commas</h2>
+			<ul>
+				<li>
+					<p>Leading commas: <strong>Nope.</strong></p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">story</code> = [
+    <code class="nx">once</code>
+  , <code class="nx">upon</code>
+  , <code class="nx">aTime</code>
+];
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">story</code> = [
+  <code class="nx">once</code>,
+  <code class="nx">upon</code>,
+  <code class="nx">aTime</code>,
+];
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">hero</code> = {
+    <code class="nx">firstName</code>: <code class="s1">'Ada'</code>
+  , <code class="nx">lastName</code>: <code class="s1">'Lovelace'</code>
+  , <code class="nx">birthYear</code>: <code class="s1">1815</code>
+  , <code class="nx">superPower</code>: <code class="s1">'computers'</code>
+};
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">hero</code> = {
+  <code class="nx">firstName</code>: <code class="s1">'Ada'</code>,
+  <code class="nx">lastName</code>: <code class="s1">'Lovelace'</code>,
+  <code class="nx">birthYear</code>: <code class="s1">1815</code>,
+  <code class="nx">superPower</code>: <code class="s1">'computers'</code>,
+};</pre>
+				</li>
+				<li>
+					<p>Additional trailing comma: <strong>Yup.</strong></p>
+
+					<blockquote>
+						<p>Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the <a class="ulink" href="https://github.com/airbnb/javascript/blob/master/es5/README.md#commas">trailing comma problem</a> in legacy browsers.</p>
+					</blockquote>
+
+<pre>  <code class="c1">// bad - git diff without trailing comma</code>
+  <code class="kd">const</code> <code class="nx">hero</code> = {
+       <code class="nx">firstName</code>: <code class="s1">'Florence'</code>,
+  <code class="kd">-</code>    <code class="nx">lastName</code>: <code class="s1">'Nightingale'</code>
+  +    <code class="nx">lastName</code>: <code class="s1">'Nightingale'</code>,
+  +    <code class="nx">inventorOf</code>: [<code class="s1">'coxcomb graph'</code>, <code class="s1">'modern nursing'</code>]
+  }
+
+  <code class="c1">// good - git diff with trailing comma</code>
+  <code class="kd">const</code> <code class="nx">hero</code> = {
+       <code class="nx">firstName</code>: <code class="s1">'Florence'</code>,
+       <code class="nx">lastName</code>: <code class="s1">'Nightingale'</code>,
+  +    <code class="nx">inventorOf</code>: [<code class="s1">'coxcomb chart'</code>, <code class="s1">'modern nursing'</code>],
+  }
+
+  <code class="c1">// bad</code>
+  <code class="kd">const</code> <code class="nx">hero</code> = {
+    <code class="nx">firstName</code>: <code class="s1">'Dana'</code>,
+    <code class="nx">lastName</code>: <code class="s1">'Scully'</code>
+  };
+
+  <code class="kd">const</code> <code class="nx">heroes</code> = [
+    <code class="s1">'Batman'</code>,
+    <code class="s1">'Superman'</code>
+  ];
+
+  <code class="c1">// good</code>
+  <code class="kd">const</code> <code class="nx">hero</code> = {
+    <code class="nx">firstName</code>: <code class="s1">'Dana'</code>,
+    <code class="nx">lastName</code>: <code class="s1">'Scully'</code>,
+  };
+
+  <code class="kd">const</code> <code class="nx">heroes</code> = [
+    <code class="s1">'Batman'</code>,
+    <code class="s1">'Superman'</code>,
+  ];</pre>
+				</li>
+			</ul>
+        </div>
+        <div>
+        	<h2>Semicolons</h2>
+			<ul>
+				<li>
+					<p><strong>Yup.</strong></p>
+
+<pre><code class="c1">// bad</code>
+(<code class="kd">function</code>() {
+  <code class="kd">const</code> <code class="nx">name</code> = <code class="s1">'Skywalker'</code>
+  <code class="kd">return</code> <code class="nx">name</code>
+})()
+
+<code class="c1">// good</code>
+(()=&gt; {
+  <code class="kd">const</code> <code class="nx">name</code> = <code class="s1">'Skywalker'</code>;
+  <code class="kd">return</code> <code class="nx">name</code>;
+})();
+
+<code class="c1">// good (guards against the function becoming an argument when two files with IIFEs are concatenated)</code>
+;(()=&gt; {
+  <code class="kd">const</code> <code class="nx">name</code> = <code class="s1">'Skywalker'</code>;
+  <code class="kd">return</code> <code class="nx">name</code>;
+})();</pre>
+
+				</li>
+			</ul>
+        </div>
+        <div>
+        	<h2>Type Casting &amp; Coercion</h2>
+			<ul>
+				<li>
+					Perform type coercion at the beginning of the statement.
+				</li>
+				<li>
+					<p>Strings:</p>
+
+<pre><code class="c1">//  =&gt; this.reviewScore = 9;</code>
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">totalScore</code> = <code class="kd">this</code>.<code class="nx">reviewScore</code> + <code class="s1">''</code>;
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">totalScore</code> = <code class="kd">String</code>(<code class="kd">this</code>.<code class="nx">reviewScore</code>);</pre>
+				</li>
+				<li>
+					<p>Use <code>parseInt</code> for Numbers and always with a radix for type casting.</p>
+
+<pre><code class="kd">const</code> <code class="nx">inputValue</code> = <code class="s1">'4'</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">val</code> = <code class="kd">new</code> <code class="nx">Number</code>(<code class="nx">inputValue</code>);
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">val</code> = +<code class="nx">inputValue</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">val</code> = <code class="nx">inputValue</code> &gt;&gt; <code class="nx">0</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">val</code> = <code class="nx">parseInt</code>(<code class="nx">inputValue</code>);
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">val</code> = <code class="nx">Number</code>(<code class="nx">inputValue</code>);
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">val</code> = <code class="nx">parseInt</code>(<code class="nx">inputValue</code>, <code class="s1">10</code>);</pre>
+				</li>
+				<li>
+					<p>If for whatever reason you are doing something wild and <code>parseInt</code> is your bottleneck and need to use Bitshift for <a class="ulink" href="http://jsperf.com/coercion-vs-casting/3">performance reasons</a>, leave a comment explaining why and what you're doing.</p>
+
+<pre><code class="c1">// good</code>
+<code class="c1">/**</code>
+<code class="c1"> * parseInt was the reason my code was slow.</code>
+<code class="c1"> * Bitshifting the String to coerce it to a</code>
+<code class="c1"> * Number made it a lot faster.</code>
+<code class="c1"> */</code>
+<code class="kd">const</code> <code class="nx">val</code> = <code class="nx">inputValue</code> &gt;&gt; <code class="s1">0</code>;</pre>
+				</li>
+				<li>
+					<p><strong>Note:</strong> Be careful when using bitshift operations. Numbers are represented as <a class="ulink" href="http://es5.github.io/#x4.3.19">64-bit values</a>, but Bitshift operations always return a 32-bit integer (<a class="ulink" href="http://es5.github.io/#x11.7">source</a>). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. <a class="ulink" href="https://github.com/airbnb/javascript/issues/109">Discussion</a>. Largest signed 32-bit Int is 2,147,483,647:</p>
+
+<pre><code class="s1">2147483647</code> &gt;&gt; <code class="s1">0</code> <code class="c1">//=&gt; 2147483647</code>
+<code class="s1">2147483648</code> &gt;&gt; <code class="s1">0</code> <code class="c1">//=&gt; -2147483648</code>
+<code class="s1">2147483649</code> &gt;&gt; <code class="s1">0</code> <code class="c1">//=&gt; -2147483647</code></pre>
+				</li>
+				<li>
+					<p>Booleans:</p>
+
+<pre><code class="kd">const</code> <code class="nx">age</code> = <code class="s1">0</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">hasAge</code> = <code class="kd">new</code> <code class="nx">Boolean</code>(<code class="nx">age</code>);
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">hasAge</code> = <code class="nx">Boolean</code>(<code class="nx">age</code>);
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">hasAge</code> = !!<code class="nx">age</code>;</pre>
+				</li>
+			</ul>        	
+        </div>
+        <div class="sub_section">
+        	<h2>Naming Conventions</h2>
+			<ul>
+				<li>
+					<p>Avoid single letter names. Be descriptive with your naming.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">q</code>() {
+  <code class="c1">// ...stuff...</code>
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code> <code class="nx">query</code>() {
+  <code class="c1">// ..stuff..</code>
+}</pre>
+				</li>
+				<li>
+					<p>Use camelCase when naming objects, functions, and instances.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">OBJEcttsssss</code> = {};
+<code class="kd">const</code> <code class="nx">this_is_my_object</code> = {};
+<code class="kd">function</code> <code class="nx">c</code>() {}
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">thisIsMyObject</code> = {};
+<code class="kd">function</code> <code class="nx">thisIsMyFunction</code>() {}</pre>
+				</li>
+				<li>
+					<p>Use PascalCase when naming constructors or classes.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">user</code>(<code class="nx">options</code>) {
+  <code class="kd">this</code>.<code class="nx">name</code> = <code class="nx">options</code>.<code class="nx">name</code>;
+}
+
+<code class="kd">const</code> <code class="nx">bad</code> = <code class="kd">new</code> <code class="nx">user</code>({
+  <code class="nx">name</code>: <code class="s1">'nope'</code>,
+});
+
+<code class="c1">// good</code>
+<code class="kd">class</code> <code class="nx">User</code> {
+  <code class="nx">constructor</code>(<code class="s1"><code class="nx">options</code></code>) {
+    <code class="kd">this</code>.<code class="nx">name</code> = <code class="nx">options</code>.<code class="nx">name</code>;
+  }
+}
+
+<code class="kd">const</code> <code class="nx">good</code> = <code class="kd">new</code> <code class="nx">User</code>({
+  <code class="nx">name</code>: <code class="s1">'yup'</code>,
+});</pre>
+				</li>
+				<li>
+					<p>Use a leading underscore <code>_</code> when naming private properties.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">this</code>.__<code class="nx">firstName</code>__ = <code class="s1">'Panda'</code>;
+<code class="kd">this</code>.<code class="nx">firstName</code>_ = <code class="s1">'Panda'</code>;
+
+<code class="c1">// good</code>
+<code class="kd">this</code>._<code class="nx">firstName</code> = <code class="s1">'Panda'</code>;</pre>
+				</li>
+				<li>
+					<p>Don't save references to <code>this</code>. Use arrow functions or Function#bind.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">foo</code>() {
+  <code class="kd">const</code> <code class="nx">self</code> = <code class="kd">this</code>;
+  <code class="kd">return</code> <code class="kd">function</code>() {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">self</code>);
+  };
+}
+
+<code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">foo</code>() {
+  <code class="kd">const</code> <code class="nx">that</code> = <code class="kd">this</code>;
+  <code class="kd">return</code> <code class="kd">function</code>() {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="nx">that</code>);
+  };
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code> <code class="nx">foo</code>() {
+  <code class="kd">return</code> ()=&gt; {
+    <code class="nx">console</code><code class="nx">.log</code>(<code class="kd">this</code>);
+  };
+}</pre>
+				</li>
+				<li>
+					<p>If your file exports a single class, your filename should be exactly the name of the class.</p>
+
+<pre><code class="c1">// file contents</code>
+<code class="kd">class</code> <code class="nx">CheckBox</code> {
+  <code class="c1">// ...</code>
+}
+<code class="kd">export</code> <code class="kd">default</code> <code class="nx">CheckBox</code>;
+
+<code class="c1">// in some other file</code>
+<code class="c1">// bad</code>
+<code class="kd">import</code> <code class="nx">CheckBox</code> <code class="kd">from</code> <code class="s1">'./checkBox'</code>;
+
+<code class="c1">// bad</code>
+<code class="kd">import</code> <code class="nx">CheckBox</code> <code class="kd">from</code> <code class="s1">'./check_box'</code>;
+
+<code class="c1">// good</code>
+<code class="kd">import</code> <code class="nx">CheckBox</code> <code class="kd">from</code> <code class="s1">'./CheckBox'</code>;</pre>
+				</li>
+				<li>
+					<p>Use camelCase when you export-default a function. Your filename should be identical to your function's name.</p>
+
+<pre><code class="kd">function</code> <code class="nx">makeStyleGuide</code>() {
+}
+
+<code class="kd">export</code> <code class="kd">default</code> <code class="nx">makeStyleGuide</code>;</pre>
+				</li>
+				<li>
+					<p>Use PascalCase when you export a singleton / function library / bare object.</p>
+
+<div class="highlight highlight-javascript"><pre><code class="kd">const</code> <code class="nx">AirbnbStyleGuide</code> = {
+  <code class="nx">es6</code>: {
+  }
+};
+
+<code class="kd">export</code> <code class="kd">default</code> <code class="nx">AirbnbStyleGuide</code>;</pre>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Accessors</h2>
+			<ul>
+				<li>Accessor functions for properties are not required.
+			</li>
+			<li>
+				<p>If you do make accessor functions use getVal() and setVal('hello').</p>
+
+<pre><code class="c1">// bad</code>
+<code class="nx">dragon</code>.<code class="nx">age</code>();
+
+<code class="c1">// good</code>
+<code class="nx">dragon</code>.<code class="nx">getAge</code>();
+
+<code class="c1">// bad</code>
+<code class="nx">dragon</code>.<code class="nx">age</code>(<code class="s1">25</code>);
+
+<code class="c1">// good</code>
+<code class="nx">dragon</code>.<code class="nx">setAge</code>(<code class="s1">25</code>);</pre>
+				</li>
+
+				<li>
+					<p>If the property is a <code>boolean</code>, use <code>isVal()</code> or <code>hasVal()</code>.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">if</code> (!<code class="nx">dragon</code>.<code class="nx">age</code>();) {
+  <code class="kd">return</code> <code class="kd">false</code>;
+}
+
+<code class="c1">// good</code>
+<code class="kd">if</code> (!<code class="nx">dragon</code>.<code class="nx">hasAge</code>();) {
+  <code class="kd">return</code> <code class="kd">false</code>;
+}</pre>
+				</li>
+				<li>
+					<p>It's okay to create get() and set() functions, but be consistent.</p>
+
+<pre><code class="kd">class</code> <code class="nx">Jedi</code> {
+  <code class="nx">constructor</code>(<code class="nx">options</code> = {}) {
+    <code class="kd">const</code> <code class="nx">lightsaber</code> = <code class="nx">options</code>.<code class="nx">lightsaber</code> <code class="kd">||</code> <code class="s1">'blue'</code>;
+    <code class="kd">this</code>.<code class="kd">set</code>(<code class="s1">'lightsaber'</code>, <code class="nx">lightsaber</code>);
+  }
+
+  <code class="nx">set</code>(<code class="nx">key</code>, <code class="nx">val</code>) {
+    <code class="kd">this</code>[<code class="nx">key</code>] = <code class="nx">val</code>;
+  }
+
+  <code class="nx">get</code>(<code class="s1">key</code>) {
+    <code class="kd">return</code> <code class="kd">this</code>[<code class="nx">key</code>];
+  }
+}</pre>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Events</h2>
+			<ul>
+				<li>
+					<p>When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass a hash instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:</p>
+
+<pre><code class="c1">// bad</code>
+$(<code class="kd">this</code>).<code class="kd">trigger</code>(<code class="s1">'listingUpdated'</code>, <code class="nx">listing</code>.<code class="nx">id</code>);
+
+...
+
+$(<code class="kd">this</code>).<code class="kd">on</code>(<code class="s1">'listingUpdated'</code>, <code class="kd">function</code>(<code class="nx">e</code>, <code class="nx">listingId</code>) {
+  <code class="c1">// do something with listingId</code>
+});</pre>
+
+				<p>prefer:</p>
+
+<pre><code class="c1">// good</code>
+$(<code class="kd">this</code>).<code class="kd">trigger</code>(<code class="s1">'listingUpdated'</code>, { <code class="nx">listingId</code> : <code class="nx">listing</code>.<code class="nx">id</code> });
+
+...
+
+$(<code class="kd">this</code>).<code class="kd">on</code>(<code class="s1">'listingUpdated'</code>, <code class="kd">function</code>(<code class="nx">e</code>, <code class="nx">data</code>) {
+  <code class="c1">// do something with data.listingId</code>
+});</pre>
+
+					<p><strong><a class="ulink" href="https://github.com/airbnb/javascript#table-of-contents">⬆ back to top</a></strong></p>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>jQuery</h2>
+			<ul>
+				<li>
+					<p>Prefix jQuery object variables with a <code>$</code>.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">const</code> <code class="nx">sidebar</code> = $(<code class="s1">'.sidebar'</code>);
+
+<code class="c1">// good</code>
+<code class="kd">const</code> <code class="nx">$sidebar</code> = $(<code class="s1">'.sidebar'</code>);</pre>
+				</li>
+				<li>
+					<p>Cache jQuery lookups.</p>
+
+<pre><code class="c1">// bad</code>
+<code class="kd">function</code> <code class="nx">setSidebar</code>() {
+  $(<code class="s1">'.sidebar'</code>).<code class="kd">hide</code>();
+
+  <code class="c1">// ...stuff...</code>
+
+  $(<code class="s1">'.sidebar'</code>).<code class="kd">css</code>({
+    <code class="s1">'background-color'</code>: <code class="s1">'pink'</code>
+  });
+}
+
+<code class="c1">// good</code>
+<code class="kd">function</code> <code class="nx">setSidebar</code>() {
+  <code class="kd">const</code> <code class="nx">$sidebar</code> = $(<code class="s1">'.sidebar'</code>);
+  $<code class="nx">sidebar</code>.<code class="kd">hide</code>();
+
+  <code class="c1">// ...stuff...</code>
+
+  $<code class="nx">sidebar</code>.<code class="kd">css</code>({
+    <code class="s1">'background-color'</code>: <code class="s1">'pink'</code>
+  });
+}</pre>
+				</li>
+				<li>
+					<p>For DOM queries use Cascading <code>$('.sidebar ul')</code> or parent &gt; child <code>$('.sidebar &gt; ul')</code>. <a class="ulink" href="http://jsperf.com/jquery-find-vs-context-sel/16">jsPerf</a></p>
+				</li>
+				<li>
+					<p>Use <code>find</code> with scoped jQuery object queries.</p>
+
+<pre><code class="c1">// bad</code>
+$(<code class="s1">'ul'</code>, <code class="s1">'.<code class="nx">sidebar</code>'</code>).<code class="kd">hide</code>();
+
+<code class="c1">// bad</code>
+$(<code class="s1">'.sidebar'</code>).<code class="kd">find</code>(<code class="s1">'ul'</code>).<code class="kd">hide</code>();
+
+<code class="c1">// good</code>
+$(<code class="s1">'.sidebar ul'</code>).<code class="kd">hide</code>();
+
+<code class="c1">// good</code>
+$(<code class="s1">'.sidebar &gt; ul'</code>).<code class="kd">hide</code>();
+
+<code class="c1">// good</code>
+$<code class="nx">sidebar</code>.<code class="kd">find</code>(<code class="s1">'ul'</code>).<code class="kd">hide</code>();</pre>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+	        <h2>ECMAScript 5 Compatibility</h2>
+	        <ul>
+				<li>
+					Refer to <a class="ulink" href="https://twitter.com/kangax/">Kangax</a>'s ES5 <a class="ulink" href="http://kangax.github.com/es5-compat-table/">compatibility table</a>.
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>ECMAScript 6 Styles</h2>
+			<ul>
+				<li>
+					This is a collection of links to the various es6 features.
+				</li>
+			</ul>
+			<ol>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#arrow-functions">Arrow Functions</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#constructors">Classes</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#es6-object-shorthand">Object Shorthand</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#es6-object-concise">Object Concise</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#es6-computed-properties">Object Computed Properties</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#es6-template-literals">Template Strings</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#destructuring">Destructuring</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#es6-default-parameters">Default Parameters</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#es6-rest">Rest</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#es6-array-spreads">Array Spreads</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#references">Let and Const</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#iterators-and-generators">Iterators and Generators</a></li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript#modules">Modules</a></li>
+			</ol>
+        </div>
+        <div class="sub_section">
+        	<h2>Testing</h2>
+        	<ul>
+				<li>
+					<p><strong>Yup.</strong></p>
+
+<pre><code class="kd">function</code>() {
+  <code class="kd">return</code> <code class="nx">true</code>;
+}</pre>
+				</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+	        <h2>Performance</h2>
+	        <ul>
+				<li><a class="ulink" href="http://kellegous.com/j/2013/01/26/layout-performance/">On Layout &amp; Web Performance</a></li>
+				<li><a class="ulink" href="http://jsperf.com/string-vs-array-concat/2">String vs Array Concat</a></li>
+				<li><a class="ulink" href="http://jsperf.com/try-catch-in-loop-cost">Try/Catch Cost In a Loop</a></li>
+				<li><a class="ulink" href="http://jsperf.com/bang-function">Bang Function</a></li>
+				<li><a class="ulink" href="http://jsperf.com/jquery-find-vs-context-sel/13">jQuery Find vs Context, Selector</a></li>
+				<li><a class="ulink" href="http://jsperf.com/innerhtml-vs-textcontent-for-script-text">innerHTML vs textContent for script text</a></li>
+				<li><a class="ulink" href="http://jsperf.com/ya-string-concat">Long String Concatenation</a></li>
+				<li>Loading...</li>
+			</ul>
+        </div>
+        <div class="sub_section">
+        	<h2>Resources</h2>
+        	<p><strong>Learning ES6</strong></p>
+
+			<ul>
+				<li><a class="ulink" href="https://people.mozilla.org/~jorendorff/es6-draft.html">Draft ECMA 2015 (ES6) Spec</a></li>
+				<li><a class="ulink" href="http://exploringjs.com/">ExploringJS</a></li>
+				<li><a class="ulink" href="https://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a></li>
+				<li><a class="ulink" href="http://es6-features.org/">Comprehensive Overview of ES6 Features</a></li>
+			</ul>
+
+			<p><strong>Read This</strong></p>
+
+			<ul>
+				<li><a class="ulink" href="http://www.ecma-international.org/ecma-262/6.0/index.html">Standard ECMA-262</a></li>
+			</ul>
+
+			<p><strong>Tools</strong></p>
+
+			<ul>
+				<li>Code Style Linters
+					<ul>
+						<li><a class="ulink" href="http://eslint.org/">ESlint</a> - <a class="ulink" href="https://github.com/airbnb/javascript/blob/master/linters/.eslintrc">Airbnb Style .eslintrc</a></li>
+						<li><a class="ulink" href="http://www.jshint.com/">JSHint</a> - <a class="ulink" href="https://github.com/airbnb/javascript/blob/master/linters/jshintrc">Airbnb Style .jshintrc</a></li>
+						<li><a class="ulink" href="https://github.com/jscs-dev/node-jscs">JSCS</a> - <a class="ulink" href="https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json">Airbnb Style Preset</a></li>
+					</ul>
+				</li>
+			</ul>
+
+			<p><strong>Other Style Guides</strong></p>
+
+			<ul>
+				<li><a class="ulink" href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml">Google JavaScript Style Guide</a></li>
+				<li><a class="ulink" href="http://docs.jquery.com/JQuery_Core_Style_Guidelines">jQuery Core Style Guidelines</a></li>
+				<li><a class="ulink" href="https://github.com/rwldrn/idiomatic.js/">Principles of Writing Consistent, Idiomatic JavaScript</a></li>
+			</ul>
+
+			<p><strong>Other Styles</strong></p>
+
+			<ul>
+				<li><a class="ulink" href="https://gist.github.com/4135065">Naming this in nested functions</a> - Christian Johansen</li>
+				<li><a class="ulink" href="https://github.com/airbnb/javascript/issues/52">Conditional Callbacks</a> - Ross Allen</li>
+				<li><a class="ulink" href="http://sideeffect.kr/popularconvention/#javascript">Popular JavaScript Coding Conventions on Github</a> - JeongHoon Byun</li>
+				<li><a class="ulink" href="http://benalman.com/news/2012/05/multiple-var-statements-javascript/">Multiple var statements in JavaScript, not superfluous</a> - Ben Alman</li>
+			</ul>
+
+			<p><strong>Further Reading</strong></p>
+
+			<ul>
+				<li><a class="ulink" href="http://javascriptweblog.wordpress.com/2010/10/25/understanding-javascript-closures/">Understanding JavaScript Closures</a> - Angus Croll</li>
+				<li><a class="ulink" href="http://www.2ality.com/2013/06/basic-javascript.html">Basic JavaScript for the impatient programmer</a> - Dr. Axel Rauschmayer</li>
+				<li><a class="ulink" href="http://youmightnotneedjquery.com/">You Might Not Need jQuery</a> - Zack Bloom &amp; Adam Schwartz</li>
+				<li><a class="ulink" href="https://github.com/lukehoban/es6features">ES6 Features</a> - Luke Hoban</li>
+				<li><a class="ulink" href="https://github.com/bendc/frontend-guidelines">Frontend Guidelines</a> - Benjamin De Cock</li>
+			</ul>
+
+			<p><strong>Books</strong></p>
+
+			<ul>
+				<li><a class="ulink" href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">JavaScript: The Good Parts</a> - Douglas Crockford</li>
+				<li><a class="ulink" href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752">JavaScript Patterns</a> - Stoyan Stefanov</li>
+				<li><a class="ulink" href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">Pro JavaScript Design Patterns</a>  - Ross Harmes and Dustin Diaz</li>
+				<li><a class="ulink" href="http://www.amazon.com/High-Performance-Web-Sites-Essential/dp/0596529309">High Performance Web Sites: Essential Knowledge for Front-End Engineers</a> - Steve Souders</li>
+				<li><a class="ulink" href="http://www.amazon.com/Maintainable-JavaScript-Nicholas-C-Zakas/dp/1449327680">Maintainable JavaScript</a> - Nicholas C. Zakas</li>
+				<li><a class="ulink" href="http://www.amazon.com/JavaScript-Web-Applications-Alex-MacCaw/dp/144930351X">JavaScript Web Applications</a> - Alex MacCaw</li>
+				<li><a class="ulink" href="http://www.amazon.com/Pro-JavaScript-Techniques-John-Resig/dp/1590597273">Pro JavaScript Techniques</a> - John Resig</li>
+				<li><a class="ulink" href="http://www.amazon.com/Smashing-Node-js-JavaScript-Everywhere-Magazine/dp/1119962595">Smashing Node.js: JavaScript Everywhere</a> - Guillermo Rauch</li>
+				<li><a class="ulink" href="http://www.amazon.com/Secrets-JavaScript-Ninja-John-Resig/dp/193398869X">Secrets of the JavaScript Ninja</a> - John Resig and Bear Bibeault</li>
+				<li><a class="ulink" href="http://humanjavascript.com/">Human JavaScript</a> - Henrik Joreteg</li>
+				<li><a class="ulink" href="http://superherojs.com/">Superhero.js</a> - Kim Joar Bekkelund, Mads Mobæk, &amp; Olav Bjorkoy</li>
+				<li><a class="ulink" href="http://jsbooks.revolunet.com/">JSBooks</a> - Julien Bouquillon</li>
+				<li><a class="ulink" href="http://manning.com/vinegar/">Third Party JavaScript</a> - Ben Vinegar and Anton Kovalyov</li>
+				<li><a class="ulink" href="http://amzn.com/0321812182">Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript</a> - David Herman</li>
+				<li><a class="ulink" href="http://eloquentjavascript.net/">Eloquent JavaScript</a> - Marijn Haverbeke</li>
+				<li><a class="ulink" href="http://shop.oreilly.com/product/0636920033769.do">You Don't Know JS: ES6 &amp; Beyond</a> - Kyle Simpson</li>
+			</ul>
+
+			<p><strong>Blogs</strong></p>
+
+			<ul>
+				<li><a class="ulink" href="http://dailyjs.com/">DailyJS</a></li>
+				<li><a class="ulink" href="http://javascriptweekly.com/">JavaScript Weekly</a></li>
+				<li><a class="ulink" href="http://javascriptweblog.wordpress.com/">JavaScript, JavaScript...</a></li>
+				<li><a class="ulink" href="http://weblog.bocoup.com/">Bocoup Weblog</a></li>
+				<li><a class="ulink" href="http://www.adequatelygood.com/">Adequately Good</a></li>
+				<li><a class="ulink" href="http://www.nczonline.net/">NCZOnline</a></li>
+				<li><a class="ulink" href="http://perfectionkills.com/">Perfection Kills</a></li>
+				<li><a class="ulink" href="http://benalman.com/">Ben Alman</a></li>
+				<li><a class="ulink" href="http://dmitry.baranovskiy.com/">Dmitry Baranovskiy</a></li>
+				<li><a class="ulink" href="http://dustindiaz.com/">Dustin Diaz</a></li>
+				<li><a class="ulink" href="http://net.tutsplus.com/?s=javascript">nettuts</a></li>
+			</ul>
+
+			<p><strong>Podcasts</strong></p>
+
+			<ul>
+				<li><a class="ulink" href="http://devchat.tv/js-jabber/">JavaScript Jabber</a></li>
+			</ul>
+        </div>
+    </body>
+</html>

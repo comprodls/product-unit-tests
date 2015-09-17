@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Components - TJ Holowaychuk</title>
+        <link rel="stylesheet" type="text/css" href="css/core.css"/>
+    </head>
+    <body>
+        <div class="chaptertitle">
+          <h2 class="title">TJ Holowaychuk</h2>
+        </div>
+        <div class="sub_section">
+            <h2>Components</h2>
+
+            <p>
+                With the advent of numerous client-side JavaScript package managers, I wanted to write up some of my thoughts about the fragmentation that we have today, and some ways that I think we could really improve delivering packages a community. Keep in mind that these are only <em>my</em> opinions, everyone has done a great job and there’s a lot of cool work going on out there.
+            </p>
+
+            <p>
+                I think there are a few problems with the current environment, though some are subjective. The first of these and the most important in my opinion is the lack of unification around package consumption and definitions. The second issue is package delivery, what’s going to transport them to your machine? The final issue is the use of the components, how are they exposed to the browser for your application.
+            </p>
+
+            <p>
+                Once I’m done rambling I’ll show you how we’ve been using components to build our application at <a class="ulink" href="http://learnboost.com/" target="_blank">LearnBoost</a>, and how they really fare. Before getting into all that let’s dig into what I mean by “component”.
+            </p>
+        </div>
+        <div class="sub_section">
+            <h2>Building components</h2>
+            <p>
+                There have been many attempts to come up with some sort of client-side package manager, and some of them do it very well, however I think they are missing the big picture, a “component” is much more than just JavaScript.
+            </p>
+
+            <h3>Create components, not JavaScript packages</h3>
+
+            <p>
+                A component can be not just JavaScript, but CSS, images, fonts or other resources, or a component may be any combination of these. This is the main idea that I want to sell, we need to broaden modularity beyond just JavaScript source. This is not a new concept at all, Drupal has been employing it for over 7 years but it seems like something that hasn’t really caught on in most communities, at least not beyond the private application level.
+            </p>
+
+            <p>
+                A great example of a component would be a popover from the <a class="ulink" href="http://twitter.github.com/bootstrap/components.html" target="_blank">Twitter Bootstrap</a> library (not picking on you guys, it’s just a good example):
+            </p>
+            <div class="figure">
+                <span id="reference-diagram" />
+                <div class="figure-contents">
+                   <p>
+                        <img src="images/ch_08_sec07_img2.png" alt="">
+                   </p>
+                </div>
+
+            </div>
+        
+            
+
+            <p>
+                This thing looks so sexy that I just want to install it with my package manager, and have it automatically available to me in the client. For this to happen we need to admit that a component is much more than JavaScript, and should be packaged accordingly. Like the “dialog” in <a class="ulink" href="https://github.com/visionmedia/uikit/tree/master/lib/components/dialog" target="_blank">UIKit</a> for example:
+            </p>
+            <div class="figure">
+                    <span id="reference-diagram" />
+                        <div class="figure-contents">
+                            <p>
+                                <img src="images/ch_08_sec07_img3.png" alt="">
+                            </p>
+                        </div>
+
+            </div>
+        
+            
+
+            <p>
+                UIKit even at this state is not a good example of a solution for this problem, it uses its own custom build script to produce a single <code>ui.js</code> and <code>ui.css</code> file from the components in the <a class="ulink" href="https://github.com/visionmedia/uikit/tree/master/lib/components" target="_blank">repo</a>, so it’s still not something the community can consume directly without the custom build step. I’ve started moving UIKit components over to <a class="ulink" href="http://github.com/component" target="_blank">github.com/component</a>.</p>
+
+            <p>Another problem in the community is the size and scope of projects.</p>
+
+            <h3>Size and scope</h3>
+
+            <p>
+                The classic battle between DOM manipulation libraries such as jQuery and MooTools serve as an obvious example of fragmentation. Even if one is more popular than the other this doesn’t mean we don’t have a problem. Have you ever seen a great jQuery plugin and thought to yourself “damn! I’m using MooTools!” or perhaps the other way around? That highlights the problem right there, we should have no “jQuery plugins”, no “Dojo modules”, just simply “components” that we can all consume.
+            </p>
+
+            <p>
+                Components could then utilize these smaller, more modular dependencies to perform tasks. Instead of requiring jQuery as a dependency to convert a string of HTML into elements, one could simply add <a class="ulink" href="https://github.com/component/domify/blob/master/lib/domify.js" target="_blank">domify</a> as a dependency and invoke <code>domify(html)</code>, similar components could facilitate event handling etcetera. My point here is that ubiquitous libraries like jQuery will eventually be a thing of the past and fragmentation will hopefully decrease.
+            </p>
+
+            <p>
+                Another thing I think we really need to avoid, is the use of pre-processed assets within components, this includes things like Stylus, LESS, Sass, Jade, CoffeeScript among others. These are all great and can increase productivity in your application, my opinion is that they do not belong in public components, they fragment the community and reduce contributions, chances are if you’re depending on these tools for UI packages your component’s scope is too large.
+            </p>
+
+            <p>
+                A package such as “UIKit” could then simply aggregate all its parts into one convenient component for those who wish to consume the entire thing, but there’s no reason these need to live together, we’re just lacking the tools to make this convenient.
+            </p>
+
+            <p>This leads to the next issue, modernization!</p>
+
+            <h3>Modernization</h3>
+
+            <p>
+                There are a lot great tools being produced to deal with modernization, within reason we should not have to deal with these kinds of issues at the component level. Stylesheets are particularly bad for this, libraries are either faced with using CSS preprocessors to provide vendor prefixed versions of their styles, or of course need to manually declare them. This is a huge pain, and forever changing. What do we do? Nothing!
+            </p>
+
+            <p>
+                I strongly suggest that we write our public component stylesheets using regular old CSS. Other tools can still be utilized at the application level if you really need them. With explicit vendor prefixing out of the way we can <em>enjoy</em> building components since we’re not focused on vendor details (when possible), they will remain light-weight, and customizable via consumer manipulation via a library such as <a class="ulink" href="https://github.com/NV/CSSOM" target="_blank">CSSOM</a> or <a class="ulink" href="http://github.com/visionmedia/node-css" target="_blank">node-css</a>.
+            </p>
+
+            <p>On to the next topic! Structural styling.</p>
+
+            <h3>Structural styling</h3>
+
+            <p>
+                Structural styling is another thing I frequently have issues with. JavaScript libraries, jQuery plugins and others often ship with stylesheets, this is great but these libs should <em>only</em> define structural styles.
+            </p>
+
+            <p>
+                What do I mean by “structural styling”? Take for example the <code>Dialog</code> from UIKit, it contains only styles necessary to make the component presentable, but does not force a ton of extra styling on you, and serves as a good base to build on. I even took this a little far, box-shadows etc should be omitted by default.
+            </p>
+            <div class="figure">
+                    <span id="reference-diagram" />
+                        <div class="figure-contents">
+                           <p><img src="images/ch_08_sec07_img4.png" alt=""></p>
+
+                        </div>
+
+            </div>
+        
+            
+            <p>
+                The basic idea here is let stylesheets be stylesheets, <em>application</em> should define the look and feel of things, if you must provide “themed” versions simply have a component named “dialog-dark-theme” with only a stylesheet in it, and so on.
+            </p>
+
+            <h3>package.json</h3>
+
+            <p>
+                Components could have a “component.json” much like the <a class="ulink" href="http://www.commonjs.org/" target="_blank">commonjs</a> package.json, or we can simply extend package.json. This would of course act as the package manifest, letting the world know if it has stylesheets, templates, scripts, images and so on. I believe we should avoid the minimal gains of magical auto-globbing of files, we can just simply list these and avoid unnecessary complexity and I/O.
+            </p>
+
+            <p>
+                A Dialog component would simply look like the following, nothing fancy here, just an explicit manifest.
+            </p>
+
+<pre><code>{
+   "name": "dialog",
+   "version": "1.0.0",
+   "scripts": ["index.js"],
+   "styles": ["dialog.css"],
+   "templates": ["dialog.html"]
+}
+</code></pre>
+
+            <p>
+                The reason I would name these <code>styles</code>, and <code>templates</code> instead of <code>css</code> and <code>html</code> would be that when using private components within your application, the build tool could simply sniff out things like <code>["login.jade"]</code>, realize it’s a Jade template and compile it appropriately. Like I’ve mentioned though I dont think these tools belong in public code.
+            </p>
+
+            <p>
+                It may also be useful in the future to define optional dependencies for legacy browser support. Suppose I dont care anything below IE 9, I should be able to tell the build system that I’m fine with omitting legacy functionality, and the packages that handle this sort of things for events, the DOM etcetera would simply not load those in, the APIs that those modules provide would remain identical.
+            </p>
+        </div>
+        <div class="sub_section">
+            <h2>Require fragmentation</h2>
+            <p>
+                Another huge issue in the community right now is fragmentation regarding javascript loader definitions, the most common probably being <a class="ulink" href="http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition" target="_blank">AMD</a>. Personally I’m not a fan of AMD for one  reason, it’s ugly.
+            </p>
+
+            <p>
+                Granted that’s not a very good reason to dislike something. AMD provides the nice benefit of working without a build step, however when you need a library to test out a script anyway I feel like a quick build step to convert the more convenient commonjs <code>require()</code> style wins here, at least for me.
+            </p>
+
+            <p>
+                The real problem today is that if you want to share your public client-side code, you end up with something like the following:
+            </p>
+
+<pre><code>  // AMD support
+  if (typeof define === 'function' &amp;&amp; define.amd) {
+      define(function () { return Cookies; });
+  // CommonJS and Node.js module support.
+  } else if (typeof exports !== 'undefined') {
+      // Support Node.js specific `module.exports` (which can be a function)
+      if (typeof module != 'undefined' &amp;&amp; module.exports) {
+          exports = module.exports = Cookies;
+      }
+      // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
+      exports.Cookies = Cookies;
+  } else {
+      window.Cookies = Cookies;
+  }
+</code></pre>
+
+            <p>
+                This <em>sucks</em>. I hope to never look at this, nor support this sort of concept ever again! This is really painful. I completely understand that perhaps AMD nor sync-style requires are perfect, but if we pick <em>one</em> we can easily translate scripts to an async style for production builds if necessary.
+            </p>
+        </div>
+        <div class="sub_section">
+            <h2>Delivering components</h2>
+
+            <p>
+                We’ll obviously need a way to store and deliver components, existing tools are close but I think we can still do a little better and think a little larger.
+            </p>
+
+            <h3>Package managers</h3>
+
+            <p>
+                Tools like node’s <a class="ulink" href="http://npmjs.org/" target="_blank">npm(1)</a> package manager are again very great, but there are several reasons I think these packages should not live in the npm registry.
+            </p>
+
+            <p>
+                The first reason being that not everyone uses node, only us as node developers can be convenienced by using it, other communities should be able to easily access and consume these components with whichever tools they prefer, or if they really want to use one written in another language then sure why not!
+            </p>
+
+            <p>
+                Client-side packages in the npm registry are ambiguous, without tagging them as such it’s unclear which are intended for which environment. Many packages also end up disambiguating with a suffix, for example <a class="ulink" href="http://github.com/visionmedia/debug" target="_blank">debug</a> works both on the client and in node, however without augmenting package.json one would need to publish “debug” and “debug-component” or similar to the registry.
+            </p>
+
+            <p>
+                Another reason is that the package manager simply should not matter, and it usually does <em>not</em> matter. You just want some packages on your local machine, these should absolutely be as decoupled as possible.
+            </p>
+
+            <h3>Component registries</h3>
+
+            <p>
+                Arguably the best registry would simply be <a class="ulink" href="http://github.com/" target="_blank">Github</a>, or git repositories in general. There are a few downsides to this of course:
+            </p>
+
+<pre><code>- even shallow clones can be slow
+- coupled with git both at the consumer and producer levels
+- large dependency urls (unless we default github to "username/project" etc...)
+</code></pre>
+
+<p>Some nice benefits as well:</p>
+
+<pre><code>- clear &amp; explicit dependency origins
+- github is awesome
+</code></pre>            
+        </div>
+        <div class="sub_section">
+            <h2>Utilizing components</h2>
+
+            <p>
+                Most “real” applications require build steps these days, however even with this being the case, build scripts are extremely implementation specific and may vary greatly for your private application(s) depending on the scope of the project.
+            </p>
+
+            <p>
+                Here I would propose a free-for-all, use whatever you like from whichever community you’re a part of. As long as the “package manager” can transfer these to your machine, you do whatever you need to integrate them into your application, the details here are largely irrelevant.
+            </p>
+        </div>
+        <div class="sub_section">
+            <h2>Components in practice</h2>
+
+            <p>
+                Traditionally most applications (that I’ve experienced) are built in more of a “vertical” approach, spreading a single concept into multiple sections of an application. Making the application, and the components of a specific feature very difficult to reason with. This is akin to how unix libraries splatter themselves all over your system into various directories and files.
+            </p>
+
+            <p>
+                At LearnBoost we’ve been using components for a while now, but like I’ve mentioned not only for abstract UI components, but for <em>everything</em> in our application, even the build system and application bootstrap are implemented as components.
+            </p>
+
+            <p>
+                What does look like? Nothing more than a simple list of directories as shown in the following screenshot. Each component here is comprised of any combination of server-side logic, styles, scripts, images, fonts and so on.
+            </p>
+            <div class="figure">
+                <span id="reference-diagram" />
+                        <div class="figure-contents">
+                            <p><img src="images/ch_08_sec07_img1.png" alt="web components in practice"></p>
+                        </div>
+
+            </div>
+        
+
+           
+
+            <p>
+                Beyond obvious organizational benefits this helps our team focus on specific tasks without stepping all over each other. Testing is also easier, as each component providing server functionality simply exports a fully self-contained <a class="ulink" href="http://expressjs.com/" target="_blank">express</a> application, which has its own set of tests, then our root <code>make test</code> iterates those.
+            </p>
+
+            <p>
+                Our build system simply produces the output scripts and styles that we need into our root ./public directory, wrapping scripts with commonjs <code>require()</code>s, images, fonts and other assets are served from the self-contained servers.
+            </p>
+
+            <p>
+                My point here is that this concept goes beyond public components. Obviously it would be next to impossible, and ill-advised to start sharing components with server portions, but for your own application sticking to whatever language / platform you’re using it works very well.
+            </p>
+        </div>
+        <div class="sub_section">
+            <h2>What next?!</h2>
+
+            <p>
+                Keep building! The JavaScript community has been moving in great directions lately, take what I’ve said with a grain of salt but I hope to see some attempts at “component” management, not just JavaScript ;)
+            </p>
+
+            <p>
+                Until then you may want to keep your eyes on <a class="ulink" href="https://github.com/component" target="_blank">https://github.com/component</a> for future work from us at LearnBoost in regards to this topic. EDIT: I’ve started a <a class="ulink" href="https://github.com/component/component/wiki/Spec" target="_blank">component wiki</a> where we can toss around ideas.
+            </p>
+        </div>
+    </body>
+</html>

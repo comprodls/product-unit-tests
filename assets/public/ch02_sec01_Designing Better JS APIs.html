@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Designing Better JavaScript APIs</title>
+    <link rel="stylesheet" type="text/css" href="css/core.css" />
+</head>
+
+<body>
+    <div class="chaptertitle">
+        <h2 class="title">Designing Better JavaScript APIs</h2>
+    </div>
+
+    <p>At some point or another, you will find yourself writing JavaScript code that exceeds the couple of lines from a jQuery plugin. Your code will do a whole lot of things; it will (ideally) be used by many people who will approach your code differently. They have different needs, knowledge and expectations.
+    </p>
+
+    <div class="figure">
+        <div class="figure-contents">
+            <img title="Time Spent On Creating Vs Time Spent On Using" src="images/ch02_sec01_Piechart.jpg" alt="Time Spent On Creating Vs Time Spent On Using" style="display: block; width: 100%;" />
+        </div>
+    </div>
+
+    <p>This article covers the most important things that you will need to consider before and while writing your own utilities and libraries. We’ll focus on how to make your code accessible to other developers. A couple of topics will be touching upon jQuery for demonstration, yet this article is neither about jQuery nor about writing plugins for it.</p>
+
+    <p>Peter Drucker once said: “The computer is a moron.” Don’t write code for morons, write for humans! Let’s dive into <strong>designing the APIs that developers will love using</strong>.</p>
+
+    <div class="sub_section">
+        <h2>Fluent Interface</h2>
+        <p>The <a class="ulink" href="http://en.wikipedia.org/wiki/Fluent_interface#JavaScript">Fluent Interface</a> is often referred to as <em>Method Chaining</em> (although that’s only half the truth). To beginners it looks like the <em>jQuery style</em>. While I believe the API style was a key ingredient in jQuery’s success, it wasn’t invented by them — credits seem to go to Martin Fowler who <a class="ulink" href="http://martinfowler.com/bliki/FluentInterface.html">coined the term</a> back in 2005, roughly a year before jQuery was released. Fowler only gave the thing a name, though — Fluent Interfaces have been around for a much longer time.</p>
+        <p>Aside from major simplifications, jQuery offered to even out severe browser differences. It has always been the <em>Fluent Interface</em> that I have loved most about this extremely successful library. I have come to enjoy this particular API style so much that it became immediately apparent that I wanted this style for <a class="ulink" href="http://medialize.github.com/URI.js/">URI.js</a>, as well. While tuning up the URI.js API, I constantly looked through the jQuery source to find the little tricks that would make my implementation as simple as possible. I found out that I was not alone in this endeavor. <a class="ulink" href="https://twitter.com/leaverou">Lea Verou</a> created <a class="ulink" href="http://lea.verou.me/chainvas/">chainvas</a> — a tool to wrap regular getter/setter APIs into sweet fluent interfaces. Underscore’s <a class="ulink" href="http://underscorejs.org/#chain"><code>_.chain()</code></a> does something similar. In fact, most of the newer generation libraries support method chaining.</p>
+
+        <h3>METHOD CHAINING</h3>
+        <p>The general idea of <a class="ulink" href="http://en.wikipedia.org/wiki/Method_chaining">Method Chaining</a> is to achieve code that is as fluently readable as possible and thus quicker to understand. With <em>Method Chaining</em> we can form code into sentence-like sequences, making code easy to read, while reducing noise in the process:</p>
+
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="c1" spellcheck="true">//regular API calls to change some colors and add an event-listener
+</code><code class="kd">var</code><code class="nx"> elem </code><span class="token operator">=</span> <code class="nx"> document</code><span class="token punctuation">.</span><code class="nx"> getElementById</code><span class="token punctuation">(</span><code class="s1">"foobar"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="nx">elem</code><span class="token punctuation">.</span><code class="nx"> style</code><span class="token punctuation">.</span><code class="nx"> background </code><span class="token operator">=</span> <code class="s1">"red"</code><span class="token punctuation">;</span>
+<code class="nx">elem</code><span class="token punctuation">.</span><code class="nx"> style</code><span class="token punctuation">.</span><code class="nx">color</code> <span class="token operator">=</span> <code class="s1">"green"</code><span class="token punctuation">;</span>
+<code class="nx"> elem</code><span class="token punctuation">.</span><code class="nx">addEventListener</code><span class="token punctuation">(</span><code class="s1">'click'</code><span class="token punctuation">,</span> <code class="kd">function</code><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx"> alert</code><span class="token punctuation">(</span><code class="s1">"hello world!"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <code class="kd">true</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+
+// (imaginary) method chaining API
+</code><code class="nx">DOMHelper</code><span class="token punctuation">.</span><code class="nx">getElementById</code><span class="token punctuation">(</span><code class="s1">'foobar'</code><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">setStyle</code><span class="token punctuation">(</span><code class="s1">"background"</code><span class="token punctuation">,</span> <code class="s1">"red"</code><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">setStyle</code><span class="token punctuation">(</span><code class="s1">"color"</code><span class="token punctuation">,</span> <code class="s1">"green"</code><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">addEvent</code><span class="token punctuation">(</span><code class="s1">"click"</code><span class="token punctuation">,</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">event</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">alert</code><span class="token punctuation">(</span><code class="s1">"hello world"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+  </pre>
+
+        <p>
+            Note how we didn’t have to assign the element’s reference to a variable and repeat that over and over again.
+        </p>
+
+        <h3>COMMAND QUERY SEPARATION</h3>
+
+        <p><a class="ulink" href="http://en.wikipedia.org/wiki/Command-query_separation">Command and Query Separation</a> (CQS) is a concept inherited from imperative programming. Functions that change the state (internal values) of an object are called <em>commands</em>, functions that retrieve values are called <em>queries</em>. In principle, queries return data, commands change the state — but neither does both. This concept is one of the foundations of the everyday getter and setter methods we see in most libraries today. Since <em>Fluent Interfaces</em> return a self-reference for chaining method calls, we’re already breaking the rule for <em>commands</em>, as they are not supposed to return anything. On top of this (easy to ignore) trait, we (deliberately) break with this concept to keep APIs as simple as possible. An excellent example for this practice is jQuery’s <a class="ulink" href="http://api.jquery.com/css/"><code>css()</code></a> method:</p>
+
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> $elem</code> <span class="token operator">=</span><code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">"#foobar"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="c1" spellcheck="true">
+// CQS - command
+</code><code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">setCss</code><span class="token punctuation">(</span><code class="s1">"background"</code><span class="token punctuation">,</span> <code class="s1">"green"</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+// CQS - query
+</code><code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">getCss</code><span class="token punctuation">(</span><code class="s1">"color"</code><span class="token punctuation">)</span> <span class="token operator">==</span><span class="token operator">=</span> <code class="s1">"red"</code><span class="token punctuation">;</span>
+<code class="c1" spellcheck="true">
+// non-CQS - command
+</code><code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="s1">"background"</code><span class="token punctuation">,</span> <code class="s1">"green"</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+// non-CQS - query
+</code><code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="s1">"color"</code><span class="token punctuation">)</span> <span class="token operator">==</span><span class="token operator">=</span> <code class="s1">"red"</code><span class="token punctuation">;</span></code></pre>
+
+        <p>As you can see, getter and setter methods are merged into a single method. The action to perform (namely, query or command) is decided by the amount of arguments passed to the function, rather than by which function was called. This allows us to expose fewer methods and in turn type less to achieve the same goal.
+        </p>
+        <p>It is not necessary to compress getters and setters into a single method in order to create a fluid interface — it boils down to personal preference. Your documentation should be very clear with the approach you’ve decided on. I will get into documenting APIs later, but at this point I would like to note that multiple function signatures may be harder to document.
+        </p>
+
+        <h3>GOING FLUENT</h3>
+        <p>While method chaining already does most of the job for going fluent, you’re not off the hook yet. To illustrate the next step of fluent, we’re pretending to write a little library handling date intervals. An interval starts with a date and ends with a date. A date is not necessarily connected to an interval. So we come up with this simple constructor:
+        </p>
+<pre><code class=" language-javascript"><code class="c1" spellcheck="true">// create new date interval
+</code><code class="kd">var</code><code class="nx"> interval</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">DateInterval</code><span class="token punctuation">(</span><code class="nx">startDate</code><span class="token punctuation">,</span> <code class="nx">endDate</code><span class="token punctuation">)</span><code class="c1" spellcheck="true">;
+// get the calculated number of days the interval spans
+</code><code class="kd">var</code><code class="nx"> days </code></code></code><span class="token operator">=</span><code class="nx"> interval</code><span class="token punctuation">.</span><code class="nx">days</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>While this looks right at first glance, this example shows what’s wrong:</p>
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> startDate</code> <span class="token operator">=</span> <code class="kd">new</code><code class="nx"> Date</code><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span><code class="mi"> 0</code><span class="token punctuation">,</span> <code class="mi">1</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> endDate</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span><code class="mi"> 11</code><span class="token punctuation">,</span> <code class="mi">31</code><span class="token punctuation">)</span>
+<code class="kd">var</code><code class="nx"> interval</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">DateInterval</code><span class="token punctuation">(</span><code class="nx">startDate</code><span class="token punctuation">,</span><code class="nx"> endDate</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> days</code> <span class="token operator">=</span><code class="nx"> interval</code><span class="token punctuation">.</span><code class="nx">days</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true"> // 365</code></code></pre>
+
+        <p>We’re writing out a whole bunch of variables and stuff we probably won’t need. A nice solution to the problem would be to add a function to the Date object in order to return an interval:
+        </p>
+
+        <pre><code class=" language-javascript"><code class="c1" spellcheck="true">// DateInterval creator for fluent invocation
+</code></code><code class="nx"> Date</code><span class="token punctuation">.</span></code><code class="nx"> prototype</code><span class="token punctuation">.</span></code><code class="nx"> until</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span></code><code class="nx"> end</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<code class="c1" spellcheck="true">  // if we weren't given a date, make one
+</code> <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><code class="nx">end </code><code class="kd">instanceof</code> <code class="kd">Date</code><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="c1" spellcheck="true">  // create date from given arguments,
+</code>  <code class="c1" spellcheck="true">  // proxy the constructor to allow for any parameters
+</code>  <code class="c1" spellcheck="true">  // the Date constructor would've taken natively
+</code> <code class="nx">  end</code> <span class="token operator">=</span></code><code class="nx">  Date</code><span class="token punctuation">.</span><code class="nx"> apply</code><span class="token punctuation">(</span><code class="kd">null</code><span class="token punctuation">,</span>
+     <code class="nx"> Array</code><span class="token punctuation">.</span></code><code class="nx"> prototype</code><span class="token punctuation">.</span></code><code class="nx"> slice</code><span class="token punctuation">.</span><code class="nx">call</code><span class="token punctuation">(</span><code class="nx">arguments</code><span class="token punctuation">,</span> <code class="mi"></code> 0</code></span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">return</code> <code class="kd">new</code> <code class="nx"> DateInterval</code><span class="token punctuation">(</span><code class="kd"> this</code><span class="token punctuation">,</span></code><code class="nx">  end</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <p>Now we can create that DateInterval in a fluent, easy to type-and-read fashion:</p>
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> startDate</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date<span class="token punctuation">(</span><code class="mi"> 2012</code><span class="token punctuation">,</span> <code class="mi"> 0</code><span class="token punctuation">,</span> <code class="mi">1</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> interval</code> <span class="token operator">=</span><code class="nx"> startDate<span class="token punctuation">.</span><code class="nx">until</code><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span> <code class="mi">11</code><span class="token punctuation">,</span> <code class="mi">31</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> days</code> <span class="token operator">=</span><code class="nx"> interval</code><span class="token punctuation">.</span><code class="nx">days<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true"> // 365
+</code><code class="c1" spellcheck="true">
+// condensed fluent interface call:
+</code><code class="kd">var</code> <code class="nx">days</code> <span class="token operator">=</span> <span class="token punctuation">(</span><code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span> <code class="mi">0</code><span class="token punctuation">,</span> <code class="mi">1</code><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">until</code><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span> <code class="mi">11</code><span class="token punctuation">,</span> <code class="mi">31</code><code class="c1" spellcheck="true">) // returns DateInterval instance
+</code> <span class="token punctuation">.</span><code class="nx">days</code><span class="token punctuation">(</span><span class="token punctuation">)</span><code class="c1" spellcheck="true">; // 365</code></code></pre>
+
+        <p>As you can see in this last example, there are less variables to declare, less code to write, and the operation almost reads like an english sentence. With this example you should have realized that method chaining is only a part of a fluent interface, and as such, the terms are not synonymous. To provide fluency, you have to think about code streams — where are you coming from and where you are headed.</p>
+
+        <p>This example illustrated fluidity by extending a native object with a custom function. This is as much a religion as using semicolons or not. In <a class="ulink" href="http://perfectionkills.com/extending-built-in-native-objects-evil-or-not/">Extending built-in native objects. Evil or not?</a> <a class="ulink" href="https://twitter.com/kangax">kangax</a> explains the ups and downs of this approach. While everyone has their opinions about this, the one thing everybody agrees on is keeping things consistent. As an aside, even the followers of “Don’t pollute native objects with custom functions” would probably let the following, still somewhat fluid trick slide:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">String</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">foo</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">return</code> <code class="kd">new</code> <code class="nx">Foo</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<code class="s1">"I'm a native object"</code><span class="token punctuation">.</span><code class="nx">foo</code><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">iAmACustomFunction</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>With this approach your functions are still within your namespace, but made accessible through another object. Make sure your equivalent of .foo() is a non-generic term, something highly unlikely to collide with other APIs. Make sure you provide proper .valueOf() and .toString() methods to convert back to the original primitive types.</p>
+
+    </div>
+
+    <div class="sub_section">
+        <h2>Consistency</h2>
+
+        <p><a class="ulink" href="https://twitter.com/jaffathecake">Jake Archibald</a> once had a slide defining <em>Consistency</em>. It simply read <a class="ulink" href="http://www.slideshare.net/slideshow/embed_code/5426258?startSlide=59"><em>Not PHP</em></a>. Do. Not. Ever. Find yourself naming functions like <em>str_repeat()</em>, <em>strpos()</em>, <em>substr()</em>. Also, don’t ever shuffle around positions of arguments. If you declared <code>find_in_array(haystack, needle)</code> at some point, introducing <code>findInString(needle, haystack)</code> will invite an angry mob of zombies to rise from their graves to hunt you down and force you to write delphi for the rest of your life!</p>
+
+        <h3>NAMING THINGS</h3>
+        <blockquote>
+            <p>“There are only two hard problems in computer science: cache-invalidation and naming things.”</p>
+            <p>— Phil Karlton</p>
+        </blockquote>
+
+        <p>I’ve been to numerous talks and sessions trying to teach me the finer points of naming things. I haven’t left any of them without having heard the above said quote, nor having learnt how to actually name things. My advice boils down to keep it short but descriptive and go with your gut. But most of all, keep it consistent.</p>
+
+        <p>The DateInterval example above introduced a method called until(). We could have named that function interval(). The latter would have been closer to the returned value, while the former is more humanly readable. Find a line of wording you like and stick with it. Consistency is 90% of what matters. Choose one style and keep that style — even if you find yourself disliking it at some point in the future.</p>
+    </div>
+
+    <div class="sub_section">
+        <h2>Handling Arguments</h2>
+
+        <div class="figure">
+            <div class="figure-contents">
+                <img title="Good Intentions" src="images/ch02_sec01_good_intention.jpg" alt="Good Intentions" style="display: block; width: 100%;" />
+            </div>
+        </div>
+
+
+        <p>How your methods accept data is more important than making them chainable. While method chaining is a pretty generic thing that you can easily make your code do, handling arguments is not. You’ll need to think about how the methods you provide are most likely going to be used. Is code that uses your API likely to repeat certain function calls? Why are these calls repeated? How could your API help the developer to reduce the noise of repeating method calls?</p>
+
+        <p>jQuery’s css() method can set styles on a DOM element:</p>
+        <pre><code class=" language-javascript"><code class="nx">jQuery</code><span class="token punctuation">(</span></span><code class="s1">"#some-selector"</code><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="s1">"background"</code><span class="token punctuation">,</span> <code class="s1">"red"</code><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="s1">"color"</code><span class="token punctuation">,</span> <code class="s1">"white"</code><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="s1">"font-weight"</code><span class="token punctuation">,</span> <code class="s1">"bold"</code><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="s1">"padding"</code><span class="token punctuation">,</span> <code class="mi">10</code><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>There’s a pattern here! Every method invocation is naming a style and specifying a value for it. This calls for having the method accept a map:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">"#some-selector"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <code class="s1">"background"</code> <span class="token punctuation">:</span> <code class="s1">"red"</code><span class="token punctuation">,</span>
+  <code class="s1">"color"</code> <span class="token punctuation">:</span> <code class="s1">"white"</code><span class="token punctuation">,</span>
+  <code class="s1">"font-weight"</code> <span class="token punctuation">:</span> <code class="s1">"bold"</code><span class="token punctuation">,</span>
+  <code class="s1">"padding"</code> <span class="token punctuation">:</span> <code class="mi">10</code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>jQuery’s on() method can register event handlers. Like css() it accepts a map of events, but takes things even further by allowing a single handler to be registered for multiple events:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="c1" spellcheck="true">// binding events by passing a map
+</code><code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">"#some-selector"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">on</code><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <code class="s1">"click"</code> <span class="token punctuation">:</span><code class="nx"> myClickHandler</code><span class="token punctuation">,</span>
+  <code class="s1">"keyup"</code> <span class="token punctuation">:</span><code class="nx"> myKeyupHandler</code><span class="token punctuation">,</span>
+  <code class="s1">"change"</code> <span class="token punctuation">:</span><code class="nx"> myChangeHandler</code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+
+// binding a handler to multiple events:
+</code><code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">"#some-selector"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">on</code><span class="token punctuation">(</span><code class="s1">"click keyup change"</code><span class="token punctuation">,</span><code class="nx"> myEventHandler</code><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>You can offer the above function signatures by using the following method pattern:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="nx">DateInterval</code><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><code class="nx">values</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">name</code><span class="token punctuation">,</span><code class="nx"> value</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">var</code><code class="nx"> map</code><span class="token punctuation">;</span>
+
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">jQuery</code><span class="token punctuation">.</span><code class="nx">isPlainObject</code><span class="token punctuation">(</span><code class="nx">name</code><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // setting a map
+</code>   <code class="nx">map</code> <span class="token operator">=</span> <code class="nx">name</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <code class="kd">else</code> <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">value </code><span class="token operator">!</span><span class="token operator">==</span> <code class="nx">undefined</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // setting a value (on possibly multiple names), convert to map
+</code>    <code class="nx">keys</code> <span class="token operator">=</span> <code class="nx">name</code><span class="token punctuation">.</span><code class="nx">split</code><span class="token punctuation">(</span><code class="s1">" "</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="nx">map</code> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <code class="kd">for</code> <span class="token punctuation">(</span><code class="kd">var</code><code class="nx"> i</code> <span class="token operator">=</span> <code class="mi">0</code><span class="token punctuation">,</span> <code class="nx">length</code> <span class="token operator">=</span> keys<span class="token punctuation">.</span><code class="nx">length</code><span class="token punctuation">;</span> <code class="nx">i</code> <span class="token operator">&lt;</span> <code class="nx">length</code><span class="token punctuation">;</span> <code class="nx">i</code><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <code class="nx">map</code><span class="token punctuation">[</span><code class="nx">keys</code><span class="token punctuation">[</span><code class="nx">i</code><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <code class="nx">value</code><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <code class="kd">else</code> <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">name</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="nx">undefined</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // getting all values
+</code>    <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">values</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <code class="kd">else</code> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // getting specific value
+</code>    <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">values</code><span class="token punctuation">[</span><code class="nx">name</code><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">for</code> <span class="token punctuation">(</span><code class="kd">var</code><code class="nx"> key</code> <code class="kd">in</code> <code class="nx">map</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">values</code><span class="token punctuation">[</span><code class="nx">name</code><span class="token punctuation">]</span> <span class="token operator">=</span> <code class="nx">map</code><span class="token punctuation">[</span><code class="nx">key</code><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <p>What if we could bypass that method with a simple callback that gets applied to each &ltinput&gt in the collection? jQuery developers have thought of that and allow us to write less™:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">"input"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">val</code><span class="token punctuation">(</span><code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">return</code> <code class="nx">jQuery</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">data</code><span class="token punctuation">(</span><code class="s1">"default"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>It’s the little things like accepting maps, callbacks or serialized attribute names, that make using your API not only cleaner, but more comfortable and efficient to use. Obviously not all of your APIs’ methods will benefit from this method pattern — it’s up to you to decide where all this makes sense and where it is just a waste of time. Try to be as consistent about this as humanly possible. Reduce the need for boilerplate code with the tricks shown above and people will invite you over for a drink.</p>
+
+        <h3>HANDLING TYPES</h3>
+
+        <p>Whenever you define a function that will accept arguments, you decide what data that function accepts. A function to calculate the number of days between two dates could look like:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">days</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">start</code><span class="token punctuation">,</span> <code class="nx">end</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><code class="nx">start</code> <code class="kd">instanceof</code> <code class="nx">Date</code><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">start</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="nx">start</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><code class="nx">end</code> <code class="kd">instanceof</code> <span class="token class-name"><code class="nx">Date</code></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">end</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="nx">end</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">return</code> <code class="nx">Math</code><span class="token punctuation">.</span><code class="nx">floor</code><span class="token punctuation">(</span><span class="token punctuation">(</span><code class="nx">end</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <code class="nx">start</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <code class="mi">86400000</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <p>As you can see, the function expects numeric input — a millisecond timestamp, to be exact. While the function does what we intended it to do, it is not very versatile. What if we’re working with Date objects or a string representation of a date? Is the user of this function supposed to cast data all the time? No! Simply verifying the input and casting it to whatever we need it to be should be done in a central place, not cluttered throughout the code using our API:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">days</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">start</code><span class="token punctuation">,</span> <code class="nx">end</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><code class="nx">start</code> <code class="kd">instanceof</code> <code class="nx">Date</code><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">start</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="nx">start</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><code class="nx">end</code> <code class="kd">instanceof</code> <code class="nx">Date</code><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">end</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="nx">end</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">return</code> <code class="nx">Math</code><span class="token punctuation">.</span><code class="nx">floor</code><span class="token punctuation">(</span><span class="token punctuation">(</span><code class="nx">end</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <code class="nx">start</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <code class="mi">86400000</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <p>By adding these six lines we’ve given the function the power to accept a Date object, a numeric timestamp, or even a string representation like Sat Sep 08 2012 15:34:35 GMT+0200 (CEST). We do not know how and for what people are going to use our code, but with a little foresight, we can make sure there is little pain with integrating our code.</p>
+
+        <p>The experienced developer can spot another problem in the example code. We’re assuming start comes before end. If the API user accidentally swapped the dates, he’d be given a negative value for the number of days between start and end. Stop and think about these situations carefully. If you’ve come to the conclusion that a negative value doesn’t make sense, fix it:</p>
+
+    <pre><code class=" language-javascript"><code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">days</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">start</code><span class="token punctuation">,</span> <code class="nx">end</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><code class="nx">start</code> <code class="kd">instanceof</code> <code class="nx">Date</code><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">start</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="nx">start</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><code class="nx">end</code> <code class="kd">instanceof</code> <code class="nx">Date</code><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">end</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="nx">end</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">return</code> <code class="nx">Math</code><span class="token punctuation">.</span><code class="nx">abs<span class="token punctuation">(</span><code class="nx">Math</code><span class="token punctuation">.</span><code class="nx">floor</code><span class="token punctuation">(</span><span class="token punctuation">(</span><code class="nx">end</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <code class="nx">start</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <code class="mi">86400000</code><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <p>JavaScript allows type casting a number of ways. If you’re dealing with primitives (string, number, boolean) it can get as simple (as in “short”) as:</p>
+
+<pre class=" language-javascript"><code class=" language-javascript"><code class="kd">function</code> <code class="nx">castaway</code><span class="token punctuation">(</span><code class="nx">some_string</code><span class="token punctuation">,</span> <code class="nx">some_integer</code><span class="token punctuation">,</span> <code class="nx">some_boolean</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">some_string</code> <span class="token operator">+</span><span class="token operator">=</span> <code class="s1">""</code><span class="token punctuation">;</span>
+  <code class="nx">some_integer</code> <span class="token operator">+</span><span class="token operator">=</span> <code class="mi">0</code><span class="token punctuation">;</span><code class="c1" spellcheck="true"> // parseInt(some_integer, 10) is the safer bet
+</code> <code class="nx">some_boolean</code> <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span><code class="nx">some_boolean</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+        <p>I’m not advocating you to do this everywhere and at all times. But these innocent looking lines may save time and some suffering while integrating your code.</p>
+
+        <h3>TREATING UNDEFINED AS AN EXPECTED VALUE</h3>
+
+        <p>There will come a time when undefined is a value that your API actually expects to be given for setting an attribute. This might happen to “unset” an attribute, or simply to gracefully handle bad input, making your API more robust. To identify if the value undefined has actually been passed by your method, you can check the arguments object:</p>
+
+<pre class=" language-javascript"><code class=" language-javascript"><code class="kd">function</code> <code class="nx">testUndefined</code><span class="token punctuation">(</span><code class="nx">expecting</code><span class="token punctuation">,</span> <code class="nx">someArgument</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">someArgument</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="nx">undefined</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span><code class="s1">"someArgument was undefined"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">arguments</code><span class="token punctuation">.</span><code class="nx">length</code> <span class="token operator">&gt;</span> <code class="mi">1</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span><code class="s1">"but was actually passed in"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<code class="nx">testUndefined</code><span class="token punctuation">(</span><code class="s1">"foo"</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+// prints: someArgument was undefined
+</code><code class="nx">testUndefined</code><span class="token punctuation">(</span><code class="s1">"foo"</code><span class="token punctuation">,</span> <code class="nx">undefined</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1"spellcheck="true">
+// prints: someArgument was undefined, but was actually passed in</span></code></pre>
+
+        <h3>NAMED ARGUMENTS</h3>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="nx">event</code><span class="token punctuation">.</span><code class="nx">initMouseEvent</code><span class="token punctuation">(</span>
+  <code class="s1">"click"</code><span class="token punctuation">,</span> <code class="kd">true</code><span class="token punctuation">,</span> <code class="kd">true</code><span class="token punctuation">,</span> <code class="nx">window</code><span class="token punctuation">,</span>
+  <code class="mi">123</code><span class="token punctuation">,</span> <code class="mi">101</code><span class="token punctuation">,</span> <code class="mi">202</code><span class="token punctuation">,</span> <code class="mi">101</code><span class="token punctuation">,</span> <code class="mi">202</code><span class="token punctuation">,</span>
+  <code class="kd">true</code><span class="token punctuation">,</span> <code class="kd">false</code><span class="token punctuation">,</span> <code class="kd">false</code><span class="token punctuation">,</span> <code class="kd">true</code><span class="token punctuation">,</span>
+  <code class="mi">1</code><span class="token punctuation">,</span> <code class="kd">null</code><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>The function signature of <a class="ulink" href="https://developer.mozilla.org/en-US/docs/DOM/event.initMouseEvent">Event.initMouseEvent</a> is a nightmare come true. There is no chance any developer will remember what that <code>1</code> (second to last parameter) means without looking it up in the documentation. No matter how good your documentation is, do what you can so people don’t have to look things up!</p>
+
+
+        <h3>HOW OTHERS DO IT</h3>
+
+        <p>Looking beyond our beloved language, we find Python knowing a concept called named arguments. It allows you to declare a function providing default values for arguments, allowing your attributed names to be stated in the calling context:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="kd">function</code> <code class="nx">namesAreAwesome</code><span class="token punctuation">(</span><code class="nx">foo</code><span class="token operator">=</span><code class="mi">1</code><span class="token punctuation">,</span> <code class="nx">bar</code><span class="token operator">=</span><code class="mi">2</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span><code class="nx">foo</code><span class="token punctuation">,</span> <code class="nx">bar</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<code class="nx">namesAreAwesome</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+// prints: 1, 2
+</code>
+<code class="nx">namesAreAwesome</code><span class="token punctuation">(</span><code class="mi">3</code></span><span class="token punctuation">,</span> <code class="mi">4</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+// prints: 3, 4
+</code>
+<code class="nx">namesAreAwesome</code><span class="token punctuation">(</span><code class="nx">foo</code><span class="token operator">=</span><code class="mi">5</code><span class="token punctuation">,</span> <code class="nx">bar</code><span class="token operator">=</span><code class="mi">6</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+// prints: 5, 6
+</code>
+<code class="nx">namesAreAwesome</code><span class="token punctuation">(</span><code class="nx">bar</code><span class="token operator">=</span><code class="mi">6</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+// prints: 1, 6</code></code></pre>
+
+        <p>Given this scheme, initMouseEvent() could’ve looked like a self-explaining function call:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="nx">event</code><span class="token punctuation">.</span><code class="nx">initMouseEvent</code><span class="token punctuation">(</span>
+  <code class="nx">type</code><span class="token operator">=</span><code class="s1">"click"</code><span class="token punctuation">,</span>
+  <code class="nx">canBubble</code><span class="token operator">=</span><code class="kd">true</code><span class="token punctuation">,</span>
+  <code class="nx">cancelable</code><span class="token operator">=</span><code class="kd">true</code><span class="token punctuation">,</span>
+  <code class="nx">view</code><span class="token operator">=</span>window<span class="token punctuation">,</span>
+  <code class="nx">detail</code><span class="token operator">=</span><code class="mi">123</code><span class="token punctuation">,</span>
+  <code class="nx">screenX</code><span class="token operator">=</span><code class="mi">101</code><span class="token punctuation">,</span>
+  <code class="nx">screenY</code><span class="token operator">=</span><code class="mi">202</code><span class="token punctuation">,</span>
+  <code class="nx">clientX</code><span class="token operator">=</span><code class="mi">101</code><span class="token punctuation">,</span>
+  <code class="nx">clientY</code><span class="token operator">=</span><code class="mi">202</code><span class="token punctuation">,</span>
+  <code class="nx">ctrlKey</code><span class="token operator">=</span><code class="kd">true</code><span class="token punctuation">,</span>
+  <code class="nx">altKey</code><span class="token operator">=</span><code class="kd">false</code><span class="token punctuation">,</span>
+  <code class="nx">shiftKey</code><span class="token operator">=</span><code class="kd">false</code><span class="token punctuation">,</span>
+  <code class="nx">metaKey</code><span class="token operator">=</span><code class="kd">false</code><span class="token punctuation">,</span>
+  <code class="nx">button</code><span class="token operator">=</span><code class="mi">1</code><span class="token punctuation">,</span>
+  <code class="nx">relatedTarget</code><span class="token operator">=</span><code class="kd">null</code><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>In JavaScript this is not possible today. While “the next version of JavaScript” (frequently called ES.next, ES6, or Harmony) will have <a class="ulink" href="http://wiki.ecmascript.org/doku.php?id=harmony:parameter_default_values">default parameter values</a> and <a class="ulink" href="http://wiki.ecmascript.org/doku.php?id=harmony:rest_parameters">rest parameters</a>, there is still no sign of named parameters.</p>
+
+        <h3>ARGUMENT MAPS</h3>
+
+        <p>JavaScript not being Python (and ES.next being light years away), we’re left with fewer choices to overcome the obstacle of “argument forests”. jQuery (and pretty much every other decent API out there) chose to work with the concept of “option objects”. The signature of <a class="ulink" href="http://api.jquery.com/jquery.ajax/">jQuery.ajax()</a> provides a pretty good example. Instead of accepting numerous arguments, we only accept an object:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="kd">function</code> <code class="nx">nightmare</code><span class="token punctuation">(</span><code class="nx">accepts</code><span class="token punctuation">,</span> <code class="nx">async</code><span class="token punctuation">,</span> befo<code class="nx">reSend</code><span class="token punctuation">,</span> <code class="nx">cache</code><span class="token punctuation">,</span> <code class="nx">complete</code><span class="token punctuation">,</span> <code class="c1" spellcheck="true">/* and 28 more */</span><span class="token punctuation">)</span> <span class="token punctuation">{</code>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">accepts</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="s1">"text"</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // prepare for receiving plain text
+</code>  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<code class="kd">function</code> <code class="nx">dream</code><span class="token punctuation">(</span><code class="nx">options</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">options</code> <span class="token operator">=</span> <code class="nx">options</code> <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">options</code><span class="token punctuation">.</span><code class="nx">accepts</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="s1">"text"</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // prepare for receiving plain text
+</code>  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+        <p>Not only does this prevent insanely long function signatures, it also makes calling the function more descriptive:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="nx">nightmare</code><span class="token punctuation">(</span><code class="s1">"text"</code><span class="token punctuation">,</span> <code class="kd">true</code><span class="token punctuation">,</span> <code class="nx">undefined</code><span class="token punctuation">,</span> <code class="kd">false</code><span class="token punctuation">,</span> <code class="nx">undefined</code><span class="token punctuation">,</span> <code class="c1" spellcheck="true">/* and 28 more */</code><span class="token punctuation">)</code><span class="token punctuation">;</span>
+
+<code class="nx">dream</code><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <code class="nx">accepts</code><span class="token punctuation">:</span> <code class="s1">"text"</code><span class="token punctuation">,</span>
+  <code class="nx">async</code><span class="token punctuation">:</span> <code class="kd">true</code><span class="token punctuation">,</span>
+  <code class="nx">cache</code><span class="token punctuation">:</span> <code class="kd">false</code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>Also, we do not have to touch the function signature (adding a new argument) should we introduce a new feature in a later version.</p>
+
+        <h3>DEFAULT ARGUMENT VALUES</h3>
+
+        <p><a class="ulink" href="http://api.jquery.com/jQuery.extend/">jQuery.extend()</a>, <a class="ulink" href="http://underscorejs.org/#extend">_.extend()</a> and Protoype’s <a class="ulink" href="http://api.prototypejs.org/language/Object/extend/">Object.extend</a> are functions that let you merge objects, allowing you to throw your own preset options object into the mix:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="kd">var</code><code class="nx"> default_options</code> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <code class="nx">accepts</code><span class="token punctuation">:</span> <code class="s1">"text"</code><span class="token punctuation">,</span>
+  <code class="nx">async</code><span class="token punctuation">:</span> <code class="kd">true</code><span class="token punctuation">,</span>
+  <code class="nx">beforeSend</code><span class="token punctuation">:</span> <code class="kd">null</code><span class="token punctuation">,</span>
+  <code class="nx">cache</code><span class="token punctuation">:</span> <code class="kd">false</code><span class="token punctuation">,</span>
+  <code class="nx">complete</code><span class="token punctuation">:</span> <code class="kd">null</code><span class="token punctuation">,</span>
+ <code class="c1" spellcheck="true"> // …
+</code><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<code class="kd">function</code> <code class="nx">dream</code><span class="token punctuation">(</span><code class="nx">options</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">var</code><code class="nx"> o</code> <span class="token operator">=</span> <code class="nx">jQuery</code><span class="token punctuation">.</span><code class="nx">extend</code><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <code class="nx">default_options</code><span class="token punctuation">,</span> <code class="nx">options</code> <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span><code class="nx">o</code><span class="token punctuation">.</span><code class="nx">accepts</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<code class="c1" spellcheck="true">
+// make defaults public
+</code><code class="nx">dream</code><span class="token punctuation">.</span><code class="nx">default_options</code> <span class="token operator">=</span> <code class="nx">default_options</code><span class="token punctuation">;</span>
+
+<code class="nx">dream</code><span class="token punctuation">(</span></span><span class="token punctuation">{</span> <code class="nx">async</code><span class="token punctuation">:</span> <code class="kd">false</code> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+// prints: "text"</span></code></pre>
+
+        <p>You’re earning bonus points for making the default values publicly accessible. With this, anyone can change accepts to “json” in a central place, and thus avoid specifying that option over and over again. Note that the example will always append || {} to the initial read of the option object. This allows you to call the function without an argument given.</p>
+
+        <h3>GOOD INTENTIONS — A.K.A. “PITFALLS”</h3>
+
+        <p>Now that you know how to be truly flexible in accepting arguments, we need to come back to an old saying:</p>
+
+        <blockquote>
+            <p>“With great power comes great responsibility!”</p>
+            <p>— Voltaire</p>
+        </blockquote>
+
+        <p>As with most weakly-typed languages, JavaScript does automatic casting when it needs to. A simple example is testing the truthfulness:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><code class="kd">var</code><code class="nx"> foo</code> <span class="token operator">=</span> <code class="mi">1<code class="nx"><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> bar</code> <span class="token operator">=</span> <code class="kd">true</code><span class="token punctuation">;</span>
+
+<code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">foo</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <code class="c1" spellcheck="true"> // yep, this will execute
+</code><span class="token punctuation">}</span>
+
+<code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">bar</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <code class="c1" spellcheck="true"> // yep, this will execute
+</code><span class="token punctuation">}</span></code></pre>
+
+        <p>We’re quite used to this automatic casting. We’re so used to it, that we forget that although something is truthful, it may not be the boolean truth. Some APIs are so flexible they are <em>too smart</em> for their own good. Take a look at the signatures of <a class="ulink" href="http://api.jquery.com/toggle/">jQuery.toggle()</a>:</p>
+
+        <pre class=" language-javascript"><code class=" language-javascript"><span class="token punctuation">.</span><code class="nx">toggle</code><span class="token punctuation">(</span> <code class="c1" spellcheck="true">/* int */</code> <span class="token punctuation">[</span><code class="nx">duration</code><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <code class="c1" spellcheck="true">/* function */</code>  <code class="nx">callback</code><span class="token punctuation">]</span> <span class="token punctuation">)</span>
+<span class="token punctuation">.</span><code class="nx">toggle</code><span class="token punctuation">(</span> <code class="c1" spellcheck="true">/* int */</code> <span class="token punctuation">[</span><code class="nx">duration</code><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <code class="c1" spellcheck="true">/* string */</code>  <code class="nx">easing</code><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="c1" spellcheck="true">/* function */</span> <code class="nx">callback</code><span class="token punctuation">]</span> <span class="token punctuation">)</span>
+<span class="token punctuation">.</span><code class="nx">toggle</code><span class="token punctuation">(</span> <code class="c1" spellcheck="true">/* bool */</code> <code class="nx">showOrHide</code> <span class="token punctuation">)</span></code></pre>
+
+        <p>It will take us some time decrypting why these behave entirely different:</p>
+
+<pre class=" language-javascript"><code class=" language-javascript"><code class="kd">var</code><code class="nx"> foo</code> <span class="token operator">=</span> <code class="mi">1</code><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> bar</code> <span class="token operator">=</span> <code class="kd">true</code><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> $hello</code> <span class="token operator">=</span> <code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">".hello"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> $world</code> <span class="token operator">=</span> <code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">".world"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<code class="nx">$hello</code><span class="token punctuation">.</span><code class="nx">toggle</code><span class="token punctuation">(</span><code class="nx">foo</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="nx">$world</code><span class="token punctuation">.</span><code class="nx">toggle</code><span class="token punctuation">(</span><code class="nx">bar</code><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>We were expecting to use the showOrHide signature in both cases. But what really happened is $hello doing a toggle with a duration of one millisecond. This is not a bug in jQuery, this is a simple case of expectation not met. Even if you’re an experienced jQuery developer, you will trip over this from time to time.</p>
+        <p>You are free to add as much convenience / sugar as you like — but do not sacrifice a clean and (mostly) robust API along the way. If you find yourself providing something like this, think about providing a separate method like .toggleIf(bool) instead. Whatever choice you make, keep your API consistent!</p>
+    </div>
+
+    <div class="sub_section">
+        <h2>Extensibility</h2>
+
+        <div class="figure">
+            <div class="figure-contents">
+                <img title="Developing Possibilities" src="images/ch02_sec01_developing_possibilities.jpg" alt="Developing Possibilities" style="display: block; width: 100%;" />
+            </div>
+        </div>
+
+        <p>With option objects, we’ve covered the topic of extensible configuration. Let’s talk about allowing the API user to extend the core and API itself. This is an important topic, as it allows your code to focus on the important things, while having API users implement edge-cases themselves. Good APIs are concise APIs. Having a hand full of configuration options is fine, but having a couple dozen of them makes your API feel bloated and opaque. Focus on the primary-use cases, only do the things most of your API users will need. Everything else should be left up to them. To allow API users to extend your code to suit their needs, you have a couple of options…</p>
+
+        <h3>CALLBACKS</h3>
+
+        <p>Callbacks can be used to achieve extensibility by configuration. You can use callbacks to allow the API user to override certain parts of your code. When you feel specific tasks may be handled differently than your default code, refactor that code into a configurable callback function to allow an API user to easily override that:</p>
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> default_options</code> <span class="token operator">=</span> <span class="token punctuation">{</span>
+ <span class="c1" spellcheck="true"> // ...
+</span>  <code class="nx">position</code><span class="token punctuation">:</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">$elem</code><span class="token punctuation">,</span> <code class="nx">$parent</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="nx">$parent</code><span class="token punctuation">.</span><code class="nx">position</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<code class="kd">function</code> <code class="nx">Widget</code><span class="token punctuation">(</span><code class="nx">options</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">options</code> <span class="token operator">=</span> <code class="nx">jQuery</code><span class="token punctuation">.</span><code class="nx">extend</code><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <code class="nx">default_options</code><span class="token punctuation">,</span> <code class="nx">options</code> <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">create</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<code class="nx">Widget</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">create</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$container</code> <span class="token operator">=</span> <code class="nx">$</code><span class="token punctuation">(</span><code class="s1">"&lt;div&gt;&lt;/div&gt;"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">appendTo</code><span class="token punctuation">(</span><code class="nx">document</code><span class="token punctuation">.</span><code class="nx">body</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$thingie</code> <span class="token operator">=</span> <code class="nx">$</code><span class="token punctuation">(</span><code class="s1">"&lt;div&gt;&lt;/div&gt;"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">appendTo</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$container</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<code class="nx">Widget</code><span class="token punctuation">.</span><code class="nx">protoype</code><span class="token punctuation">.</span><code class="nx">show</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">options</code><span class="token punctuation">.</span><code class="nx">position</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$thingie</code><span class="token punctuation">,</span> <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$container</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$thingie</code><span class="token punctuation">.</span><code class="nx">show</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> widget </code><span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Widget</code><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <code class="nx">position</code><span class="token punctuation">:</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">$elem</code><span class="token punctuation">,</span> <code class="nx">$parent</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">var</code><code class="nx"> position</code> <span class="token operator">=</span> <code class="nx">$parent</code><span class="token punctuation">.</span><code class="nx">position</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <code class="c1" spellcheck="true"> // position $elem at the lower right corner of $parent
+</code>    <code class="nx">position</code><span class="token punctuation">.</span><code class="nx">left</code> <span class="token operator">+</span><span class="token operator">=</span> <code class="nx">$parent</code><span class="token punctuation">.</span><code class="nx">width</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="nx">position</code><span class="token punctuation">.</span><code class="nx">top</code> <span class="token operator">+</span><span class="token operator">=</span> <code class="nx">$parent</code><span class="token punctuation">.</span><code class="nx">height</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span></span><code class="nx">position</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="nx">
+widget</code><span class="token punctuation">.</span><code class="nx">show</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>Callbacks are also a generic way to allow API users to customize elements your code has created:</p>
+
+        <pre><code class=" language-javascript"><span class="c1" spellcheck="true">// default create callback doesn't do anything
+</span><code class="nx">default_options</code><span class="token punctuation">.</span><code class="nx">create</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">$thingie</code><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<code class="nx">Widget</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">create</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$container</code> <span class="token operator">=</span> $<span class="token punctuation">(</span><code class="s1">"&lt;div&gt;&lt;/div&gt;"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">appendTo</code><span class="token punctuation">(</span></span><code class="nx">document</code><span class="token punctuation">.</span><code class="nx">body</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$thingie</code> <span class="token operator">=</span> <code class="nx">$</code><span class="token punctuation">(</span><code class="s1">"&lt;div&gt;&lt;/div&gt;"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">appendTo</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$container</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="c1" spellcheck="true">  // execute create callback to allow decoration
+</code> <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">options</code><span class="token punctuation">.</span><code class="nx">create</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$thingie</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> widget</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Widget</code></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <code class="nx">create</code><span class="token punctuation">:</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">$elem</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">addClass</code><span class="token punctuation">(</span><code class="s1">'my-style-stuff'</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="nx">widget</code><span class="token punctuation">.</span><code class="nx">show</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>Whenever you accept callbacks, be sure to document their signature and provide examples to help API users customize your code. Make sure you’re consistent about the context (where <code>this</code> points to) in which callbacks are executed in, and the arguments they accept.</p>
+
+        <h3>EVENTS</h3>
+
+        <p>Events come naturally when working with the DOM. In larger application we use events in various forms (e.g. PubSub) to enable communication between modules. Events are particularly useful and feel most natural when dealing with UI widgets. Libraries like jQuery offer simple interfaces allowing you to easily conquer this domain.</p>
+
+        <p>Events interface best when there is something happening — hence the name. Showing and hiding a widget could depend on circumstances outside of your scope. Updating the widget when it’s shown is also a very common thing to do. Both can be achieved quite easily using jQuery’s event interface, which even allows for the use of delegated events:</p>
+
+        <pre><code class=" language-javascript">Widget<span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">show</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">var</code><code class="nx"> event </code><span class="token operator">=</span> <code class="nx">jQuery</code><span class="token punctuation">.</span><code class="nx">Event</code><span class="token punctuation">(</span><code class="s1">"widget:show"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$container</code><span class="token punctuation">.</span><code class="nx">trigger</code><span class="token punctuation">(</span><code class="nx">event</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">event</code><span class="token punctuation">.</span><code class="nx">isDefaultPrevented</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="c1" spellcheck="true"> // event handler prevents us from showing
+</span>    <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">options</code><span class="token punctuation">.</span><code class="kd">position</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$thingie</code><span class="token punctuation">,</span> <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$container</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">$thingie</code><span class="token punctuation">.</span><code class="nx">show</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+
+        <pre><code class=" language-javascript"><code class="c1" spellcheck="true">// listen for all widget:show events
+</code>$<span class="token punctuation">(</span><code class="nx">document</code><span class="token punctuation">.</span><code class="nx">body</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">on</code><span class="token punctuation">(</span></span><code class="s1">'widget:show'</code><span class="token punctuation">,</span> <code class="kd">function</code><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">Math</code><span class="token punctuation">.</span><code class="nx">random</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <code class="mi">0.5<code class="nx"><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="c1" spellcheck="true">  // prevent widget from showing
+</span>    <code class="nx">event</code><span class="token punctuation">.</span><code class="nx">preventDefault</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+<code class="c1" spellcheck="true">  // update widget's data
+</code>  $<span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="kd">data</code><span class="token punctuation">(</span><code class="s1">"last-show"</code><span class="token punctuation">,</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<code class="kd">var</span><code class="nx"> widget</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Widget</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="nx">widget</code><span class="token punctuation">.</span><code class="nx">show</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>You can freely choose event names. Avoid using <a class="ulink" href="https://developer.mozilla.org/en-US/docs/DOM/DOM_event_reference">native events</a> for proprietary things and consider namespacing your events. jQuery UI’s event names are comprised of the widget’s name and the event name <code>dialogshow</code>. I find that hard to read and often default to <code>dialog:show</code>, mainly because it is immediately clear that this is a custom event, rather than something some browser might have secretly implemented.</p>
+
+    </div>
+
+    <div class="sub_section">
+        <h2>Hooks</h2>
+
+        <p>Traditional getter and setter methods can especially benefit from hooks. Hooks usually differ from callbacks in their number and how they’re registered. Where callbacks are usually used on an instance level for a specific task, hooks are usually used on a global level to customize values or dispatch custom actions. To illustrate how hooks can be used, we’ll take a peek at <a class="ulink" href="http://api.jquery.com/jQuery.cssHooks/">jQuery’s cssHooks</a>:</p>
+
+        <pre><code class=" language-javascript"><code class="c1" spellcheck="true">// define a custom css hook
+</code><code class="nx">jQuery</code><span class="token punctuation">.</span><code class="nx">cssHooks</code><span class="token punctuation">.</span><code class="nx">custombox</code> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <code class="nx">get</code><span class="token punctuation">:</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">elem</code><span class="token punctuation">,</span> <code class="nx">computed</code><span class="token punctuation">,</span> <code class="nx">extra</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">return</code> <code class="nx">$</code><span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="nx">elem</code><span class="token punctuation">,</span> <code class="s1">'borderRadius'</code><span class="token punctuation">)</span> <span class="token operator">==</span> <code class="s1">"50%"</code>
+      <span class="token operator">?</span> <code class="s1">"circle"</code>
+      <span class="token punctuation">:</span> <code class="s1">"box"</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <code class="nx">set</code><span class="token punctuation">:</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">elem</code><span class="token punctuation">,</span> <code class="nx">value</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">elem</code><span class="token punctuation">.</span><code class="nx">style</code><span class="token punctuation">.</span><code class="nx">borderRadius</code> <span class="token operator">=</span> <code class="nx">value</code> <span class="token operator">==</span> <code class="s1">"circle"</code>
+      <span class="token operator">?</span> <code class="s1">"50%"</code>
+      <span class="token punctuation">:</span> <code class="s1">"0"</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+
+// have .css() use that hook
+</code><code class="nx">$</code><span class="token punctuation">(</span><code class="s1">"#some-selector"</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">css</code><span class="token punctuation">(</span><code class="s1">"custombox"</code><span class="token punctuation">,</span> <code class="s1">"circle"</code><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>By registering the hook <code>custombox</code> we’ve given jQuery’s <code>.css()</code> method the ability to handle a CSS property it previously couldn’t. In my article <a class="ulink" href="http://blog.rodneyrehm.de/archives/11-jQuery-Hooks.html">jQuery hooks</a>, I explain the other hooks that jQuery provides and how they can be used in the field. You can provide hooks much like you would handle callbacks:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">nameHooks</code> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <code class="s1">"yesterday"</code> <span class="token punctuation">:</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">var</code><code class="nx"> d</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="nx">d</code><span class="token punctuation">.</span><code class="nx">setTime</code><span class="token punctuation">(</span><code class="nx">d</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <code class="mi">86400000</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="nx">d</code><span class="token punctuation">.</span><code class="nx">setHours</code><span class="token punctuation">(</span><code class="mi">0</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="nx">d</code><span class="token punctuation">.</span><code class="nx">setMinutes</code><span class="token punctuation">(</span><code class="mi">0</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="nx">d</code><span class="token punctuation">.</span><code class="nx">setSeconds</code><span class="token punctuation">(</span><code class="mi">0</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="kd">return</code> <code class="nx">d</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">start</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">date</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="nx">undefined</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">return</code> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">.</span><code class="nx">startDate</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="kd">typeof</code> <code class="nx">date</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="s1">"string"</code> <span class="token operator">&amp;&amp;</span> <code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">nameHooks</code><span class="token punctuation">[</span><code class="nx">date</code><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">date</code> <span class="token operator">=</span> <code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">nameHooks</code><span class="token punctuation">[</span><code class="nx">date</code><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><code class="nx">date</code> <code class="kd">instanceof</code> <code class="nx">Date</code></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="nx">date</code> <span class="token operator">=</span> <code class="kd">new</code> <span <code class="nx">Date</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">startDate</code><span class="token punctuation">.</span><code class="nx">setTime</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> di</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">DateInterval</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="nx">di</code><span class="token punctuation">.</span><code class="nx">start</code><span class="token punctuation">(</span><code class="s1">"yesterday"</code><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        <p>In a way, hooks are a collection of callbacks designed to handle custom values within your own code. With hooks you can stay in control of almost everything, while still giving API users the option to customize.</p>
+    </div>
+
+    <div class="sub_section">
+        <h2>Generating Accessors</h2>
+
+
+        <div class="figure">
+            <div class="figure-contents">
+                <img title="Duplication" src="images/ch02_sec01_duplication.jpg" alt="Developing Possibilities" style="display: block; width: 100%;" />
+            </div>
+        </div>
+
+        <p>Any API is likely to have multiple accessor methods (getters, setters, executors) doing similar work. Coming back to our <code>DateInterval</code> example, we’re most likely providing <code>start()</code> and <code>end()</code> to allow manipulation of intervals. A simple solution could look like:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">start</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">date</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="nx">undefined</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">return</code> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">.</span><code class="nx">startDate</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">startDate</code><span class="token punctuation">.</span><code class="nx">setTime</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">end</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">date</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="nx">undefined</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">return</code> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">.</span><code class="nx">endDate</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <code class="kd">this</code><span class="token punctuation">.</span><code class="kd">endDate</code><span class="token punctuation">.</span><code class="nx">setTime</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <p>As you can see we have a lot of repeating code. A DRY (Don’t Repeat Yourself) solution might use this generator pattern:</p>
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> accessors</code> <span class="token operator">=</span> <span class="token punctuation">[</span><code class="s1">"start"</code><span class="token punctuation">,</span> <code class="s1">"end"</code><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<code class="kd">for</code> <span class="token punctuation">(</span><code class="kd">var</code><code class="nx"> i</code> <span class="token operator">=</span> <code class="mi">0</code><span class="token punctuation">,</span> <code class="nx">length</code> <span class="token operator">=</span> <code class="nx">accessors</code><span class="token punctuation">.</span><code class="nx">length</code><span class="token punctuation">;</span> <code class="nx">i</code> <span class="token operator">&lt;</span> <code class="nx">length</code><span class="token punctuation">;</span> <code class="nx">i</code><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">var</code><code class="nx"> key</code> <span class="token operator">=</span> <code class="nx">accessors</code><span class="token punctuation">[</span><code class="nx">i</code><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">[</span><code class="nx">key</code><span class="token punctuation">]</span> <span class="token operator">=</span> <code class="nx">generateAccessor</code><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<code class="kd">function</code> <code class="nx">generateAccessor</code><span class="token punctuation">(</span></span><code class="nx">key</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">var</code><code class="nx"> value</code> <span class="token operator">=</span> <code class="nx">key</code> <span class="token operator">+</span> <code class="s1">"Date"</code><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">date</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="nx">undefined</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <code class="kd">return</code> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">[</span><code class="nx">value</code><span class="token punctuation">]</span><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <code class="kd">this</code><span class="token punctuation">[</span><code class="nx">value</code><span class="token punctuation">]</span><span class="token punctuation">.</span><code class="nx">setTime</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">.</span><code class="nx">getTime</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+        <p>This approach allows you to generate multiple similar accessor methods, rather than defining every method separately. If your accessor methods require more data to setup than just a simple string, consider something along the lines of:</p>
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> accessors</code> <span class="token operator">=</span> <span class="token punctuation">{</span><code class="s1">"start"</code> <span class="token punctuation">:</span> <span class="token punctuation">{</span><code class="nx">color</code><span class="token punctuation">:</span> <code class="s1">"green"</code><span class="token punctuation">}</span><span class="token punctuation">,</span> <code class="s1">"end"</code> <span class="token punctuation">:</span> <span class="token punctuation">{</span><code class="nx">color</code><span class="token punctuation">:</span> <code class="s1">"red"</code><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<code class="kd">for</code> <span class="token punctuation">(</span><code class="kd">var</code><code class="nx"> key</code> <code class="kd">in</code> <code class="nx">accessors</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">[</span><code class="nx">key</code><span class="token punctuation">]</span> <span class="token operator">=</span> <code class="nx">generateAccessor</code><span class="token punctuation">(</span></span><code class="nx">key</code><span class="token punctuation">,</span> <code class="nx">accessors</code><span class="token punctuation">[</span><code class="nx">key</code><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<code class="kd">function</code> <code class="nx">generateAccessor</code><span class="token punctuation">(</span></span><code class="nx">key</code><span class="token punctuation">,</span> <code class="nx">accessor</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">var</code><code class="nx"> value</code> <span class="token operator">=</span> <code class="nx">key</code> <span class="token operator">+</span> <code class="s1">"Date"</code><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">date</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // setting something up
+</code>   <code class="c1" spellcheck="true"> // using `key` and `accessor.color`
+</code>  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+        <p>In the chapter <em>Handling Arguments</em> we talked about a method pattern to allow your getters and setters to accept various useful types like maps and arrays. The method pattern itself is a pretty generic thing and could easily be turned into a generator:</p>
+
+        <pre><code class=" language-javascript"><code class="kd">function</code> <code class="nx">wrapFlexibleAccessor</code><span class="token punctuation">(</span></span><code class="nx">get</code><span class="token punctuation">,</span> <code class="nx">set</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">return</code> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">name</code><span class="token punctuation">,</span> <code class="nx">value</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">var</code><code class="nx"> map</code><span class="token punctuation">;</span>
+
+    <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">jQuery</code><span class="token punctuation">.</span><code class="nx">isPlainObject</code><span class="token punctuation">(</span><code class="nx">name</code><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <code class="c1" spellcheck="true"> // setting a map
+</code>      <code class="nx">map</code> <span class="token operator">=</span> <code class="nx">name</code><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <code class="kd">else</code> <code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">value</code> <span class="token operator">!</span><span class="token operator">==</span> <code class="nx">undefined</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <code class="c1" spellcheck="true"> // setting a value (on possibly multiple names), convert to map
+</code>      <code class="nx">keys</code> <span class="token operator">=</span> <code class="nx">name</code><span class="token punctuation">.</span><code class="nx">split</code><span class="token punctuation">(</span></span><code class="s1">" "</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <code class="nx">map</code> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <code class="kd">for</code> <span class="token punctuation">(</span><code class="kd">var</code><code class="nx"> i</code> <span class="token operator">=</span> <code class="mi">0</code><span class="token punctuation">,</span> <code class="nx">length</code> <span class="token operator">=</span> <code class="nx">keys</code><span class="token punctuation">.</span><code class="nx">length</code><span class="token punctuation">;</span> <code class="nx">i</code> <span class="token operator">&lt;</span> <code class="nx">length</code><span class="token punctuation">;</span> <code class="nx">i</code><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <code class="nx">map</code><span class="token punctuation">[</span><code class="nx">keys</code><span class="token punctuation">[</span><code class="nx">i</code><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <code class="nx">value</code><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <code class="kd">else</code> <span class="token punctuation">{</span>
+      <code class="kd">return</code> <code class="nx">get</code><span class="token punctuation">.</span><code class="nx">call</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">,</span> <code class="nx">name</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <code class="kd">for</code> <span class="token punctuation">(</span><code class="kd">var</code><code class="nx"> key</code> <code class="kd">in</code> <code class="nx">map</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <code class="nx">set</code><span class="token punctuation">.</span><code class="nx">call</code><span class="token punctuation">(</span><code class="kd">this</code><span class="token punctuation">,</span> <code class="nx">name</code><span class="token punctuation">,</span> <code class="nx">map</code><span class="token punctuation">[</span><code class="nx">key</code><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">values</code> <span class="token operator">=</span> <code class="nx">wrapFlexibleAccessor</code><span class="token punctuation">(</span>
+  <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">name</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">return</code> <code class="nx">name</code> <span class="token operator">!</span><span class="token operator">==</span> <code class="nx">undefined</code>
+      <span class="token operator">?</span> <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">values</code><span class="token punctuation">[</span><code class="nx">name</code><span class="token punctuation">]</span>
+      <span class="token punctuation">:</span> <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">values</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">name</code><span class="token punctuation">,</span> <code class="nx">value</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">values</code><span class="token punctuation">[</span><code class="nx">name</code><span class="token punctuation">]</span> <span class="token operator">=</span> <code class="nx">value</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>Digging into the art of writing DRY code is well beyond this article. <a class="ulink" href="https://twitter.com/rmurphey">Rebecca Murphey</a> wrote <a class="ulink" href="http://rmurphey.com/blog/2010/07/12/patterns-for-dry-er-javascript/">Patterns for DRY-er JavaScript</a> and <a class="ulink" href="https://twitter.com/mathias">Mathias Bynens’</a> slide deck on <a class="ulink" href="http://slideshare.net/mathiasbynens/how-dry-impacts-javascript-performance-faster-javascript-execution-for-the-lazy-developer">how DRY impacts JavaScript performance</a> are a good start, if you’re new to the topic.</p>
+
+    </div>
+    <div class="sub_section">
+        <h2>The Reference Horror</h2>
+
+        <p>Unlike other languages, JavaScript doesn’t know the concepts of pass by reference nor pass by value. Passing data by value is a safe thing. It makes sure data passed to your API and data returned from your API may be modified outside of your API without altering the state within. Passing data by reference is often used to keep memory overhead low, values passed by reference can be changed anywhere outside your API and affect state within.</p>
+        <p>In JavaScript there is no way to tell if arguments should be passed by reference or value. Primitives (strings, numbers, booleans) are treated as pass by value, while objects (any object, including Array, Date) are handled in a way that’s comparable to by reference. If this is the first you’re hearing about this topic, let the following example enlighten you:</p>
+
+        <pre><code class=" language-javascript"><span class="c1" spellcheck="true">// by value
+</span><code class="kd">function</code> <code class="nx">addOne</code><span class="token punctuation">(</span><code class="nx">num</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">num</code> <span class="token operator">=</span> <code class="nx">num</code> <span class="token operator">+</span> <code class="mi">1</code><code class="c1" spellcheck="true">; // yes, num++; does the same
+</code>  <code class="kd">return</code> <code class="nx">num</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<code class="kd">var</code><code class="nx"> x </code><span class="token operator">=</span> <code class="mi">0</code><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> y </code><span class="token operator">=</span> <code class="nx">addOne</code><span class="token punctuation">(</span><code class="nx">x</code><span class="token punctuation">)</span><code class="c1" spellcheck="true">;
+// x === 0 &lt;--
+</code><code class="c1" spellcheck="true">// y === 1
+</code><code class="c1" spellcheck="true">
+// by reference
+</code><code class="kd">function</code> <code class="nx">addOne</code><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">obj</code><span class="token punctuation">.</span><code class="nx">num</code> <span class="token operator">=</span> <code class="nx">obj</code><span class="token punctuation">.</span><code class="nx">num</code> <span class="token operator">+</span> <code class="mi">1</code><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="nx">obj</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<code class="kd">var</code><code class="nx"> ox</code> <span class="token operator">=</span> <span class="token punctuation">{</span><code class="nx">num</code> <span class="token punctuation">:</span> <code class="mi">0</code><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> oy </code><span class="token operator">=</span> <code class="nx">addOne</code><span class="token punctuation">(</span><code class="nx">ox</code><span class="token punctuation">)</span><code class="c1" spellcheck="true">;
+// ox.num === 1 &lt;--
+</code><code class="c1" spellcheck="true">// oy.num === 1</span></code></pre>
+
+        <p>The <em>by reference</em> handling of objects can come back and bite you if you’re not careful. Going back to the <code>DateInterval</code> example, check out this bugger:</p>
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> startDate</code> <span class="token operator">=</span> <code class="kd">new</code> <span class="token class-name">Date</span><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span> <code class="mi">0</code><span class="token punctuation">,</span> <code class="mi">1</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="kd">var</code><code class="nx"> endDate</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span> <code class="mi">11</code><span class="token punctuation">,</span> <code class="mi">31</code><span class="token punctuation">)</span>
+<code class="kd">var</code><code class="nx"> interval</code> <span class="token operator">=</span> <code class="kd">new</code> <code class="nx">DateInterval</code><span class="token punctuation">(</span><code class="nx">startDate</code><span class="token punctuation">,</span> <code class="nx">endDate</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="nx">endDate</code><span class="token punctuation">.</span><code class="nx">setMonth</code><span class="token punctuation">(</span><code class="mi">0</code><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true"> // set to january
+</code><code class="kd">var</code> <code class="nx">days</code> <span class="token operator">=</span> <code class="nx">interval</code><span class="token punctuation">.</span><code class="nx">days</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true"> // got 31 but expected 365 - ouch!</code></code></pre>
+
+        <p>Unless the constructor of DateInterval <em>made a copy</em> (<code>clone</code> is the technical term for a copy) of the values it received, any changes to the original objects will reflect on the internals of DateInterval. This is <em>usually</em> not what we want or expect.</p>
+
+        <p>Note that the same is true for values returned from your API. If you simply return an internal object, any changes made to it outside of your API will be reflected on your internal data. This is most certainly not what you want. <a class="ulink" href="http://api.jquery.com/jQuery.extend/">jQuery.extend()</a>, <a class="ulink" href="http://underscorejs.org/#extend">_.extend()</a> and Protoype’s <a class="ulink" href="http://api.prototypejs.org/language/Object/extend/">Object.extend</a> allow you to easily escape the reference horror.</p>
+
+        <p>If this summary did not suffice, read the excellent chapter <a class="ulink" href="http://docstore.mik.ua/orelly/webprog/jscript/ch11_02.htm">By Value Versus by Reference</a> from O’Reilly’s <a class="ulink" href="http://docstore.mik.ua/orelly/webprog/jscript/index.htm">JavaScript – The Definitive Guide</a>.</p>
+
+    </div>
+    <div class="sub_section">
+        <h2>The Continuation Problem</h2>
+
+        <p>In a fluent interface, all methods of a chain are executed, regardless of the state that the base object is in. Consider calling a few methods on a jQuery instance that contain no DOM elements:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">'.wont-find-anything'</code><span class="token punctuation">)</span>
+ <code class="c1" spellcheck="true"> // executed although there is nothing to execute against
+</code>  <span class="token punctuation">.</span><code class="nx">somePlugin</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">someOtherPlugin</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>In non-fluent code we could have prevented those functions from being executed:</p>
+
+        <pre><code class=" language-javascript"><code class="kd">var</code><code class="nx"> $elem</code> <span class="token operator">=</span> <code class="nx">jQuery</code><span class="token punctuation">(</span><code class="s1">'.wont-find-anything'</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">length</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">$elem</code><span class="token punctuation">.</span><code class="nx">somePlugin</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">someOtherPlugin</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+        <p>Whenever we chain methods, we lose the ability to prevent certain things from happening — we can’t escape from the chain. As long as the API developer knows that objects can have a state where methods don’t actually do anything but <code>return this;</code>, everything is fine. Depending on what your methods do internally, it may help to prepend a trivial <code>is-empty</code> detection:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">jQuery</code><span class="token punctuation">.</span><code class="nx">fn</code><span class="token punctuation">.</span><code class="nx">somePlugin</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">if</code> <span class="token punctuation">(</span><span class="token operator">!</span><code class="kd">this</code><span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // "abort" since we've got nothing to work with
+</code>    <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+ <code class="c1" spellcheck="true"> // do some computational heavy setup tasks
+</code>  <code class="kd">for</code> <span class="token punctuation">(</span><code class="kd">var</code><code class="nx"> i</code> <span class="token operator">=</span> <code class="mi">10000</code><span class="token punctuation">;</span> i <span class="token operator">&gt;</span> <code class="mi">0</code><span class="token punctuation">;</span> <code class="nx">i</code><span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // I'm just wasting your precious CPU!
+</code>  <code class="c1" spellcheck="true"> // If you call me often enough, I'll turn
+</code>   <code class="c1" spellcheck="true"> // your laptop into a rock-melting jet engine
+</code>  <span class="token punctuation">}</span>
+
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">.</span><code class="nx">each</code><span class="token punctuation">(</span><code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // do the actual job
+</code>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+
+    <div class="sub_section">
+        <h2>Handling Errors</h2>
+
+        <div class="figure">
+            <div class="figure-contents">
+                <img title="Fail Fast" src="images/ch02_sec01_fail_faster.jpg" alt="Fail Faster" style="display: block; width: 100%;" />
+            </div>
+        </div>
+
+        <p>I was lying when I said we couldn’t escape from the chain — there is an <code>Exception</code> to the rule (pardon the pun ☺).</p>
+        <p>We can always eject by throwing an Error (Exception). Throwing an Error is considered a deliberate abortion of the current flow, most likely because you came into a state that you couldn’t recover from. But beware — not all Errors are helping the debugging developer:</p>
+
+        <pre><code class=" language-javascript"><code class="c1" spellcheck="true">// jQuery accepts this
+</code>$<span class="token punctuation">(</span><code class="nx">document</code><span class="token punctuation">.</span><code class="nx">body</code><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">on<span class="token punctuation">(</span></span><code class="s1">'click'</code><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+
+// on click the console screams
+</code><code class="c1" spellcheck="true">//   TypeError: ((p.event.special[l.origType] || {}).handle || l.handler).apply is not a function
+</code><code class="c1" spellcheck="true">//   in jQuery.min.js on Line 3</code></code></pre>
+
+        <p>Errors like these are a major pain to debug. Don’t waste other people’s time. Inform an API user if he did something stupid:
+        </p>
+
+        <pre><code class=" language-javascript"><code class="kd">if</code> <span class="token punctuation">(</span><code class="nx">Object</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">toString</code><span class="token punctuation">.</span><code class="nx"><code class="nx">call</code><span class="token punctuation">(</span></span><code class="nx">callback</code><span class="token punctuation">)</span> <span class="token operator">!</span><span class="token operator">==</span> <code class="s1">'[object Function]'</code><span class="token punctuation">)</span> <span class="token punctuation">{</span><code class="c1" spellcheck="true"> // see note
+</code>  <code class="nx">throw</code> <code class="kd">new</code> <code class="nx">TypeError</code><span class="token punctuation">(</span><code class="s1">"callback is not a function!"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+        <p>Note: <code>typeof callback === "function"</code> should not be used, as older browsers may report objects to be a <code>function</code>, which they are not. In Chrome (up to version 12) <code>RegExp</code> is such a case. For convenience, use <a class="ulink" href="http://api.jquery.com/jQuery.isfunction/">jQuery.isFunction()</a> or <a class="ulink" href="http://underscorejs.org/#isFunction">_.isFunction()</a>.</p>
+
+        <p>Most libraries that I have come across, regardless of language (within the weak-typing domain) don’t care about rigorous input validation. To be honest, my own code only validates where I anticipate developers stumbling. Nobody really does it, but all of us should. Programmers are a lazy bunch — we don’t write code just for the sake of writing code or for some cause we don’t truly believe in. The developers of Perl6 have recognized this being a problem and decided to incorporate something called <em>Parameter Constraints</em>. In JavaScript, their approach might look something like this:</p>
+
+        <pre><code class=" language-javascript"><code class="kd">function</code> <code class="nx">validateAllTheThings<span class="token punctuation">(</span></span>a<span class="token punctuation">,</span> <code class="nx">b</code> <span class="token punctuation">{</span><code class="nx">where</code> <code class="kd">typeof</code> <code class="nx">b</code> <span class="token operator">==</span><span class="token operator">=</span> <code class="s1">"numeric"</code> <code class="nx">and b</code> <span class="token operator">&lt;</span> <code class="mi">10</code><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <code class="c1" spellcheck="true"> // Interpreter should throw an Error if b is
+</code> <code class="c1" spellcheck="true"> // not a number or greater than 9
+</code><span class="token punctuation">}</span></code></pre>
+
+        <p>While the syntax is as ugly as it gets, the idea is to make validation of input a top-level citizen of the language. JavaScript is nowhere near being something like that. That’s fine — I couldn’t see myself cramming these constraints into the function signature anyways. It’s admitting the problem (of weakly-typed languages) that is the interesting part of this story.</p>
+
+        <p>JavaScript is neither weak nor inferior, we just have to work a bit harder to make our stuff really robust. Making code robust does not mean accepting any data, waving your wand and getting some result. Being robust means not accepting rubbish and telling the developer about it.</p>
+
+        <p>Think of input validation this way: A couple of lines of code behind your API can make sure that no developer has to spend hours chasing down weird bugs because they accidentally gave your code a string instead of a number. This is the one time you can tell people <em>they’re wrong</em> and they’ll actually love you for doing so.</p>
+
+    </div>
+
+    <div class="sub_section">
+        <h2>Going Asynchronous</h2>
+        <p>So far we’ve only looked at synchronous APIs. Asynchronous methods usually accept a callback function to inform the outside world, once a certain task is finished. This doesn’t fit too nicely into our fluent interface scheme, though:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">Api</code><span class="token punctuation">.</span><code class="nx">protoype</code><span class="token punctuation">.</span><code class="nx">async</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><code class="nx">callback</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span><code class="s1">"async()"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <code class="c1" spellcheck="true"> // do something asynchronous
+</code>  <code class="nx">window</code><span class="token punctuation">.</span><code class="nx">setTimeout</code><span class="token punctuation">(</span><code class="nx">callback</code><span class="token punctuation">,</span> <code class="mi">500</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<code class="nx">Api</code><span class="token punctuation">.</span><code class="nx">protoype</code><span class="token punctuation">.</span><code class="nx">method</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span><code class="s1">"method()"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="kd">return</code> <code class="kd">this</code><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+
+        <pre><code class=" language-javascript"><code class="c1" spellcheck="true">// running things
+</code><code class="nx">api</code><span class="token punctuation">.</span><code class="nx">async</code><span class="token punctuation">(</span></span><code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span></span><code class="s1">'callback()'</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">method</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true">
+
+// prints: async(), method(), callback()</code></code></pre>
+
+        <p>This example illustrates how the asynchronous method <code>async()</code> begins its work but immediately returns, leading to <code>method()</code> being invoked before the actual task of <code>async()</code> completed. There are times when we want this to happen, but generally we expect <code>method()</code> to execute <em>after</em> <code>async()</code> has completed its job.</p>
+        <h3>DEFERREDS (PROMISES)</h3>
+
+        <p>To some extent we can counter the mess that is a mix of asynchronous and synchronous API calls with <a class="ulink" href="http://wiki.commonjs.org/wiki/Promises/A">Promises</a>. jQuery knows them as <a class="ulink" href="http://api.jquery.com/category/deferred-object/">Deferreds</a>. A Deferred is returned in place of your regular <code>this</code>, which forces you to eject from method chaining. This may seem odd at first, but it effectively prevents you from continuing synchronously after invoking an asynchronous method:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">Api</code><span class="token punctuation">.</span><code class="nx">protoype</code><span class="token punctuation">.</span><code class="nx">async</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="kd">var</code><code class="nx"> deferred</code> <span class="token operator">=</span> <code class="nx">$</code><span class="token punctuation">.</span><code class="nx">Deferred</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span><code class="s1">"async()"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <code class="nx">window</code><span class="token punctuation">.</span><code class="nx">setTimeout</code><span class="token punctuation">(</span><code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <code class="c1" spellcheck="true"> // do something asynchronous
+</code>    <code class="nx">deferred</code><span class="token punctuation">.</span><code class="nx">resolve</code><span class="token punctuation">(</span></span><code class="s1">"some-data"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <code class="mi">500</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <code class="kd">return</code> <code class="nx">deferred</code><span class="token punctuation">.</span><code class="nx">promise</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <pre><code class=" language-javascript"><code class="nx">api</code><span class="token punctuation">.</span><code class="nx">async</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><code class="nx">done</code><span class="token punctuation">(</span></span><code class="kd">function</code><span class="token punctuation">(</span><code class="nx">data</code><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">log</code><span class="token punctuation">(</span><code class="s1">"callback()"</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  api<span class="token punctuation">.</span><code class="nx">method</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<code class="c1" spellcheck="true">
+// prints: async(), callback(), method()</code></code></pre>
+
+        <p>The Deferred object let’s you register handlers using <code>.done()</code>, <code>.fail()</code>, <code>.always()</code> to be called when the asynchronous task has completed, failed, or regardless of its state. See <a class="ulink" href="http://sitr.us/2012/07/31/promise-pipelines-in-javascript.html">Promise Pipelines In JavaScript</a> for a more detailed introduction to Deferreds.</p>
+
+    </div>
+
+    <div class="sub_section">
+        <h2>Debugging Fluent Interfaces</h2>
+
+        <p>While <em>Fluent Interfaces</em> are much nicer to develop with, they do come with certain limitations regarding de-buggability.</p>
+
+        <p>As with any code, <em>Test Driven Development</em> (TDD) is an easy way to reduce debugging needs. Having written URI.js in TDD, I have not come across major pains regarding debugging my code. However, TDD only <em>reduces</em> the need for debugging — it doesn’t replace it entirely.</p>
+
+        <p>Some voices on the internet suggest writing out each component of a chain in their separate lines to get proper line-numbers for errors in a stack trace:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">foobar</code><span class="token punctuation">.</span><code class="nx">bar</code><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">baz</code><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">bam</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">someError</code><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+        <p>This technique does have its benefits (though better debugging is not a solid part of it). Code that is written like the above example is even simpler to read. Line-based differentials (used in version control systems like SVN, GIT) might see a slight win as well. Debugging-wise, it is only Chrome (at the moment), that will show <code>someError()</code> to be on line four, while other browsers treat it as line one.</p>
+
+        <p>Adding a simple method to logging your objects can already help a lot — although that is considered “manual debugging” and may be frowned upon by people used to “real” debuggers:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">DateInterval</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">explain</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <code class="c1" spellcheck="true"> // log the current state to the console
+</code>  <code class="nx">console</code><span class="token punctuation">.</span><code class="nx">dir</code><span class="token punctuation">(</span></span><code class="kd">this</code><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<code class="kd">var</code><code class="nx"> days</code> <span class="token operator">=</span> <span class="token punctuation">(</span><code class="kd">new</code> <code class="nx">Date</code><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span> <code class="mi">0</code><span class="token punctuation">,</span> <code class="mi">1</code><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><code class="nx">until</code><span class="token punctuation">(</span><code class="mi">2012</code><span class="token punctuation">,</span> <code class="mi">11</code><span class="token punctuation">,</span> <code class="mi">31</code><span class="token punctuation">)</span><code class="c1" spellcheck="true"> // returns DateInterval instance
+</code>  <span class="token punctuation">.</span><code class="nx">explain</code><span class="token punctuation">(</span><span class="token punctuation">)</span><code class="c1" spellcheck="true"> // write some infos to the console
+</code>  <span class="token punctuation">.</span><code class="nx">days</code><span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><code class="c1" spellcheck="true"> // 365</scode></code></pre>
+
+        <h3>FUNCTION NAMES</h3>
+
+        <p>Throughout this article you’ve seen a lot of demo code in the style of <code>Foo.prototype.something = function(){}</code>. This style was chosen to keep examples brief. When writing APIs you might want to consider either of the following approaches, to have your console properly identify function names:</p>
+
+        <pre><code class=" language-javascript"><code class="nx">Foo</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">something</code> <span class="token operator">=</span> <code class="kd">function</code> <code class="nx">something</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <code class="c1" spellcheck="true"> // yadda yadda
+</code><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+        <pre><code class=" language-javascript"><code class="nx">Foo</code><span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">something</code> <span class="token operator">=</span> <code class="kd">function</code><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <code class="c1" spellcheck="true"> // yadda yadda
+</code><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Foo<span class="token punctuation">.</span><code class="nx">prototype</code><span class="token punctuation">.</span><code class="nx">something</code><span class="token punctuation">.</span><code class="nx">displayName</code> <span class="token operator">=</span> <code class="s1">"Foo.something"</code><span class="token punctuation">;</span></code></pre>
+
+        <p>The second option <code>displayName</code> was introduced by WebKit and later adopted by Firebug / Firefox. <code>displayName</code> is a bit more code to write out, but allows arbitrary names, including a namespace or associated object. Either of these approaches can help with anonymous functions quite a bit.</p>
+        <p>Read more on this topic in <a class="ulink" href="http://kangax.github.com/nfe/">Named function expressions demystified</a> by <a class="ulink" href="https://twitter.com/kangax">kangax</a>.</p>
+
+    </div>
+    <div class="sub_section">
+        <h2>Documenting APIs</h2>
+
+        <p>One of the hardest tasks of software development is documenting things. Practically everyone hates doing it, yet everybody laments about bad or missing documentation of the tools they need to use. There is a wide range of tools that supposedly help and automate documenting your code:</p>
+
+        <ul>
+            <li><a class="ulink" href="http://yui.github.com/yuidoc/">YUIDoc</a> (requires Node.js, npm)</li>
+            <li><a class="ulink" href="https://github.com/p120ph37/node-jsdoc-toolkit">JsDoc Toolkit</a> (requires Node.js, npm)</li>
+            <li><a class="ulink" href="https://github.com/cbou/markdox">Markdox</a> (requires Node.js, npm)</li>
+            <li><a class="ulink" href="https://github.com/visionmedia/dox">Dox</a> (requires Node.js, npm)</li>
+            <li><a class="ulink" href="http://jashkenas.github.com/docco/">Docco</a> (requires Node.js, Python, CoffeeScript)</li>
+            <li><a class="ulink" href="https://github.com/senchalabs/jsduck">JSDuck</a> (reqires Ruby, gem)</li>
+            <li><a class="ulink" href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a>(requires Java)</li>
+        </ul>
+
+        <p>At one point or another all of these tool won’t fail to disappoint. JavaScript is a very dynamic language and thus particularly diverse in expression. This makes a lot of things extremely difficult for these tools. The following list features a couple of reasons why I’ve decided to prepare documentation in vanilla HTML, markdown or <a class="ulink" href="http://en.wikipedia.org/wiki/DocBook">DocBoock</a> (if the project is large enough). jQuery, for example, has the same issues and doesn’t document their APIs within their code at all.</p>
+
+        <ol>
+            <li>Function signatures aren’t the only documentation you need, but most tools focus only on them.</li>
+            <li>Example code goes a long way in explaining how something works. Regular API docs usually fail to illustrate that with a fair trade-off.</li>
+            <li>API docs usually fail horribly at explaining things <em>behind the scenes</em> (flow, events, etc).</li>
+            <li>Documenting methods with multiple signatures is usually a real pain.</li>
+            <li>Documenting methods using option objects is often not a trivial task.</li>
+            <li>Generated Methods aren’t easily documented, neither are default callbacks.</li>
+        </ol>
+
+        <p>If you can’t (or don’t) want to adjust your code to fit one of the listed documentation tools, projects like <a class="ulink" href="http://gregfranko.com/Document-Bootstrap/">Document-Bootstrap</a> might save you some time setting up your home brew documentation.</p>
+
+        <p>Make sure your Documentation is more than just some generated API doc. Your users will appreciate any examples you provide. Tell them how your software flows and which events are involved when doing something. Draw them a map, if it helps their understanding of whatever it is your software is doing. And above all: keep your docs in sync with your code!</p>
+
+        <h3>SELF-EXPLANATORY CODE</h3>
+
+        <P>Providing good documentation will not keep developers from actually reading your code — your code is a piece of documentation itself. Whenever the documentation doesn’t suffice (and every documentation has its limits), developers fall back to reading the actual source to get their questions answered. Actually, you are one of them as well. You are most likely reading your own code again and again, with weeks, months or even years in between.</P>
+
+        <p>You should be writing code that explains itself. Most of the time this is a non-issue, as it only involves you thinking harder about naming things (functions, variables, etc) and sticking to a core concept. If you find yourself writing code comments to document how your code does something, you’re most likely wasting time — your time, and the reader’s as well. Comment on your code to explain <em>why</em> you solved the problem this particular way, rather than explaining <em>how</em> you solved the problem. The <em>how</em> should become apparent through your code, so don’t repeat yourself. Note that using comments to mark sections within your code or to explain general concepts is totally acceptable.</p>
+    </div>
+
+    <div class="sub_section">
+        <h2>Conclusion</h2>
+
+        <ul>
+            <li>An API is a contract between you (the provider) and the user (the consumer). Don’t just change things between versions.</li>
+            <li>You should invest as much time into the question <em>How will people use my software?</em> as you have put into <em>How does my software work internally?</em></li>
+            <li>With a couple of simple tricks you can greatly reduce the developer’s efforts (in terms of the lines of code).</li>
+            <li>Handle invalid input as early as possible — throw Errors.</li>
+            <li>Good APIs are flexible, better APIs don’t let you make mistakes.</li>
+        </ul>
+
+        <p>Continue with <a class="ulink" href="http://vimeo.com/35689836">Reusable Code for good or for awesome</a> (<a class="ulink" href="http://www.slideshare.net/jaffathecake/reusable-code-for-good-or-for-awesome">slides</a>), a Talk by <a class="ulink" href="https://twitter.com/jaffathecake">Jake Archibald</a> on designing APIs. Back in 2007 Joshua Bloch gave the presentation <a class="ulink" href="http://www.youtube.com/watch?v=heh4OeB9A-c">How to Design A Good API and Why it Matters</a> at Google Tech Talks. While his talk did not focus on JavaScript, the basic principles that he explained still apply.</p>
+
+        <p>Now that you’re up to speed on designing APIs, have a look at <a class="ulink" href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/">Essential JS Design Patterns</a> by <a class="ulink" href="https://twitter.com/addyosmani">Addy Osmani</a> to learn more about how to structure your internal code.</p>
+
+        <p><em>Thanks go out to <a class="ulink" href="https://twitter.com/bassistance">@bassistance</a>, <a class="ulink" href="https://twitter.com/addyosmani">@addyosmani</a> and <a class="ulink" href="https://twitter.com/hellokahlil">@hellokahlil</a> for taking the time to proof this article.</em></p>
+    </div>
+
+</body>
+
+</html>

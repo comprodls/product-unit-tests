@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>WebKit for Developers</title>
+    <link rel="stylesheet" type="text/css" href="css/core.css" />
+</head>
+
+<body>
+    <div class="chaptertitle">
+        <h2 class="title">WebKit for Developers</h2>
+    </div>
+
+    <p>For many of us developers, <strong>WebKit is a black box</strong>. We throw HTML, CSS, JS and a bunch of assets at it, and WebKit, somehow.. magically, gives us a webpage that looks and works well. But in fact, <a class="ulink" href="http://www.youtube.com/watch?v=kiPe7DPmEgE">as my colleague Ilya Grigorik puts it</a>…</p>
+
+    <blockquote>
+        <p>WebKit <strong>isn’t</strong> a black box. It’s a white box. And not just that, but an <strong>open</strong>, white box.</p>
+    </blockquote>
+
+    <div class="figure">
+        <div class="figure-contents">
+            <img src="images/ch07_sec03_webkit_box.png" style="display: block; width: 100%;" />
+        </div>
+    </div>
+
+    <p>So let’s take a moment to understand some things:</p>
+
+    <p>What is WebKit?</p>
+    <p>What isn’t WebKit?</p>
+    <p>How is WebKit used by WebKit-based browsers?</p>
+    <p>Why are all WebKits not the same?</p>
+
+    <p>Now, especially with the news that <a class="ulink" href="http://my.opera.com/ODIN/blog/300-million-users-and-move-to-webkit">Opera has moved to WebKit</a>, we have a lot of WebKit browsers out there, but its pretty hard to know what they share and where they part ways. Below we’ll hopefully shine some light on this. As a result you’ll be able to diagnose browser differences better, report bugs at the right tracker, and understand how to develop against specific browsers more effectively.</p>
+
+    <h3>Standard Web Browser Components</h3>
+
+    <p>Let’s lay out a few components of the modern day web browser:</p>
+
+    <ul>
+        <li>Parsing (HTML, XML, CSS, JavaScript)</li>
+        <li>Layout</li>
+        <li>Text and graphics rendering</li>
+        <li>Image decoding</li>
+        <li>GPU interaction</li>
+        <li>Network access</li>
+        <li>Hardware acceleration</li>
+    </ul>
+
+    <p>Which of those are shared in WebKit-based browsers? <strong>Pretty much only the first two.</strong></p>
+
+    <p>The others are handled by individual WebKit ports. Let’s review what that means…</p>
+
+
+    <h3>The WebKit Ports</h3>
+
+    <p>There are different “ports” of WebKit, but allow me to let Ariya Hidayat, WebKit hacker and eng director at Sencha<a class="ulink" href="http://ariya.ofilabs.com/2011/06/your-webkit-port-is-special-just-like-every-other-port.html">to explain</a>:</p>
+
+    <blockquote>
+        <p>What is the popular reference to WebKit is usually Apple’s own flavor of WebKit which runs on Mac OS X (<a class="ulink" href="http://lists.kde.org/?l=kfm-devel&amp;m=104197092318639&amp;w=2">the first and the original</a> WebKit library). As you can guess, the various interfaces are implemented using different native libraries on Mac OS X, mostly centered around <a class="ulink" href="http://developer.apple.com/corefoundation/">CoreFoundation</a>. For example, if you specify a flat colored button with specific border radius, well WebKit knows where and how to draw that button. However, the final actual responsibility of drawing the button (as pixels on the user’s monitor) falls into <a class="ulink" href="http://developer.apple.com/library/ios/#documentation/CoreGraphics/Reference/CoreGraphics_Framework/_index.html">CoreGraphics</a>.</p>
+    </blockquote>
+
+    <p>As mentioned above, using CG is unique to the Mac port. Chrome on Mac uses <a class="ulink" href="http://www.chromium.org/developers/design-documents/graphics-and-skia">Skia</a> here.</p>
+
+    <blockquote>
+        <p>With time, WebKit was “ported” into different platform, both desktop and mobile. Such flavor is often called “a WebKit port”. For Safari Windows, Apple themselves also ported WebKit to run on Windows, using the <a class="ulink" href="http://developer.apple.com/opensource/internet/webkit_sptlib_agree.html">Windows version</a> of its (limited implementation of) CoreFoundation library.</p>
+    </blockquote>
+
+    <p>… though Safari for Windows is <a class="ulink" href="http://www.macworld.com/article/1167904/safari_6_available_for_mountain_lion_and_lion_but_not_windows.html">now dead</a>.</p>
+
+    <blockquote>
+        <p>Beside that, there were many other “ports” as well (see <a class="ulink" href="http://trac.webkit.org/wiki#WebKitPorts">the full list</a>). Google has created and continues to maintain its Chromium port. There is also WebKitGtk which is based on Gtk+. Nokia (through Trolltech, which it acquired) maintains the Qt port of WebKit, popular as its <a class="ulink" href="http://doc.qt.nokia.com/qtwebkit.html">QtWebKit module</a>.</p>
+    </blockquote>
+
+    <h3>Some of the ports of WebKit</h3>
+
+    <ul>
+        <li><strong>Safari</strong>
+            <ul>
+                <li>Safari for OS X and Safari for Windows are two different ports</li>
+                <li>WebKit nightly is an edge build of the Mac port that’s used for Safari. More later…</li>
+            </ul>
+        </li>
+        <li><strong>Mobile Safari</strong>
+            <ul>
+                <li>Maintained in a private branch, but lately <a class="ulink" href="http://trac.webkit.org/changeset/142163">being</a> <a class="ulink" href="http://trac.webkit.org/changeset/142373">upstreamed</a></li>
+                <li>Chrome on iOS (using Apple’s WebView; more on it’s differences later)</li>
+            </ul>
+        </li>
+        <li><strong>Chrome (Chromium)</strong>
+            <ul>
+                <li>Chrome on Android (using the Chromium port directly)</li>
+                <li>Chromium also powers <a class="ulink" href="http://browser.yandex.ru/">Yandex Browser</a>, <a class="ulink" href="http://se.360.cn/">360 Browser</a>, <a class="ulink" href="http://ie.sogou.com/">Sogou Browser</a>, and soon, Opera.</li>
+            </ul>
+        </li>
+        <li><strong>Android Browser</strong>
+            <ul>
+                <li>Used the latest WebKit source at the time</li>
+            </ul>
+        </li>
+        <li><strong><a class="ulink" href="http://trac.webkit.org/wiki#WebKitPorts">Plenty more ports</a></strong>: Amazon Silk, Dolphin, Blackberry, QtWebKit, WebKitGTK+, The EFL port (Tizen), wxWebKit, WebKitWinCE, etc</li>
+    </ul>
+
+    <p>Different ports can have different focuses. The Mac port’s focus is split between Browser and OS, and introduces Obj-C and C++ bindings to embed the renderer into native applications. Chromium’s focus is purely on the browser. QtWebKit offers its port for applications to use as a runtime or rendering engine within its cross-platform GUI application architecture.</p>
+
+    <div class="sub_section">
+        <h2>What’s shared in all WebKit browsers</h2>
+
+        <p>First, let’s review the commonalities shared by all WebKit ports.</p>
+
+        <aside>You know it’s funny. I tried writing this a few times.
+            <br>Each time I got corrected by Chrome team members, as you’ll see…</aside>
+
+        <ol>
+            <li>So first, WebKit parses HTML the same way. <em>Well, except Chromium is the only port so far to enable <a class="ulink" href="https://bugs.webkit.org/showdependencytree.cgi?id=106127&amp;hide_resolved=0">threaded HTML parsing</a> support.</em></li>
+            <li>… Okay, but once parsed, the DOM tree is constructed the same. <em>Well, actually Shadow DOM is <a class="ulink" href="http://goo.gl/dsXQf" title="Code Search for ENABLE(SHADOW_DOM) package:^chromium$ file:^src/third_party/WebKit/LayoutTests/platform/">only turned on</a> for the Chromium port, so DOM construction varies. Same goes for custom elements.</em></li>
+            <li>… Okay, well WebKit creates a <code>window</code> object and <code>document</code> object for everyone. <em>True, though the properties and constructors it exposes can be conditional on the <a class="ulink" href="https://trac.webkit.org/wiki/FeatureFlags">feature flags</a> enabled.</em></li>
+            <li>… CSS parsing is the same, though. Slurping up your CSS and turning it into CSSOM’s pretty standard. <em>Yeah, though Chrome accepts just the <code>-webkit-</code> prefix whereas Apple and other ports accept legacy prefixes like <code>-khtml-</code> and <code>-apple-</code>.</em></li>
+            <li>… Layout.. positioning? Those are the bread and butter. Same, right? Come on! <em>Sub-pixel layout and saturated layout arithmetic is part of WebKit but differs from port to port.</em></li>
+            <li>Super.</li>
+        </ol>
+
+        <p>So, it’s complicated.</p>
+
+        <p>Just like how <a class="ulink" href="http://code.flickr.net/2009/12/02/flipping-out/">Flickr</a> and <a class="ulink" href="https://github.com/blog/677-how-we-deploy-new-features">Github</a> implement features behind flags, WebKit does the same. This allows ports to enable/disable all sorts of functionality with <a class="ulink" href="https://trac.webkit.org/wiki/FeatureFlags">WebKit’s compile-time Feature Flags</a>. Features can also be exposed as run-time flags either through <a class="ulink" href="http://peter.sh/experiments/chromium-command-line-switches/">command line switches (Chromium’s here) </a> or configuration like <a class="ulink" href="http://blogs.adobe.com/cantrell/archives/2012/07/all-about-chrome-flags.html">about:flags</a>.</p>
+
+        <p>All right, well let’s try again to codify what’s the same in WebKit land…</p>
+
+        <h3>What’s common to every WebKit port</h3>
+
+        <ul>
+            <li>The DOM, <code>window</code>, <code>document</code>
+                <ul>
+                    <li>more or less</li>
+                </ul>
+            </li>
+            <li>The CSSOM</li>
+            <li>CSS parsing, property/value handling
+                <ul>
+                    <li>sans vendor prefix handling</li>
+                </ul>
+            </li>
+            <li>HTML parsing and DOM construction
+                <ul>
+                    <li>same if we suspended belief in Web Components</li>
+                </ul>
+            </li>
+            <li>All layout and positioning
+                <ul>
+                    <li>Flexbox, Floats, block formatting contexts… all shared</li>
+                </ul>
+            </li>
+            <li>The UI and instrumentation for the Chrome DevTools aka WebKit Inspector.
+                <ul>
+                    <li>Though since last April, Safari uses it’s own, non-WebKit, closed-source UI for Safari Inspector</li>
+                </ul>
+            </li>
+            <li>Features like contenteditable, pushState, File API, most SVG, CSS Transform math, Web Audio API, localStorage
+                <ul>
+                    <li>Though backends vary. Each port may use a different storage layer for localStorage and may use different audio APIs for Web Audio API.</li>
+                </ul>
+            </li>
+            <li><a class="ulink" href="http://trac.webkit.org/browser/trunk/Source/WebCore">Plenty of other features &amp; functionality</a></li>
+        </ul>
+
+        <p>It gets a little murky in those areas. Let’s try some differences that are much less murky.</p>
+
+        <h3>Now, what’s not shared in WebKit ports:</h3>
+
+        <ul>
+            <li>Anything on the GPU
+                <ul>
+                    <li>3D Transforms</li>
+                    <li>WebGL</li>
+                    <li>Video decoding</li>
+                </ul>
+            </li>
+            <li>2D drawing to the screen
+                <ul>
+                    <li>Antialiasing approaches</li>
+                    <li>SVG &amp; CSS gradient rendering</li>
+                </ul>
+            </li>
+            <li>Text rendering &amp; hyphenation</li>
+            <li>Network stack (SPDY, prerendering, WebSocket transport)</li>
+            <li>A JavaScript engine
+                <ul>
+                    <li>JavaScriptCore is in the WebKit repo. There are bindings in WebKit for both it and V8</li>
+                </ul>
+            </li>
+            <li>Rendering of form controls</li>
+            <li><code>&lt;video&gt;</code> &amp; <code>&lt;audio&gt;</code> element behavior (and codec support)</li>
+            <li>Image decoding</li>
+            <li>Navigating back/forward
+                <ul>
+                    <li>The navigation parts of pushState()</li>
+                </ul>
+            </li>
+            <li>SSL features like Strict Transport Security and Public Key Pins</li>
+        </ul>
+
+        <p>Let’s take one of these: <strong>2D graphics</strong> Depending on the port, we’re using completely different libraries to handle drawing to screen:</p>
+
+        <div class="figure">
+            <div class="figure-contents">
+                <img src="images/ch07_sec03_graphicscontext.png" style="display: block; width: 100%;" />
+            </div>
+        </div>
+
+        <p>Or to go a little more micro… a recently landed feature: <code>CSS.supports()</code> was <a class="ulink" href="http://trac.webkit.org/changeset/142739">enabled</a> for all ports except win and wincairo, which don’t have css3 conditional features enabled.</p>
+
+        <p>Now that we’ve gotten technical.. time to get pedantic. Even the above isn’t correct. It’s actually WebCore that’s shared. WebCore is a layout, rendering, and Document Object Model (DOM) library for HTML and SVG, and is generally what people think of when they say WebKit. In actuality “WebKit” is technically the binding layer between WebCore and the ports, though in casual conversation this distinction is mostly unimportant.</p>
+
+        <p>A diagram should help:</p>
+
+        <div class="figure">
+            <div class="figure-contents">
+                <img src="images/ch07_sec03_webkit_diagram.png" style="display: block; width: 100%;" />
+            </div>
+        </div>
+
+        <p>Many of the components within WebKit are swappable (shown above in gray).</p>
+
+        <p>As an example, WebKit’s JavaScript engine, JavaScriptCore, is a default in WebKit. (It is based originally on KJS (from KDE) back when WebKit started as a fork of KHTML). Meanwhile, the Chromium port swaps in V8 here, and uses unique DOM bindings to map things over.</p>
+
+
+        <p>Fonts and Text rendering is a huge part of platform. There are 2 separate text paths in WebKit: Fast and Complex. Both require platform-specific (port-side) support, but Fast just needs to know how to blit glyphs (which WebKit caches for the platform) and complex actually hands the whole string off to the platform layer and says “draw this, plz”.</p>
+
+        <blockquote id="dimitri-taco">
+            “WebKit is like a Sandwich. Though in Chromium’s case it’s more like a taco. A delicious web platform taco.” <cite> Dimitri Glazkov, Chrome WebKit hacker.
+Champion of Web Components and Shadow DOM</cite>
+        </blockquote>
+
+        Now, let’s widen the lens and look at a few ports and a few subsystems. Below are five ports of WebKit; consider how varied their stacks are, despite sharing much of WebCore.
+
+        <table id="wk-matrix">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <th>Chrome (OS X)
+                    </th>
+                    <th>Safari (OS X)
+                    </th>
+                    <th>QtWebKit
+                    </th>
+                    <th>Android Browser
+                    </th>
+                    <th>Chrome for iOS
+                    </th>
+                </tr>
+                <tr>
+                    <th>Rendering
+                    </th>
+                    <td>Skia</td>
+                    <td>CoreGraphics</td>
+                    <td>QtGui</td>
+                    <td>Android stack/Skia</td>
+                    <td>CoreGraphics</td>
+                </tr>
+                <tr>
+                    <th>Networking
+                    </th>
+                    <td>Chromium network stack</td>
+                    <td>CFNetwork</td>
+                    <td>QtNetwork</td>
+                    <td>Fork of Chromium’s network stack</td>
+                    <td>Chromium stack</td>
+                </tr>
+                <tr>
+                    <th>Fonts
+                    </th>
+                    <td>CoreText via Skia</td>
+                    <td>CoreText</td>
+                    <td>Qt internals</td>
+                    <td>Android stack</td>
+                    <td>CoreText</td>
+                </tr>
+                <tr>
+                    <th>JavaScript
+                    </th>
+                    <td>V8</td>
+                    <td>JavaScriptCore</td>
+                    <td>JSC (V8 is used elsewhere in Qt)</td>
+                    <td>V8</td>
+                    <td>JavaScriptCore (without JITting) *</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><small>* A side note on Chrome for IOS. It uses UIWebView, as you likely know. Due to
+the capabilities of UIWebView that means it can only use the same rendering
+layer as Mobile Safari, JavaScriptCore (instead of V8) and a single-process
+model. Still, considerable Chromium-side code <a class="ulink" href="https://groups.google.com/a/chromium.org/forum/?fromgroups#!topic/chromium-dev/vYGxPx-tVKE">is leveraged</a>, such as the network
+layer, the sync and bookmarks infrastructure, omnibox, metrics and crash
+reporting. (Also, for what it’s worth, JavaScript is so rarely the bottleneck on
+mobile that the lack of JITting compiler has minimal impact.)
+</small></p>
+
+    </div>
+
+    <div class="sub_section">
+        <h2>All right, so where does this leave us?</h2>
+
+        <h3>So, all WebKits are totally different now. I’m scared.</h3>
+
+        <p>Don’t be! The <a class="ulink" href="http://trac.webkit.org/browser/trunk/LayoutTests">layoutTest coverage in WebKit</a> is enormous (28,000 layoutTests at last count), not only for existing features but for any found regressions. In fact, whenever you’re exploring some new or esoteric DOM/CSS/HTML5-y feature, the layoutTests often have fantastic minimal demos of the entire web platform.</p>
+
+        <p>In addition, the <a class="ulink" href="http://www.w3.org/QA/2013/02/testing_the_open_web_platform.html">W3C is ramping up its effort for conformance suite testing</a>. This means we can expect both different WebKit ports and all browsers to be testing against the same suite of tests, leading to fewer quirks and a more interoperable web. For all those who have assisted this effort by going to a <a class="ulink" href="http://testthewebforward.org/">Test The Web Forward event</a>… thank you!</p>
+
+        <h3>Opera just moved to WebKit. How does that play out?</h3>
+
+        <p>Robert Nyman and Rob Hawkes <a class="ulink" href="http://robertnyman.com/2013/02/14/webkit-an-objective-view/">touched on this, too</a>, but I’ll add that one of the significant parts of Opera’s announcement was that
+            <strong>Opera adopted Chromium</strong>. This means the WebGL, Canvas, HTML5 forms, 2D graphics implementations–all that stuff will be the same on Chrome and Opera now. Same APIs, and same backend implementation. Since Opera is Chromium-based, you can feel confident that your cutting-edge work will be compatible with Chrome and Opera simultaneously.</p>
+
+        <p>I should also point out that <strong><a class="ulink" href="http://twatlr.com/thread/301603979257856000">all</a></strong><a class="ulink" href="http://twatlr.com/thread/301603979257856000"> Opera browsers</a> will be adopting Chromium. So Opera for Windows, Mac and Linux and Opera Mobile (the fully fledged mobile browser). Even Opera Mini, the thin client, will be swapping out the current server-side rendering farm based on Presto with one based on Chromium.</p>
+
+        <h3>.. and the WebKit Nightly. What is that?</h3>
+
+        <p>It’s the <a class="ulink" href="http://trac.webkit.org/browser/trunk/Source/WebKit/mac">mac port</a> of WebKit, running inside of the same binary that Safari uses (though with a few underlying libraries swapped out). Apple mostly calls the shots in it, so its behavior and feature set is congruent with what you’ll find in Safari. In many cases Apple takes a conservative approach when enabling features that other ports may be implementing or experimenting with. Anyway, if you want to go back to middle-school analogies, think of it as… WebKit Nightly is to Safari what Chromium is to Chrome.</p>
+
+        <p><a class="ulink" href="http://paulirish.com/2012/chrome-canary-for-developers/">Chrome Canary</a> also has the latest WebKit source within a day or so.</p>
+
+        <h3>Tell me more about WebKit internals</h3>
+
+        <p>You got it, bucko.</p>
+
+        <div class="figure">
+            <div class="figure-contents">
+                <iframe src="https://docs.google.com/presentation/d/1ZRIQbUKw9Tf077odCh66OrrwRIVNLvI_nhLm2Gi__F0/embed?start=false&loop=false&delayms=3000&slide=id.p" style="display: block; width: 100%; height:400px"></iframe>
+            </div>
+        </div>
+
+
+        <h3>Further reading:</h3>
+
+        <ul>
+            <li><a class="ulink" href="http://www.webkit.org/coding/technical-articles.html">WebKit internals technical articles | webkit.org</a></li>
+            <li><a class="ulink" href="http://robertnyman.com/2013/02/14/webkit-an-objective-view/">WebKit: An Objective View | Robert Nyman &amp; Rob Hawkes</a></li>
+            <li><a class="ulink" href="http://ariya.ofilabs.com/2011/06/your-webkit-port-is-special-just-like-every-other-port.html">your webkit port is special (just like every other port) | Ariya Hidayat</a></li>
+            <li><a class="ulink" href="http://blogs.adobe.com/webplatform/2013/01/21/getting-started-with-the-webkit-layout-code/">Getting Started With the WebKit Layout Code | Adobe Web Platform Blog</a></li>
+            <li><a class="ulink" href="http://arunpatole.com/blog/2011/webkit-documentation/">WebKit Documentation Overview | Arun Patole</a></li>
+            <li><a class="ulink" href="http://www.youtube.com/watch?v=RVnARGhhs9w">Rendering in WebKit, by Eric Seidel | YouTube</a></li>
+            <li><a class="ulink" href="http://www.igvita.com/slides/2012/web-performance-for-the-curious/">web performance for the curious | Ilya Grigorik</a></li>
+        </ul>
+
+    </div>
+</body>

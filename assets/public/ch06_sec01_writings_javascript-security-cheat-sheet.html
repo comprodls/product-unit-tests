@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>writings/javascript-security-cheat-sheet.md at master · eoftedal/writings · GitHub</title>
+        <link rel="stylesheet" type="text/css" href="css/core.css"/>
+    </head>
+    <body>
+        <div class="chaptertitle">
+            <h2 class="title">Single Page Web App Security Cheat Sheet</h2>
+
+        </div>
+
+            <p>
+                This is intended as a simple abbreviated cheat sheet for securing JavaScript based single page web apps. It's not meant to cover everything in depth, but rather point you in the correct directions with resources.
+            </p>
+
+        <div class="sub_section">
+            <h2>What happens in JS, stays in JS</h2>
+            <p>
+                Or to be more precise: What happens in the browser, stays in the browser. We cannot make security decisions for our data within the browser. Any input validation (whether in html tags or implemented in JS) in the browser is purely cosmetic and for user guidance. Any security decisions based on data within the browser, need to be double checked on the server. Anything happening in the browser can be altered. An attacker can access your services directly, thus circumventing any security implemented in the browser. In Sverre H. Huseby's excellent book <a class="ulink" href="http://innocentcode.thathost.com/">"Innocent Code"</a> this split between server and browser is referred to as the <em>Invisible security barrier</em>.
+            </p>
+
+            <p>
+                <em>Rule: Access control, input validation and security decisions <strong>must</strong> be made on the server.</em>
+            </p>
+
+        </div>
+
+        <div class="sub_section">
+            <h2>Cover your XSS</h2>
+            <p>
+                Cross site scripting is a serious vulnerability. Even though XSS is often demonstrated using simple alert boxes, XSS is a common vector for delivering exploits. Consider using XSS to add an applet tag pointing to a malicious Java application. Game over (because I know you forgot to update to the latest Java).
+            </p>
+
+            <p>
+                We need to escape untrusted data whenever we are outputting data in our templates. And we need our escaping to
+                <a class="ulink" href="https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet">be aware</a> 
+                <a class="ulink" href="https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet">of context</a>. 
+            </p>
+
+            <p>
+                Whenever we are building code from strings (<code>eval</code>, <code>new Function</code>, <code>setTimeout</code>, <code>setInterval</code>), we need to be really careful. Escaping quickly becomes <em>very</em> difficult, so it's better to just avoid it. 
+                <a class="ulink" href="http://www.jshint.com/">JSHint</a> says "eval is evil", and I agree.
+            </p>
+
+            <p>
+                Untrusted data can come from 
+                <a class="ulink" href="http://code.google.com/p/domxsswiki/wiki/Sources">so many places</a>. Some examples are URIs, JSON services, <code>window.referrer</code>, <code>window.name</code>, input fields, cookies. And there are 
+                <a class="ulink" href="http://erlend.oftedal.no/blog/?blogid=127">lots of sinks</a> that output raw HTML into the DOM, and can thus result in JS execution.
+            </p>
+
+            <p>
+                <em>Rule: Handle untrusted data with care — use contextual encoding and avoid building code from strings.</em>
+            </p>
+        </div>
+
+         <div class="sub_section">
+            <h2>You have been served</h2>
+            <p>
+                In a single page web app, private data only exists in the app's JSON services, thus it goes without saying we need to protect these services. We need to make sure
+                <a class="ulink" href="http://erlend.oftedal.no/blog/?blogid=128">authentication</a> and
+                <a class="ulink" href="http://erlend.oftedal.no/blog/?blogid=133">authorization</a> (access control) is properly implemented. We need to make sure we treat incoming data correctly — taking into account character sets, content-type, input validation. We need to make sure we don't expose unexpected data (e.g. a user's password hash). And we need to avoid 
+                <a class="ulink" href="http://erlend.oftedal.no/blog/?blogid=129">mass assigment</a> — allowing an attacker to change fields we don't expect to be changed. We need to avoid things like 
+                <a class="ulink" href="http://erlend.oftedal.no/blog/?blogid=130">CSRF</a>.
+            </p>
+
+            <p><em>Rule: Protect your services</em></p>
+
+        </div>
+        <div class="sub_section">
+            <h2>Head's up</h2>
+            <p>
+                Browsers these days support a number of HTTP headers we can use to protect our app. These include <code>X-Frame-Options</code> to avoid 
+                <a class="ulink" href="http://www.sectheory.com/clickjacking.htm">Clickjacking</a>, 
+                <a class="ulink" href="https://developer.mozilla.org/en-US/docs/Security/CSP">Content Security Policy</a> to mitigate Cross Site Scripting and related attacks, 
+                <a class="ulink" href="http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx"><code>X-Content-Type-Options</code></a> to make sure the browser cannot be tricked into for instance 
+                <a class="ulink"  href="http://erlend.oftedal.no/blog/research/json/testbench.html">interpreting JSON as HTML</a> (only works in some browsers).
+            </p>
+
+            <p><em>Rule: Learn how to use security HTTP headers</em></p>
+
+        </div>
+
+    </body>
+</html>

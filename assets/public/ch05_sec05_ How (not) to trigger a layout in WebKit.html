@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Fastersite: How (not) to trigger a layout in WebKit</title>
+        <link rel="stylesheet" type="text/css" href="css/core.css"/>
+    </head>
+    <body>
+        <div class="chaptertitle">
+            <h2 class="title">Fastersite</h2>
+
+        </div>
+        <div class="sub_section">
+            <h2> How (not) to trigger a layout in WebKit</h2>
+            <p>
+                As most web developers are aware, a significant amount of a script's running time may be spent  performing DOM operations triggered by the script rather than executing the JS byte code itself. One such potentially costly operation is layout (aka reflow) -- the process of constructing a render tree from a DOM tree. The larger and more complex the DOM, the more expensive this operation may be.</p><p>An important technique for keeping a page snappy is to batch methods that manipulate the DOM separately from those that query the state. For example:
+            </p>
+            <code>
+                // Suboptimal, causes layout twice.<br>
+                var newWidth = aDiv.offsetWidth + 10;  // Read<br>
+                aDiv.style.width = newWidth + 'px';  // Write<br>
+                var newHeight = aDiv.offsetHeight + 10;  // Read<br>
+                aDiv.style.height = newHeight + 'px';  // Write<br>
+            <br>
+                // Better, only one layout.<br>
+                var newWidth = aDiv.offsetWidth + 10;  // Read<br>
+                var newHeight = aDiv.offsetHeight + 10;  // Read<br>
+                aDiv.style.width = newWidth + 'px';  // Write<br>
+                aDiv.style.height = newHeight + 'px';  // Write
+            </code>
+            <br>
+            <p>
+                <a class="ulink" href="http://twitter.com/stoyanstefanov">Stoyan Stefanov</a>'s
+                <a class="ulink" href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">tome on repaint, relayout and restyle</a> provides an excellent explanation of the topic.
+            </p>
+
+            <p>
+                This often leaves developers asking the question: What triggers layout? Last week <a class="ulink" href="http://twitter.com/dglazkov">Dimitri Glazkov</a> answered this question with <a class="ulink" href="http://google.com/codesearch?hl=en&vert=chromium&lr=&q=%22-%3EupdateLayoutIgnorePendingStylesheets%28%29%22&sbtn=Search">this codesearch link</a>. Trying to understand it better myself, I went through and translated it into a list of properties and methods. Here they are:
+            </p>
+
+            <h3>Element</h3>
+            <code>
+                clientHeight, clientLeft, clientTop, clientWidth, focus(), getBoundingClientRect(), getClientRects(), innerText, offsetHeight, offsetLeft, offsetParent, offsetTop, offsetWidth, outerText, scrollByLines(), scrollByPages(), scrollHeight, scrollIntoView(), scrollIntoViewIfNeeded(), scrollLeft, scrollTop, scrollWidth
+            </code><br>
+
+            <h3>Frame, Image</h3>
+            <code>height, width</code>
+            <br>
+
+            <h3>Range</h3>
+            <code>getBoundingClientRect(), getClientRects()</code>
+            <br>
+
+            <h3>SVGLocatable</h3>
+            <code>computeCTM(), getBBox()</code>
+            <br>
+
+            <h3>SVGTextContent</h3>
+            <code>getCharNumAtPosition(), getComputedTextLength(), getEndPositionOfChar(), getExtentOfChar(), getNumberOfChars(), getRotationOfChar(), getStartPositionOfChar(), getSubStringLength(), selectSubString()</code>
+            <br>
+
+            <h3>SVGUse</h3>
+            <code>instanceRoot</code>
+            <br>
+
+            <h3>window</h3>
+            <code>getComputedStyle(), scrollBy(), scrollTo(), scrollX, scrollY, webkitConvertPointFromNodeToPage(), webkitConvertPointFromPageToNode()</code>
+            <br>
+
+            <p>This list is almost certainly not complete, but it is a good start. The best way to check for over-layout is to watch for the purple layout bars in the <a class="ulink" href="http://www.webkit.org/blog/1091/more-web-inspector-updates/#timeline_panel">Timeline panel</a> of Chrome or Safari's Inspector.</p>
+
+        </div>
+       
+
+    </body>
+</html>
