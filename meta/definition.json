@@ -128,21 +128,21 @@
                         "name": "The JavaScript Revolution : Video",
                         "item-type": "resource",
                         "resource": "RE_0010",
-                        "item-code": "Understanding_JavaScript/The_JavaScript_Revolution_:_Video",
+                        "item-code": "Understanding_JavaScript/Videos/The_JavaScript_Revolution_:_Video",
                         "tracking": true
                       },
                       {
                         "name": "Functions : Video",
                         "item-type": "resource",
                         "resource": "RE_0007",
-                        "item-code": "Understanding_JavaScript/Functions_:_Video",
+                        "item-code": "Understanding_JavaScript/Videos/Functions_:_Video",
                         "tracking": true
                       },
                       {
                         "name": "Objects : Video",
                         "item-type": "resource",
                         "resource": "RE_0008",
-                        "item-code": "Understanding_JavaScript/Objects_:_Video",
+                        "item-code": "Understanding_JavaScript/Videos/Objects_:_Video",
                         "tracking": true
                       }
                     ]
@@ -157,7 +157,7 @@
                         "name": "Module Test",
                         "item-type": "resource",
                         "resource": "RE_0009",
-                        "item-code": "Understanding_JavaScript/Module_Test",
+                        "item-code": "Understanding_JavaScript/Practice_Tests/Module_Test",
                         "tracking": true
                       }
                    ]
