@@ -121,7 +121,7 @@
         {
           "name": "Videos",
           "item-type": "folder",
-          "item-code": "Videos",
+          "item-code": "Understanding_JavaScript/Videos",
           "sub-type": "default",
           "items": [   
                       {
@@ -150,7 +150,7 @@
         {
           "name": "Practice Tests",
           "item-type": "folder",
-          "item-code": "Practice_Tests",
+          "item-code": "Understanding_JavaScript/Practice_Tests",
           "sub-type": "default",
           "items": [
                      {
