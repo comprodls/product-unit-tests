@@ -81,7 +81,14 @@
       "name": "The Web Can Do That!? : Video",
       "item-type": "resource",
       "resource": "RE_0044",
-      "item-code": "On_the_Horizon/The_Web_Can_Do_That!?_:_Video",
+      "item-code": "The_Web_Can_Do_That!?_:_Video",
+      "tracking": true
+    },
+    {
+      "name": "Designing Better JavaScript APIs",
+      "item-type": "resource",
+      "resource": "RE_0011",
+      "item-code": "Designing_Better_JavaScript_APIs",
       "tracking": true
     },
     {
@@ -96,66 +103,6 @@
           "resource": "RE_0001",
           "item-code": "Understanding_JavaScript/Understanding_JavaScript_Function_Invocation_and_this_Yehuda_Katz,_yehudakatz.com",
           "tracking": true
-        }
-      ]
-    },
-    {
-      "name": "Organizing your code",
-      "item-type": "folder",
-      "item-code": "Organizing_your_code",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Videos",
-          "item-type": "folder",
-          "item-code": "Understanding_JavaScript/Videos",
-          "sub-type": "default",
-          "items": [
-            {
-              "name": "The JavaScript Revolution : Video",
-              "item-type": "resource",
-              "resource": "RE_0010",
-              "item-code": "Understanding_JavaScript/Videos/The_JavaScript_Revolution_:_Video",
-              "tracking": true
-            },
-            {
-              "name": "Functions : Video",
-              "item-type": "resource",
-              "resource": "RE_0007",
-              "item-code": "Understanding_JavaScript/Videos/Functions_:_Video",
-              "tracking": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Designing Better JavaScript APIs",
-      "item-type": "resource",
-      "resource": "RE_0011",
-      "item-code": "Organizing_your_code/Designing_Better_JavaScript_APIs",
-      "tracking": true
-    },
-    {
-      "name": "Organizing your code",
-      "item-type": "folder",
-      "item-code": "Organizing_your_code",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Practice Tests",
-          "item-type": "folder",
-          "item-code": "Understanding_JavaScript/Practice_Tests",
-          "sub-type": "default",
-          "items": [
-            {
-              "name": "Module Test",
-              "item-type": "resource",
-              "resource": "RE_0009",
-              "item-code": "Understanding_JavaScript/Practice_Tests/Module_Test",
-              "tracking": true
-            }
-          ]
         }
       ]
     },
@@ -175,11 +122,80 @@
       ]
     },
     {
+      "name": "Organizing your code",
+      "item-type": "folder",
+      "item-code": "Organizing_your_code",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Videos",
+          "item-type": "folder",
+          "item-code": "Organizing_your_code/Videos",
+          "sub-type": "default",
+          "items": [
+            {
+              "name": "Functions : Video",
+              "item-type": "resource",
+              "resource": "RE_0007",
+              "item-code": "Organizing_your_code/Videos/Functions_:_Video",
+              "tracking": true
+            }
+          ]
+        }
+      ]
+    },    
+    {
+      "name": "Organizing your code",
+      "item-type": "folder",
+      "item-code": "Organizing_your_code",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Practice Tests",
+          "item-type": "folder",
+          "item-code": "Organizing_your_code/Practice_Tests",
+          "sub-type": "default",
+          "items": [
+            {
+              "name": "Module Test",
+              "item-type": "resource",
+              "resource": "RE_0009",
+              "item-code": "Organizing_your_code/Practice_Tests/Module_Test",
+              "tracking": true
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "What the heck is the event loop anyway?",
       "item-type": "resource",
       "resource": "RE_0039",
-      "item-code": "Under_the_Hood/What_the_heck_is_the_event_loop_anyway?",
+      "item-code": "What_the_heck_is_the_event_loop_anyway?",
       "tracking": true
+    },
+    {
+      "name": "Organizing your code",
+      "item-type": "folder",
+      "item-code": "Organizing_your_code",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Videos",
+          "item-type": "folder",
+          "item-code": "Organizing_your_code/Videos",
+          "sub-type": "default",
+          "items": [
+            {
+              "name": "The JavaScript Revolution : Video",
+              "item-type": "resource",
+              "resource": "RE_0010",
+              "item-code": "Organizing_your_code/Videos/The_JavaScript_Revolution_:_Video",
+              "tracking": true
+            }
+          ]
+        }
+      ]
     }
   ],
   "paths": {
