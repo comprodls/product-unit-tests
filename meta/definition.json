@@ -57,7 +57,7 @@
           "Securing Application": {
             "learning-objectives": {}
           },
-          "Deploying Javascript Applications":{
+          "Deploying Javascript Applications": {
             "learning-objectives": {}
           }
         }
@@ -78,31 +78,107 @@
   "description": "",
   "items": [
     {
-      "name": "Understanding JavaScript Function Invocation and \"this\" Yehuda Katz, yehudakatz.com",
+      "name": "The Web Can Do That!? : Video",
       "item-type": "resource",
-      "resource": "RE_0001",
-      "item-code": "Understanding_JavaScript_Function_Invocation_and_this_Yehuda_Katz,_yehudakatz.com",
+      "resource": "RE_0044",
+      "item-code": "On_the_Horizon/The_Web_Can_Do_That!?_:_Video",
       "tracking": true
     },
     {
-      "name": "Common JavaScript \"Gotchas\" James Fuller, jblotus.com",
+      "name": "Understanding JavaScript",
+      "item-type": "folder",
+      "item-code": "Understanding_JavaScript",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Understanding JavaScript Function Invocation and \"this\" Yehuda Katz, yehudakatz.com",
+          "item-type": "resource",
+          "resource": "RE_0001",
+          "item-code": "Understanding_JavaScript/Understanding_JavaScript_Function_Invocation_and_this_Yehuda_Katz,_yehudakatz.com",
+          "tracking": true
+        }
+      ]
+    },
+    {
+      "name": "Organizing your code",
+      "item-type": "folder",
+      "item-code": "Organizing_your_code",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Videos",
+          "item-type": "folder",
+          "item-code": "Understanding_JavaScript/Videos",
+          "sub-type": "default",
+          "items": [
+            {
+              "name": "The JavaScript Revolution : Video",
+              "item-type": "resource",
+              "resource": "RE_0010",
+              "item-code": "Understanding_JavaScript/Videos/The_JavaScript_Revolution_:_Video",
+              "tracking": true
+            },
+            {
+              "name": "Functions : Video",
+              "item-type": "resource",
+              "resource": "RE_0007",
+              "item-code": "Understanding_JavaScript/Videos/Functions_:_Video",
+              "tracking": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Designing Better JavaScript APIs",
       "item-type": "resource",
-      "resource": "RE_0002",
-      "item-code": "Common_JavaScript_Gotchas_James_Fuller,_jblotus.com",
+      "resource": "RE_0011",
+      "item-code": "Organizing_your_code/Designing_Better_JavaScript_APIs",
       "tracking": true
     },
     {
-      "name": "The JavaScript Revolution : Video",
-      "item-type": "resource",
-      "resource": "RE_0010",
-      "item-code": "The_JavaScript_Revolution_:_Video",
-      "tracking": true
+      "name": "Organizing your code",
+      "item-type": "folder",
+      "item-code": "Organizing_your_code",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Practice Tests",
+          "item-type": "folder",
+          "item-code": "Understanding_JavaScript/Practice_Tests",
+          "sub-type": "default",
+          "items": [
+            {
+              "name": "Module Test",
+              "item-type": "resource",
+              "resource": "RE_0009",
+              "item-code": "Understanding_JavaScript/Practice_Tests/Module_Test",
+              "tracking": true
+            }
+          ]
+        }
+      ]
     },
     {
-      "name": "Module Test",
+      "name": "Testing your application",
+      "item-type": "folder",
+      "item-code": "Testing_your_application",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Writing Testable Frontend Javascript Part 1 - Anti-patterns and their fixes",
+          "item-type": "resource",
+          "resource": "RE_0021",
+          "item-code": "Testing_your_application/Writing_Testable_Frontend_Javascript_Part_1_-_Anti-patterns_and_their_fixes",
+          "tracking": true
+        }
+      ]
+    },
+    {
+      "name": "What the heck is the event loop anyway?",
       "item-type": "resource",
-      "resource": "RE_0009",
-      "item-code": "Module_Test",
+      "resource": "RE_0039",
+      "item-code": "Under_the_Hood/What_the_heck_is_the_event_loop_anyway?",
       "tracking": true
     }
   ],
@@ -126,13 +202,13 @@
           "Foundations of Javascript/Function and Objects"
         ]
       },
-      "RE_0002": {
-        "sub-type": "html",
+      "RE_0007": {
+        "sub-type": "video",
         "tags": [
-          "reading"
+          "videos"
         ],
-        "html": {
-          "url": "ch01_sec02_Common_JavaScript_Gotchas.html"
+        "video": {
+          "url": "https://www.youtube.com/watch?v=mS264h8KGwk"
         },
         "description": "",
         "learning-objectives": [
@@ -163,6 +239,58 @@
         "description": "",
         "learning-objectives": [
           "Foundations of Javascript/History and Evolution"
+        ]
+      },
+      "RE_0011": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch02_sec01_Designing Better JS APIs.html"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Foundations of Javascript/Advanced Javascript"
+        ]
+      },
+      "RE_0021": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch03_sec01_Writing Testable Frontend JS.html"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Testing Javascript code/Writing Testable Javascript"
+        ]
+      },
+      "RE_0039": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch07_sec01_What the heck is the event loop anyway.html"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Foundations of Javascript/Advanced Javascript"
+        ]
+      },
+      "RE_0044": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=X_ek1wSe66o"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Foundations of Javascript/Advanced Javascript"
         ]
       }
     },
