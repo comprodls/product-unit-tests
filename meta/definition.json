@@ -1,6 +1,6 @@
 {
   "author": "Adam Hadwin",
-  "code": "testproduct",
+  "code": "mutiplelevelcourse",
   "definition": {
     "learning-objectives": {
       "Foundations of Javascript": {
@@ -313,7 +313,7 @@
     "test": {},
     "ebook": {}
   },
-  "title": "Test Product",
+  "title": "Mutiple Level Course",
   "thumbnailsmall": "cover.jpg",
   "thumbnaillarge": "cover.jpg",
   "version": "1.0"
