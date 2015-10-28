@@ -482,7 +482,7 @@
     }
   },
   "thumbnailsmall": "OEBPS/img/cover.png",
-  "thunbnaillarge": "OEBPS/img/cover.png",
+  "thumbnaillarge": "OEBPS/img/cover.png",
   "title": "No Section Epub",
   "version": "1.0"
 }
