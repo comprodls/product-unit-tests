@@ -1,6 +1,6 @@
-{
-  "author": "Adam Hadwin",
-  "code": "testproduct",
+{    
+  "author": "Marijn Haverbeke",  
+  "code": "eloquentjavascript",
   "definition": {
     "learning-objectives": {
       "Foundations of Javascript": {
@@ -10,58 +10,35 @@
           },
           "Function and Objects": {
             "learning-objectives": {}
-          },
-          "Advanced Javascript": {
-            "learning-objectives": {}
           }
         }
       },
       "Patterns and Best Practices": {
         "learning-objectives": {
-          "Code Organisation": {
-            "learning-objectives": {}
-          },
           "Using Modules": {
             "learning-objectives": {}
           },
-          "Single Page Apps": {
-            "learning-objectives": {}
-          }
-        }
-      },
-      "Testing Javascript code": {
-        "learning-objectives": {
-          "Writing Testable Javascript": {
-            "learning-objectives": {}
-          }
-        }
-      },
-      "Debugging Javascript code": {
-        "learning-objectives": {
-          "Using Developer Tools": {
+          "Abstraction, Separation of Concerns": {
             "learning-objectives": {}
           }
         }
       },
       "Building Production Ready Apps": {
         "learning-objectives": {
-          "Logging": {
+          "Access Control, Logging and Error handling": {
             "learning-objectives": {}
           },
           "Restful API Development": {
             "learning-objectives": {}
           },
-          "Performance": {
+          "Multi-lingual Applications": {
             "learning-objectives": {}
           },
-          "Securing Application": {
-            "learning-objectives": {}
-          },
-          "Deploying Javascript Applications": {
+          "Conventions": {
             "learning-objectives": {}
           }
         }
-      }
+       }
     },
     "tags": {
       "reading": {
@@ -75,246 +52,437 @@
       }
     }
   },
-  "description": "",
+  "description": "This is a book about JavaScript, programming, and the wonders of the digital",
   "items": [
     {
-      "name": "The Web Can Do That!? : Video",
+      "name": "Introduction",
       "item-type": "resource",
-      "resource": "RE_0044",
-      "item-code": "The_Web_Can_Do_That!?_:_Video",
+      "item-code": "Introduction",
+      "resource": "RE_0001",
       "tracking": true
     },
     {
-      "name": "Designing Better JavaScript APIs",
+      "name": "Values, Types, and Operators",
       "item-type": "resource",
+      "item-code": "Values,_Types,_and_Operators",
+      "resource": "RE_0002",
+      "tracking": true
+    },
+    {
+      "name": "Program Structure",
+      "item-type": "resource",
+      "item-code": "Program_Structure",
+      "resource": "RE_0003",
+      "tracking": true
+    },
+    {
+      "name": "Functions",
+      "item-type": "resource",
+      "item-code": "Functions",
+      "resource": "RE_0004",
+      "tracking": true
+    },
+    {
+      "name": "Data Structures: Objects and Arrays",
+      "item-type": "resource",
+      "item-code": "Data_Structures:_Objects_and_Arrays",
+      "resource": "RE_0005",
+      "tracking": true
+    },
+    {
+      "name": "Higher-order Functions",
+      "item-type": "resource",
+      "item-code": "Higher-order_Functions",
+      "resource": "RE_0006",
+      "tracking": true
+    },
+    {
+      "name": "The Secret Life of Objects",
+      "item-type": "resource",
+      "item-code": "The_Secret_Life_of_Objects",
+      "resource": "RE_0007",
+      "tracking": true
+    },
+    {
+      "name": "Project: Electronic Life",
+      "item-type": "resource",
+      "item-code": "Project:_Electronic_Life",
+      "resource": "RE_0008",
+      "tracking": true
+    },
+    {
+      "name": "Bugs and Error Handling",
+      "item-type": "resource",
+      "item-code": "Bugs_and_Error_Handling",
+      "resource": "RE_0009",
+      "tracking": true
+    },
+    {
+      "name": "Regular Expressions",
+      "item-type": "resource",
+      "item-code": "Regular_Expressions",
+      "resource": "RE_0010",
+      "tracking": true
+    },
+    {
+      "name": "Modules",
+      "item-type": "resource",
+      "item-code": "Modules",
       "resource": "RE_0011",
-      "item-code": "Designing_Better_JavaScript_APIs",
       "tracking": true
     },
     {
-      "name": "Understanding JavaScript",
-      "item-type": "folder",
-      "item-code": "Understanding_JavaScript",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Understanding JavaScript Function Invocation and \"this\" Yehuda Katz, yehudakatz.com",
-          "item-type": "resource",
-          "resource": "RE_0001",
-          "item-code": "Understanding_JavaScript/Understanding_JavaScript_Function_Invocation_and_this_Yehuda_Katz,_yehudakatz.com",
-          "tracking": true
-        }
-      ]
-    },
-    {
-      "name": "Testing your application",
-      "item-type": "folder",
-      "item-code": "Testing_your_application",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Writing Testable Frontend Javascript Part 1 - Anti-patterns and their fixes",
-          "item-type": "resource",
-          "resource": "RE_0021",
-          "item-code": "Testing_your_application/Writing_Testable_Frontend_Javascript_Part_1_-_Anti-patterns_and_their_fixes",
-          "tracking": true
-        }
-      ]
-    },
-    {
-      "name": "Organizing your code",
-      "item-type": "folder",
-      "item-code": "Organizing_your_code",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Videos",
-          "item-type": "folder",
-          "item-code": "Organizing_your_code/Videos",
-          "sub-type": "default",
-          "items": [
-            {
-              "name": "Functions : Video",
-              "item-type": "resource",
-              "resource": "RE_0007",
-              "item-code": "Organizing_your_code/Videos/Functions_:_Video",
-              "tracking": true
-            }
-          ]
-        }
-      ]
-    },    
-    {
-      "name": "Organizing your code",
-      "item-type": "folder",
-      "item-code": "Organizing_your_code",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Practice Tests",
-          "item-type": "folder",
-          "item-code": "Organizing_your_code/Practice_Tests",
-          "sub-type": "default",
-          "items": [
-            {
-              "name": "Module Test",
-              "item-type": "resource",
-              "resource": "RE_0009",
-              "item-code": "Organizing_your_code/Practice_Tests/Module_Test",
-              "tracking": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "What the heck is the event loop anyway?",
+      "name": "Project: A Programming Language",
       "item-type": "resource",
-      "resource": "RE_0039",
-      "item-code": "What_the_heck_is_the_event_loop_anyway?",
+      "item-code": "Project:_A_Programming_Language",
+      "resource": "RE_0012",
       "tracking": true
     },
     {
-      "name": "Organizing your code",
-      "item-type": "folder",
-      "item-code": "Organizing_your_code",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Videos",
-          "item-type": "folder",
-          "item-code": "Organizing_your_code/Videos",
-          "sub-type": "default",
-          "items": [
-            {
-              "name": "The JavaScript Revolution : Video",
-              "item-type": "resource",
-              "resource": "RE_0010",
-              "item-code": "Organizing_your_code/Videos/The_JavaScript_Revolution_:_Video",
-              "tracking": true
-            }
-          ]
-        }
-      ]
+      "name": "JavaScript and the Browser",
+      "item-type": "resource",
+      "item-code": "JavaScript_and_the_Browser",
+      "resource": "RE_0013",
+      "tracking": true
+    },
+    {
+      "name": "The Document Object Model",
+      "item-type": "resource",
+      "item-code": "The_Document_Object_Model",
+      "resource": "RE_0014",
+      "tracking": true
+    },
+    {
+      "name": "Handling Events",
+      "item-type": "resource",
+      "item-code": "Handling_Events",
+      "resource": "RE_0015",
+      "tracking": true
+    },
+    {
+      "name": "Project: A Platform Game",
+      "item-type": "resource",
+      "item-code": "Project:_A_Platform_Game",
+      "resource": "RE_0016",
+      "tracking": true
+    },
+    {
+      "name": "Drawing on Canvas",
+      "item-type": "resource",
+      "item-code": "Drawing_on_Canvas",
+      "resource": "RE_0017",
+      "tracking": true
+    },
+    {
+      "name": "HTTP",
+      "item-type": "resource",
+      "item-code": "HTTP",
+      "resource": "RE_0018",
+      "tracking": true
+    },
+    {
+      "name": "Forms and Form Fields",
+      "item-type": "resource",
+      "item-code": "Forms_and_Form_Fields",
+      "resource": "RE_0019",
+      "tracking": true
+    },
+    {
+      "name": "Project: A Paint Program",
+      "item-type": "resource",
+      "item-code": "Project:_A_Paint_Program",
+      "resource": "RE_0020",
+      "tracking": true
+    },
+    {
+      "name": "Node.js",
+      "item-type": "resource",
+      "item-code": "Node.js",
+      "resource": "RE_0021",
+      "tracking": true
+    },
+    {
+      "name": "Project: Skill-Sharing Website",
+      "item-type": "resource",
+      "item-code": "Project:_Skill-Sharing_Website",
+      "resource": "RE_0022",
+      "tracking": true
+    },
+    {
+      "name": "Hints to the exercises",
+      "item-type": "resource",
+      "item-code": "Hints_to_the_exercises",
+      "resource": "RE_0023",
+      "tracking": true
     }
   ],
+ 
   "paths": {
     "public-assets": "https://s3.amazonaws.com/comprodls/products",
     "secured-assets": ""
   },
-  "producttype": "courseware",
+  "producttype": "etextbook",
   "resources": {
+    "epub_unit": {
+      "RE_0001": {},
+      "RE_0002": {},
+      "RE_0003": {},
+      "RE_0004": {},
+      "RE_0005": {},
+      "RE_0006": {},
+      "RE_0007": {},
+      "RE_0008": {},
+      "RE_0009": {},
+      "RE_0010": {},
+      "RE_0011": {},
+      "RE_0012": {},
+      "RE_0013": {},
+      "RE_0014": {},
+      "RE_0015": {},
+      "RE_0016": {},
+      "RE_0017": {},
+      "RE_0018": {},
+      "RE_0019": {},
+      "RE_0020": {},
+      "RE_0021": {},
+      "RE_0022": {},
+      "RE_0023": {}
+    },
     "generic": {
       "RE_0001": {
-        "sub-type": "html",
-        "tags": [
-          "reading"
-        ],
-        "html": {
-          "url": "ch01_sec01_understanding javascript functions.html"
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/00_intro.xhtml",
+          "epub_unit_id": "c00_intro"
         },
+        "tags": ["reading"],
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Function and Objects"
-        ]
+        "learning-objectives": ["Foundations of Javascript/History and Evolution"]
+      },
+      "RE_0002": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/01_values.html",
+          "epub_unit_id": "c01_values"
+        },
+        "tags": ["practice"],
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0003": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/02_program_structure.xhtml",
+          "epub_unit_id": "c02_program_structure"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0004": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/03_functions.xhtml",
+          "epub_unit_id": "c03_functions"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0005": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/04_data.xhtml",
+          "epub_unit_id": "c04_data"
+        },
+        "tags": ["practice"],
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0006": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/05_higher_order.xhtml",
+          "epub_unit_id": "c05_higher_order"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
       },
       "RE_0007": {
-        "sub-type": "video",
-        "tags": [
-          "videos"
-        ],
-        "video": {
-          "url": "https://www.youtube.com/watch?v=mS264h8KGwk"
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/06_object.xhtml",
+          "epub_unit_id": "c06_object"
         },
+         "tags": ["reading"],
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Function and Objects"
-        ]
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0008": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/07_elife.xhtml",
+          "epub_unit_id": "c07_elife"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
       },
       "RE_0009": {
-        "sub-type": "test",
-        "tags": [
-          "practice"
-        ],
-        "description": "Pre Test",
-        "test": {
-          "url": ""
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/08_error.xhtml",
+          "epub_unit_id": "c08_error"
         },
-        "learning-objectives": [
-          "Foundations of Javascript/Function and Objects"
-        ]
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
       },
       "RE_0010": {
-        "sub-type": "video",
-        "tags": [
-          "videos"
-        ],
-        "video": {
-          "url": "https://www.youtube.com/watch?v=_cLvpJY2deo"
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/09_regexp.xhtml",
+          "epub_unit_id": "c09_regexp"
         },
+        "tags": ["reading"],
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/History and Evolution"
-        ]
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
       },
       "RE_0011": {
-        "sub-type": "html",
-        "tags": [
-          "reading"
-        ],
-        "html": {
-          "url": "ch02_sec01_Designing Better JS APIs.html"
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/10_modules.xhtml",
+          "epub_unit_id": "c10_modules"
         },
+        "tags": ["reading"],
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Advanced Javascript"
-        ]
+        "learning-objectives": ["Patterns and Best Practices/Using Modules"]
+      },
+      "RE_0012": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/11_language.xhtml",
+          "epub_unit_id": "c11_language"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Using Modules"]
+      },
+      "RE_0013": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/12_browser.xhtml",
+          "epub_unit_id": "c12_browser"
+        },
+        "tags": ["practice"],
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Using Modules"]
+      },
+      "RE_0014": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/13_dom.xhtml",
+          "epub_unit_id": "c13_dom"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Abstraction, Separation of Concerns"]
+      },
+      "RE_0015": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/14_event.xhtml",
+          "epub_unit_id": "c14_event"
+        },
+        "tags": ["practice"],
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Abstraction, Separation of Concerns"]
+      },
+      "RE_0016": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/15_game.xhtml",
+          "epub_unit_id": "c15_game"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Access Control, Logging and Error handling"]
+      },
+      "RE_0017": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/16_canvas.xhtml",
+          "epub_unit_id": "c16_canvas"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Access Control, Logging and Error handling"]
+      },
+      "RE_0018": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/17_http.xhtml",
+          "epub_unit_id": "c17_http"
+        },
+        "tags": ["reading"],
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Access Control, Logging and Error handling"]
+      },
+      "RE_0019": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/18_forms.xhtml",
+          "epub_unit_id": "c18_forms"
+        },
+        "tags": ["practice"],
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Restful API Development"]
+      },
+      "RE_0020": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/19_paint.xhtml",
+          "epub_unit_id": "c19_paint"
+        },
+        "tags": ["practice"],
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Restful API Development"]
       },
       "RE_0021": {
-        "sub-type": "html",
-        "tags": [
-          "reading"
-        ],
-        "html": {
-          "url": "ch03_sec01_Writing Testable Frontend JS.html"
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/20_node.xhtml",
+          "epub_unit_id": "c20_node"
         },
+        "tags": ["reading"],
         "description": "",
-        "learning-objectives": [
-          "Testing Javascript code/Writing Testable Javascript"
-        ]
+        "learning-objectives": ["Building Production Ready Apps/Restful API Development"]
       },
-      "RE_0039": {
-        "sub-type": "html",
-        "tags": [
-          "reading"
-        ],
-        "html": {
-          "url": "ch07_sec01_What the heck is the event loop anyway.html"
+      "RE_0022": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/21_skillsharing.xhtml",
+          "epub_unit_id": "c21_skillsharing"
         },
+        "tags": ["practice"],
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Advanced Javascript"
-        ]
+        "learning-objectives": ["Building Production Ready Apps/Multi-lingual Applications"]
       },
-      "RE_0044": {
-        "sub-type": "video",
-        "tags": [
-          "videos"
-        ],
-        "video": {
-          "url": "https://www.youtube.com/watch?v=X_ek1wSe66o"
+      "RE_0023": {
+        "sub-type": "epub_unit",
+        "epub_unit": {
+          "url": "OEBPS/hints.xhtml",
+          "epub_unit_id": "c_hints"
         },
+        "tags": ["reading"],
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Advanced Javascript"
-        ]
+        "learning-objectives": ["Building Production Ready Apps/Conventions"]
       }
-    },
-    "test": {},
-    "ebook": {}
+    }
   },
-  "title": "Test Product",
-  "thumbnailsmall": "cover.jpg",
-  "thumbnaillarge": "cover.jpg",
+  "thumbnailsmall": "OEBPS/img/cover.png",
+  "thunbnaillarge": "OEBPS/img/cover.png",
+  "title": "Eloquent Javascript",
   "version": "1.0"
 }

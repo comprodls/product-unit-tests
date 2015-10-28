@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <title>Table of Contents</title>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+      ol.toc {
+        margin: 1em 0;
+        padding: 0;
+        counter-reset: li;
+      }
+      ol.toc li {
+        margin: 0 0 0 40px;
+        padding: 0;
+        list-style: none;
+        position: relative;
+      }
+      ol.toc li:before {
+        content: counter(li) ".";
+        counter-increment: li;
+        position: absolute;
+        width: 2em;
+        text-align: right;
+        left: -2.5em; top: 1px;
+        font-size: 90%;
+      }
+      li.no-number:before { display: none; }
+      ol.toc span.parttitle {
+        display: block;
+        position: absolute;
+        margin: 0;
+        top: -2px;
+        right: 0;
+        font-family: inherit;
+        font-weight: normal;
+        font-size: 90%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Table of Contents</h1>
+    <nav xmlns:epub="http://www.idpf.org/2007/ops" epub:type="toc" id="toc">
+      <ol class="toc">
+        <li class="no-number">
+          <a href="00_intro.xhtml">Introduction</a>
+          <ol>
+            <li>
+              <a href="00_intro.xhtml#ch00_sec01"> On programming </a>
+            </li>
+            <li>
+              <a href="00_intro.xhtml#ch00_sec02"> Why language matters </a>
+            </li>
+            <li>
+              <a href="00_intro.xhtml#ch00_sec03"> What is JavaScript? </a>
+            </li>
+            <li>
+              <a href="00_intro.xhtml#ch00_sec04"> Code, and what to do with it </a>
+            </li>
+            <li>
+              <a href="00_intro.xhtml#ch00_sec05"> Overview of this book </a>
+            </li>
+            <li>
+              <a href="00_intro.xhtml#ch00_sec06"> Typographic conventions </a>
+            </li>
+          </ol>
+        </li>
+        <li style="counter-reset: li; position: relative">
+          <a href="01_values.xhtml">Values, Types, and Operators<span class="parttitle">(Part 1: Language)</span></a>
+          <ol>
+            <li>
+              <a href="01_values.xhtml#ch01_sec01"> Values </a>
+            </li>
+            <li>
+              <a href="01_values.xhtml#ch01_sec02"> Numbers </a>
+            </li>
+            <li>
+              <a href="01_values.xhtml#ch01_sec03"> Strings </a>
+            </li>
+            <li>
+              <a href="01_values.xhtml#ch01_sec04"> Unary operators </a>
+            </li>
+            <li>
+              <a href="01_values.xhtml#ch01_sec05"> Boolean values </a>
+            </li>
+            <li>
+              <a href="01_values.xhtml#ch01_sec06"> Undefined values </a>
+            </li>
+            <li>
+              <a href="01_values.xhtml#ch01_sec07"> Automatic type conversion </a>
+            </li>
+            <li>
+              <a href="01_values.xhtml#ch01_sec08"> Summary </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="02_program_structure.xhtml">Program Structure</a>
+          <ol>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec01"> Expressions and statements </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec02"> Variables </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec03"> Keywords and reserved words </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec04"> The environment </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec05"> Functions </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec06"> The console.log function </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec07"> Return values </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec08"> Prompt and confirm </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec09"> Control flow </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec10"> Conditional execution </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec11"> While and do loops </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec12"> Indenting Code </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec13"> for loops </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec14"> Breaking Out of a Loop </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec15"> Updating variables succinctly </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec16"> Dispatching on a value with switch </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec17"> Capitalization </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec18"> Comments </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec19"> Summary </a>
+            </li>
+            <li>
+              <a href="02_program_structure.xhtml#ch02_sec20"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="03_functions.xhtml">Functions</a>
+          <ol>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec01"> Defining a function </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec02"> Parameters and scopes </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec03"> Nested scope </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec04"> Functions as values </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec05"> Declaration notation </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec06"> The call stack </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec07"> Optional Arguments </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec08"> Closure </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec09"> Recursion </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec10"> Growing functions </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec11"> Functions and side effects </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec12"> Summary </a>
+            </li>
+            <li>
+              <a href="03_functions.xhtml#ch03_sec13"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="04_data.xhtml">Data Structures: Objects and Arrays</a>
+          <ol>
+            <li>
+              <a href="04_data.xhtml#ch04_sec01"> The weresquirrel </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec02"> Data sets </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec03"> Properties </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec04"> Methods </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec05"> Objects </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec06"> Mutability </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec07"> The lycanthrope&#8217;s log </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec08"> Computing correlation </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec09"> Objects as maps </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec10"> The final analysis </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec11"> Further arrayology </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec12"> Strings and their properties </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec13"> The arguments object </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec14"> The Math object </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec15"> The global object </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec16"> Summary </a>
+            </li>
+            <li>
+              <a href="04_data.xhtml#ch04_sec17"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="05_higher_order.xhtml">Higher-order Functions</a>
+          <ol>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec01"> Abstraction </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec02"> Abstracting array traversal </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec03"> Higher-order functions </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec04"> Passing along arguments </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec05"> JSON </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec06"> Filtering an array </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec07"> Transforming with map </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec08"> Summarizing with reduce </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec09"> Composability </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec10"> The cost </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec11"> Great-great-great-great-... </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec12"> Binding </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec13"> Summary </a>
+            </li>
+            <li>
+              <a href="05_higher_order.xhtml#ch05_sec14"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="06_object.xhtml">The Secret Life of Objects</a>
+          <ol>
+            <li>
+              <a href="06_object.xhtml#ch06_sec01"> History </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec02"> Methods </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec03"> Prototypes </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec04"> Constructors </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec05"> Overriding derived properties </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec06"> Prototype interference </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec07"> Prototype-less objects </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec08"> Polymorphism </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec09"> Laying out a table </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec10"> Getters and setters </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec11"> Inheritance </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec12"> The instanceof operator </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec13"> Summary </a>
+            </li>
+            <li>
+              <a href="06_object.xhtml#ch06_sec14"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="07_elife.xhtml">Project: Electronic Life</a>
+          <ol>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec01"> Definition </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec02"> Representing space </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec03"> A critter&#8217;s programming interface </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec04"> The world object </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec05"> this and its scope </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec06"> Animating life </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec07"> It moves </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec08"> More life forms </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec09"> A more lifelike simulation </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec10"> Action handlers </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec11"> Populating the new world </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec12"> Bringing it to life </a>
+            </li>
+            <li>
+              <a href="07_elife.xhtml#ch07_sec13"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="08_error.xhtml">Bugs and Error Handling</a>
+          <ol>
+            <li>
+              <a href="08_error.xhtml#ch08_sec01"> Programmer mistakes </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec02"> Strict mode </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec03"> Testing </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec04"> Debugging </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec05"> Error propagation </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec06"> Exceptions </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec07"> Cleaning up after exceptions </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec08"> Selective catching </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec09"> Assertions </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec10"> Summary </a>
+            </li>
+            <li>
+              <a href="08_error.xhtml#ch08_sec11"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="09_regexp.xhtml">Regular Expressions</a>
+          <ol>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec01"> Creating a regular expression </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec02"> Testing for matches </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec03"> Matching a set of characters </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec04"> Repeating parts of a pattern </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec05"> Grouping subexpressions </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec06"> Matches and groups </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec07"> The date type </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec08"> Word and string boundaries </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec09"> Choice patterns </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec10"> The mechanics of matching </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec11"> Backtracking </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec12"> The replace method </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec13"> Greed </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec14"> Dynamically creating RegExp objects </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec15"> The search method </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec16"> The lastIndex property </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec17"> Parsing an INI file </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec18"> International characters </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec19"> Summary </a>
+            </li>
+            <li>
+              <a href="09_regexp.xhtml#ch09_sec20"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="10_modules.xhtml">Modules</a>
+          <ol>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec01"> Why modules help </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec02"> Using functions as namespaces </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec03"> Objects as interfaces </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec04"> Detaching from the global scope </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec05"> Evaluating data as code </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec06"> Require </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec07"> Slow-loading modules </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec08"> Interface design </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec09"> Summary </a>
+            </li>
+            <li>
+              <a href="10_modules.xhtml#ch10_sec10"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="11_language.xhtml">Project: A Programming Language</a>
+          <ol>
+            <li>
+              <a href="11_language.xhtml#ch11_sec01"> Parsing </a>
+            </li>
+            <li>
+              <a href="11_language.xhtml#ch11_sec02"> The evaluator </a>
+            </li>
+            <li>
+              <a href="11_language.xhtml#ch11_sec03"> Special forms </a>
+            </li>
+            <li>
+              <a href="11_language.xhtml#ch11_sec04"> The environment </a>
+            </li>
+            <li>
+              <a href="11_language.xhtml#ch11_sec05"> Functions </a>
+            </li>
+            <li>
+              <a href="11_language.xhtml#ch11_sec06"> Compilation </a>
+            </li>
+            <li>
+              <a href="11_language.xhtml#ch11_sec07"> Cheating </a>
+            </li>
+            <li>
+              <a href="11_language.xhtml#ch11_sec08"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li style="position: relative">
+          <a href="12_browser.xhtml">JavaScript and the Browser<span class="parttitle">(Part 2: Browser)</span></a>
+          <ol>
+            <li>
+              <a href="12_browser.xhtml#ch12_sec01"> Networks and the Internet </a>
+            </li>
+            <li>
+              <a href="12_browser.xhtml#ch12_sec02"> The Web </a>
+            </li>
+            <li>
+              <a href="12_browser.xhtml#ch12_sec03"> HTML </a>
+            </li>
+            <li>
+              <a href="12_browser.xhtml#ch12_sec04"> HTML and JavaScript </a>
+            </li>
+            <li>
+              <a href="12_browser.xhtml#ch12_sec05"> In the sandbox </a>
+            </li>
+            <li>
+              <a href="12_browser.xhtml#ch12_sec06"> Compatibility and the browser wars </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="13_dom.xhtml">The Document Object Model</a>
+          <ol>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec01"> Document Structure </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec02"> Trees </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec03"> The standard </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec04"> Moving through the tree </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec05"> Finding elements </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec06"> Changing the document </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec07"> Creating nodes </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec08"> Attributes </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec09"> Layout </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec10"> Styling </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec11"> Cascading styles </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec12"> Query selectors </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec13"> Positioning and animating </a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec14"> Summary</a>
+            </li>
+            <li>
+              <a href="13_dom.xhtml#ch13_sec15"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="14_event.xhtml">Handling Events</a>
+          <ol>
+            <li>
+              <a href="14_event.xhtml#ch14_sec01"> Event handlers </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec02"> Events and DOM nodes </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec03"> Event objects </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec04"> Propagation </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec05"> Default actions </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec06"> Key events </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec07"> Mouse clicks </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec08"> Mouse motion </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec09"> Scroll events </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec10"> Focus events </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec11"> Load event </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec12"> Script execution timeline </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec13"> Setting timers </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec14"> Debouncing </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec15"> Summary </a>
+            </li>
+            <li>
+              <a href="14_event.xhtml#ch14_sec16"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="15_game.xhtml">Project: A Platform Game</a>
+          <ol>
+            <li>
+              <a href="15_game.xhtml#ch15_sec01"> The game </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec02"> The technology </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec03"> Levels </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec04"> Reading a level </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec05"> Actors </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec06"> Encapsulation as a burden </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec07"> Drawing </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec08"> Motion and collision </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec09"> Actors and actions </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec10"> Tracking keys </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec11"> Running the game </a>
+            </li>
+            <li>
+              <a href="15_game.xhtml#ch15_sec12"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="16_canvas.xhtml">Drawing on Canvas</a>
+          <ol>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec01"> SVG </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec02"> The canvas element </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec03"> Filling and stroking </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec04"> Paths </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec05"> Curves </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec06"> Drawing a pie chart </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec07"> Text </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec08"> Images </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec09"> Transformation </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec10"> Storing and clearing transformations </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec11"> Back to the game </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec12"> Choosing a graphics interface </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec13"> Summary </a>
+            </li>
+            <li>
+              <a href="16_canvas.xhtml#ch16_sec14"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="17_http.xhtml">HTTP</a>
+          <ol>
+            <li>
+              <a href="17_http.xhtml#ch17_sec01"> The protocol </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec02"> Browsers and HTTP </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec03"> XMLHttpRequest </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec04"> Sending a request </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec05"> Asynchronous Requests </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec06"> Fetching XML Data </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec07"> HTTP sandboxing </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec08"> Abstracting requests </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec09"> Promises </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec10"> Appreciating HTTP </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec11"> Security and HTTPS </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec12"> Summary </a>
+            </li>
+            <li>
+              <a href="17_http.xhtml#ch17_sec13"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="18_forms.xhtml">Forms and Form Fields</a>
+          <ol>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec01"> Fields </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec02"> Focus </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec03"> Disabled fields </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec04"> The form as a whole </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec05"> Text fields </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec06"> Checkboxes and radio buttons </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec07"> Select fields </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec08"> File fields </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec09"> Storing data client-side </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec10"> Summary </a>
+            </li>
+            <li>
+              <a href="18_forms.xhtml#ch18_sec11"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="19_paint.xhtml">Project: A Paint Program</a>
+          <ol>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec01"> Implementation </a>
+            </li>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec02"> Building the DOM </a>
+            </li>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec03"> The foundation </a>
+            </li>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec04"> Tool selection </a>
+            </li>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec05"> Color and brush size </a>
+            </li>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec06"> Saving </a>
+            </li>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec07"> Loading image files </a>
+            </li>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec08"> Finishing up </a>
+            </li>
+            <li>
+              <a href="19_paint.xhtml#ch19_sec09"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li style="position: relative">
+          <a href="20_node.xhtml">Node.js<span class="parttitle">(Part 3: Node)</span></a>
+          <ol>
+            <li>
+              <a href="20_node.xhtml#ch20_sec01"> Background </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec02"> Asynchronicity</a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec03"> The node command </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec04"> Modules </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec05"> Installing with NPM </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec06"> The file system module </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec07"> The HTTP module </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec08"> Streams </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec09"> A simple file server </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec10"> Error handling </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec11"> Summary </a>
+            </li>
+            <li>
+              <a href="20_node.xhtml#ch20_sec12"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="21_skillsharing.xhtml">Project: Skill-Sharing Website</a>
+          <ol>
+            <li>
+              <a href="21_skillsharing.xhtml#ch21_sec01"> Design </a>
+            </li>
+            <li>
+              <a href="21_skillsharing.xhtml#ch21_sec02"> Long polling </a>
+            </li>
+            <li>
+              <a href="21_skillsharing.xhtml#ch21_sec03"> HTTP interface </a>
+            </li>
+            <li>
+              <a href="21_skillsharing.xhtml#ch21_sec04"> The server </a>
+            </li>
+            <li>
+              <a href="21_skillsharing.xhtml#ch21_sec05"> The client </a>
+            </li>
+            <li>
+              <a href="21_skillsharing.xhtml#ch21_sec06"> Exercises </a>
+            </li>
+          </ol>
+        </li>
+        <li class="no-number">
+          <a href="hints.xhtml">Hints to the exercises</a>
+          <ol>
+            <li>
+              <a href="hints.xhtml#ch22_sec01"> Program Structure </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec02"> Functions </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec03"> Data Structures: Objects and Arrays </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec04"> Higher-Order Functions </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec05"> The Secret Life of Objects </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec06"> Project: Electronic Life </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec07"> Bugs and Error Handling </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec08"> Regular Expressions </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec09"> Modules </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec10"> Project: A Programming Language </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec11"> The Document Object Model </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec12"> Handling Events </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec13"> Project: A Platform Game </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec14"> Drawing on Canvas </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec15"> HTTP </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec16"> Forms and Form Fields </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec17"> Project: A Paint Program </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec18"> Node.js </a>
+            </li>
+            <li>
+              <a href="hints.xhtml#ch22_sec19"> Project: Skill-Sharing Website </a>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </nav>
+  </body>
+</html>
