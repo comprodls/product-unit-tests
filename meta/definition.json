@@ -1,6 +1,6 @@
 {    
   "author": "Marijn Haverbeke",  
-  "code": "eloquentjavascript",
+  "code": "nosectionepub",
   "definition": {
     "learning-objectives": {
       "Foundations of Javascript": {
@@ -483,6 +483,6 @@
   },
   "thumbnailsmall": "OEBPS/img/cover.png",
   "thunbnaillarge": "OEBPS/img/cover.png",
-  "title": "Eloquent Javascript",
+  "title": "No Section Epub",
   "version": "1.0"
 }
