@@ -78,30 +78,173 @@
   "description": "",
   "items": [
     {
-      "name": "The Web Can Do That!? : Video",
+      "name": "Understanding JavaScript Function Invocation and \"this\" Yehuda Katz, yehudakatz.com",
       "item-type": "resource",
-      "resource": "RE_0044",
-      "item-code": "The_Web_Can_Do_That!?_:_Video",
+      "resource": "RE_0001",
+      "item-code": "Understanding_JavaScript_Function_Invocation_and_this_Yehuda_Katz,_yehudakatz.com",
       "tracking": true
     },
     {
-      "name": "Designing Better JavaScript APIs",
+     "name": "Common JavaScript \"Gotchas\" James Fuller, jblotus.com",
       "item-type": "resource",
-      "resource": "RE_0011",
-      "item-code": "Designing_Better_JavaScript_APIs",
-      "tracking": true
+      "resource": "RE_0002",
+      "item-code": "Common_JavaScript_Gotchas_James_Fuller,_jblotus.com",
+      "tracking": true 
     },
     {
       "name": "Understanding JavaScript",
       "item-type": "folder",
       "item-code": "Understanding_JavaScript",
       "sub-type": "default",
+      "items": [        
+        {
+          "name": "Preparing Yourself for Modern JavaScript Development Justin Etheredge, codethinked.com",
+          "item-type": "resource",
+          "resource": "RE_0003",
+          "item-code": "Understanding_JavaScript/Preparing_Yourself_for_Modern_JavaScript_Development_Justin_Etheredge,_codethinked.com",
+          "tracking": true
+        },
+        {
+          "name": "Prototypes and Inheritance in JavaScript Scott Allen, msdn.microsoft.com",
+          "item-type": "resource",
+          "resource": "RE_0004",
+          "item-code": "Understanding_JavaScript/Prototypes_and_Inheritance_in_JavaScript_Scott_Allen,_msdn.microsoft.com",
+          "tracking": true
+        },
+        {
+          "name": "Style Guide: A mostly reasonable approach to JavaScript Airbnb, github.com/airbnb",
+          "item-type": "resource",
+          "resource": "RE_0005",
+          "item-code": "Understanding_JavaScript/Style_Guide:_A_mostly_reasonable_approach_to_JavaScript_Airbnb,_github.comairbnb",
+          "tracking": true
+        },
+        {
+          "name": "Videos",
+          "item-type": "folder",
+          "item-code": "Understanding_JavaScript/Videos",
+          "sub-type": "default",
+          "items": [   
+                      {
+                        "name": "The JavaScript Revolution : Video",
+                        "item-type": "resource",
+                        "resource": "RE_0010",
+                        "item-code": "Understanding_JavaScript/Videos/The_JavaScript_Revolution_:_Video",
+                        "tracking": true
+                      },
+                      {
+                        "name": "Functions : Video",
+                        "item-type": "resource",
+                        "resource": "RE_0007",
+                        "item-code": "Understanding_JavaScript/Videos/Functions_:_Video",
+                        "tracking": true
+                      },
+                      {
+                        "name": "Objects : Video",
+                        "item-type": "resource",
+                        "resource": "RE_0008",
+                        "item-code": "Understanding_JavaScript/Videos/Objects_:_Video",
+                        "tracking": true
+                      }
+                    ]
+        },
+        {
+          "name": "Practice Tests",
+          "item-type": "folder",
+          "item-code": "Understanding_JavaScript/Practice_Tests",
+          "sub-type": "default",
+          "items": [
+                     {
+                        "name": "Module Test 1",
+                        "item-type": "resource",
+                        "resource": "RE_0009",
+                        "item-code": "Understanding_JavaScript/Practice_Tests/Module_Test_1",
+                        "tracking": true
+                      },
+                      {
+                        "name": "Module Test 2",
+                        "item-type": "resource",
+                        "resource": "RE_0009",
+                        "item-code": "Understanding_JavaScript/Practice_Tests/Module_Test_2",
+                        "tracking": true
+                      }
+                   ]
+        }
+      ]
+    },
+    {
+      "name": "Organizing your code",
+      "item-type": "folder",
+      "item-code": "Organizing_your_code",
+      "sub-type": "default",
       "items": [
         {
-          "name": "Understanding JavaScript Function Invocation and \"this\" Yehuda Katz, yehudakatz.com",
+          "name": "Designing Better JavaScript APIs",
           "item-type": "resource",
-          "resource": "RE_0001",
-          "item-code": "Understanding_JavaScript/Understanding_JavaScript_Function_Invocation_and_this_Yehuda_Katz,_yehudakatz.com",
+          "resource": "RE_0011",
+          "item-code": "Organizing_your_code/Designing_Better_JavaScript_APIs",
+          "tracking": true
+        },
+        {
+          "name": "Asynchronous JS: Callbacks, Listeners, Control Flow Libs and Promises",
+          "item-type": "resource",
+          "resource": "RE_0012",
+          "item-code": "Organizing_your_code/Asynchronous_JS:_Callbacks,_Listeners,_Control_Flow_Libs_and_Promises",
+          "tracking": true
+        },
+        {
+          "name": "I .promise() to show you .when() to use Deferreds : Video",
+          "item-type": "resource",
+          "resource": "RE_0013",
+          "item-code": "Organizing_your_code/I_.promise()_to_show_you_.when()_to_use_Deferreds_:_Video",
+          "tracking": true
+        },
+        {
+          "name": "JavaScript Promises",
+          "item-type": "resource",
+          "resource": "RE_0014",
+          "item-code": "Organizing_your_code/JavaScript_Promises",
+          "tracking": true
+        },
+        {
+          "name": "JavaScript Module Pattern: In-Depth",
+          "item-type": "resource",
+          "resource": "RE_0015",
+          "item-code": "Organizing_your_code/JavaScript_Module_Pattern:_In-Depth",
+          "tracking": true
+        },
+        {
+          "name": "Single page apps in depth",
+          "item-type": "resource",
+          "resource": "RE_0016",
+          "item-code": "Organizing_your_code/Single_page_apps_in_depth",
+          "tracking": true
+        },
+        {
+          "name": "Can you help me understand the benefit of require.js?",
+          "item-type": "resource",
+          "resource": "RE_0017",
+          "item-code": "Organizing_your_code/Can_you_help_me_understand_the_benefit_of_require.js?",
+          "tracking": true
+        },
+        {
+          "name": "Journey From RequireJS to Browserify",
+          "item-type": "resource",
+          "resource": "RE_0018",
+          "item-code": "Organizing_your_code/Journey_From_RequireJS_to_Browserify",
+          "tracking": true
+        },
+        {
+          "name": "Client-Side Templating",
+          "item-type": "resource",
+          "resource": "RE_0019",
+          "item-code": "Organizing_your_code/Client-Side_Templating",
+          "tracking": true
+        },
+        {
+          "name": "Modules : Video",
+          "item-type": "resource",
+          "resource": "RE_0020",
+          "item-code": "Organizing_your_code/Modules_:_Video",
           "tracking": true
         }
       ]
@@ -118,83 +261,265 @@
           "resource": "RE_0021",
           "item-code": "Testing_your_application/Writing_Testable_Frontend_Javascript_Part_1_-_Anti-patterns_and_their_fixes",
           "tracking": true
+        },
+        {
+          "name": "Writing Testable JavaScript",
+          "item-type": "resource",
+          "resource": "RE_0022",
+          "item-code": "Testing_your_application/Writing_Testable_JavaScript",
+          "tracking": true
+        },
+        {
+          "name": "Make tests read like a book",
+          "item-type": "resource",
+          "resource": "RE_0023",
+          "item-code": "Testing_your_application/Make_tests_read_like_a_book",
+          "tracking": true
+        },
+        {
+          "name": " The Plight of Pinocchio: JavaScript quest to become a real language",
+          "item-type": "resource",
+          "resource": "RE_0024",
+          "item-code": "Testing_your_application/ The_Plight_of_Pinocchio:_JavaScript_quest_to_become_a_real_language",
+          "tracking": true
+        },
+        {
+          "name": "Separation of Concerns : Video",
+          "item-type": "resource",
+          "resource": "RE_0025",
+          "item-code": "Testing_your_application/Separation_of_Concerns_:_Video",
+          "tracking": true
         }
       ]
     },
     {
-      "name": "Organizing your code",
-      "item-type": "folder",
-      "item-code": "Organizing_your_code",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Videos",
-          "item-type": "folder",
-          "item-code": "Organizing_your_code/Videos",
-          "sub-type": "default",
-          "items": [
-            {
-              "name": "Functions : Video",
-              "item-type": "resource",
-              "resource": "RE_0007",
-              "item-code": "Organizing_your_code/Videos/Functions_:_Video",
-              "tracking": true
-            }
-          ]
-        }
-      ]
-    },    
-    {
-      "name": "Organizing your code",
-      "item-type": "folder",
-      "item-code": "Organizing_your_code",
-      "sub-type": "default",
-      "items": [
-        {
-          "name": "Practice Tests",
-          "item-type": "folder",
-          "item-code": "Organizing_your_code/Practice_Tests",
-          "sub-type": "default",
-          "items": [
-            {
-              "name": "Module Test",
-              "item-type": "resource",
-              "resource": "RE_0009",
-              "item-code": "Organizing_your_code/Practice_Tests/Module_Test",
-              "tracking": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "What the heck is the event loop anyway?",
+      "name": "Automating Your Front-end Workflow : Video",
       "item-type": "resource",
-      "resource": "RE_0039",
-      "item-code": "What_the_heck_is_the_event_loop_anyway?",
+      "resource": "RE_0026",
+      "item-code": "Automating_Your_Front-end_Workflow_:_Video",
       "tracking": true
     },
     {
-      "name": "Organizing your code",
+      "name": "Tools of the trade",
       "item-type": "folder",
-      "item-code": "Organizing_your_code",
+      "item-code": "Tools_of_the_trade",
       "sub-type": "default",
       "items": [
         {
-          "name": "Videos",
-          "item-type": "folder",
-          "item-code": "Organizing_your_code/Videos",
-          "sub-type": "default",
-          "items": [
-            {
-              "name": "The JavaScript Revolution : Video",
-              "item-type": "resource",
-              "resource": "RE_0010",
-              "item-code": "Organizing_your_code/Videos/The_JavaScript_Revolution_:_Video",
-              "tracking": true
-            }
-          ]
+          "name": "Chrome Developer Tools",
+          "item-type": "resource",
+          "resource": "RE_0027",
+          "item-code": "Tools_of_the_trade/Chrome_Developer_Tools",
+          "tracking": true
+        },
+        {
+          "name": "\"The Breakpoint\" episodes : Video",
+          "item-type": "resource",
+          "resource": "RE_0028",
+          "item-code": "Tools_of_the_trade/\"The Breakpoint\"_episodes_:_Video",
+          "tracking": true
+        },
+        {
+          "name": "Access Control : Video",
+          "item-type": "resource",
+          "resource": "RE_0029",
+          "item-code": "Tools_of_the_trade/Access_Control_:_Video",
+          "tracking": true
         }
+      ]
+    },
+    {
+      "name": "Performance and Profiling",
+      "item-type": "folder",
+      "item-code": "Performance_and_Profiling",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Writing Fast, Memory-Efficient JavaScript",
+          "item-type": "resource",
+          "resource": "RE_0030",
+          "item-code": "Performance_and_Profiling/Writing_Fast,_Memory-Efficient_JavaScript",
+          "tracking": true
+        },
+        {
+          "name": "Improving Web App Performance With the Chrome DevTools",
+          "item-type": "resource",
+          "resource": "RE_0031",
+          "item-code": "Performance_and_Profiling/Improving_Web_App_Performance_With_the_Chrome_DevTools",
+          "tracking": true
+        },
+        {
+          "name": "Jank Busters: Building Performant Web Apps : Video",
+          "item-type": "resource",
+          "resource": "RE_0032",
+          "item-code": "Performance_and_Profiling/Jank_Busters:_Building_Performant_Web_Apps_:_Video",
+          "tracking": true
+        },
+        {
+          "name": "Leaner, Meaner, Faster Animations with requestAnimationFrame",
+          "item-type": "resource",
+          "resource": "RE_0033",
+          "item-code": "Performance_and_Profiling/Leaner,_Meaner,_Faster_Animations_with_requestAnimationFrame",
+          "tracking": true
+        },
+        {
+          "name": "How (not) to trigger a layout in WebKit",
+          "item-type": "resource",
+          "resource": "RE_0034",
+          "item-code": "Performance_and_Profiling/How_(not)_to_trigger_a_layout_in_WebKit",
+          "tracking": true
+        },
+        {
+          "name": "Logging : Video",
+          "item-type": "resource",
+          "resource": "RE_0035",
+          "item-code": "Performance_and_Profiling/Logging_:_Video",
+          "tracking": true
+        }
+      ]
+    },
+    {
+      "name": "Securing you App",
+      "item-type": "folder",
+      "item-code": "Securing_you_App",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Single Page Web App Security Cheat Sheet",
+          "item-type": "resource",
+          "resource": "RE_0036",
+          "item-code": "Securing_you_App/Single_Page_Web_App_Security_Cheat_Sheet",
+          "tracking": true
+        },
+        {
+          "name": "Frontend Security",
+          "item-type": "resource",
+          "resource": "RE_0037",
+          "item-code": "Securing_you_App/Frontend_Security",
+          "tracking": true
+        },
+        {
+          "name": "Building RESTful APIs : Video",
+          "item-type": "resource",
+          "resource": "RE_0038",
+          "item-code": "Securing_you_App/Building_RESTful_APIs_:_Video",
+          "tracking": true
+        }
+      ]
+    },
+    {
+      "name": "Under the Hood",
+      "item-type": "folder",
+      "item-code": "Under_the_Hood",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "What the heck is the event loop anyway?",
+          "item-type": "resource",
+          "resource": "RE_0039",
+          "item-code": "Under_the_Hood/What_the_heck_is_the_event_loop_anyway?",
+          "tracking": true
+        },
+        {
+          "name": "How browsers work",
+          "item-type": "resource",
+          "resource": "RE_0040",
+          "item-code": "Under_the_Hood/How_browsers_work",
+          "tracking": true
+        },
+        {
+          "name": "WebKit for Developers",
+          "item-type": "resource",
+          "resource": "RE_0041",
+          "item-code": "Under_the_Hood/WebKit_for_Developers",
+          "tracking": true
+        },
+        {
+          "name": "mö.js - explaining js vm in js : Video",
+          "item-type": "resource",
+          "resource": "RE_0042",
+          "item-code": "Under_the_Hood/mö.js_-_explaining_js_vm_in_js_:_Video",
+          "tracking": true
+        },
+        {
+          "name": "Feature Toggle : Video",
+          "item-type": "resource",
+          "resource": "RE_0043",
+          "item-code": "Under_the_Hood/Feature_Toggle_:_Video",
+          "tracking": true
+        }
+      ]
+    },
+    {
+      "name": "The Web Can Do That!? : Video",
+      "item-type": "resource",
+      "resource": "RE_0044",
+      "item-code": "The_Web_Can_Do_That!?_:_Video",
+      "tracking": true
+    },
+    {
+      "name": "On the Horizon",
+      "item-type": "folder",
+      "item-code": "On_the_Horizon",
+      "sub-type": "default",
+      "items": [
+        {
+          "name": "Overview of ECMAScript 6 features",
+          "item-type": "resource",
+          "resource": "RE_0045",
+          "item-code": "On_the_Horizon/Overview_of_ECMAScript_6_features",
+          "tracking": true
+        },
+        {
+          "name": "Deploying JavaScript Applications",
+          "item-type": "resource",
+          "resource": "RE_0046",
+          "item-code": "On_the_Horizon/Deploying_JavaScript_Applications",
+          "tracking": true
+        },
+        {
+          "name": "Immutability, interactivity &amp; JavaScript : Video",
+          "item-type": "resource",
+          "resource": "RE_0047",
+          "item-code": "On_the_Horizon/Immutability,_interactivity_&amp;_JavaScript_:_Video",
+          "tracking": true
+        },
+        {
+          "name": "Methods of communication",
+          "item-type": "resource",
+          "resource": "RE_0048",
+          "item-code": "On_the_Horizon/Methods_of_communication",
+          "tracking": true
+        },
+        {
+          "name": "The introduction to Reactive Programming you've been missing",
+          "item-type": "resource",
+          "resource": "RE_0049",
+          "item-code": "On_the_Horizon/The_introduction_to_Reactive_Programming_you've_been_missing",
+          "tracking": true
+        },
+        {
+          "name": "Components",
+          "item-type": "resource",
+          "resource": "RE_0050",
+          "item-code": "On_the_Horizon/Components",
+          "tracking": true
+        },
+        {
+          "name": "JavaScript Dependency Injection",
+          "item-type": "resource",
+          "resource": "RE_0051",
+          "item-code": "On_the_Horizon/JavaScript_Dependency_Injection",
+          "tracking": true
+        },
+        {
+          "name": "Internationalization : Video",
+          "item-type": "resource",
+          "resource": "RE_0052",
+          "item-code": "On_the_Horizon/Internationalization_:_Video",
+          "tracking": true
+        }
+        
       ]
     }
   ],
@@ -214,9 +539,62 @@
           "url": "ch01_sec01_understanding javascript functions.html"
         },
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Function and Objects"
-        ]
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0002": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch01_sec02_Common_JavaScript_Gotchas.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0003": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch01_sec03_Preparing Yourself for Modern JavaScript.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/History and Evolution"]
+      },
+      "RE_0004": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch01_sec04_Prototypes and Inheritance in JavaScript.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0005": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch01_sec05_Airbnb JavaScript Style Guide.html"
+        },
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Code Organisation"]
+      },
+      "RE_0006": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "demo.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
       },
       "RE_0007": {
         "sub-type": "video",
@@ -227,9 +605,18 @@
           "url": "https://www.youtube.com/watch?v=mS264h8KGwk"
         },
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Function and Objects"
-        ]
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0008": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=PMfcsYzj-9M"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
       },
       "RE_0009": {
         "sub-type": "test",
@@ -240,11 +627,9 @@
         "test": {
           "url": ""
         },
-        "learning-objectives": [
-          "Foundations of Javascript/Function and Objects"
-        ]
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
       },
-      "RE_0010": {
+    "RE_0010": {
         "sub-type": "video",
         "tags": [
           "videos"
@@ -253,11 +638,9 @@
           "url": "https://www.youtube.com/watch?v=_cLvpJY2deo"
         },
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/History and Evolution"
-        ]
+        "learning-objectives": ["Foundations of Javascript/History and Evolution"]
       },
-      "RE_0011": {
+    "RE_0011": {
         "sub-type": "html",
         "tags": [
           "reading"
@@ -266,11 +649,108 @@
           "url": "ch02_sec01_Designing Better JS APIs.html"
         },
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Advanced Javascript"
-        ]
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
       },
-      "RE_0021": {
+    "RE_0012": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch02_sec02_Async JS Callbacks_Listeners_Control Flow Libs &Promises.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+    "RE_0013": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=juRtEEsHI9E"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+    "RE_0014": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch02_sec04_JS Promises.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+    "RE_0015": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch02_sec05_JS Module Pattern_in-Depth.html"
+        },
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Using Modules"]
+      },
+    "RE_0016": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch02_sec06_Single page apps in depth.html"
+        },
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Single Page Apps"]
+      },
+    "RE_0017": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch02_sec07_Benefit of requireJS.html"
+        },
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Single Page Apps"]
+      },
+    "RE_0018": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch02_sec08_Journey From RequireJS to Browserify.html"
+        },
+        "description": "",
+        "learning-objectives": ["Patterns and Best Practices/Single Page Apps"]
+      },
+    "RE_0019": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch02_sec09_Client-Side Templating.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+     "RE_0020": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=qVVC2JwFziM"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+     "RE_0021": {
         "sub-type": "html",
         "tags": [
           "reading"
@@ -279,11 +759,196 @@
           "url": "ch03_sec01_Writing Testable Frontend JS.html"
         },
         "description": "",
-        "learning-objectives": [
-          "Testing Javascript code/Writing Testable Javascript"
-        ]
+        "learning-objectives": ["Testing Javascript code/Writing Testable Javascript"]
       },
-      "RE_0039": {
+     "RE_0022": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch03_sec02_Writing Testable JS.html"
+        },
+        "description": "",
+        "learning-objectives": ["Testing Javascript code/Writing Testable Javascript"]
+      },
+     "RE_0023": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch03_sec03_Make tests read like a book.html"
+        },
+        "description": "",
+        "learning-objectives": ["Testing Javascript code/Writing Testable Javascript"]
+      },
+     "RE_0024": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch03_sec04_JS quest to become a real language.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/History and Evolution"]
+      },
+    "RE_0025": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=y3_obzy3tIU"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0026": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=1OAfGm_cI6Y"
+        },
+        "description": "",
+        "learning-objectives": ["Debugging Javascript code/Using Developer Tools"]
+      },
+      "RE_0027": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch04_sec02_Chrome Developer Tools.html"
+        },
+        "description": "",
+        "learning-objectives": ["Debugging Javascript code/Using Developer Tools"]
+      },
+      "RE_0028": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/playlist?list=PLNYkxOF6rcIBQ8j3J_PyM8JLAGKqZRByw"
+        },
+        "description": "",
+        "learning-objectives": ["Debugging Javascript code/Using Developer Tools"]
+      },
+      "RE_0029": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=rlnhiwN8AnU"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Function and Objects"]
+      },
+      "RE_0030": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch05_sec01_Writing Fast,Memory-Efficient JS.html"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Performance"]
+      },
+      "RE_0031": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch05_sec02_Improving Web App Performance.html"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Performance"]
+      },
+      "RE_0032": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=hAzhayTnhEI"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Performance"]
+      },
+      "RE_0033": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch05_sec04_Faster Animations with RqstAnimation Frame.html"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Performance"]
+      },
+      "RE_0034": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch05_sec05_ How (not) to trigger a layout in WebKit.html"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Performance"]
+      },
+      "RE_0035": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=1RlkftxAo-M"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Performance"]
+      },
+       "RE_0036": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch06_sec01_writings_javascript-security-cheat-sheet.html"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Securing Application"]
+      },
+      "RE_0037": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch06_sec02_Frontend Security.html"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Securing Application"]
+      },
+      "RE_0038": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=vJVQi7ZFSaQ"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Securing Application"]
+      },
+       "RE_0039": {
         "sub-type": "html",
         "tags": [
           "reading"
@@ -292,9 +957,52 @@
           "url": "ch07_sec01_What the heck is the event loop anyway.html"
         },
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Advanced Javascript"
-        ]
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+      "RE_0040": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch07_sec02_How Browsers Work Behind the scenes of modern web browsers.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+      "RE_0041": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch07_sec03_WebKit for Developers.html"
+        },
+        "description": "",
+        "learning-objectives": ["Debugging Javascript code/Using Developer Tools"]
+      },
+      "RE_0042": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=y8hVeKMD_oM"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+
+      "RE_0043": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=cTi9dFRwbt8"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Logging"]
       },
       "RE_0044": {
         "sub-type": "video",
@@ -305,10 +1013,99 @@
           "url": "https://www.youtube.com/watch?v=X_ek1wSe66o"
         },
         "description": "",
-        "learning-objectives": [
-          "Foundations of Javascript/Advanced Javascript"
-        ]
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+      "RE_0045": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch08_sec02_es6features.html"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Deploying Javascript Applications"]
+      },
+      "RE_0046": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch08_sec03_Deploying JS Apps.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+       "RE_0047": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=mS264h8KGwk"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+       "RE_0048": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch08_sec05_Methods of communication.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+       "RE_0049": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch08_sec06_The intro to Reactive Programming.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+       "RE_0050": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch08_sec07_Components.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+       "RE_0051": {
+        "sub-type": "html",
+        "tags": [
+          "reading"
+        ],
+        "html": {
+          "url": "ch08_sec08_JavaScript Dependency Injection.html"
+        },
+        "description": "",
+        "learning-objectives": ["Foundations of Javascript/Advanced Javascript"]
+      },
+       "RE_0052": {
+        "sub-type": "video",
+        "tags": [
+          "videos"
+        ],
+        "video": {
+          "url": "https://www.youtube.com/watch?v=h3p8cGOZ8CU"
+        },
+        "description": "",
+        "learning-objectives": ["Building Production Ready Apps/Restful API Development"]
       }
+
+
+    
     },
     "test": {},
     "ebook": {}
