@@ -524,7 +524,7 @@
     }
   ],
   "paths": {
-    "public-assets": "https://s3.amazonaws.com/comprodls/products",
+    "public-assets": "http://s3.amazonaws.com/comprodls/products",
     "secured-assets": ""
   },
   "producttype": "courseware",
