@@ -121,10 +121,9 @@
                 ]
             }
         }
-    }
-},
-"title": "The Ultimate Guide to Graphic Design",
-"thumbnailsmall": "cover.jpg",
-"thumbnaillarge": "cover.jpg",
-"version": "1.0"
+    },
+    "title": "The Ultimate Guide to Graphic Design",
+    "thumbnailsmall": "cover.jpg",
+    "thumbnaillarge": "cover.jpg",
+    "version": "1.0"
 }
