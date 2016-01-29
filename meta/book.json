@@ -1,0 +1,391 @@
+{
+    "bookid": "DES17_V1_TE_L04_115-150_hi-opt",
+    "desc": "Descubre V1 Lesson 4 (Teacher's Edition)",
+    "pageWidth": 600,
+    "pageHeight": 800,
+    "pagecount": "36",
+    "paths": {
+        "pageSmImgFolder": "images/sm/",
+        "pageMedImgFolder": "images/med/",
+        "pageLrgImgFolder": "images/lrg/",
+        "pageThumbImgFolder": "images/thumbnail/",
+        "pagexlLrgImgFolder": "images/xlrg/",
+        "pageTextDataFolder": "json/",
+        "mediaFolder": "assets/"
+    },
+    "imageConfig": [
+        {
+            "category": "xlarge",
+            "width": 3825,
+            "height": 4898,
+            "dpi": 450,
+            "folderRef": "xlrg"
+        },
+        {
+            "category": "large",
+            "width": 2550,
+            "height": 3265,
+            "dpi": 300,
+            "folderRef": "large"
+        },
+        {
+            "category": "medium",
+            "width": 1275,
+            "height": 1633,
+            "dpi": 150,
+            "folderRef": "med"
+        },
+        {
+            "category": "small",
+            "width": 816,
+            "height": 1045,
+            "dpi": 96,
+            "folderRef": "sm"
+        },
+        {
+            "category": "thumbnail",
+            "width": 612,
+            "height": 784,
+            "dpi": 72,
+            "folderRef": "thumbnail"
+        }
+    ],
+    "zoomingStateData": [
+        {
+            "pcwidth": 400,
+            "singlePage": "true"
+        },
+        {
+            "pcwidth": 600,
+            "singlePage": "true"
+        },
+        {
+            "pcwidth": 720,
+            "singlePage": "true"
+        },
+        {
+            "pcwidth": 960,
+            "singlePage": "false"
+        },
+        {
+            "pcwidth": 1120,
+            "singlePage": "false"
+        },
+        {
+            "pcwidth": 1280,
+            "singlePage": "false"
+        },
+        {
+            "pcwidth": 1440,
+            "singlePage": "false"
+        },
+        {
+            "pcwidth": 1800,
+            "singlePage": "false"
+        },
+        {
+            "pcwidth": 2400,
+            "singlePage": "false"
+        },
+        {
+            "pcwidth": 3000,
+            "singlePage": "false"
+        },
+        {
+            "pcwidth": 3600,
+            "singlePage": "false"
+        }
+    ],
+    "pages": {
+        "page": [
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt1",
+                "sno": 1,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt1.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt1.jpg",
+                "pagelabel": "115",
+                "title": "Los pasatiempos"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt2",
+                "sno": 2,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt2.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt2.jpg",
+                "pagelabel": "116",
+                "title": "contextos"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt3",
+                "sno": 3,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt3.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt3.jpg",
+                "pagelabel": "117",
+                "title": "contextos"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt4",
+                "sno": 4,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt4.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt4.jpg",
+                "pagelabel": "118",
+                "title": "contextos"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt5",
+                "sno": 5,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt5.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt5.jpg",
+                "pagelabel": "119",
+                "title": "contextos"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt6",
+                "sno": 6,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt6.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt6.jpg",
+                "pagelabel": "120",
+                "title": "fotonovela"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt7",
+                "sno": 7,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt7.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt7.jpg",
+                "pagelabel": "121",
+                "title": "fotonovela"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt8",
+                "sno": 8,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt8.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt8.jpg",
+                "pagelabel": "122",
+                "title": "fotonovela"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt9",
+                "sno": 9,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt9.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt9.jpg",
+                "pagelabel": "123",
+                "title": "fotonovela"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt10",
+                "sno": 10,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt10.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt10.jpg",
+                "pagelabel": "124",
+                "title": "cultura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt11",
+                "sno": 11,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt11.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt11.jpg",
+                "pagelabel": "125",
+                "title": "cultura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt12",
+                "sno": 12,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt12.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt12.jpg",
+                "pagelabel": "126",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt13",
+                "sno": 13,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt13.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt13.jpg",
+                "pagelabel": "127",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt14",
+                "sno": 14,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt14.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt14.jpg",
+                "pagelabel": "128",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt15",
+                "sno": 15,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt15.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt15.jpg",
+                "pagelabel": "129",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt16",
+                "sno": 16,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt16.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt16.jpg",
+                "pagelabel": "130",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt17",
+                "sno": 17,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt17.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt17.jpg",
+                "pagelabel": "131",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt18",
+                "sno": 18,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt18.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt18.jpg",
+                "pagelabel": "132",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt19",
+                "sno": 19,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt19.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt19.jpg",
+                "pagelabel": "133",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt20",
+                "sno": 20,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt20.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt20.jpg",
+                "pagelabel": "134",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt21",
+                "sno": 21,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt21.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt21.jpg",
+                "pagelabel": "135",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt22",
+                "sno": 22,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt22.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt22.jpg",
+                "pagelabel": "136",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt23",
+                "sno": 23,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt23.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt23.jpg",
+                "pagelabel": "137",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt24",
+                "sno": 24,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt24.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt24.jpg",
+                "pagelabel": "138",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt25",
+                "sno": 25,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt25.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt25.jpg",
+                "pagelabel": "139",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt26",
+                "sno": 26,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt26.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt26.jpg",
+                "pagelabel": "140",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt27",
+                "sno": 27,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt27.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt27.jpg",
+                "pagelabel": "141",
+                "title": "estructura"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt28",
+                "sno": 28,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt28.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt28.jpg",
+                "pagelabel": "142",
+                "title": "adelante"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt29",
+                "sno": 29,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt29.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt29.jpg",
+                "pagelabel": "143",
+                "title": "adelante"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt30",
+                "sno": 30,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt30.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt30.jpg",
+                "pagelabel": "144",
+                "title": "adelante"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt31",
+                "sno": 31,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt31.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt31.jpg",
+                "pagelabel": "145",
+                "title": "adelante"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt32",
+                "sno": 32,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt32.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt32.jpg",
+                "pagelabel": "146",
+                "title": "adelante"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt33",
+                "sno": 33,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt33.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt33.jpg",
+                "pagelabel": "147",
+                "title": "adelante"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt34",
+                "sno": 34,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt34.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt34.jpg",
+                "pagelabel": "148",
+                "title": "adelante"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt35",
+                "sno": 35,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt35.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt35.jpg",
+                "pagelabel": "149",
+                "title": "adelante"
+            },
+            {
+                "fid": "DES17_V1_TE_L04_115-150_hi-opt36",
+                "sno": 36,
+                "data": "DES17_V1_TE_L04_115-150_hi-opt36.json",
+                "bgimage": "DES17_V1_TE_L04_115-150_hi-opt36.jpg",
+                "pagelabel": "150",
+                "title": "vocabulario"
+            }
+        ]
+    }
+}
