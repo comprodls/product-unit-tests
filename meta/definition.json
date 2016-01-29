@@ -1,129 +1,1491 @@
 {
-    "author": "Adam Hadwin",
-    "code": "theultimateguide",
-    "definition": {
-        "learning-objectives": {
-            "Foundations of Javascript": {
-                "learning-objectives": {
-                    "History and Evolution": {
-                        "learning-objectives": {}
-                    },
-                    "Function and Objects": {
-                        "learning-objectives": {}
-                    },
-                    "Advanced Javascript": {
-                        "learning-objectives": {}
-                    }
-                }
-            },
-            "Patterns and Best Practices": {
-                "learning-objectives": {
-                    "Code Organisation": {
-                        "learning-objectives": {}
-                    },
-                    "Using Modules": {
-                        "learning-objectives": {}
-                    },
-                    "Single Page Apps": {
-                        "learning-objectives": {}
-                    }
-                }
-            },
-            "Building Production Ready Apps": {
-                "learning-objectives": {
-                    "Logging": {
-                        "learning-objectives": {}
-                    },
-                    "Restful API Development": {
-                        "learning-objectives": {}
-                    },
-                    "Performance": {
-                        "learning-objectives": {}
-                    },
-                    "Securing Application": {
-                        "learning-objectives": {}
-                    },
-                    "Deploying Javascript Applications": {
-                        "learning-objectives": {}
-                    }
-                }
-            }
+  "author": "Vista Higher Learning",
+  "code": "descubrev1lesson4",
+  "definition": {
+    "learning-objectives": {      
+    },
+    "tags": {   
+      
+    }
+  },
+  "description": "In this book, students will be introduced to names of sports and other pastimes, names of places in a city and soccer rivalries.",
+  "items": [
+    {
+      "name": "Design Techniques",
+      "item-type": "folder",
+      "item-code": "Design_techniques",
+      "sub-type": "default",
+      "attribs": {
+        "page-no": "7"
+      },
+      "items": [        
+        {
+          "name": "David Carson",
+          "item-type": "resource",
+          "resource": "RE_0001",
+          "item-code": "Design_techniques/David_Carson",
+          "tracking": true
         },
-        "tags": {
-            "reading": {
-                "tags": {}
-            },
-            "videos": {
-                "tags": {}
-            },
-            "practice": {
-                "tags": {}
-            }
+        {
+          "name": "Line Art",
+          "item-type": "resource",
+          "resource": "RE_0002",
+          "item-code": "Design_techniques/Line_Art",
+          "tracking": true
+        },
+        {
+          "name": "Photoshop for free",
+          "item-type": "resource",
+          "resource": "RE_0003",
+          "item-code": "Design_techniques/Photoshop_for_free",
+          "tracking": true
+        },
+        {
+          "name": "Managing your photos",
+          "item-type": "resource",
+          "resource": "RE_0004",
+          "item-code": "Design_techniques/Managing_your_photos",
+          "tracking": true
+        },
+        {
+          "name": "Masterclass: Using Photoshop to create convincing rain effects",
+          "item-type": "resource",
+          "resource": "RE_0005",
+          "item-code": "Design_techniques/Masterclass:_Using_Photoshop_to_create_convincing_rain_effects",
+          "tracking": true
+        },
+        {
+          "name": "Masterclass: Create realistic, torn notebook paper in Photoshop",
+          "item-type": "resource",
+          "resource": "RE_0006",
+          "item-code": "Design_techniques/Masterclass:_Create_realistic,_torn_notebook_paper_in_ Photoshop",
+          "tracking": true
+        },
+        {
+          "name": "Masterclass: Creating panographic collaged images",
+          "item-type": "resource",
+          "resource": "RE_0007",
+          "item-code": "Design_techniques/Masterclass:_Creating_panographic_collaged_images",
+          "tracking": true
+        },
+        {
+          "name": "Masterclass: Creating isometric projections",
+          "item-type": "resource",
+          "resource": "RE_0008",
+          "item-code": "Design_techniques/Masterclass:_Creating_isometric_projections",
+          "tracking": true
+        },
+        {
+          "name": "Masterclass: Create your own customized maps",
+          "item-type": "resource",
+          "resource": "RE_0009",
+          "item-code": "Design_techniques/Masterclass:_Create_your_own_customized_maps",
+          "tracking": true
         }
+      ]  
     },
-    "description": "Covering Photoshop, InDesign, QuarkXPress and more, this comprehensive guide provides step-by-step guides to harnessing the power of your computer and using this to create professional, appealing and engaging projects.",
-    "items": [{
-        "name": "LINKED LEARNING 101",
-        "item-type": "folder",
-        "item-code": "LINKED_LEARNING_101",
-        "sub-type": "default",
-        "items": [{
-            "name": "slide0",
-            "item-type": "resource",
-            "item-code": "LINKED_LEARNING_101/slide0",
-            "resource": "RE00001",
-            "tracking": true
-        }]
-    }, {
-        "name": "LINKED LEARNING: STORY OF WHOA",
-        "item-type": "folder",
-        "item-code": "LINKED_LEARNING:_STORY_OF_WHOA",
-        "sub-type": "default",
-        "items": [{
-            "name": "slide1",
-            "item-type": "resource",
-            "item-code": "LINKED_LEARNING:_STORY_OF_WHOA/slide1",
-            "resource": "RE00003",
-            "tracking": true
-        }]
-    }],
-    "paths": {
-        "public-assets": "https://s3.amazonaws.com/comprodls/products",
-        "secured-assets": ""
-    },
-    "producttype": "imgbook",
-    "resources": {
-        "generic": {
-            "RE00001": {
-                "sub-type": "image",
-                "image": {
-                    "url": "images/slide0.jpg"
-                },
-                "description": "",
-                "learning-objectives": [
-                    "Foundations of Javascript"
-                ],
-                "tags": [
-                    "reading"
-                ]
-            },
-            "RE00003": {
-                "sub-type": "image",
-                "image": {
-                    "url": "images/slide1.jpg"
-                },
-                "description": "",
-                "learning-objectives": [
-                    "Foundations of Javascript"
-                ],
-                "tags": [
-                    "reading"
-                ]
-            }
+    {
+      "name": "A to Z of Design",
+      "item-type": "folder",
+      "item-code": "A_to_Z_of_Design",
+      "sub-type": "default",
+      "attribs": {
+        "page-no": "49"
+      },
+      "items": [        
+        {
+          "name": "Actions",
+          "item-type": "resource",
+          "resource": "RE_0010",
+          "item-code": "A_to_Z_of_Design/Actions",
+          "tracking": true
+        },
+        {
+          "name": "Adjustment Layers",
+          "item-type": "resource",
+          "resource": "RE_0011",
+          "item-code": "A_to_Z_of_Design/Adjustment_Layers",
+          "tracking": true
+        },
+        {
+          "name": "Adobe Bridge",
+          "item-type": "resource",
+          "resource": "RE_0012",
+          "item-code": "A_to_Z_of_Design/Adobe_Bridge",
+          "tracking": true
+        },
+        {
+          "name": "Backgrounds",
+          "item-type": "resource",
+          "resource": "RE_0013",
+          "item-code": "A_to_Z_of_Design/Backgrounds",
+          "tracking": true
+        },
+        {
+          "name": "Baselin Grid",
+          "item-type": "resource",
+          "resource": "RE_0014",
+          "item-code": "A_to_Z_of_Design/Baselin_Grid",
+          "tracking": true
+        },
+        {
+          "name": "Batch processing 1",
+          "item-type": "resource",
+          "resource": "RE_0015",
+          "item-code": "A_to_Z_of_Design/Batch_processing_1",
+          "tracking": true
+        },
+        {
+          "name": "Batch processing 2",
+          "item-type": "resource",
+          "resource": "RE_0016",
+          "item-code": "A_to_Z_of_Design/Batch_processing_2",
+          "tracking": true
+        },
+        {
+          "name": "Bezeir curves 1",
+          "item-type": "resource",
+          "resource": "RE_0017",
+          "item-code": "A_to_Z_of_Design/Bezeir_curves_1",
+          "tracking": true
+        },
+        {
+          "name": "Bezeir curves 2",
+          "item-type": "resource",
+          "resource": "RE_0018",
+          "item-code": "A_to_Z_of_Design/Bezeir_curves_2",
+          "tracking": true
+        },
+        {
+          "name": "Color balance",
+          "item-type": "resource",
+          "resource": "RE_0019",
+          "item-code": "A_to_Z_of_Design/Color_balance",
+          "tracking": true
+        },
+        {
+          "name": "Color spaces",
+          "item-type": "resource",
+          "resource": "RE_0020",
+          "item-code": "A_to_Z_of_Design/Color_spaces",
+          "tracking": true
+        },
+        {
+          "name": "Distortion",
+          "item-type": "resource",
+          "resource": "RE_0021",
+          "item-code": "A_to_Z_of_Design/Distortion",
+          "tracking": true
+        },
+        {
+          "name": "Dodge and Burn",
+          "item-type": "resource",
+          "resource": "RE_0022",
+          "item-code": "A_to_Z_of_Design/Dodge_and_Burn",
+          "tracking": true
+        },
+        {
+          "name": "Embossing",
+          "item-type": "resource",
+          "resource": "RE_0023",
+          "item-code": "A_to_Z_of_Design/Embossing",
+          "tracking": true
+        },
+        {
+          "name": "Extracting Images",
+          "item-type": "resource",
+          "resource": "RE_0024",
+          "item-code": "A_to_Z_of_Design/Extracting_Images",
+          "tracking": true
+        },
+        {
+          "name": "Fill and Strokes",
+          "item-type": "resource",
+          "resource": "RE_0025",
+          "item-code": "A_to_Z_of_Design/Fill_and_Strokes",
+          "tracking": true
+        },
+        {
+          "name": "Filters",
+          "item-type": "resource",
+          "resource": "RE_0026",
+          "item-code": "A_to_Z_of_Design/Filters",
+          "tracking": true
+        },
+        {
+          "name": "Free-to-use-pictures",
+          "item-type": "resource",
+          "resource": "RE_0027",
+          "item-code": "A_to_Z_of_Design/Free-to-use-pictures",
+          "tracking": true
+        },
+        {
+          "name": "Free Transform",
+          "item-type": "resource",
+          "resource": "RE_0028",
+          "item-code": "A_to_Z_of_Design/Free_Transform",
+          "tracking": true
+        },
+        {
+          "name": "Gradients",
+          "item-type": "resource",
+          "resource": "RE_0029",
+          "item-code": "A_to_Z_of_Design/Gradients",
+          "tracking": true
+        },
+        {
+          "name": "Graphics tablets",
+          "item-type": "resource",
+          "resource": "RE_0030",
+          "item-code": "A_to_Z_of_Design/Graphics_tablets",
+          "tracking": true
+        },
+        {
+          "name": "Graphs in Illustrator",
+          "item-type": "resource",
+          "resource": "RE_0031",
+          "item-code": "A_to_Z_of_Design/Graphs_in_Illustrator",
+          "tracking": true
+        },
+        {
+          "name": "Grep Styles in inDesign CS4",
+          "item-type": "resource",
+          "resource": "RE_0032",
+          "item-code": "A_to_Z_of_Design/Grep_Styles_in_inDesign_CS4",
+          "tracking": true
+        },
+        {
+          "name": "Hard Light mode",
+          "item-type": "resource",
+          "resource": "RE_0033",
+          "item-code": "A_to_Z_of_Design/Hard_Light_mode",
+          "tracking": true
+        },
+        {
+          "name": "History",
+          "item-type": "resource",
+          "resource": "RE_0034",
+          "item-code": "A_to_Z_of_Design/History",
+          "tracking": true
+        },
+        {
+          "name": "Image size",
+          "item-type": "resource",
+          "resource": "RE_0035",
+          "item-code": "A_to_Z_of_Design/Image_size",
+          "tracking": true
+        },
+        {
+          "name": "Image stacks",
+          "item-type": "resource",
+          "resource": "RE_0036",
+          "item-code": "A_to_Z_of_Design/Image_stacks",
+          "tracking": true
+        },
+        {
+          "name": "Isometric Projection",
+          "item-type": "resource",
+          "resource": "RE_0037",
+          "item-code": "A_to_Z_of_Design/Isometric_Projection",
+          "tracking": true
+        },
+        {
+          "name": "Jargon",
+          "item-type": "resource",
+          "resource": "RE_0038",
+          "item-code": "A_to_Z_of_Design/Jargon",
+          "tracking": true
+        },
+        {
+          "name": "Joining and splitting paths in Illustrator",
+          "item-type": "resource",
+          "resource": "RE_0039",
+          "item-code": "A_to_Z_of_Design/Joining_and_splitting_paths_in_Illustrator",
+          "tracking": true
+        },
+        {
+          "name": "Jpeg",
+          "item-type": "resource",
+          "resource": "RE_0040",
+          "item-code": "A_to_Z_of_Design/Jpeg",
+          "tracking": true
+        },
+        {
+          "name": "Kerning and tracking",
+          "item-type": "resource",
+          "resource": "RE_0041",
+          "item-code": "A_to_Z_of_Design/Kerning_and_tracking",
+          "tracking": true
+        },
+        {
+          "name": "Key commands 1",
+          "item-type": "resource",
+          "resource": "RE_0042",
+          "item-code": "A_to_Z_of_Design/Key_commands_1",
+          "tracking": true
+        },
+        {
+          "name": "Key commands 2",
+          "item-type": "resource",
+          "resource": "RE_0043",
+          "item-code": "A_to_Z_of_Design/Key_commands_2",
+          "tracking": true
+        },
+        {
+          "name": "Layer blending",
+          "item-type": "resource",
+          "resource": "RE_0044",
+          "item-code": "A_to_Z_of_Design/Layer_blending",
+          "tracking": true
+        },
+        {
+          "name": "Layer Styles",
+          "item-type": "resource",
+          "resource": "RE_0045",
+          "item-code": "A_to_Z_of_Design/Layer_Styles",
+          "tracking": true
+        },
+        {
+          "name": "Light and shade",
+          "item-type": "resource",
+          "resource": "RE_0046",
+          "item-code": "A_to_Z_of_Design/Light_and_shade",
+          "tracking": true
+        },
+        {
+          "name": "Liquify filter",
+          "item-type": "resource",
+          "resource": "RE_0047",
+          "item-code": "A_to_Z_of_Design/Liquify_filter",
+          "tracking": true
+        },
+        {
+          "name": "Masks in Illustrator and Photoshop",
+          "item-type": "resource",
+          "resource": "RE_0048",
+          "item-code": "A_to_Z_of_Design/Masks_in_Illustrator_and_Photoshop",
+          "tracking": true
+        },
+        {
+          "name": "Measurements from a photo",
+          "item-type": "resource",
+          "resource": "RE_0049",
+          "item-code": "A_to_Z_of_Design/Measurements_from_a_photo",
+          "tracking": true
+        },
+        {
+          "name": "Moving objects",
+          "item-type": "resource",
+          "resource": "RE_0050",
+          "item-code": "A_to_Z_of_Design/Moving_objects",
+          "tracking": true
+        },
+        {
+          "name": "Noise reduction",
+          "item-type": "resource",
+          "resource": "RE_0051",
+          "item-code": "A_to_Z_of_Design/Noise_reduction",
+          "tracking": true
+        },
+        {
+          "name": "Non-destructive editing",
+          "item-type": "resource",
+          "resource": "RE_0052",
+          "item-code": "A_to_Z_of_Design/Non-destructive_editing",
+          "tracking": true
+        },
+        {
+          "name": "OpenType",
+          "item-type": "resource",
+          "resource": "RE_0053",
+          "item-code": "A_to_Z_of_Design/OpenType",
+          "tracking": true
+        },
+        {
+          "name": "Optimising Photoshop",
+          "item-type": "resource",
+          "resource": "RE_0054",
+          "item-code": "A_to_Z_of_Design/Optimising_Photoshop",
+          "tracking": true
+        },
+        {
+          "name": "Paragraph rules",
+          "item-type": "resource",
+          "resource": "RE_0055",
+          "item-code": "A_to_Z_of_Design/Paragraph_rules",
+          "tracking": true
+        },
+        {
+          "name": "Pathfinder panel",
+          "item-type": "resource",
+          "resource": "RE_0056",
+          "item-code": "A_to_Z_of_Design/Pathfinder_panel",
+          "tracking": true
+        },
+        {
+          "name": "PDFs",
+          "item-type": "resource",
+          "resource": "RE_0057",
+          "item-code": "A_to_Z_of_Design/PDFs",
+          "tracking": true
+        },
+        {
+          "name": "Perspective",
+          "item-type": "resource",
+          "resource": "RE_0058",
+          "item-code": "A_to_Z_of_Design/Perspective",
+          "tracking": true
+        },
+        {
+          "name": "Plug-ins",
+          "item-type": "resource",
+          "resource": "RE_0059",
+          "item-code": "A_to_Z_of_Design/Plug-ins",
+          "tracking": true
+        },
+        {
+          "name": "QuickKeys",
+          "item-type": "resource",
+          "resource": "RE_0060",
+          "item-code": "A_to_Z_of_Design/QuickKeys",
+          "tracking": true
+        },
+        {
+          "name": "Quick Mask",
+          "item-type": "resource",
+          "resource": "RE_0061",
+          "item-code": "A_to_Z_of_Design/Quick_Mask",
+          "tracking": true
+        },
+        {
+          "name": "Raw images",
+          "item-type": "resource",
+          "resource": "RE_0062",
+          "item-code": "A_to_Z_of_Design/Raw_images",
+          "tracking": true
+        },
+        {
+          "name": "Refine Edge",
+          "item-type": "resource",
+          "resource": "RE_0063",
+          "item-code": "A_to_Z_of_Design/Refine_Edge",
+          "tracking": true
+        },
+        {
+          "name": "Reflections",
+          "item-type": "resource",
+          "resource": "RE_0064",
+          "item-code": "A_to_Z_of_Design/Reflections",
+          "tracking": true
+        },
+        {
+          "name": "Rule of thirds",
+          "item-type": "resource",
+          "resource": "RE_0065",
+          "item-code": "A_to_Z_of_Design/Rule_of_thirds",
+          "tracking": true
+        },
+        {
+          "name": "Smart Objects",
+          "item-type": "resource",
+          "resource": "RE_0066",
+          "item-code": "A_to_Z_of_Design/Smart_Objects",
+          "tracking": true
+        },
+        {
+          "name": "Smart Guides",
+          "item-type": "resource",
+          "resource": "RE_0067",
+          "item-code": "A_to_Z_of_Design/Smart_Guides",
+          "tracking": true
+        },
+        {
+          "name": "Style sheets",
+          "item-type": "resource",
+          "resource": "RE_0068",
+          "item-code": "A_to_Z_of_Design/Style_sheets",
+          "tracking": true
+        },
+        {
+          "name": "TextEdit",
+          "item-type": "resource",
+          "resource": "RE_0069",
+          "item-code": "A_to_Z_of_Design/TextEdit",
+          "tracking": true
+        },
+        {
+          "name": "Typography",
+          "item-type": "resource",
+          "resource": "RE_0070",
+          "item-code": "A_to_Z_of_Design/Typography",
+          "tracking": true
+        },
+        {
+          "name": "Unknown fonts",
+          "item-type": "resource",
+          "resource": "RE_0071",
+          "item-code": "A_to_Z_of_Design/Unknown_fonts",
+          "tracking": true
+        },
+        {
+          "name": "Unsharp Masks",
+          "item-type": "resource",
+          "resource": "RE_0072",
+          "item-code": "A_to_Z_of_Design/Unsharp_Masks",
+          "tracking": true
+        },
+        {
+          "name": "Upscaling",
+          "item-type": "resource",
+          "resource": "RE_0073",
+          "item-code": "A_to_Z_of_Design/Upscaling",
+          "tracking": true
+        },
+        {
+          "name": "Vector objects",
+          "item-type": "resource",
+          "resource": "RE_0074",
+          "item-code": "A_to_Z_of_Design/Vector_objects",
+          "tracking": true
+        },
+        {
+          "name": "Vector vs bitmap",
+          "item-type": "resource",
+          "resource": "RE_0075",
+          "item-code": "A_to_Z_of_Design/Vector_vs_bitmap",
+          "tracking": true
+        },
+        {
+          "name": "Workspaces",
+          "item-type": "resource",
+          "resource": "RE_0076",
+          "item-code": "A_to_Z_of_Design/Workspaces",
+          "tracking": true
+        },
+        {
+          "name": "Wrapping text",
+          "item-type": "resource",
+          "resource": "RE_0077",
+          "item-code": "A_to_Z_of_Design/Wrapping_text",
+          "tracking": true
+        },
+        {
+          "name": "X and Y axes",
+          "item-type": "resource",
+          "resource": "RE_0078",
+          "item-code": "A_to_Z_of_Design/X_and_Y_axes",
+          "tracking": true
+        },
+        {
+          "name": "Z axis",
+          "item-type": "resource",
+          "resource": "RE_0079",
+          "item-code": "A_to_Z_of_Design/Z_axis",
+          "tracking": true
+        },
+        {
+          "name": "Zooming images",
+          "item-type": "resource",
+          "resource": "RE_0080",
+          "item-code": "A_to_Z_of_Design/Zooming_images",
+          "tracking": true
         }
+      ]  
+    }
+  ],
+  "paths": {
+    "public-assets": "http://s3.amazonaws.com/comprodls/products",
+    "secured-assets": ""
+  },
+  "producttype": "imgbook",
+  "resources": {
+    "generic": {
+      "RE_0001": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "8"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0002": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "14"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0003": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "20"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0004": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "26"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0005": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "32"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0006": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "36"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0007": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "39"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0008": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "42"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0009": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "45"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0010": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "50"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0011": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "52"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0012": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "54"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0013": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "56"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0014": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "58"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0015": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "60"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0016": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "62"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0017": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "64"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0018": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "66"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0019": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "68"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0020": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "70"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0021": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "72"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0022": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "74"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0023": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "76"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0024": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "78"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0025": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "80"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0026": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "82"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0027": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "84"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0028": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "86"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0029": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "88"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0030": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "90"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0031": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "92"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0032": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "94"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0033": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "96"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0034": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "98"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0035": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "100"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0036": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "102"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0037": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "104"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0038": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "106"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0039": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "108"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0040": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "110"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0041": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "112"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0042": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "114"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0043": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "116"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0044": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "118"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0045": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "120"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0046": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "122"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0047": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "124"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0048": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "126"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0049": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "128"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0050": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "130"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0051": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "132"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0052": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "134"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0053": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "136"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0054": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "138"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0055": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "140"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0056": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "142"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0057": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "144"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0058": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "146"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0059": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "148"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0060": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "150"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0061": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "152"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0062": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "154"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0063": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "156"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0064": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "158"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0065": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "160"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0066": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "162"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0067": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "164"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0068": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "166"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0069": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "168"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0070": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "172"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0071": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "174"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0072": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "176"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0073": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "178"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0074": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "180"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0075": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "182"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0076": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "184"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0077": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "186"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0078": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "188"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0079": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "190"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      },
+      "RE_0080": {
+        "sub-type": "imgbook_unit",
+        "tags": [  
+          "reading"        
+        ],
+        "imgbook_unit": {
+          "page-no": "192"
+        },
+        "description": "",
+        "learning-objectives": ["Introduction to Graphic Design/Design Techniques"]
+      }
     },
-    "title": "The Ultimate Guide to Graphic Design",
-    "thumbnailsmall": "cover.jpg",
-    "thumbnaillarge": "cover.jpg",
-    "version": "1.0"
+    "test": {},
+    "ebook": {}
+  },
+  "title": "Descubre V1 Lesson 4 (Teacher's Edition)",
+  "thumbnailsmall": "cover.jpg",
+  "thumbnaillarge": "cover.jpg",
+  "version": "1.0"
 }
