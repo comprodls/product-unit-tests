@@ -103,7 +103,7 @@
                 "sno": 1,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt1.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt1.jpg",
-                "pagelabel": "115",
+                "pagelabel": 1,
                 "title": "Los pasatiempos"
             },
             {
@@ -111,7 +111,7 @@
                 "sno": 2,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt2.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt2.jpg",
-                "pagelabel": "116",
+                "pagelabel": 2,
                 "title": "contextos"
             },
             {
@@ -119,7 +119,7 @@
                 "sno": 3,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt3.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt3.jpg",
-                "pagelabel": "117",
+                "pagelabel": 3,
                 "title": "contextos"
             },
             {
@@ -127,7 +127,7 @@
                 "sno": 4,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt4.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt4.jpg",
-                "pagelabel": "118",
+                "pagelabel": 4,
                 "title": "contextos"
             },
             {
@@ -135,7 +135,7 @@
                 "sno": 5,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt5.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt5.jpg",
-                "pagelabel": "119",
+                "pagelabel": 5,
                 "title": "contextos"
             },
             {
@@ -143,7 +143,7 @@
                 "sno": 6,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt6.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt6.jpg",
-                "pagelabel": "120",
+                "pagelabel": 6,
                 "title": "fotonovela"
             },
             {
@@ -151,7 +151,7 @@
                 "sno": 7,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt7.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt7.jpg",
-                "pagelabel": "121",
+                "pagelabel": 7,
                 "title": "fotonovela"
             },
             {
@@ -159,7 +159,7 @@
                 "sno": 8,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt8.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt8.jpg",
-                "pagelabel": "122",
+                "pagelabel": 8,
                 "title": "fotonovela"
             },
             {
@@ -167,7 +167,7 @@
                 "sno": 9,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt9.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt9.jpg",
-                "pagelabel": "123",
+                "pagelabel": 9,
                 "title": "fotonovela"
             },
             {
@@ -175,7 +175,7 @@
                 "sno": 10,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt10.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt10.jpg",
-                "pagelabel": "124",
+                "pagelabel": 10,
                 "title": "cultura"
             },
             {
@@ -183,7 +183,7 @@
                 "sno": 11,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt11.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt11.jpg",
-                "pagelabel": "125",
+                "pagelabel": 11,
                 "title": "cultura"
             },
             {
@@ -191,7 +191,7 @@
                 "sno": 12,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt12.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt12.jpg",
-                "pagelabel": "126",
+                "pagelabel": 12,
                 "title": "estructura"
             },
             {
@@ -199,7 +199,7 @@
                 "sno": 13,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt13.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt13.jpg",
-                "pagelabel": "127",
+                "pagelabel": 13,
                 "title": "estructura"
             },
             {
@@ -207,7 +207,7 @@
                 "sno": 14,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt14.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt14.jpg",
-                "pagelabel": "128",
+                "pagelabel": 14,
                 "title": "estructura"
             },
             {
@@ -215,7 +215,7 @@
                 "sno": 15,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt15.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt15.jpg",
-                "pagelabel": "129",
+                "pagelabel": 15,
                 "title": "estructura"
             },
             {
@@ -223,7 +223,7 @@
                 "sno": 16,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt16.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt16.jpg",
-                "pagelabel": "130",
+                "pagelabel": 16,
                 "title": "estructura"
             },
             {
@@ -231,7 +231,7 @@
                 "sno": 17,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt17.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt17.jpg",
-                "pagelabel": "131",
+                "pagelabel": 17,
                 "title": "estructura"
             },
             {
@@ -239,7 +239,7 @@
                 "sno": 18,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt18.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt18.jpg",
-                "pagelabel": "132",
+                "pagelabel": 18,
                 "title": "estructura"
             },
             {
@@ -247,7 +247,7 @@
                 "sno": 19,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt19.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt19.jpg",
-                "pagelabel": "133",
+                "pagelabel": 19,
                 "title": "estructura"
             },
             {
@@ -255,7 +255,7 @@
                 "sno": 20,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt20.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt20.jpg",
-                "pagelabel": "134",
+                "pagelabel": 20,
                 "title": "estructura"
             },
             {
@@ -263,7 +263,7 @@
                 "sno": 21,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt21.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt21.jpg",
-                "pagelabel": "135",
+                "pagelabel": 21,
                 "title": "estructura"
             },
             {
@@ -271,7 +271,7 @@
                 "sno": 22,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt22.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt22.jpg",
-                "pagelabel": "136",
+                "pagelabel": 22,
                 "title": "estructura"
             },
             {
@@ -279,7 +279,7 @@
                 "sno": 23,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt23.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt23.jpg",
-                "pagelabel": "137",
+                "pagelabel": 23,
                 "title": "estructura"
             },
             {
@@ -287,7 +287,7 @@
                 "sno": 24,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt24.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt24.jpg",
-                "pagelabel": "138",
+                "pagelabel": 24,
                 "title": "estructura"
             },
             {
@@ -295,7 +295,7 @@
                 "sno": 25,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt25.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt25.jpg",
-                "pagelabel": "139",
+                "pagelabel": 25,
                 "title": "estructura"
             },
             {
@@ -303,7 +303,7 @@
                 "sno": 26,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt26.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt26.jpg",
-                "pagelabel": "140",
+                "pagelabel": 26,
                 "title": "estructura"
             },
             {
@@ -311,7 +311,7 @@
                 "sno": 27,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt27.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt27.jpg",
-                "pagelabel": "141",
+                "pagelabel": 27,
                 "title": "estructura"
             },
             {
@@ -319,7 +319,7 @@
                 "sno": 28,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt28.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt28.jpg",
-                "pagelabel": "142",
+                "pagelabel": 28,
                 "title": "adelante"
             },
             {
@@ -327,7 +327,7 @@
                 "sno": 29,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt29.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt29.jpg",
-                "pagelabel": "143",
+                "pagelabel": 29,
                 "title": "adelante"
             },
             {
@@ -335,7 +335,7 @@
                 "sno": 30,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt30.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt30.jpg",
-                "pagelabel": "144",
+                "pagelabel": 30,
                 "title": "adelante"
             },
             {
@@ -343,7 +343,7 @@
                 "sno": 31,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt31.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt31.jpg",
-                "pagelabel": "145",
+                "pagelabel": 31,
                 "title": "adelante"
             },
             {
@@ -351,7 +351,7 @@
                 "sno": 32,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt32.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt32.jpg",
-                "pagelabel": "146",
+                "pagelabel": 32,
                 "title": "adelante"
             },
             {
@@ -359,7 +359,7 @@
                 "sno": 33,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt33.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt33.jpg",
-                "pagelabel": "147",
+                "pagelabel": 33,
                 "title": "adelante"
             },
             {
@@ -367,7 +367,7 @@
                 "sno": 34,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt34.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt34.jpg",
-                "pagelabel": "148",
+                "pagelabel": 34,
                 "title": "adelante"
             },
             {
@@ -375,7 +375,7 @@
                 "sno": 35,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt35.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt35.jpg",
-                "pagelabel": "149",
+                "pagelabel": 35,
                 "title": "adelante"
             },
             {
@@ -383,7 +383,7 @@
                 "sno": 36,
                 "data": "DES17_V1_TE_L04_115-150_hi-opt36.json",
                 "bgimage": "DES17_V1_TE_L04_115-150_hi-opt36.jpg",
-                "pagelabel": "150",
+                "pagelabel": 36,
                 "title": "vocabulario"
             }
         ]
