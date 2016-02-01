@@ -23,7 +23,7 @@
         },
         {
             "category": "large",
-            "width": 2550,
+            "width": 2000,
             "height": 3265,
             "dpi": 300,
             "folderRef": "lrg"
@@ -37,14 +37,14 @@
         },
         {
             "category": "small",
-            "width": 816,
+            "width": 500,
             "height": 1045,
             "dpi": 96,
             "folderRef": "sm"
         },
         {
             "category": "thumbnail",
-            "width": 612,
+            "width": 400,
             "height": 784,
             "dpi": 72,
             "folderRef": "thumbnail"
