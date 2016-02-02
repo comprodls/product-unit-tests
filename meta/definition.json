@@ -1,4 +1,4 @@
-{
+0{
   "author": "José A. Blanco, Philip Redwine Donley",
   "code": "introduccionalalenguaespanola",
   "definition": {
@@ -8,7 +8,7 @@
       
     }
   },
-  "description": "In this book, students will be introduced to names of sports and other pastimes, names of places in a city and soccer rivalries.",
+  "description": "Welcome to VISTAS, Fourth Edition, your gateway to the spanish language and to the vibrant cultures of the spanish speaking world.",
   "items": [
     {
       "name": "Hola, ¿qué tal?",
@@ -1660,7 +1660,7 @@
     "test": {},
     "ebook": {}
   },
-  "title": "INTRODUCCIÓN A LA LENGUA ESPAÑOLA",
+  "title": "VISTAS Introducción a La Lengua Española",
   "thumbnailsmall": "cover.jpg",
   "thumbnaillarge": "cover.jpg",
   "version": "1.0"
