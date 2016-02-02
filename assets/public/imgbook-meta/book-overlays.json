@@ -1,5 +1,32 @@
 {
-	"pages":{
-	    "page":[]
-	}
+
+"pages":{
+    "page":[{
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt3",
+        "pagelabel" : "16",
+        "overlays":[{
+                "title":"Practice Excercise 1.1",
+                "tooltip":"Practice Excercise 1.1",
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter. Each question is of 2 marks.",
+                "x":400,
+                "y":200,
+                "w":700,
+                "h":500,
+                "type":"activity",
+                "icon":"fa fa-list-alt",
+                "activity":{
+                    "type": "fillintheblanks/multichoice..",
+                    "baseURL": "",
+                    "path":"fib_question_set_1.json",
+                    "parameters": {"...":"..."},
+                    "engineID": "fib",
+                    "engineName": "fib",
+                    "layoutType": "FIB",
+                    "id": "activity2"
+                },
+                "callback_before": "myfunction",
+                "callback_after": "myfunction"
+            }]
+    }]
+}
 }

@@ -1,0 +1,37 @@
+{
+   "activity":{
+      "directions":{
+         "content":{
+            "html":"<b>Completar </b>Fill in the blanks with the appropriate forms of ir. (6 x 0.5 pt. each = 3 pts.)"
+         }
+      },
+      "questionsdata":{
+         "question":[
+            {
+               "text":" El sábado tío Luis y tía Tere __ de excursión a las montañas. ",
+               "correctanswer": "van"
+            },
+            {
+               "text":" Mi hermana Perla __ con unas amigas al cine. ",
+               "correctanswer": "va"
+            },
+            {
+               "text":" Ustedes __ a un restaurante muy elegante. ",
+               "correctanswer": "van"
+            },
+            {
+               "text":" Tú __ a casa de tu amigo Manuel. ",
+               "correctanswer": "vas"
+            },
+            {
+               "text":" Nosotros __ al centro. ",
+               "correctanswer": "vamos"
+            },
+            {
+               "text":" Yo __ a un partido de fútbol americano con mi hermano mayor. ",
+               "correctanswer": "voy"
+            }
+         ]
+      }
+   }
+}

@@ -11,7 +11,7 @@
     "pageThumbImgFolder": "images/thumbnail/",
     "pagexlLrgImgFolder": "images/xlrg/",
     "pageTextDataFolder": "json/",
-    "mediaFolder": "assets/"
+    "mediaFolder": "overlay-assets/"
   },
   "imageConfig": [
     {
