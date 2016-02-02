@@ -1,5 +1,5 @@
 {
-  "author": "Jos&#233; A. Blanco, Philip Redwine Donley, Late",
+  "author": "José A. Blanco, Philip Redwine Donley",
   "code": "introduccionalalenguaespanola",
   "definition": {
     "learning-objectives": {      
@@ -11,7 +11,7 @@
   "description": "In this book, students will be introduced to names of sports and other pastimes, names of places in a city and soccer rivalries.",
   "items": [
     {
-      "name": "Hola, &#191;qu&#233; tal?",
+      "name": "Hola, ¿qué tal?",
       "item-type": "folder",
       "item-code": "Hola_que_tal",
       "sub-type": "default",
