@@ -16,7 +16,7 @@
       "item-code": "Hola_que_tal",
       "sub-type": "default",
       "attribs": {
-        "page-no": "1"
+        "page-no": ""
       },
       "items": [        
         {
@@ -62,7 +62,7 @@
       "item-code": "En_la_universidad",
       "sub-type": "default",
       "attribs": {
-        "page-no": "39"
+        "page-no": ""
       },
       "items": [        
         {
@@ -108,7 +108,7 @@
       "item-code": "La_familia",
       "sub-type": "default",
       "attribs": {
-        "page-no": "77"
+        "page-no": ""
       },
       "items": [        
         {
@@ -200,7 +200,7 @@
       "item-code": "Las_vacaciones",
       "sub-type": "default",
       "attribs": {
-        "page-no": "151"
+        "page-no": ""
       },
       "items": [        
         {
@@ -241,12 +241,12 @@
       ]  
     },
     {
-      "name": "&#161;De compras!",
+      "name": "¡De compras!",
       "item-type": "folder",
       "item-code": "De_compras",
       "sub-type": "default",
       "attribs": {
-        "page-no": "189"
+        "page-no": ""
       },
       "items": [        
         {
@@ -292,7 +292,7 @@
       "item-code": "La_rutina_diaria",
       "sub-type": "default",
       "attribs": {
-        "page-no": "225"
+        "page-no": ""
       },
       "items": [        
         {
@@ -338,7 +338,7 @@
       "item-code": "La_comida",
       "sub-type": "default",
       "attribs": {
-        "page-no": "261"
+        "page-no": ""
       },
       "items": [        
         {
@@ -384,7 +384,7 @@
       "item-code": "Las_fiestas",
       "sub-type": "default",
       "attribs": {
-        "page-no": "299"
+        "page-no": ""
       },
       "items": [        
         {
@@ -430,7 +430,7 @@
       "item-code": "En_el_consultorio",
       "sub-type": "default",
       "attribs": {
-        "page-no": "331"
+        "page-no": ""
       },
       "items": [        
         {
@@ -471,12 +471,12 @@
       ]  
     },
     {
-      "name": "La tecnolog&#237;a",
+      "name": "La tecnología",
       "item-type": "folder",
       "item-code": "La_tecnologia",
       "sub-type": "default",
       "attribs": {
-        "page-no": "367"
+        "page-no": ""
       },
       "items": [        
         {
@@ -522,7 +522,7 @@
       "item-code": "La_vivienda",
       "sub-type": "default",
       "attribs": {
-        "page-no": "403"
+        "page-no": ""
       },
       "items": [        
         {
@@ -568,7 +568,7 @@
       "item-code": "La_naturaleza",
       "sub-type": "default",
       "attribs": {
-        "page-no": "441"
+        "page-no": ""
       },
       "items": [        
         {
@@ -614,7 +614,7 @@
       "item-code": "En_la_ciudad",
       "sub-type": "default",
       "attribs": {
-        "page-no": "475"
+        "page-no": ""
       },
       "items": [        
         {
@@ -660,7 +660,7 @@
       "item-code": "El_bienestar",
       "sub-type": "default",
       "attribs": {
-        "page-no": "507"
+        "page-no": ""
       },
       "items": [        
         {
@@ -706,7 +706,7 @@
       "item-code": "El_mundo_del_trabajo",
       "sub-type": "default",
       "attribs": {
-        "page-no": "541"
+        "page-no": ""
       },
       "items": [        
         {
@@ -752,7 +752,7 @@
       "item-code": "Un_festival_de_arte",
       "sub-type": "default",
       "attribs": {
-        "page-no": "577"
+        "page-no": ""
       },
       "items": [        
         {
@@ -798,7 +798,7 @@
       "item-code": "Las_actualidades",
       "sub-type": "default",
       "attribs": {
-        "page-no": "611"
+        "page-no": ""
       },
       "items": [        
         {
@@ -850,7 +850,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "2"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -859,7 +859,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "6"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -868,7 +868,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "10"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -877,7 +877,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "12"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -886,7 +886,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "30"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -895,7 +895,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "40"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -904,7 +904,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "44"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -913,7 +913,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "48"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -922,7 +922,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "50"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -931,7 +931,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "68"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -940,7 +940,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "78"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -949,7 +949,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "82"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -958,7 +958,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "86"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -967,7 +967,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "88"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -976,7 +976,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "106"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1030,7 +1030,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "152"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1039,7 +1039,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "158"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1048,7 +1048,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "162"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1057,7 +1057,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "164"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1066,7 +1066,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "180"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1075,7 +1075,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "190"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1084,7 +1084,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "194"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1093,7 +1093,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "198"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1102,7 +1102,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "200"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1111,7 +1111,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "216"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1120,7 +1120,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "226"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1129,7 +1129,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "230"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1138,7 +1138,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "234"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1147,7 +1147,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "236"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1156,7 +1156,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "252"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1165,7 +1165,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "262"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1174,7 +1174,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "268"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1183,7 +1183,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "272"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1192,7 +1192,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "274"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1201,7 +1201,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "290"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1210,7 +1210,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "300"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1219,7 +1219,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "304"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1228,7 +1228,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "308"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1237,7 +1237,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "310"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1246,7 +1246,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "322"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1255,7 +1255,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "332"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1264,7 +1264,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "336"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1273,7 +1273,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "340"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1282,7 +1282,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "342"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1291,7 +1291,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "358"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1300,7 +1300,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "368"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1309,7 +1309,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "372"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1318,7 +1318,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "376"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1327,7 +1327,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "378"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1336,7 +1336,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "394"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1345,7 +1345,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "404"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1354,7 +1354,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "408"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1363,7 +1363,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "412"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1372,7 +1372,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "414"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1381,7 +1381,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "432"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1390,7 +1390,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "442"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1399,7 +1399,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "446"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1408,7 +1408,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "450"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1417,7 +1417,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "452"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1426,7 +1426,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "466"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1435,7 +1435,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "476"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1444,7 +1444,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "480"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1453,7 +1453,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "484"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1462,7 +1462,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "486"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1471,7 +1471,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "498"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1480,7 +1480,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "508"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1489,7 +1489,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "512"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1498,7 +1498,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "516"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1507,7 +1507,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "518"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1516,7 +1516,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "530"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1525,7 +1525,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "542"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1534,7 +1534,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "546"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1543,7 +1543,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "550"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1552,7 +1552,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "552"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1561,7 +1561,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "564"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1570,7 +1570,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "578"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1579,7 +1579,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "582"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1588,7 +1588,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "586"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1597,7 +1597,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "588"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1606,7 +1606,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "600"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1615,7 +1615,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "612"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1624,7 +1624,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "617"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1633,7 +1633,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "620"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1642,7 +1642,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "622"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1651,7 +1651,7 @@
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
-          "page-no": "632"
+          "page-no": ""
         },
         "description": "",
         "learning-objectives": []
@@ -1660,7 +1660,7 @@
     "test": {},
     "ebook": {}
   },
-  "title": "INTRODUCCI&#211;N A LA LENGUA ESPA&#209;OLA",
+  "title": "INTRODUCCIÓN A LA LENGUA ESPAÑOLA",
   "thumbnailsmall": "cover.jpg",
   "thumbnaillarge": "cover.jpg",
   "version": "1.0"
