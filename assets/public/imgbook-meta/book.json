@@ -110,7 +110,7 @@
   "pages": {
     "page": [
       {
-          "fid": "DES17_Cover",
+          "fid": "cover",
           "sno": 1,
           "data": "DES17_cover.json",
           "bgimage": "cover.jpg",
