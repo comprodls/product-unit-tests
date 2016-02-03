@@ -2,7 +2,27 @@
   "author": "José A. Blanco, Philip Redwine Donley",
   "code": "introduccionalalenguaespanola2",
   "definition": {
-    "learning-objectives": {      
+    "learning-objectives": {
+      "Learning objective 1": {
+        "learning-objectives": {
+          "Learning objective 1.1": {
+            "learning-objectives": {}
+          },
+          "Learning objective 1.2": {
+            "learning-objectives": {}
+          }
+        }       
+      },
+      "Learning objective 2": {
+        "learning-objectives": {
+          "Learning objective 2.1": {
+            "learning-objectives": {}
+          },
+          "Learning objective 2.2": {
+            "learning-objectives": {}
+          }
+        }        
+      }      
     },
     "tags": {   
      "reading": {
@@ -850,7 +870,7 @@
     "generic": {
       "RE_0001": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -859,7 +879,7 @@
       },
       "RE_0002": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -868,7 +888,7 @@
       },
       "RE_0003": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -877,7 +897,7 @@
       },
       "RE_0004": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -886,7 +906,7 @@
       },
       "RE_0005": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -895,7 +915,7 @@
       },
       "RE_0006": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -904,7 +924,7 @@
       },
       "RE_0007": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -913,7 +933,7 @@
       },
       "RE_0008": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -922,7 +942,7 @@
       },
       "RE_0009": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -931,7 +951,7 @@
       },
       "RE_0010": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -940,7 +960,7 @@
       },
       "RE_0011": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -949,7 +969,7 @@
       },
       "RE_0012": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -958,7 +978,7 @@
       },
       "RE_0013": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -967,7 +987,7 @@
       },
       "RE_0014": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -976,7 +996,7 @@
       },
       "RE_0015": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -990,7 +1010,7 @@
           "page-no": "116"
         },
         "description": "",
-        "learning-objectives": []
+        "learning-objectives": ["Learning objective 1/Learning objective 1.1"]
       },
       "RE_0017": {
         "sub-type": "imgbook_unit",
@@ -999,7 +1019,7 @@
           "page-no": "120"
         },
         "description": "",
-        "learning-objectives": []
+        "learning-objectives": ["Learning objective 1/Learning objective 1.2"]
       },
       "RE_0018": {
         "sub-type": "imgbook_unit",
@@ -1008,7 +1028,7 @@
           "page-no": "124"
         },
         "description": "",
-        "learning-objectives": []
+        "learning-objectives": ["Learning objective 2/Learning objective 2.1"]
       },
       "RE_0019": {
         "sub-type": "imgbook_unit",
@@ -1017,7 +1037,7 @@
           "page-no": "126"
         },
         "description": "",
-        "learning-objectives": []
+        "learning-objectives": ["Learning objective 2/Learning objective 2.1"]
       },
       "RE_0020": {
         "sub-type": "imgbook_unit",
@@ -1026,11 +1046,11 @@
           "page-no": "142"
         },
         "description": "",
-        "learning-objectives": []
+        "learning-objectives": ["Learning objective 2/Learning objective 2.2"]
       },
       "RE_0021": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1039,7 +1059,7 @@
       },
       "RE_0022": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1048,7 +1068,7 @@
       },
       "RE_0023": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1057,7 +1077,7 @@
       },
       "RE_0024": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1066,7 +1086,7 @@
       },
       "RE_0025": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1075,7 +1095,7 @@
       },
       "RE_0026": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1084,7 +1104,7 @@
       },
       "RE_0027": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1093,7 +1113,7 @@
       },
       "RE_0028": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1102,7 +1122,7 @@
       },
       "RE_0029": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1111,7 +1131,7 @@
       },
       "RE_0030": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1120,7 +1140,7 @@
       },
       "RE_0031": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1129,7 +1149,7 @@
       },
       "RE_0032": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1138,7 +1158,7 @@
       },
       "RE_0033": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1147,7 +1167,7 @@
       },
       "RE_0034": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1156,7 +1176,7 @@
       },
       "RE_0035": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1165,7 +1185,7 @@
       },
       "RE_0036": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1174,7 +1194,7 @@
       },
       "RE_0037": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1183,7 +1203,7 @@
       },
       "RE_0038": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1192,7 +1212,7 @@
       },
       "RE_0039": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1201,7 +1221,7 @@
       },
       "RE_0040": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1210,7 +1230,7 @@
       },
       "RE_0041": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1219,7 +1239,7 @@
       },
       "RE_0042": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1228,7 +1248,7 @@
       },
       "RE_0043": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1237,7 +1257,7 @@
       },
       "RE_0044": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1246,7 +1266,7 @@
       },
       "RE_0045": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1255,7 +1275,7 @@
       },
       "RE_0046": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1264,7 +1284,7 @@
       },
       "RE_0047": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1273,7 +1293,7 @@
       },
       "RE_0048": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1282,7 +1302,7 @@
       },
       "RE_0049": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1291,7 +1311,7 @@
       },
       "RE_0050": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1300,7 +1320,7 @@
       },
       "RE_0051": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1309,7 +1329,7 @@
       },
       "RE_0052": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1318,7 +1338,7 @@
       },
       "RE_0053": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1327,7 +1347,7 @@
       },
       "RE_0054": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1336,7 +1356,7 @@
       },
       "RE_0055": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1345,7 +1365,7 @@
       },
       "RE_0056": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1354,7 +1374,7 @@
       },
       "RE_0057": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1363,7 +1383,7 @@
       },
       "RE_0058": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1372,7 +1392,7 @@
       },
       "RE_0059": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1381,7 +1401,7 @@
       },
       "RE_0060": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1390,7 +1410,7 @@
       },
       "RE_0061": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1399,7 +1419,7 @@
       },
       "RE_0062": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1408,7 +1428,7 @@
       },
       "RE_0063": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1417,7 +1437,7 @@
       },
       "RE_0064": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1426,7 +1446,7 @@
       },
       "RE_0065": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1435,7 +1455,7 @@
       },
       "RE_0066": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1444,7 +1464,7 @@
       },
       "RE_0067": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1453,7 +1473,7 @@
       },
       "RE_0068": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1462,7 +1482,7 @@
       },
       "RE_0069": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1471,7 +1491,7 @@
       },
       "RE_0070": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1480,7 +1500,7 @@
       },
       "RE_0071": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1489,7 +1509,7 @@
       },
       "RE_0072": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1498,7 +1518,7 @@
       },
       "RE_0073": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1507,7 +1527,7 @@
       },
       "RE_0074": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1516,7 +1536,7 @@
       },
       "RE_0075": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1525,7 +1545,7 @@
       },
       "RE_0076": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1534,7 +1554,7 @@
       },
       "RE_0077": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1543,7 +1563,7 @@
       },
       "RE_0078": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1552,7 +1572,7 @@
       },
       "RE_0079": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1561,7 +1581,7 @@
       },
       "RE_0080": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1570,7 +1590,7 @@
       },
       "RE_0081": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1579,7 +1599,7 @@
       },
       "RE_0082": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1588,7 +1608,7 @@
       },
       "RE_0083": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1597,7 +1617,7 @@
       },
       "RE_0084": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1606,7 +1626,7 @@
       },
       "RE_0085": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1615,7 +1635,7 @@
       },
       "RE_0086": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1624,7 +1644,7 @@
       },
       "RE_0087": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1633,7 +1653,7 @@
       },
       "RE_0088": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1642,7 +1662,7 @@
       },
       "RE_0089": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
@@ -1651,7 +1671,7 @@
       },
       "RE_0090": {
         "sub-type": "imgbook_unit",
-        "tags": ["reading"],
+        "tags": [],
         "imgbook_unit": {
           "page-no": ""
         },
