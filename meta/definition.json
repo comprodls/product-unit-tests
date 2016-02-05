@@ -3,22 +3,22 @@
   "code": "introduccionalalenguaespanola2",
   "definition": {
     "learning-objectives": {
-      "Learning objective 1": {
+      "Basic Concepts": {
         "learning-objectives": {
-          "Learning objective 1.1": {
+          "Skill A": {
             "learning-objectives": {}
           },
-          "Learning objective 1.2": {
+          "Skill B": {
             "learning-objectives": {}
           }
         }       
       },
-      "Learning objective 2": {
+      "Advanced Concepts": {
         "learning-objectives": {
-          "Learning objective 2.1": {
+          "Skill C": {
             "learning-objectives": {}
           },
-          "Learning objective 2.2": {
+          "Skill D": {
             "learning-objectives": {}
           }
         }        
@@ -32,6 +32,16 @@
   },
   "description": "Welcome to VISTAS, Fourth Edition, your gateway to the spanish language and to the vibrant cultures of the spanish speaking world.",
   "items": [
+    {
+      "name": "Introduction",
+      "item-type": "folder",
+      "item-code": "Introduction",
+      "sub-type": "default",
+      "attribs": {
+        "page-no": "1"
+      },
+      "items": []
+    },
     {
       "name": "Hola, ¿qué tal?",
       "item-type": "folder",
@@ -1010,7 +1020,7 @@
           "page-no": "116"
         },
         "description": "",
-        "learning-objectives": ["Learning objective 1/Learning objective 1.1"]
+        "learning-objectives": ["Basic Concepts/Skill A"]
       },
       "RE_0017": {
         "sub-type": "imgbook_unit",
@@ -1019,7 +1029,7 @@
           "page-no": "120"
         },
         "description": "",
-        "learning-objectives": ["Learning objective 1/Learning objective 1.2"]
+        "learning-objectives": ["Basic Concepts/Skill B"]
       },
       "RE_0018": {
         "sub-type": "imgbook_unit",
@@ -1028,7 +1038,7 @@
           "page-no": "124"
         },
         "description": "",
-        "learning-objectives": ["Learning objective 2/Learning objective 2.1"]
+        "learning-objectives": ["Basic Concepts/Skill B"]
       },
       "RE_0019": {
         "sub-type": "imgbook_unit",
@@ -1037,7 +1047,7 @@
           "page-no": "126"
         },
         "description": "",
-        "learning-objectives": ["Learning objective 2/Learning objective 2.1"]
+        "learning-objectives": ["Advanced Concepts/Skill C"]
       },
       "RE_0020": {
         "sub-type": "imgbook_unit",
@@ -1046,7 +1056,7 @@
           "page-no": "142"
         },
         "description": "",
-        "learning-objectives": ["Learning objective 2/Learning objective 2.2"]
+        "learning-objectives": ["Advanced Concepts/Skill D"]
       },
       "RE_0021": {
         "sub-type": "imgbook_unit",
