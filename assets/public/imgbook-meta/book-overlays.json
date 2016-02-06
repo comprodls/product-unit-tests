@@ -3,17 +3,102 @@
 "pages":{
     "page":[{
         "fid" : "DES17_V1_TE_L04_115-150_hi-opt3",
-        "pagelabel" : "16",
+        "pagelabel" : "116",
         "overlays":[{
                 "title":"Practice Excercise 1.1",
                 "tooltip":"Practice Excercise 1.1",
-                "desc":"Complete the following activity to revise what all you you learnt in this chapter. Each question is of 3 marks.",
-                "x":400,
-                "y":200,
-                "w":700,
-                "h":500,
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter.",
+                "x":198,
+                "y":71,
+                "w":263,
+                "h":164,
                 "type":"activity",
-                "icon":"fa fa-list-alt",
+                "icon":"invisible",
+                "activity":{
+                    "type": "fillintheblanks/multichoice..",
+                    "baseURL": "",
+                    "path":"fib_question_set_1.json",
+                    "parameters": {"...":"..."},
+                    "engineID": "fib",
+                    "engineName": "fib",
+                    "layoutType": "FIB",
+                    "id": "activity1"
+                },
+                "callback_before": "myfunction",
+                "callback_after": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt4",
+        "pagelabel" : "118",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":150,
+                "y": 100,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt5",
+        "pagelabel" : "119",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":50,
+                "y": 275,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":419,
+                "y": 125,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            },
+            {
+                "title":"Practice Excercise 1.1",
+                "tooltip":"Practice Excercise 1.1",
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter.",
+                "x":105,
+                "y":263,
+                "w":304,
+                "h":108,
+                "type":"activity",
+                "icon":"invisible",
                 "activity":{
                     "type": "fillintheblanks/multichoice..",
                     "baseURL": "",
@@ -26,6 +111,910 @@
                 },
                 "callback_before": "myfunction",
                 "callback_after": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt6",
+        "pagelabel" : "120",
+        "overlays":[{
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":250,
+                "y": 108,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt8",
+        "pagelabel" : "122",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x": 148,
+                "y": 120,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Practice Excercise 1.1",
+                "tooltip":"Practice Excercise 1.1",
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter.",
+                "x":192,
+                "y":71,
+                "w":304,
+                "h":172,
+                "type":"activity",
+                "icon":"invisible",
+                "activity":{
+                    "type": "fillintheblanks/multichoice..",
+                    "baseURL": "",
+                    "path":"fib_question_set_1.json",
+                    "parameters": {"...":"..."},
+                    "engineID": "fib",
+                    "engineName": "fib",
+                    "layoutType": "FIB",
+                    "id": "activity3"
+                },
+                "callback_before": "myfunction",
+                "callback_after": "myfunction"
+            },
+            {
+                "title":"Practice Excercise 1.1",
+                "tooltip":"Practice Excercise 1.1",
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter.",
+                "x":192,
+                "y":390,
+                "w":304,
+                "h":105,
+                "type":"activity",
+                "icon":"invisible",
+                "activity":{
+                    "type": "fillintheblanks/multichoice..",
+                    "baseURL": "",
+                    "path":"fib_question_set_1.json",
+                    "parameters": {"...":"..."},
+                    "engineID": "fib",
+                    "engineName": "fib",
+                    "layoutType": "FIB",
+                    "id": "activity4"
+                },
+                "callback_before": "myfunction",
+                "callback_after": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt9",
+        "pagelabel" : "123",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x": 350,
+                "y": 50,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":50,
+                "y": 350,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt12",
+        "pagelabel" : "126",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x": 145,
+                "y": 350,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":505,
+                "y": 90,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt13",
+        "pagelabel" : "127",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x": 60,
+                "y": 110,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":60,
+                "y": 375,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            },
+            {
+                "title":"Practice Excercise 1.1",
+                "tooltip":"Practice Excercise 1.1",
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter.",
+                "x":105,
+                "y":71,
+                "w":304,
+                "h":99,
+                "type":"activity",
+                "icon":"invisible",
+                "activity":{
+                    "type": "fillintheblanks/multichoice..",
+                    "baseURL": "",
+                    "path":"fib_question_set_1.json",
+                    "parameters": {"...":"..."},
+                    "engineID": "fib",
+                    "engineName": "fib",
+                    "layoutType": "FIB",
+                    "id": "activity5"
+                },
+                "callback_before": "myfunction",
+                "callback_after": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt14",
+        "pagelabel" : "128",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":150,
+                "y": 125,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt15",
+        "pagelabel" : "129",
+        "overlays":[{
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":340,
+                "y": 50,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt16",
+        "pagelabel" : "130",
+        "overlays":[{
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":145,
+                "y": 50,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt17",
+        "pagelabel" : "131",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":60,
+                "y": 125,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":60,
+                "y": 450,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            },
+            {
+                "title":"Practice Excercise 1.1",
+                "tooltip":"Practice Excercise 1.1",
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter.",
+                "x":105,
+                "y":71,
+                "w":304,
+                "h":141,
+                "type":"activity",
+                "icon":"invisible",
+                "activity":{
+                    "type": "fillintheblanks/multichoice..",
+                    "baseURL": "",
+                    "path":"fib_question_set_1.json",
+                    "parameters": {"...":"..."},
+                    "engineID": "fib",
+                    "engineName": "fib",
+                    "layoutType": "FIB",
+                    "id": "activity6"
+                },
+                "callback_before": "myfunction",
+                "callback_after": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt18",
+        "pagelabel" : "132",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":145,
+                "y": 125,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":145,
+                "y": 310,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt19",
+        "pagelabel" : "133",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":55,
+                "y": 350,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":355,
+                "y": 45,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt20",
+        "pagelabel" : "134",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":145,
+                "y": 275,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":505,
+                "y": 45,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            },
+            {
+                "title":"Practice Excercise 1.1",
+                "tooltip":"Practice Excercise 1.1",
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter.",
+                "x":192,
+                "y":71,
+                "w":304,
+                "h":177,
+                "type":"activity",
+                "icon":"invisible",
+                "activity":{
+                    "type": "fillintheblanks/multichoice..",
+                    "baseURL": "",
+                    "path":"fib_question_set_1.json",
+                    "parameters": {"...":"..."},
+                    "engineID": "fib",
+                    "engineName": "fib",
+                    "layoutType": "FIB",
+                    "id": "activity7"
+                },
+                "callback_before": "myfunction",
+                "callback_after": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt21",
+        "pagelabel" : "135",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":60,
+                "y": 280,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":60,
+                "y": 130,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt22",
+        "pagelabel" : "136",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":145,
+                "y": 85,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":505,
+                "y": 85,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt23",
+        "pagelabel" : "137",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":58,
+                "y": 280,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":58,
+                "y": 140,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt24",
+        "pagelabel" : "138",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":145,
+                "y": 310,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Practice Excercise 1.1",
+                "tooltip":"Practice Excercise 1.1",
+                "desc":"Complete the following activity to revise what all you you learnt in this chapter.",
+                "x":192,
+                "y":71,
+                "w":304,
+                "h":208,
+                "type":"activity",
+                "icon":"invisible",
+                "activity":{
+                    "type": "fillintheblanks/multichoice..",
+                    "baseURL": "",
+                    "path":"fib_question_set_1.json",
+                    "parameters": {"...":"..."},
+                    "engineID": "fib",
+                    "engineName": "fib",
+                    "layoutType": "FIB",
+                    "id": "activity8"
+                },
+                "callback_before": "myfunction",
+                "callback_after": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt25",
+        "pagelabel" : "139",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":50,
+                "y": 300,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":50,
+                "y": 90,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt26",
+        "pagelabel" : "140",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":150,
+                "y": 120,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt27",
+        "pagelabel" : "141",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":50,
+                "y": 280,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            },
+            {
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x":50,
+                "y": 80,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt28",
+        "pagelabel" : "142",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":265,
+                "y": 90,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt31",
+        "pagelabel" : "145",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":150,
+                "y": 85,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt32",
+        "pagelabel" : "146",
+        "overlays":[{
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x": 415,
+                "y": 60,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt33",
+        "pagelabel" : "147",
+        "overlays":[{
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x": 215,
+                "y": 60,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt34",
+        "pagelabel" : "148",
+        "overlays":[{
+                "title":"Video: Learn Spanish",
+                "tooltip":"Learn Spanish - Greetings and Introductions",
+                "desc":"Learn Spanish - Greetings and Introductions",
+                "x": 230,
+                "y": 45,
+                "w":500,
+                "h":400,
+                "type":"video",
+                "icon":"fa fa-video-camera",
+                "video":{
+                    "type": "ytube/vimeo/...",
+                    "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"      
+            }]
+    },
+    {
+        "fid" : "DES17_V1_TE_L04_115-150_hi-opt36",
+        "pagelabel" : "150",
+        "overlays":[{
+                "title":"Audio: Learning Spanish",
+                "tooltip":"Learn to speak Spanish",
+                "desc":"Learn how to speak Spanish.",
+                "x":420,
+                "y": 50,
+                "w":500,
+                "h":400,
+                "type":"audio",
+                "icon":"fa fa-volume-up",
+                "audio":{
+                    "type": "",
+                    "baseURL": "music.mp3",
+                    "path":"...",
+                    "parameters": {"...":"..."}
+                },
+                "callback": "myfunction"
             }]
     }]
 }
