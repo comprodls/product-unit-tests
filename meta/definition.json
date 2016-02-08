@@ -34,13 +34,10 @@
   "items": [
     {
       "name": "Introduction",
-      "item-type": "folder",
+      "item-type": "resource",
+      "resource": "RE_0091",
       "item-code": "Introduction",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
-      },
-      "items": []
+      "tracking": true
     },
     {
       "name": "Hola, ¿qué tal?",
@@ -1680,6 +1677,15 @@
         "learning-objectives": []
       },
       "RE_0090": {
+        "sub-type": "imgbook_unit",
+        "tags": [],
+        "imgbook_unit": {
+          "page-no": ""
+        },
+        "description": "",
+        "learning-objectives": []
+      },
+      "RE_0091": {
         "sub-type": "imgbook_unit",
         "tags": [],
         "imgbook_unit": {
