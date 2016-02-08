@@ -2,7 +2,7 @@
    "activity":{
       "directions":{
          "content":{
-            "html":"<b>Completar </b>Fill in the blanks with the appropriate forms of ir. (6 x 0.5 pt. each = 3 pts.)"
+            "html":"<b>Completar </b>Fill in the blanks with the appropriate forms of ir. (5 x 1 pt. each = 5 pts.)"
          }
       },
       "questionsdata":{
@@ -26,10 +26,6 @@
             {
                "text":" Nosotros __ al centro. ",
                "correctanswer": "vamos"
-            },
-            {
-               "text":" Yo __ a un partido de fútbol americano con mi hermano mayor. ",
-               "correctanswer": "voy"
             }
          ]
       }
