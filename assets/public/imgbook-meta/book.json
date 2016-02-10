@@ -54,57 +54,57 @@
     {
       "pcwidth": 400,
       "singlePage": "true",
-      "singlePageFitFactor": true
+      "singlePageFitFactor": 1
     },
     {
       "pcwidth": 600,
       "singlePage": "true",
-      "singlePageFitFactor": true
+      "singlePageFitFactor": 1
     },
     {
       "pcwidth": 720,
       "singlePage": "true",
-      "singlePageFitFactor": true
+      "singlePageFitFactor": 1
     },
     {
       "pcwidth": 960,
       "singlePage": "false",
-      "singlePageFitFactor": false
+      "singlePageFitFactor": 1
     },
     {
       "pcwidth": 1120,
       "singlePage": "false",
-      "singlePageFitFactor": false
+      "singlePageFitFactor": 1
     },
     {
       "pcwidth": 1280,
       "singlePage": "false",
-      "singlePageFitFactor": false
+      "singlePageFitFactor": 0.65
     },
     {
       "pcwidth": 1440,
       "singlePage": "false",
-      "singlePageFitFactor": false
+      "singlePageFitFactor": 0.60
     },
     {
       "pcwidth": 1800,
       "singlePage": "false",
-      "singlePageFitFactor": false
+      "singlePageFitFactor": 0.60
     },
     {
       "pcwidth": 2400,
       "singlePage": "false",
-      "singlePageFitFactor": false
+      "singlePageFitFactor": 0.55
     },
     {
       "pcwidth": 3000,
       "singlePage": "false",
-      "singlePageFitFactor": false
+      "singlePageFitFactor": 0.55
     },
     {
       "pcwidth": 3600,
       "singlePage": "false",
-      "singlePageFitFactor": false
+      "singlePageFitFactor": 0.50
     }
   ],
   "pages": {
