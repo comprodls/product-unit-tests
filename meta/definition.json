@@ -1,6 +1,13 @@
 {
-  "author": "José A. Blanco, Philip Redwine Donley",
-  "code": "introduccionalalenguaespanola2",
+  "meta" : {
+    "schema": 1,
+    "title": "VISTAS, Introducción a La Lengua Española",
+    "author": "José A. Blanco, Philip Redwine Donley",
+    "thumbnailsmall": "cover.jpg",
+    "thumbnaillarge": "cover.jpg",
+    "description": "Welcome to VISTAS, Fourth Edition, your gateway to the spanish language and to the vibrant cultures of the spanish speaking world.",
+    "producttype": "imgbook" 
+  },
   "definition": {
     "learning-objectives": {
       "Basic Concepts": {
@@ -30,849 +37,845 @@
       }
     }
   },
-  "description": "Welcome to VISTAS, Fourth Edition, your gateway to the spanish language and to the vibrant cultures of the spanish speaking world.",
-  "items": [
-    {
-      "name": "Introduction",
-      "item-type": "resource",
-      "resource": "RE_0091",
-      "item-code": "Introduction",
-      "tracking": true
-    },
-    {
-      "name": "Hola, ¿qué tal?",
-      "item-type": "folder",
-      "item-code": "Hola_que_tal",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+  "items": {
+    "default" :  [
+      {
+        "name": "Introduction",
+        "item-type": "resource",
+        "resource": "RE_0091",
+        "item-code": "Introduction",
+        "tracking": true
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0001",
-          "item-code": "Hola_que_tal/contextos",
-          "tracking": true
+      {
+        "name": "Hola, ¿qué tal?",
+        "item-type": "folder",
+        "item-code": "Hola_que_tal",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0002",
-          "item-code": "Hola_que_tal/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0003",
-          "item-code": "Hola_que_tal/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0004",
-          "item-code": "Hola_que_tal/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0005",
-          "item-code": "Hola_que_tal/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "En la universidad",
-      "item-type": "folder",
-      "item-code": "En_la_universidad",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0001",
+            "item-code": "Hola_que_tal/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0002",
+            "item-code": "Hola_que_tal/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0003",
+            "item-code": "Hola_que_tal/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0004",
+            "item-code": "Hola_que_tal/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0005",
+            "item-code": "Hola_que_tal/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0006",
-          "item-code": "En_la_universidad/contextos",
-          "tracking": true
+      {
+        "name": "En la universidad",
+        "item-type": "folder",
+        "item-code": "En_la_universidad",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0007",
-          "item-code": "En_la_universidad/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0008",
-          "item-code": "En_la_universidad/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0009",
-          "item-code": "En_la_universidad/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0010",
-          "item-code": "En_la_universidad/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "La familia",
-      "item-type": "folder",
-      "item-code": "La_familia",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0006",
+            "item-code": "En_la_universidad/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0007",
+            "item-code": "En_la_universidad/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0008",
+            "item-code": "En_la_universidad/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0009",
+            "item-code": "En_la_universidad/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0010",
+            "item-code": "En_la_universidad/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0011",
-          "item-code": "La_familia/contextos",
-          "tracking": true
+      {
+        "name": "La familia",
+        "item-type": "folder",
+        "item-code": "La_familia",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0012",
-          "item-code": "La_familia/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0013",
-          "item-code": "La_familia/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0014",
-          "item-code": "La_familia/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0015",
-          "item-code": "La_familia/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "Los pasatiempos",
-      "item-type": "folder",
-      "item-code": "Los_pasatiempos",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": "115"
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0011",
+            "item-code": "La_familia/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0012",
+            "item-code": "La_familia/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0013",
+            "item-code": "La_familia/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0014",
+            "item-code": "La_familia/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0015",
+            "item-code": "La_familia/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0016",
-          "item-code": "Los_pasatiempos/contextos",
-          "tracking": true
+      {
+        "name": "Los pasatiempos",
+        "item-type": "folder",
+        "item-code": "Los_pasatiempos",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": "115"
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0017",
-          "item-code": "Los_pasatiempos/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0018",
-          "item-code": "Los_pasatiempos/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0019",
-          "item-code": "Los_pasatiempos/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0020",
-          "item-code": "Los_pasatiempos/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "Las vacaciones",
-      "item-type": "folder",
-      "item-code": "Las_vacaciones",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0016",
+            "item-code": "Los_pasatiempos/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0017",
+            "item-code": "Los_pasatiempos/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0018",
+            "item-code": "Los_pasatiempos/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0019",
+            "item-code": "Los_pasatiempos/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0020",
+            "item-code": "Los_pasatiempos/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0021",
-          "item-code": "Las_vacaciones/contextos",
-          "tracking": true
+      {
+        "name": "Las vacaciones",
+        "item-type": "folder",
+        "item-code": "Las_vacaciones",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0022",
-          "item-code": "Las_vacaciones/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0023",
-          "item-code": "Las_vacaciones/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0024",
-          "item-code": "Las_vacaciones/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0025",
-          "item-code": "Las_vacaciones/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "¡De compras!",
-      "item-type": "folder",
-      "item-code": "De_compras",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0021",
+            "item-code": "Las_vacaciones/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0022",
+            "item-code": "Las_vacaciones/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0023",
+            "item-code": "Las_vacaciones/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0024",
+            "item-code": "Las_vacaciones/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0025",
+            "item-code": "Las_vacaciones/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0026",
-          "item-code": "De_compras/contextos",
-          "tracking": true
+      {
+        "name": "¡De compras!",
+        "item-type": "folder",
+        "item-code": "De_compras",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0027",
-          "item-code": "De_compras/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0028",
-          "item-code": "De_compras/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0029",
-          "item-code": "De_compras/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0030",
-          "item-code": "De_compras/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "La rutina diaria",
-      "item-type": "folder",
-      "item-code": "La_rutina_diaria",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0026",
+            "item-code": "De_compras/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0027",
+            "item-code": "De_compras/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0028",
+            "item-code": "De_compras/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0029",
+            "item-code": "De_compras/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0030",
+            "item-code": "De_compras/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0031",
-          "item-code": "La_rutina_diaria/contextos",
-          "tracking": true
+      {
+        "name": "La rutina diaria",
+        "item-type": "folder",
+        "item-code": "La_rutina_diaria",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0032",
-          "item-code": "La_rutina_diaria/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0033",
-          "item-code": "La_rutina_diaria/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0034",
-          "item-code": "La_rutina_diaria/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0035",
-          "item-code": "La_rutina_diaria/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "La comida",
-      "item-type": "folder",
-      "item-code": "La_comida",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0031",
+            "item-code": "La_rutina_diaria/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0032",
+            "item-code": "La_rutina_diaria/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0033",
+            "item-code": "La_rutina_diaria/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0034",
+            "item-code": "La_rutina_diaria/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0035",
+            "item-code": "La_rutina_diaria/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0036",
-          "item-code": "La_comida/contextos",
-          "tracking": true
+      {
+        "name": "La comida",
+        "item-type": "folder",
+        "item-code": "La_comida",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0037",
-          "item-code": "La_comida/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0038",
-          "item-code": "La_comida/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0039",
-          "item-code": "La_comida/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0040",
-          "item-code": "La_comida/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "Las fiestas",
-      "item-type": "folder",
-      "item-code": "Las_fiestas",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0036",
+            "item-code": "La_comida/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0037",
+            "item-code": "La_comida/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0038",
+            "item-code": "La_comida/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0039",
+            "item-code": "La_comida/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0040",
+            "item-code": "La_comida/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0041",
-          "item-code": "Las_fiestas/contextos",
-          "tracking": true
+      {
+        "name": "Las fiestas",
+        "item-type": "folder",
+        "item-code": "Las_fiestas",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0042",
-          "item-code": "Las_fiestas/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0043",
-          "item-code": "Las_fiestas/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0044",
-          "item-code": "Las_fiestas/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0045",
-          "item-code": "Las_fiestas/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "En el consultorio",
-      "item-type": "folder",
-      "item-code": "En_el_consultorio",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0041",
+            "item-code": "Las_fiestas/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0042",
+            "item-code": "Las_fiestas/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0043",
+            "item-code": "Las_fiestas/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0044",
+            "item-code": "Las_fiestas/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0045",
+            "item-code": "Las_fiestas/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0046",
-          "item-code": "En_el_consultorio/contextos",
-          "tracking": true
+      {
+        "name": "En el consultorio",
+        "item-type": "folder",
+        "item-code": "En_el_consultorio",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0047",
-          "item-code": "En_el_consultorio/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0048",
-          "item-code": "En_el_consultorio/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0049",
-          "item-code": "En_el_consultorio/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0050",
-          "item-code": "En_el_consultorio/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "La tecnología",
-      "item-type": "folder",
-      "item-code": "La_tecnologia",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0046",
+            "item-code": "En_el_consultorio/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0047",
+            "item-code": "En_el_consultorio/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0048",
+            "item-code": "En_el_consultorio/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0049",
+            "item-code": "En_el_consultorio/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0050",
+            "item-code": "En_el_consultorio/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0051",
-          "item-code": "La_tecnologia/contextos",
-          "tracking": true
+      {
+        "name": "La tecnología",
+        "item-type": "folder",
+        "item-code": "La_tecnologia",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0052",
-          "item-code": "La_tecnologia/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0053",
-          "item-code": "La_tecnologia/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0054",
-          "item-code": "La_tecnologia/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0055",
-          "item-code": "La_tecnologia/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "La vivienda",
-      "item-type": "folder",
-      "item-code": "La_vivienda",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0051",
+            "item-code": "La_tecnologia/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0052",
+            "item-code": "La_tecnologia/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0053",
+            "item-code": "La_tecnologia/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0054",
+            "item-code": "La_tecnologia/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0055",
+            "item-code": "La_tecnologia/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0056",
-          "item-code": "La_vivienda/contextos",
-          "tracking": true
+      {
+        "name": "La vivienda",
+        "item-type": "folder",
+        "item-code": "La_vivienda",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0057",
-          "item-code": "La_vivienda/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0058",
-          "item-code": "La_vivienda/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0059",
-          "item-code": "La_vivienda/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0060",
-          "item-code": "La_vivienda/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "La naturaleza",
-      "item-type": "folder",
-      "item-code": "La_naturaleza",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0056",
+            "item-code": "La_vivienda/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0057",
+            "item-code": "La_vivienda/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0058",
+            "item-code": "La_vivienda/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0059",
+            "item-code": "La_vivienda/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0060",
+            "item-code": "La_vivienda/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0061",
-          "item-code": "La_naturaleza/contextos",
-          "tracking": true
+      {
+        "name": "La naturaleza",
+        "item-type": "folder",
+        "item-code": "La_naturaleza",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0062",
-          "item-code": "La_naturaleza/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0063",
-          "item-code": "La_naturaleza/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0064",
-          "item-code": "La_naturaleza/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0065",
-          "item-code": "La_naturaleza/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "En la ciudad",
-      "item-type": "folder",
-      "item-code": "En_la_ciudad",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0061",
+            "item-code": "La_naturaleza/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0062",
+            "item-code": "La_naturaleza/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0063",
+            "item-code": "La_naturaleza/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0064",
+            "item-code": "La_naturaleza/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0065",
+            "item-code": "La_naturaleza/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0066",
-          "item-code": "En_la_ciudad/contextos",
-          "tracking": true
+      {
+        "name": "En la ciudad",
+        "item-type": "folder",
+        "item-code": "En_la_ciudad",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0067",
-          "item-code": "En_la_ciudad/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0068",
-          "item-code": "En_la_ciudad/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0069",
-          "item-code": "En_la_ciudad/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0070",
-          "item-code": "En_la_ciudad/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "El bienestar",
-      "item-type": "folder",
-      "item-code": "El_bienestar",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0066",
+            "item-code": "En_la_ciudad/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0067",
+            "item-code": "En_la_ciudad/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0068",
+            "item-code": "En_la_ciudad/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0069",
+            "item-code": "En_la_ciudad/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0070",
+            "item-code": "En_la_ciudad/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0071",
-          "item-code": "El_bienestar/contextos",
-          "tracking": true
+      {
+        "name": "El bienestar",
+        "item-type": "folder",
+        "item-code": "El_bienestar",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0072",
-          "item-code": "El_bienestar/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0073",
-          "item-code": "El_bienestar/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0074",
-          "item-code": "El_bienestar/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0075",
-          "item-code": "El_bienestar/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "El mundo del trabajo",
-      "item-type": "folder",
-      "item-code": "El_mundo_del_trabajo",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0071",
+            "item-code": "El_bienestar/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0072",
+            "item-code": "El_bienestar/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0073",
+            "item-code": "El_bienestar/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0074",
+            "item-code": "El_bienestar/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0075",
+            "item-code": "El_bienestar/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0076",
-          "item-code": "El_mundo_del_trabajo/contextos",
-          "tracking": true
+      {
+        "name": "El mundo del trabajo",
+        "item-type": "folder",
+        "item-code": "El_mundo_del_trabajo",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0077",
-          "item-code": "El_mundo_del_trabajo/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0078",
-          "item-code": "El_mundo_del_trabajo/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0079",
-          "item-code": "El_mundo_del_trabajo/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0080",
-          "item-code": "El_mundo_del_trabajo/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "Un festival de arte",
-      "item-type": "folder",
-      "item-code": "Un_festival_de_arte",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0076",
+            "item-code": "El_mundo_del_trabajo/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0077",
+            "item-code": "El_mundo_del_trabajo/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0078",
+            "item-code": "El_mundo_del_trabajo/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0079",
+            "item-code": "El_mundo_del_trabajo/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0080",
+            "item-code": "El_mundo_del_trabajo/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0081",
-          "item-code": "Un_festival_de_arte/contextos",
-          "tracking": true
+      {
+        "name": "Un festival de arte",
+        "item-type": "folder",
+        "item-code": "Un_festival_de_arte",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0082",
-          "item-code": "Un_festival_de_arte/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0083",
-          "item-code": "Un_festival_de_arte/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0084",
-          "item-code": "Un_festival_de_arte/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0085",
-          "item-code": "Un_festival_de_arte/adelante",
-          "tracking": true
-        }
-      ]  
-    },
-    {
-      "name": "Las actualidades",
-      "item-type": "folder",
-      "item-code": "Las_actualidades",
-      "sub-type": "default",
-      "attribs": {
-        "page-no": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0081",
+            "item-code": "Un_festival_de_arte/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0082",
+            "item-code": "Un_festival_de_arte/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0083",
+            "item-code": "Un_festival_de_arte/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0084",
+            "item-code": "Un_festival_de_arte/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0085",
+            "item-code": "Un_festival_de_arte/adelante",
+            "tracking": true
+          }
+        ]  
       },
-      "items": [        
-        {
-          "name": "contextos",
-          "item-type": "resource",
-          "resource": "RE_0086",
-          "item-code": "Las_actualidades/contextos",
-          "tracking": true
+      {
+        "name": "Las actualidades",
+        "item-type": "folder",
+        "item-code": "Las_actualidades",
+        "sub-type": "default",
+        "attribs": {
+          "page-no": ""
         },
-        {
-          "name": "fotonovela",
-          "item-type": "resource",
-          "resource": "RE_0087",
-          "item-code": "Las_actualidades/fotonovela",
-          "tracking": true
-        },
-        {
-          "name": "cultura",
-          "item-type": "resource",
-          "resource": "RE_0088",
-          "item-code": "Las_actualidades/cultura",
-          "tracking": true
-        },
-        {
-          "name": "estructura",
-          "item-type": "resource",
-          "resource": "RE_0089",
-          "item-code": "Las_actualidades/estructura",
-          "tracking": true
-        },
-        {
-          "name": "adelante",
-          "item-type": "resource",
-          "resource": "RE_0090",
-          "item-code": "Las_actualidades/adelante",
-          "tracking": true
-        }
-      ]  
-    }
-  ],
-  "paths": {
-    "public-assets": "http://s3.amazonaws.com/comprodls/products",
-    "secured-assets": ""
+        "items": [        
+          {
+            "name": "contextos",
+            "item-type": "resource",
+            "resource": "RE_0086",
+            "item-code": "Las_actualidades/contextos",
+            "tracking": true
+          },
+          {
+            "name": "fotonovela",
+            "item-type": "resource",
+            "resource": "RE_0087",
+            "item-code": "Las_actualidades/fotonovela",
+            "tracking": true
+          },
+          {
+            "name": "cultura",
+            "item-type": "resource",
+            "resource": "RE_0088",
+            "item-code": "Las_actualidades/cultura",
+            "tracking": true
+          },
+          {
+            "name": "estructura",
+            "item-type": "resource",
+            "resource": "RE_0089",
+            "item-code": "Las_actualidades/estructura",
+            "tracking": true
+          },
+          {
+            "name": "adelante",
+            "item-type": "resource",
+            "resource": "RE_0090",
+            "item-code": "Las_actualidades/adelante",
+            "tracking": true
+          }
+        ]  
+      }
+    ]
   },
-  "producttype": "imgbook",
   "resources": {
     "generic": {
       "RE_0001": {
@@ -1697,9 +1700,5 @@
     },
     "test": {},
     "ebook": {}
-  },
-  "title": "VISTAS, Introducción a La Lengua Española",
-  "thumbnailsmall": "cover.jpg",
-  "thumbnaillarge": "cover.jpg",
-  "version": "1.0"
+  }  
 }
