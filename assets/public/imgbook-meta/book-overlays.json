@@ -85,7 +85,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             },
@@ -130,7 +132,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -238,7 +242,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -278,7 +284,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -318,7 +326,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             },
@@ -385,7 +395,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -407,7 +419,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -447,7 +461,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             },
@@ -510,7 +526,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -550,7 +568,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -590,7 +610,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             },
@@ -653,7 +675,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -693,7 +717,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -733,7 +759,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -818,7 +846,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -880,7 +910,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -946,7 +978,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -968,7 +1002,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
@@ -990,7 +1026,9 @@
                     "type": "ytube/vimeo/...",
                     "baseURL": "http://www.youtube.com/embed/j91m55N7e9I",
                     "path":"...",
-                    "parameters": {"...":"..."}
+                    "parameters": {"...":"..."},
+                    "width":500,
+                    "height":400
                 },
                 "callback": "myfunction"      
             }]
