@@ -6,7 +6,6 @@
         "pagelabel" : "116",
         "overlays":[{
                 "title":"Practice Excercise 1.1",
-                "tooltip":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
                 "x":205,
                 "y":76,
@@ -33,7 +32,6 @@
         "pagelabel" : "118",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":150,
                 "y": 100,
@@ -55,7 +53,6 @@
         "pagelabel" : "119",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":50,
                 "y": 275,
@@ -73,7 +70,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":419,
                 "y": 125,
@@ -93,7 +89,6 @@
             },
             {
                 "title":"Practice Excercise 1.1",
-                "tooltip":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
                 "x":111,
                 "y":269,
@@ -120,7 +115,6 @@
         "pagelabel" : "120",
         "overlays":[{
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":250,
                 "y": 108,
@@ -144,7 +138,6 @@
         "pagelabel" : "122",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x": 148,
                 "y": 120,
@@ -162,7 +155,6 @@
             },
             {
                 "title":"Practice Excercise 1.1",
-                "tooltip":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
                 "x":198,
                 "y":77,
@@ -185,7 +177,6 @@
             },
             {
                 "title":"Practice Excercise 1.1",
-                "tooltip":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
                 "x":198,
                 "y":395,
@@ -212,7 +203,6 @@
         "pagelabel" : "123",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x": 350,
                 "y": 50,
@@ -230,7 +220,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":50,
                 "y": 350,
@@ -254,7 +243,6 @@
         "pagelabel" : "126",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x": 145,
                 "y": 350,
@@ -272,7 +260,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":505,
                 "y": 90,
@@ -296,7 +283,6 @@
         "pagelabel" : "127",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x": 60,
                 "y": 110,
@@ -314,7 +300,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":60,
                 "y": 375,
@@ -334,7 +319,6 @@
             },
             {
                 "title":"Practice Excercise 1.1",
-                "tooltip":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
                 "x":111,
                 "y":76,
@@ -361,7 +345,6 @@
         "pagelabel" : "128",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":150,
                 "y": 125,
@@ -383,7 +366,6 @@
         "pagelabel" : "129",
         "overlays":[{
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":340,
                 "y": 50,
@@ -407,7 +389,6 @@
         "pagelabel" : "130",
         "overlays":[{
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":145,
                 "y": 50,
@@ -431,7 +412,6 @@
         "pagelabel" : "131",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":60,
                 "y": 125,
@@ -449,7 +429,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":60,
                 "y": 450,
@@ -469,7 +448,6 @@
             },
             {
                 "title":"Practice Excercise 1.1",
-                "tooltip":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
                 "x":110,
                 "y":77,
@@ -496,7 +474,6 @@
         "pagelabel" : "132",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":145,
                 "y": 125,
@@ -514,7 +491,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":145,
                 "y": 310,
@@ -538,7 +514,6 @@
         "pagelabel" : "133",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":55,
                 "y": 350,
@@ -556,7 +531,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":355,
                 "y": 45,
@@ -580,7 +554,6 @@
         "pagelabel" : "134",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":145,
                 "y": 275,
@@ -598,7 +571,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":505,
                 "y": 45,
@@ -618,7 +590,6 @@
             },
             {
                 "title":"Practice Excercise 1.1",
-                "tooltip":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
                 "x":198,
                 "y":77,
@@ -645,7 +616,6 @@
         "pagelabel" : "135",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":60,
                 "y": 280,
@@ -663,7 +633,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":60,
                 "y": 130,
@@ -687,7 +656,6 @@
         "pagelabel" : "136",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":145,
                 "y": 85,
@@ -705,7 +673,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":505,
                 "y": 85,
@@ -729,7 +696,6 @@
         "pagelabel" : "137",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":58,
                 "y": 280,
@@ -747,7 +713,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":58,
                 "y": 140,
@@ -771,7 +736,6 @@
         "pagelabel" : "138",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":145,
                 "y": 310,
@@ -789,7 +753,6 @@
             },
             {
                 "title":"Practice Excercise 1.1",
-                "tooltip":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
                 "x":197,
                 "y":77,
@@ -816,7 +779,6 @@
         "pagelabel" : "139",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":50,
                 "y": 300,
@@ -834,7 +796,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":50,
                 "y": 90,
@@ -858,7 +819,6 @@
         "pagelabel" : "140",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":150,
                 "y": 120,
@@ -880,7 +840,6 @@
         "pagelabel" : "141",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":50,
                 "y": 280,
@@ -898,7 +857,6 @@
             },
             {
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x":50,
                 "y": 80,
@@ -922,7 +880,6 @@
         "pagelabel" : "142",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":265,
                 "y": 90,
@@ -944,7 +901,6 @@
         "pagelabel" : "145",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":150,
                 "y": 85,
@@ -966,7 +922,6 @@
         "pagelabel" : "146",
         "overlays":[{
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x": 415,
                 "y": 60,
@@ -990,7 +945,6 @@
         "pagelabel" : "147",
         "overlays":[{
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x": 215,
                 "y": 60,
@@ -1014,7 +968,6 @@
         "pagelabel" : "148",
         "overlays":[{
                 "title":"Video: Learn Spanish",
-                "tooltip":"Learn Spanish - Greetings and Introductions",
                 "desc":"Learn Spanish - Greetings and Introductions",
                 "x": 230,
                 "y": 45,
@@ -1038,7 +991,6 @@
         "pagelabel" : "150",
         "overlays":[{
                 "title":"Audio: Learning Spanish",
-                "tooltip":"Learn to speak Spanish",
                 "desc":"Learn how to speak Spanish.",
                 "x":420,
                 "y": 50,
