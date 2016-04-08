@@ -2,8 +2,7 @@
 
 "pages":{
     "page":[{
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt3",
-        "pagelabel" : "116",
+        "sno" : 5,
         "overlays":[{
                 "title":"Practice Excercise 1.1",
                 "desc":"Complete the following activity.",
@@ -28,8 +27,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt4",
-        "pagelabel" : "118",
+        "sno" : 6,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -49,8 +47,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt5",
-        "pagelabel" : "119",
+        "sno" : 7,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -111,8 +108,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt6",
-        "pagelabel" : "120",
+        "sno" : 8,
         "overlays":[{
                 "title":"Video: Learn Spanish",
                 "desc":"Learn Spanish - Greetings and Introductions",
@@ -134,8 +130,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt8",
-        "pagelabel" : "122",
+        "sno" : 10,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -199,8 +194,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt9",
-        "pagelabel" : "123",
+        "sno" : 11,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -239,8 +233,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt12",
-        "pagelabel" : "126",
+        "sno" : 14,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -279,8 +272,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt13",
-        "pagelabel" : "127",
+        "sno" : 15,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -341,8 +333,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt14",
-        "pagelabel" : "128",
+        "sno" : 16,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -362,8 +353,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt15",
-        "pagelabel" : "129",
+        "sno" : 17,
         "overlays":[{
                 "title":"Video: Learn Spanish",
                 "desc":"Learn Spanish - Greetings and Introductions",
@@ -385,8 +375,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt16",
-        "pagelabel" : "130",
+        "sno" : 18,
         "overlays":[{
                 "title":"Video: Learn Spanish",
                 "desc":"Learn Spanish - Greetings and Introductions",
@@ -408,8 +397,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt17",
-        "pagelabel" : "131",
+        "sno" : 19,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -470,8 +458,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt18",
-        "pagelabel" : "132",
+        "sno" : 20,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -510,8 +497,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt19",
-        "pagelabel" : "133",
+        "sno" : 21,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -550,8 +536,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt20",
-        "pagelabel" : "134",
+        "sno" : 22,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -612,8 +597,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt21",
-        "pagelabel" : "135",
+        "sno" : 23,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -652,8 +636,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt22",
-        "pagelabel" : "136",
+        "sno" : 24,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -692,8 +675,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt23",
-        "pagelabel" : "137",
+        "sno" : 25,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -732,8 +714,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt24",
-        "pagelabel" : "138",
+        "sno" : 26,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -775,8 +756,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt25",
-        "pagelabel" : "139",
+        "sno" : 27,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -815,8 +795,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt26",
-        "pagelabel" : "140",
+        "sno" : 28,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -836,8 +815,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt27",
-        "pagelabel" : "141",
+        "sno" : 29,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -876,8 +854,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt28",
-        "pagelabel" : "142",
+        "sno" : 30,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -897,8 +874,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt31",
-        "pagelabel" : "145",
+        "sno" : 33,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
@@ -918,8 +894,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt32",
-        "pagelabel" : "146",
+        "sno" : 34,
         "overlays":[{
                 "title":"Video: Learn Spanish",
                 "desc":"Learn Spanish - Greetings and Introductions",
@@ -941,8 +916,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt33",
-        "pagelabel" : "147",
+        "sno" : 35,
         "overlays":[{
                 "title":"Video: Learn Spanish",
                 "desc":"Learn Spanish - Greetings and Introductions",
@@ -964,8 +938,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt34",
-        "pagelabel" : "148",
+        "sno" : 36,
         "overlays":[{
                 "title":"Video: Learn Spanish",
                 "desc":"Learn Spanish - Greetings and Introductions",
@@ -987,8 +960,7 @@
             }]
     },
     {
-        "fid" : "DES17_V1_TE_L04_115-150_hi-opt36",
-        "pagelabel" : "150",
+        "sno" : 38,
         "overlays":[{
                 "title":"Audio: Learning Spanish",
                 "desc":"Learn how to speak Spanish.",
