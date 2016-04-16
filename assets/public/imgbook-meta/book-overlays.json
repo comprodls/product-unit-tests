@@ -17,8 +17,7 @@
                     "baseURL": "",
                     "path":"fib_question_set_1.json",
                     "parameters": {"...":"..."},
-                    "engineID": "fib",
-                    "engineName": "fib",
+                    "engineType": "FIB",
                     "layoutType": "FIB",
                     "id": "activity1"
                 },
@@ -98,8 +97,7 @@
                     "baseURL": "",
                     "path":"fib_question_set_1.json",
                     "parameters": {"...":"..."},
-                    "engineID": "fib",
-                    "engineName": "fib",
+                    "engineType": "FIB",
                     "layoutType": "FIB",
                     "id": "activity2"
                 },
@@ -162,8 +160,7 @@
                     "baseURL": "",
                     "path":"fib_question_set_1.json",
                     "parameters": {"...":"..."},
-                    "engineID": "fib",
-                    "engineName": "fib",
+                    "engineType": "FIB",
                     "layoutType": "FIB",
                     "id": "activity3"
                 },
@@ -184,8 +181,7 @@
                     "baseURL": "",
                     "path":"fib_question_set_1.json",
                     "parameters": {"...":"..."},
-                    "engineID": "fib",
-                    "engineName": "fib",
+                    "engineType": "FIB",
                     "layoutType": "FIB",
                     "id": "activity4"
                 },
@@ -323,8 +319,7 @@
                     "baseURL": "",
                     "path":"fib_question_set_1.json",
                     "parameters": {"...":"..."},
-                    "engineID": "fib",
-                    "engineName": "fib",
+                    "engineType": "FIB",
                     "layoutType": "FIB",
                     "id": "activity5"
                 },
@@ -448,8 +443,7 @@
                     "baseURL": "",
                     "path":"fib_question_set_1.json",
                     "parameters": {"...":"..."},
-                    "engineID": "fib",
-                    "engineName": "fib",
+                    "engineType": "FIB",
                     "layoutType": "FIB",
                     "id": "activity6"
                 },
@@ -587,8 +581,7 @@
                     "baseURL": "",
                     "path":"fib_question_set_1.json",
                     "parameters": {"...":"..."},
-                    "engineID": "fib",
-                    "engineName": "fib",
+                    "engineType": "FIB",
                     "layoutType": "FIB",
                     "id": "activity7"
                 },
@@ -746,8 +739,7 @@
                     "baseURL": "",
                     "path":"fib_question_set_1.json",
                     "parameters": {"...":"..."},
-                    "engineID": "fib",
-                    "engineName": "fib",
+                    "engineType": "FIB",
                     "layoutType": "FIB",
                     "id": "activity8"
                 },

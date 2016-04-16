@@ -1,33 +1,103 @@
 {
-   "activity":{
-      "directions":{
-         "content":{
-            "html":"<b>Completar </b>Fill in the blanks with the appropriate forms of ir. (5 x 1 pt. each = 5 pts.)"
-         }
-      },
-      "questionsdata":{
-         "question":[
-            {
-               "text":" El sábado tío Luis y tía Tere __ de excursión a las montañas. ",
-               "correctanswer": "van"
-            },
-            {
-               "text":" Mi hermana Perla __ con unas amigas al cine. ",
-               "correctanswer": "va"
-            },
-            {
-               "text":" Ustedes __ a un restaurante muy elegante. ",
-               "correctanswer": "van"
-            },
-            {
-               "text":" Tú __ a casa de tu amigo Manuel. ",
-               "correctanswer": "vas"
-            },
-            {
-               "text":" Nosotros __ al centro. ",
-               "correctanswer": "vamos"
-            }
-         ]
+  "meta": {
+    "type": "FIB",
+    "score": {
+      "default": 0,
+      "max": 1,
+      "min": 0
+    }
+  },
+  "content": {
+    "instructions": [
+      {
+        "tag": "html",
+        "html": "<b>Completar </b>Fill in the blanks with the appropriate forms of ir. (5 x 1 pt. each = 5 pts.)"
       }
-   }
+    ],
+    "stimulus": [
+      {
+        "tag": ""
+      }
+    ],
+    "canvas": {
+      "layout": "FIB",
+      "data": {
+        "questiondata": [
+          {
+            "text": "El sábado tío Luis y tía Tere <a href='http://www.comprodls.com/m1.0/interaction/fib'>i1</a> de excursión a las montañas. "
+          },
+          {
+            "text": " Mi hermana Perla <a href='http://www.comprodls.com/m1.0/interaction/fib'>i2</a> con unas amigas al cine."
+          },
+          {
+            "text": "Ustedes <a href='http://www.comprodls.com/m1.0/interaction/fib'>i3</a> a un restaurante muy elegante."
+          },
+          {
+            "text": "Tú <a href='http://www.comprodls.com/m1.0/interaction/fib'>i4/a> a casa de tu amigo Manuel."
+          },
+          {
+            "text": "Nosotros <a href='http://www.comprodls.com/m1.0/interaction/fib'>i5</a> al centro."
+          }                                                  
+        ]
+      },
+      "raw": ""
+    },
+
+    "interactions": {
+      "i1": {
+        "type": "FIB"
+      },
+      "i2": {
+        "type": "FIB"
+      },
+      "i3": {
+        "type": "FIB"
+      },
+      "i4": {
+        "type": "FIB"
+      },
+      "i5": {
+        "type": "FIB"
+      }
+    },
+    "hint": {}
+  },
+  "feedback": {
+    "global": {
+      "correct": "",
+      "incorrect": "",
+      "empty": ""
+    }
+  },
+  "responses": {
+    "i1": {
+      "correct": "van",
+      "ignorecase": false,
+      "ignorewhitespace": false
+    },
+    "i2": {
+      "correct": "va",
+      "ignorecase": false,
+      "ignorewhitespace": false
+    },
+    "i3": {
+      "correct": "van",
+      "ignorecase": false,
+      "ignorewhitespace": false
+    },
+    "i4": {
+      "correct": "vas",
+      "ignorecase": false,
+      "ignorewhitespace": false
+    },
+    "i5": {
+      "correct": "vamos",
+      "ignorecase": false,
+      "ignorewhitespace": false
+    }
+  },
+  "learning-objectives": [],
+  "tags": [
+    "test"
+  ]
 }
