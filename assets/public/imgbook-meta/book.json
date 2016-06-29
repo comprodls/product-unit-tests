@@ -1,0 +1,87 @@
+{
+    "bookid": "VHL-Gastronomia-Webreading",
+    "pageWidth": 898,
+    "pageHeight": 454,
+    "pagecount": "1",
+    "paths": {
+        "pageMedImgFolder": "images/med/"
+    },
+    "overlay-config": {
+        "background-color": "#747474",
+        "border-color": "#000000",
+        "icon-color": "#FFFFFF",
+        "hover-color": "#403939",
+        "invisible-hotspot-border": "#AAAAAA"
+    },
+    "imageConfig": [{
+        "category": "medium",
+        "width": 1275,
+        "height": 1633,
+        "dpi": 150,
+        "folderRef": "med"
+    }],
+    "zoomingStateData": [{
+        "pcwidth": 300,
+        "singlePage": "true",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 400,
+        "singlePage": "true",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 500,
+        "singlePage": "true",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 600,
+        "singlePage": "true",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 768,
+        "singlePage": "true",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 910,
+        "singlePage": "true",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 1024,
+        "singlePage": "false",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 1120,
+        "singlePage": "false",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 1280,
+        "singlePage": "false",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 1440,
+        "singlePage": "false",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 1800,
+        "singlePage": "false",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 2400,
+        "singlePage": "false",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 3000,
+        "singlePage": "false",
+        "singlePageFitFactor": 0.5
+    }, {
+        "pcwidth": 3600,
+        "singlePage": "false",
+        "singlePageFitFactor": 0.5
+    }],
+    "pages": {
+        "page": [{
+            "sno": 1,
+            "bgimage": "0008.jpg",
+            "pagelabel": "0008"
+        }]
+    }
+}
